@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "UHM7bi8OK9YeiLIfWEZIvzntpUtgaSISFh4TbIpZoKddLQtr0+F/ZsMs3D5m9N7Q8Wc4vPqLU+UIoaWszq3g9w==",
+  "success": true,
+  "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\Console\\Console.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mateusz\\.nuget\\packages\\geneticsharp\\3.1.4\\geneticsharp.3.1.4.nupkg.sha512"
+  ],
+  "logs": []
+}
