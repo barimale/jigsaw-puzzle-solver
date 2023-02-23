@@ -7904,11 +7904,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspBlazor\\TspBlazor.csproj",
+      "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspBlazor\\TspBlazor.csproj",
       "projectName": "TspBlazor",
-      "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspBlazor\\TspBlazor.csproj",
+      "projectPath": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspBlazor\\TspBlazor.csproj",
       "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-      "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspBlazor\\obj\\",
+      "outputPath": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspBlazor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

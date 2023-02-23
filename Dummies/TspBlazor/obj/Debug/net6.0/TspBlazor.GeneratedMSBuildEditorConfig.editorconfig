@@ -11,33 +11,33 @@ build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = TspBlazor
 build_property.RootNamespace = TspBlazor
-build_property.ProjectDir = R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\Dummies\TspBlazor\
+build_property.ProjectDir = R:\genetic-algorithm-tangram-solver\Dummies\TspBlazor\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\Dummies\TspBlazor
+build_property.MSBuildProjectDirectory = R:\genetic-algorithm-tangram-solver\Dummies\TspBlazor
 build_property._RazorSourceGeneratorDebug = 
 
-[R:/genetic-algorithm-tangram-solver/Genetic.Algorithm.Tangram.Solver/Dummies/TspBlazor/App.razor]
+[R:/genetic-algorithm-tangram-solver/Dummies/TspBlazor/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/genetic-algorithm-tangram-solver/Genetic.Algorithm.Tangram.Solver/Dummies/TspBlazor/Pages/Index.razor]
+[R:/genetic-algorithm-tangram-solver/Dummies/TspBlazor/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/genetic-algorithm-tangram-solver/Genetic.Algorithm.Tangram.Solver/Dummies/TspBlazor/Pages/Tsp.razor]
+[R:/genetic-algorithm-tangram-solver/Dummies/TspBlazor/Pages/Tsp.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHNwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/genetic-algorithm-tangram-solver/Genetic.Algorithm.Tangram.Solver/Dummies/TspBlazor/_Imports.razor]
+[R:/genetic-algorithm-tangram-solver/Dummies/TspBlazor/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[R:/genetic-algorithm-tangram-solver/Genetic.Algorithm.Tangram.Solver/Dummies/TspBlazor/Shared/MainLayout.razor]
+[R:/genetic-algorithm-tangram-solver/Dummies/TspBlazor/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-cm3su0yt4x
 
-[R:/genetic-algorithm-tangram-solver/Genetic.Algorithm.Tangram.Solver/Dummies/TspBlazor/Shared/NavMenu.razor]
+[R:/genetic-algorithm-tangram-solver/Dummies/TspBlazor/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-uuf02espde

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "th3kaTZ/tVOinWzMXbXAscMxK6dq7R1/H+FTnYW1soSF7lhwmXZ5MgClrbArkF04k6gSgT58uPSbd344S9xYZA==",
+  "dgSpecHash": "p7GHHhnxwww28OyUzQfK5kjBkINAkqIdof6yUqbi5f5bozcMVaEl/IPbEz+05xOLxmKXmqtuEAkI2FDWLfZiHw==",
   "success": true,
-  "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj",
+  "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateusz\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",

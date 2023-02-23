@@ -4433,11 +4433,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.WPF.csproj",
+      "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.WPF.csproj",
       "projectName": "Genetic.Algorithm.Tangram.Solver.WPF",
-      "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.WPF.csproj",
+      "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.WPF.csproj",
       "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-      "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver\\obj\\",
+      "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4459,8 +4459,8 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {
-              "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj"
+            "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {
+              "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj"
             }
           }
         }

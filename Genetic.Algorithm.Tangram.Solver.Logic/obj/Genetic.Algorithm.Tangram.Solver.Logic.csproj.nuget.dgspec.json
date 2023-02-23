@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {}
+    "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {}
   },
   "projects": {
-    "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {
+    "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
+        "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
         "projectName": "Genetic.Algorithm.Tangram.Solver.Logic",
-        "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
+        "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
         "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-        "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.Logic\\obj\\",
+        "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

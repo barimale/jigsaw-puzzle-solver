@@ -4415,11 +4415,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspConsole\\TspConsole.csproj",
+      "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspConsole\\TspConsole.csproj",
       "projectName": "TspConsole",
-      "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspConsole\\TspConsole.csproj",
+      "projectPath": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspConsole\\TspConsole.csproj",
       "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-      "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspConsole\\obj\\",
+      "outputPath": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspConsole\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

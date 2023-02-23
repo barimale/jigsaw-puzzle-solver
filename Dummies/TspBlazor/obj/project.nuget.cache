@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ko0WgHQfq/9d0ntY67+R0MlyikRi96CItGxtK/4ZuFnjcb8d/y1gMXCYKeF1vKOsD/+kGPLYLF4R0XZid6V8rw==",
+  "dgSpecHash": "QVAokoiNK2AAJNUMNLj/t6ffMR0bSECoYSvbPVV+hn9iEDJZl50KKuZeghHyy/xAZqnI80x0XdYh5dVYxff7mQ==",
   "success": true,
-  "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Dummies\\TspBlazor\\TspBlazor.csproj",
+  "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Dummies\\TspBlazor\\TspBlazor.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateusz\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\geneticsharp\\3.1.4\\geneticsharp.3.1.4.nupkg.sha512",
