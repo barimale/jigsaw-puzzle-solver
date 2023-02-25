@@ -138,6 +138,10 @@
             "GeneticSharp.Extensions": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "SixLabors.Shapes": {
+              "target": "Package",
+              "version": "[1.0.0-beta0009, )"
             }
           },
           "imports": [
