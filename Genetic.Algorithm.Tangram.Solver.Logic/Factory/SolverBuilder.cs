@@ -10,6 +10,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
         private ICrossover crossover;
         private IFitness fitness;
         private IMutation mutation;
+        private ITermination termination;
+
+        public SolverBuilder WithTermination(ITermination termination)
+        {
+            this.termination = termination;
+
+            return this;
+        }
 
         public SolverBuilder WithMutation(IMutation mutation)
         {
@@ -48,12 +56,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
 
         public GeneticAlgorithm Build()
         {
-            return new GeneticAlgorithm(
+            var ga = new GeneticAlgorithm(
                 this.population,
                 this.fitness,
                 this.selection,
                 this.crossover,
                 this.mutation);
+
+            ga.Termination = this.termination;
+
+            return ga;
         }
     }
 }

@@ -32,10 +32,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .WithFitnessFunction(fitness)
                 .WithMutation(mutation)
                 .WithCrossover(crossover)
+                .WithTermination(new GenerationNumberTermination(100))
                 .Build();
 
             // when
-            ga.Termination = new GenerationNumberTermination(100);
             ga.Start();
             Console.WriteLine("Best chromosome before chromossomes serialization is:");
             ConsoleHelper.ShowChromosome(ga.BestChromosome as TspChromosome);
