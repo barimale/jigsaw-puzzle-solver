@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "Er65NxKoTDCrLV1eVz5Hj8f59Ye98dQWzt2oDGqmPg2t9Ba6gYOtqJoMcBHsN/yhIkS0hTympmHdI9884gzuxw==",
+  "dgSpecHash": "QpFj9YF6TgYIcHAO0xXeEY4qpcTAyCs1Kq32pqyp4U/t0FYmPY4ob5SC6gzCIFCi58qAbPct1v4Ln8YO1Zx0Og==",
   "success": true,
   "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mateusz\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\consolegraphics\\0.1.4\\consolegraphics.0.1.4.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\geneticsharp\\3.1.4\\geneticsharp.3.1.4.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\geneticsharp.extensions\\3.1.4\\geneticsharp.extensions.3.1.4.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\miconvexhull\\1.1.19.1019\\miconvexhull.1.1.19.1019.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.netcore.targets\\1.0.1\\microsoft.netcore.targets.1.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.win32.primitives\\4.0.1\\microsoft.win32.primitives.4.0.1.nupkg.sha512",

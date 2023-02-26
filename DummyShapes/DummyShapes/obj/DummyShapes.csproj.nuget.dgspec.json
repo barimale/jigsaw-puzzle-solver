@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {}
+    "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\DummyShapes.csproj": {}
   },
   "projects": {
-    "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj": {
+    "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\DummyShapes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
-        "projectName": "Genetic.Algorithm.Tangram.Solver.Logic",
-        "projectPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
+        "projectUniqueName": "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\DummyShapes.csproj",
+        "projectName": "DummyShapes",
+        "projectPath": "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\DummyShapes.csproj",
         "packagesPath": "C:\\Users\\Mateusz\\.nuget\\packages\\",
-        "outputPath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\obj\\",
+        "outputPath": "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -48,22 +48,6 @@
             "ConsoleGraphics": {
               "target": "Package",
               "version": "[0.1.4, )"
-            },
-            "GeneticSharp": {
-              "target": "Package",
-              "version": "[3.1.4, )"
-            },
-            "GeneticSharp.Extensions": {
-              "target": "Package",
-              "version": "[3.1.4, )"
-            },
-            "MIConvexHull": {
-              "target": "Package",
-              "version": "[1.1.19.1019, )"
-            },
-            "SixLabors.Shapes": {
-              "target": "Package",
-              "version": "[1.0.0-beta0009, )"
             }
           },
           "imports": [

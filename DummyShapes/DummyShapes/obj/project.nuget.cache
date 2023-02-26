@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Xqv1OQacFG2oAr5v/HmJqnis9iFAZuy8L7SqW6oCHVdOW3ccE4x2cfXzFnpCNgxYnt1nqrlI/Cl/K+8o4WrBHw==",
+  "success": true,
+  "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\DummyShapes.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Mateusz\\.nuget\\packages\\consolegraphics\\0.1.4\\consolegraphics.0.1.4.nupkg.sha512"
+  ],
+  "logs": []
+}

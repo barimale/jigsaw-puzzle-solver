@@ -1,7 +1,3 @@
-using GeneticSharp.Extensions;
-using GeneticSharp;
-using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
-
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
     public class I_would_like_to_solve_simple_board

@@ -18,6 +18,15 @@
           }
         }
       },
+      "ConsoleGraphics/0.1.4": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/ConsoleGraphics.dll": {}
+        },
+        "runtime": {
+          "lib/net6.0/ConsoleGraphics.dll": {}
+        }
+      },
       "GeneticSharp/3.1.4": {
         "type": "package",
         "compile": {
@@ -41,6 +50,19 @@
         },
         "runtime": {
           "lib/net6.0/GeneticSharp.Extensions.dll": {}
+        }
+      },
+      "MIConvexHull/1.1.19.1019": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/MIConvexHull.dll": {
+            "related": ".deps.json;.pdb"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MIConvexHull.dll": {
+            "related": ".deps.json;.pdb"
+          }
         }
       },
       "Microsoft.NETCore.Platforms/3.1.4": {
@@ -1332,6 +1354,21 @@
         "lib/portable-net4+sl5+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1/Antlr3.Runtime.xml"
       ]
     },
+    "ConsoleGraphics/0.1.4": {
+      "sha512": "Rt3X3NIfwso3GzE2qnOIT7W5EKwiQwC+v+0JtFYOjgzAY7zgNG5nOPryOazQTd4hR2w62Tn2RGISD/S3ij62KQ==",
+      "type": "package",
+      "path": "consolegraphics/0.1.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "README.md",
+        "consolegraphics.0.1.4.nupkg.sha512",
+        "consolegraphics.nuspec",
+        "icon.png",
+        "lib/net6.0/ConsoleGraphics.dll"
+      ]
+    },
     "GeneticSharp/3.1.4": {
       "sha512": "U7NfUCVoiX0tKl6uvN7QGj6rHiM+jWRip+SbWYwG8RqZZcTwCBWO5IPwgKhSnh0vjV/LzRMUBEuSiZKAPl6I+Q==",
       "type": "package",
@@ -1355,6 +1392,23 @@
         "geneticsharp.extensions.3.1.4.nupkg.sha512",
         "geneticsharp.extensions.nuspec",
         "lib/net6.0/GeneticSharp.Extensions.dll"
+      ]
+    },
+    "MIConvexHull/1.1.19.1019": {
+      "sha512": "Qz0BIRVyflj9jMkIKG1tpON5Xz1lFEA9XyRH0Pw5qIsCE75heHF4cHrBr8RqvQJRaaNXH+5jdWAfFP3m3OfTOA==",
+      "type": "package",
+      "path": "miconvexhull/1.1.19.1019",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard1.0/MIConvexHull.deps.json",
+        "lib/netstandard1.0/MIConvexHull.dll",
+        "lib/netstandard1.0/MIConvexHull.pdb",
+        "lib/netstandard2.0/MIConvexHull.deps.json",
+        "lib/netstandard2.0/MIConvexHull.dll",
+        "lib/netstandard2.0/MIConvexHull.pdb",
+        "miconvexhull.1.1.19.1019.nupkg.sha512",
+        "miconvexhull.nuspec"
       ]
     },
     "Microsoft.NETCore.Platforms/3.1.4": {
@@ -4508,8 +4562,10 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "ConsoleGraphics >= 0.1.4",
       "GeneticSharp >= 3.1.4",
       "GeneticSharp.Extensions >= 3.1.4",
+      "MIConvexHull >= 1.1.19.1019",
       "SixLabors.Shapes >= 1.0.0-beta0009"
     ]
   },
@@ -4558,6 +4614,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "ConsoleGraphics": {
+            "target": "Package",
+            "version": "[0.1.4, )"
+          },
           "GeneticSharp": {
             "target": "Package",
             "version": "[3.1.4, )"
@@ -4565,6 +4625,10 @@
           "GeneticSharp.Extensions": {
             "target": "Package",
             "version": "[3.1.4, )"
+          },
+          "MIConvexHull": {
+            "target": "Package",
+            "version": "[1.1.19.1019, )"
           },
           "SixLabors.Shapes": {
             "target": "Package",

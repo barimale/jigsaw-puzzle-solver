@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "DummyShapes/1.0.0": {
+        "dependencies": {
+          "ConsoleGraphics": "0.1.4"
+        },
+        "runtime": {
+          "DummyShapes.dll": {}
+        }
+      },
+      "ConsoleGraphics/0.1.4": {
+        "runtime": {
+          "lib/net6.0/ConsoleGraphics.dll": {
+            "assemblyVersion": "0.1.4.0",
+            "fileVersion": "0.1.4.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DummyShapes/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ConsoleGraphics/0.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rt3X3NIfwso3GzE2qnOIT7W5EKwiQwC+v+0JtFYOjgzAY7zgNG5nOPryOazQTd4hR2w62Tn2RGISD/S3ij62KQ==",
+      "path": "consolegraphics/0.1.4",
+      "hashPath": "consolegraphics.0.1.4.nupkg.sha512"
+    }
+  }
+}

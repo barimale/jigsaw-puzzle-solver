@@ -131,6 +131,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "ConsoleGraphics": {
+              "target": "Package",
+              "version": "[0.1.4, )"
+            },
             "GeneticSharp": {
               "target": "Package",
               "version": "[3.1.4, )"
@@ -138,6 +142,10 @@
             "GeneticSharp.Extensions": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "MIConvexHull": {
+              "target": "Package",
+              "version": "[1.1.19.1019, )"
             },
             "SixLabors.Shapes": {
               "target": "Package",

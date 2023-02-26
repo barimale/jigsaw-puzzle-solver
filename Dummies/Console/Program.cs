@@ -1,5 +1,4 @@
 ﻿using GeneticSharp;
-using System;
 
 namespace Console
 {
@@ -23,15 +22,15 @@ namespace Console
 
             var ga = new GeneticAlgorithm(population, fitness, selection, crossover, mutation);
             ga.Termination = new FitnessStagnationTermination(100);
-            ga.GenerationRan += (s, e) => Console.WriteLine($"Generation {ga.GenerationsNumber}. Best fitness: {ga.BestChromosome.Fitness.Value}");
+            ga.GenerationRan += (s, e) => System.Console.WriteLine($"Generation {ga.GenerationsNumber}. Best fitness: {ga.BestChromosome.Fitness.Value}");
 
-            Console.WriteLine("GA running...");
+            System.Console.WriteLine("GA running...");
             ga.Start();
 
-            Console.WriteLine();
-            Console.WriteLine($"Best solution found has fitness: {ga.BestChromosome.Fitness}");
-            Console.WriteLine($"Elapsed time: {ga.TimeEvolving}");
-            Console.ReadKey();
+            System.Console.WriteLine();
+            System.Console.WriteLine($"Best solution found has fitness: {ga.BestChromosome.Fitness}");
+            System.Console.WriteLine($"Elapsed time: {ga.TimeEvolving}");
+            System.Console.ReadKey();
         }
     }
 }
