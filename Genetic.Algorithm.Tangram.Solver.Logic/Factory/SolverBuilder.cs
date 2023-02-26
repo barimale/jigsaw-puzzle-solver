@@ -1,12 +1,45 @@
 ﻿using GeneticSharp;
+using GeneticSharp.Extensions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
 {
     public class SolverBuilder
     {
-        private Population population;
+        private IPopulation population;
+        private ISelection selection;
+        private ICrossover crossover;
+        private IFitness fitness;
+        private IMutation mutation;
 
-        public SolverBuilder WithPopulation(Population population)
+        public SolverBuilder WithMutation(IMutation mutation)
+        {
+            this.mutation = mutation;
+
+            return this;
+        }
+
+        public SolverBuilder WithCrossover(ICrossover crossover)
+        {
+            this.crossover = crossover;
+
+            return this;
+        }
+
+        public SolverBuilder WithFitnessFunction(IFitness fitness)
+        {
+            this.fitness = fitness;
+
+            return this;
+        }
+
+        public SolverBuilder WithSelection(ISelection selection)
+        {
+            this.selection = selection;
+
+            return this;
+        }
+
+        public SolverBuilder WithPopulation(IPopulation population)
         {
             this.population = population;
 
@@ -15,17 +48,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
 
         public GeneticAlgorithm Build()
         {
-            //var selection = new EliteSelection();
-            //var crossover = new OrderedCrossover();
-            //var mutation = new ReverseSequenceMutation();
-            //var fitness = new TspFitness(100, 0, 1000, 0, 1000);
-
             return new GeneticAlgorithm(
                 this.population,
-                fitness,
-                selection,
-                crossover,
-                mutation);
+                this.fitness,
+                this.selection,
+                this.crossover,
+                this.mutation);
         }
     }
 }

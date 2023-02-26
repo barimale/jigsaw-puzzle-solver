@@ -12,8 +12,4 @@
     <PackageReference Include="SixLabors.Shapes" Version="1.0.0-beta0009" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Boards\" />
-  </ItemGroup>
-
 </Project>
