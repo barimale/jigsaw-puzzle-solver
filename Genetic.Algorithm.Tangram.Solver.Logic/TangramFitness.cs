@@ -1,17 +1,21 @@
-﻿using GeneticSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
+using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
     public class TangramFitness : IFitness
     {
-        // TODO
+        public TangramFitness(BoardShapeBase boardShapeDefinition)
+        {
+            BoardShapeDefinition = boardShapeDefinition;
+        }
+
+        public BoardShapeBase BoardShapeDefinition { private set; get; }
+
+        // TODO: implement as is in ga-tangram 
         public double Evaluate(IChromosome chromosome)
         {
+            var aa = chromosome as TangramChronosome;
             double n = 9;
             var x = (int)chromosome.GetGene(0).Value;
             var y = (int)chromosome.GetGene(1).Value;

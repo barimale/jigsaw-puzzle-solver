@@ -1,4 +1,5 @@
 ﻿using ConsoleGraphics.Graphics2D.Bases;
+using SixLabors.Shapes;
 
 Scene2D Scene = new Scene2D(GraphicsType.ColoredPoints);
 int sceneScaleFactor = 2;
@@ -133,4 +134,37 @@ Shape CreatePurple()
     all.SetY(positionY + paddingTop);
 
     return all;
+}
+
+// TODO: continue from here
+Shape Convert()
+{
+    var polygon = new RectangularPolygon(0, 0, 1, 2);
+    
+    int positionX = 20 * sceneScaleFactor;
+    int positionY = 20; // * sceneScaleFactor;
+    ConsoleColor color = ConsoleColor.DarkMagenta;
+
+    Point p11 = new Point(0, 0, color);
+    Point p12 = new Point(width, 0, color);
+    Point p12a = new Point(width, height, color);
+    Point p12b = new Point(width, 0, color);
+    Point p12c = new Point(0, 0, color);
+    Point p22 = new Point(0, height, color);
+
+    var points = new List<Point>();
+    points.Add(p11);
+    points.Add(p12);
+    points.Add(p12a);
+    points.Add(p12b);
+    points.Add(p12c);
+    points.Add(p22);
+
+    Shape all = new Shape(points, color);
+
+    all.SetX(positionX + paddingRight);
+    all.SetY(positionY + paddingTop);
+
+    return all;
+
 }

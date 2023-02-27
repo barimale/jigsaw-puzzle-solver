@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Xqv1OQacFG2oAr5v/HmJqnis9iFAZuy8L7SqW6oCHVdOW3ccE4x2cfXzFnpCNgxYnt1nqrlI/Cl/K+8o4WrBHw==",
+  "dgSpecHash": "M+Cg/KrUp6PkXnlWVWv4f5FRhRs+ij8DlzYPtj4d7TLDOlVZ5qj2cXH2qb12hisbi+qRwtu9y1Ptd3KsWMXUsA==",
   "success": true,
   "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\DummyShapes\\DummyShapes\\DummyShapes.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Mateusz\\.nuget\\packages\\consolegraphics\\0.1.4\\consolegraphics.0.1.4.nupkg.sha512"
+    "C:\\Users\\Mateusz\\.nuget\\packages\\consolegraphics\\0.1.4\\consolegraphics.0.1.4.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\sixlabors.core\\1.0.0-beta0008\\sixlabors.core.1.0.0-beta0008.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\sixlabors.shapes\\1.0.0-beta0009\\sixlabors.shapes.1.0.0-beta0009.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
   ],
   "logs": []
 }

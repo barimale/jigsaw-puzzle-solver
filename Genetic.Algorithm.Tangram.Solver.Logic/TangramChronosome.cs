@@ -5,10 +5,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
     public class TangramChronosome : ChromosomeBase
     {
         public TangramChronosome()
-            : base(2)
+            : base(3)
         {
             ReplaceGene(0, GenerateGene(0));
             ReplaceGene(1, GenerateGene(1));
+            ReplaceGene(2, GenerateGene(2));
         }
 
         // These properties represents your phenotype.

@@ -1,5 +1,4 @@
 ﻿using GeneticSharp;
-using GeneticSharp.Extensions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
 {
@@ -11,6 +10,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
         private IFitness fitness;
         private IMutation mutation;
         private ITermination termination;
+        private IReinsertion reinsertion;
+
+        //TODO: check if it is an equivalent of the preloadPopulation method
+        // as presented in the Issue9 sample
+        public SolverBuilder WithReinsertion(IReinsertion reinsertion)
+        {
+            this.reinsertion = reinsertion;
+
+            return this;
+        }
 
         public SolverBuilder WithTermination(ITermination termination)
         {
@@ -64,6 +73,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
                 this.mutation);
 
             ga.Termination = this.termination;
+            ga.Reinsertion = this.reinsertion;
 
             return ga;
         }

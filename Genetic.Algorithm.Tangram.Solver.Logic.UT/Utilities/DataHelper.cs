@@ -3,7 +3,6 @@ using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
 using SixLabors.Shapes;
 using System.Drawing;
-using GeneticSharp.Extensions;
 using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
@@ -42,21 +41,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // solver
             // TODO: need to be implemented
             // reuse some data from above
-            var chromosome = new TspChromosome(100);
-            var population = new Population(50, 50, chromosome);
-            var selection = new EliteSelection();
-            var crossover = new OrderedCrossover();
-            var mutation = new ReverseSequenceMutation();
-            var fitness = new TspFitness(100, 0, 1000, 0, 1000);
+            var chromosome = new TangramChronosome();
+            var population = new Population(50, 50, chromosome);// understand the population parameters
+            var selection = new EliteSelection(50 / 2);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
+            var crossover = new UniformCrossover(0.1f);// maybe custom needs to be implemented
+            var mutation = new ReverseSequenceMutation();// maybe another one, need to be tested
+            var fitness = new TangramFitness(boardDefinition);// pass shape via the constructor
+            var reinsertion = new ElitistReinsertion();
 
             var solverBuilder = Factory.Factory.CreateNew();
             var solver = solverBuilder
                 .WithPopulation(population)
+                .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
                 .WithMutation(mutation)
                 .WithCrossover(crossover)
-                .WithTermination(new GenerationNumberTermination(100))
+                .WithTermination(new FitnessThresholdTermination()) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();
 
             var gameConfiguration = new GamePartsConfigurator(

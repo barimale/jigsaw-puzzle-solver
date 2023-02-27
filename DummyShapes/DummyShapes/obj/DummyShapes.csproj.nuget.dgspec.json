@@ -48,6 +48,10 @@
             "ConsoleGraphics": {
               "target": "Package",
               "version": "[0.1.4, )"
+            },
+            "SixLabors.Shapes": {
+              "target": "Package",
+              "version": "[1.0.0-beta0009, )"
             }
           },
           "imports": [
