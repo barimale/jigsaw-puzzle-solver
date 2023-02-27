@@ -9,8 +9,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
         private ICrossover crossover;
         private IFitness fitness;
         private IMutation mutation;
-        private ITermination termination;
-        private IReinsertion reinsertion;
+        private ITermination? termination;
+        private IReinsertion? reinsertion;
+        private IOperatorsStrategy? operatorsStrategy;
+        private float? crossoverProbability;
+        private float? mutationProbability;
+
+        public SolverBuilder WithOperatorsStrategy(IOperatorsStrategy operatorsStrategy)
+        {
+            this.operatorsStrategy = operatorsStrategy;
+
+            return this;
+        }
 
         //TODO: check if it is an equivalent of the preloadPopulation method
         // as presented in the Issue9 sample
@@ -28,16 +38,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
             return this;
         }
 
-        public SolverBuilder WithMutation(IMutation mutation)
+        public SolverBuilder WithMutation(IMutation mutation, float mutationProbability = 0.1f)
         {
             this.mutation = mutation;
+            this.mutationProbability = mutationProbability;
 
             return this;
         }
 
-        public SolverBuilder WithCrossover(ICrossover crossover)
+        public SolverBuilder WithCrossover(ICrossover crossover, float crossoverProbability = 0.75f)
         {
             this.crossover = crossover;
+            this.crossoverProbability = crossoverProbability;
 
             return this;
         }
@@ -65,6 +77,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
 
         public GeneticAlgorithm Build()
         {
+            if (population == null)
+                throw new ArgumentNullException("population cannot be null");
+
+            if (fitness == null)
+                throw new ArgumentNullException("fitness cannot be null");
+
+            if (selection == null)
+                throw new ArgumentNullException("selection cannot be null");
+
+            if (crossover == null)
+                throw new ArgumentNullException("crossover cannot be null");
+
+            if (mutation == null)
+                throw new ArgumentNullException("mutation cannot be null");
+
             var ga = new GeneticAlgorithm(
                 this.population,
                 this.fitness,
@@ -72,8 +99,22 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
                 this.crossover,
                 this.mutation);
 
-            ga.Termination = this.termination;
-            ga.Reinsertion = this.reinsertion;
+            if(this.termination != null)
+                ga.Termination = this.termination;
+
+            if (this.reinsertion != null)
+                ga.Reinsertion = this.reinsertion;
+
+            if (this.crossoverProbability != null &&
+                this.crossoverProbability.HasValue)
+                ga.CrossoverProbability = this.crossoverProbability.Value;
+
+            if (this.mutationProbability != null &&
+                this.mutationProbability.HasValue)
+                ga.MutationProbability = this.mutationProbability.Value;
+
+            if (this.operatorsStrategy != null)
+                ga.OperatorsStrategy = this.operatorsStrategy;
 
             return ga;
         }

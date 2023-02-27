@@ -55,8 +55,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
-                .WithMutation(mutation)
-                .WithCrossover(crossover)
+                .WithMutation(mutation, 0.1f) // with mutation probability
+                .WithCrossover(crossover, 0.75f)
                 .WithTermination(new FitnessThresholdTermination()) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();
 
