@@ -141,42 +141,103 @@ Shape CreatePurple()
     return all;
 }
 
-// TODO: continue from here
 Shape Convert()
 {
-    geometry.Coordinate[] coords = new geometry.Coordinate[5];
-    coords[0] = new geometry.Coordinate(2, 2);
-    coords[1] = new geometry.Coordinate(4, 2);
-    coords[2] = new geometry.Coordinate(4, 3);
-    coords[3] = new geometry.Coordinate(2, 3);
-    coords[4] = new geometry.Coordinate(2, 2);
-    geometry.Geometry polygon = new geometry.Polygon(new geometry.LinearRing(coords));
-
-    //var polygon = new geometry
-    //    .GeometryFactory()
-    //    .CreatePolygon(new geometry.Coordinate[] {
-    //        new geometry.Coordinate(0, 0),
-    //        new geometry.Coordinate(0, 2),
-    //        new geometry.Coordinate(2, 0),
-    //        new geometry.Coordinate(2, 2),
-    //        new geometry.Coordinate(0, 0)
-    //    });
+    var polygon = new geometry
+        .GeometryFactory()
+        .CreatePolygon(new geometry.Coordinate[] {
+            new geometry.Coordinate(4,5),// first the same as last
+            new geometry.Coordinate(3,5),
+            new geometry.Coordinate(3,1),
+            new geometry.Coordinate(6,1),
+            new geometry.Coordinate(6,2),
+            new geometry.Coordinate(4,2),
+            new geometry.Coordinate(4,5)// last the same as first
+        });
 
     var isValid = polygon.IsValid;
     var area = polygon.Area;
 
     var cor = polygon.Centroid;
-    var transformer = new geometry.Utilities.GeometryTransformer();
-    transformer.Transform(polygon);
 
     var transform = new geometry.Utilities.AffineTransformation();
     var result = transform.Rotate(algorithm.AngleUtility.ToRadians(90), cor.X, cor.Y);
     polygon.Apply(result);
+    var toString = polygon
+        .Coordinates
+        .Select(p => 
+            "(" +
+            Math.Round(p.X, 2)
+                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+            "," +
+            Math.Round(p.Y, 2)
+                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+            ")").ToArray();
+    var toStringAsArray = string.Join(',', toString);
 
-    //transform.rotate(Math.toRadians(180) /* ?, ? */);
+    //move to the (0, 0)
+    var transformToZeroZero = new geometry.Utilities.AffineTransformation();
+    var moveToZero = transformToZeroZero
+        .Translate(
+            //new geometry.Coordinate(
+            - polygon.Boundary.EnvelopeInternal.MinX,
+            - polygon.Boundary.EnvelopeInternal.MinY
+        //new geometry.Coordinate(
+            //0d,
+            //0d
+        );
 
+    polygon.Apply(moveToZero);
+    var toStringZero = polygon
+        .Coordinates
+        .Select(p =>
+            "(" +
+            Math.Round(p.X, 2)
+                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+            "," +
+            Math.Round(p.Y, 2)
+                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+            ")").ToArray();
+    var toStringZeroAsArray = string.Join(',', toStringZero);
 
-    // TODO: check how to rotate
+    // reflection / mirror 
+
+    var minAndMaxXYs = polygon.Boundary.EnvelopeInternal;
+    var transform2 = new geometry.Utilities.AffineTransformation();
+    var result2 = transform2
+        .Reflect(
+            (minAndMaxXYs.MaxX - minAndMaxXYs.MinX)/2.0d,
+            minAndMaxXYs.MaxY,
+            (minAndMaxXYs.MaxX - minAndMaxXYs.MinX) / 2.0d,
+            minAndMaxXYs.MinY);
+
+    polygon.Apply(result2);
+
+    // move to zero once again
+    var transformToZeroZero2 = new geometry.Utilities.AffineTransformation();
+    var moveToZero2 = transformToZeroZero2
+        .Translate(
+            //new geometry.Coordinate(
+            -polygon.Boundary.EnvelopeInternal.MinX,
+            -polygon.Boundary.EnvelopeInternal.MinY
+        //new geometry.Coordinate(
+        //0d,
+        //0d
+        );
+
+    polygon.Apply(moveToZero2);
+
+    var toString2 = polygon
+        .Coordinates
+        .Select(p =>
+            "(" +
+            Math.Round(p.X, 2)
+                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+            "," +
+            Math.Round(p.Y, 2)
+                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+            ")").ToArray();
+    var toStringAsArray2 = string.Join(',', toString2);
 
     int positionX = 10 * sceneScaleFactor;
     int positionY = 10; // * sceneScaleFactor;
