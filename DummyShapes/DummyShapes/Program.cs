@@ -179,12 +179,8 @@ Shape Convert()
     var transformToZeroZero = new geometry.Utilities.AffineTransformation();
     var moveToZero = transformToZeroZero
         .Translate(
-            //new geometry.Coordinate(
             - polygon.Boundary.EnvelopeInternal.MinX,
             - polygon.Boundary.EnvelopeInternal.MinY
-        //new geometry.Coordinate(
-            //0d,
-            //0d
         );
 
     polygon.Apply(moveToZero);
@@ -217,12 +213,8 @@ Shape Convert()
     var transformToZeroZero2 = new geometry.Utilities.AffineTransformation();
     var moveToZero2 = transformToZeroZero2
         .Translate(
-            //new geometry.Coordinate(
             -polygon.Boundary.EnvelopeInternal.MinX,
             -polygon.Boundary.EnvelopeInternal.MinY
-        //new geometry.Coordinate(
-        //0d,
-        //0d
         );
 
     polygon.Apply(moveToZero2);
