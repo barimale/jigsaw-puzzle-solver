@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="ConsoleGraphics" Version="0.1.4" />
+    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
     <PackageReference Include="SixLabors.Shapes" Version="1.0.0-beta0009" />
   </ItemGroup>
 

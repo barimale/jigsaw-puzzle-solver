@@ -15,3 +15,6 @@ R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\obj\Debug\net6.0\ref
 R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\obj\Debug\net6.0\DummyShapes.pdb
 R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\obj\Debug\net6.0\DummyShapes.genruntimeconfig.cache
 R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\obj\Debug\net6.0\ref\DummyShapes.dll
+R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\bin\Debug\net6.0\NetTopologySuite.dll
+R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\bin\Debug\net6.0\SixLabors.Core.dll
+R:\genetic-algorithm-tangram-solver\DummyShapes\DummyShapes\bin\Debug\net6.0\SixLabors.Shapes.dll

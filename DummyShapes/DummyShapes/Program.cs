@@ -1,5 +1,7 @@
 ﻿using ConsoleGraphics.Graphics2D.Bases;
-using SixLabors.Shapes;
+using geometry = NetTopologySuite.Geometries;
+using algorithm = NetTopologySuite.Algorithm;
+using System.Diagnostics;
 
 Scene2D Scene = new Scene2D(GraphicsType.ColoredPoints);
 int sceneScaleFactor = 2;
@@ -25,6 +27,9 @@ Scene.Add(yellow);
 
 var purple = CreatePurple();
 Scene.Add(purple);
+
+var nettopologysuite = Convert();
+Scene.Add(nettopologysuite);
 
 Scene2D Scene2 = new Scene2D(GraphicsType.ColoredSymbols);
 
@@ -139,26 +144,48 @@ Shape CreatePurple()
 // TODO: continue from here
 Shape Convert()
 {
-    var polygon = new RectangularPolygon(0, 0, 1, 2);
-    
-    int positionX = 20 * sceneScaleFactor;
-    int positionY = 20; // * sceneScaleFactor;
-    ConsoleColor color = ConsoleColor.DarkMagenta;
+    geometry.Coordinate[] coords = new geometry.Coordinate[5];
+    coords[0] = new geometry.Coordinate(2, 2);
+    coords[1] = new geometry.Coordinate(4, 2);
+    coords[2] = new geometry.Coordinate(4, 3);
+    coords[3] = new geometry.Coordinate(2, 3);
+    coords[4] = new geometry.Coordinate(2, 2);
+    geometry.Geometry polygon = new geometry.Polygon(new geometry.LinearRing(coords));
 
-    Point p11 = new Point(0, 0, color);
-    Point p12 = new Point(width, 0, color);
-    Point p12a = new Point(width, height, color);
-    Point p12b = new Point(width, 0, color);
-    Point p12c = new Point(0, 0, color);
-    Point p22 = new Point(0, height, color);
+    //var polygon = new geometry
+    //    .GeometryFactory()
+    //    .CreatePolygon(new geometry.Coordinate[] {
+    //        new geometry.Coordinate(0, 0),
+    //        new geometry.Coordinate(0, 2),
+    //        new geometry.Coordinate(2, 0),
+    //        new geometry.Coordinate(2, 2),
+    //        new geometry.Coordinate(0, 0)
+    //    });
 
-    var points = new List<Point>();
-    points.Add(p11);
-    points.Add(p12);
-    points.Add(p12a);
-    points.Add(p12b);
-    points.Add(p12c);
-    points.Add(p22);
+    var isValid = polygon.IsValid;
+    var area = polygon.Area;
+
+    var cor = polygon.Centroid;
+    var transformer = new geometry.Utilities.GeometryTransformer();
+    transformer.Transform(polygon);
+
+    var transform = new geometry.Utilities.AffineTransformation();
+    var result = transform.Rotate(algorithm.AngleUtility.ToRadians(90), cor.X, cor.Y);
+    polygon.Apply(result);
+
+    //transform.rotate(Math.toRadians(180) /* ?, ? */);
+
+
+    // TODO: check how to rotate
+
+    int positionX = 10 * sceneScaleFactor;
+    int positionY = 10; // * sceneScaleFactor;
+    ConsoleColor color = ConsoleColor.Red;
+
+    var points = polygon
+        .Coordinates
+        .Select(p => new Point(p.X, p.Y, color))
+        .ToList();
 
     Shape all = new Shape(points, color);
 

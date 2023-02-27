@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[0.1.4, )"
             },
+            "NetTopologySuite": {
+              "target": "Package",
+              "version": "[2.5.0, )"
+            },
             "SixLabors.Shapes": {
               "target": "Package",
               "version": "[1.0.0-beta0009, )"
