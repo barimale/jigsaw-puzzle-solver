@@ -75,7 +75,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                 .ConvexHull()
                 .Area;
 
-            volume_diff = Math.Abs(
+            volume_diff += Math.Abs(
                 mergedPolygonConvexedHullVolume -
                 boardConvexedHullVolume);
 
