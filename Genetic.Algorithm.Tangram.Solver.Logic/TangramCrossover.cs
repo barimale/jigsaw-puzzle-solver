@@ -1,64 +1,48 @@
-﻿using GeneticSharp;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.Extensions;
+using GeneticSharp;
 using System.ComponentModel;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
-    // TODO: understand and correct as is in ga-tangram
-    /// <summary>
-    /// Three Parent Crossover.
-    /// <remarks>
-    /// In this technique, the child is derived from three parents. 
-    /// They are randomly chosen. Each bit of first parent is checked with bit of second parent whether they are same. 
-    /// If same then the bit is taken for the offspring otherwise the bit from the third parent is taken for the offspring.
-    /// <see href="http://en.wikipedia.org/wiki/Crossover_(genetic_algorithm)#Three_parent_crossover">Wikipedia</see>
-    /// </remarks>
-    /// </summary>
-    [DisplayName("Three Parent")]
+    [DisplayName("Two Parents Tangram")]
     public class TangramCrossover : CrossoverBase
     {
-        #region Constructors
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ThreeParentCrossover"/> class.
-        /// </summary>
-        public TangramCrossover()
-            : base(3, 1)
-        {
-        }
-        #endregion
+        private float mutation_probability;
 
-        #region Methods        
-        /// <summary>
-        /// Performs the cross with specified parents generating the children.
-        /// </summary>
-        /// <param name="parents">The parents chromosomes.</param>
-        /// <returns>
-        /// The offspring (children) of the parents.
-        /// </returns>
+        public TangramCrossover(float mutation_probability)
+            : base(2, 1) // TODO double check it, maybe (2,2)
+        {
+            this.mutation_probability = mutation_probability;
+        }
+
         protected override IList<IChromosome> PerformCross(IList<IChromosome> parents)
         {
-            var parent1 = parents[0];
-            var parent1Genes = parent1.GetGenes();
+            var offspring = (TangramChronosome)parents[0].CreateNew();
+
+            var parent1Genes = parents[0].GetGenes();
             var parent2Genes = parents[1].GetGenes();
-            var parent3Genes = parents[2].GetGenes();
-            var offspring = parent1.CreateNew();
-            Gene parent1Gene;
 
-            for (int i = 0; i < parent1.Length; i++)
+            var zipped = parent1Genes.ToList().Zip(parent2Genes.ToList());
+
+            foreach(var (pair, index) in zipped.WithIndex())
             {
-                parent1Gene = parent1Genes[i];
+                var prob = RandomizationProvider.Current.GetFloat(0, 1);
 
-                if (parent1Gene == parent2Genes[i])
+                if(prob < (1 - this.mutation_probability) / 2)
                 {
-                    offspring.ReplaceGene(i, parent1Gene);
+                    offspring.ReplaceGene(index, pair.First);
+                }
+                else if(prob < 1 - this.mutation_probability)
+                {
+                    offspring.ReplaceGene(index, pair.Second);
                 }
                 else
                 {
-                    offspring.ReplaceGene(i, parent3Genes[i]);
+                    // do nothing
                 }
             }
 
             return new List<IChromosome>() { offspring };
         }
-        #endregion
     }
 }

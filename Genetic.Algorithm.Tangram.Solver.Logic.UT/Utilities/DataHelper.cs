@@ -84,7 +84,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 generationChromosomesNumber,
                 chromosome);// understand the population parameters, estimate the maximal value by multiply amount of blocks
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
-            var crossover = new UniformCrossover(0.1f);// maybe custom needs to be implemented
+            var crossover = new TangramCrossover(0.1f);// maybe custom needs to be implemented
             var mutation = new ReverseSequenceMutation();// maybe another one, need to be tested
             var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
