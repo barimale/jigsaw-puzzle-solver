@@ -197,7 +197,6 @@ Shape Convert()
     var toStringZeroAsArray = string.Join(',', toStringZero);
 
     // reflection / mirror 
-
     var minAndMaxXYs = polygon.Boundary.EnvelopeInternal;
     var transform2 = new geometry.Utilities.AffineTransformation();
     var result2 = transform2
@@ -230,6 +229,7 @@ Shape Convert()
                 .ToString(System.Globalization.CultureInfo.InvariantCulture) +
             ")").ToArray();
     var toStringAsArray2 = string.Join(',', toString2);
+    // optionally remove the last one assuming it is the same as first
 
     int positionX = 10 * sceneScaleFactor;
     int positionY = 10; // * sceneScaleFactor;
