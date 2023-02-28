@@ -1,7 +1,6 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
-using SixLabors.Shapes;
 using System.Drawing;
 using GeneticSharp;
 using NetTopologySuite.Geometries;
@@ -15,7 +14,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // common
             var scaleFactor = 1;
 
-            // settings: allowed angles
+            // allowed angles
             var angles = new int[6]
                 {
                     -180,
