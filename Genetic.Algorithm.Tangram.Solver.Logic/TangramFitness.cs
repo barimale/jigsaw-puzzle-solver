@@ -12,7 +12,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
         public BoardShapeBase BoardShapeDefinition { private set; get; }
 
-        // TODO: implement as is in ga-tangram 
+        // TODO: implement as is in ga-tangram
+        // use the ConvexHull method from the nettopologysuite
         public double Evaluate(IChromosome chromosome)
         {
             var aa = chromosome as TangramChronosome;
