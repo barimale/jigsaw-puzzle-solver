@@ -75,7 +75,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // TODO: reuse some data from above
             // and check everything once again
             var generationChromosomesNumber = 50;
-            var chromosome = new TangramChronosome(boardDefinition, angles);
+            var chromosome = new TangramChronosome(
+                blocks,
+                boardDefinition,
+                angles);
             var population = new Population(
                 generationChromosomesNumber,
                 generationChromosomesNumber,

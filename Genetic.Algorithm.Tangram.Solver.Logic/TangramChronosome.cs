@@ -16,14 +16,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         private int allowedAnglesCount => allowedAngles.Length;
 
         public TangramChronosome(
-            ImmutableArray<BlockBase> blocks,
+            IList<BlockBase> blocks,
             BoardShapeBase boardShapeDefinition,
             int[] allowedAngles)
-            : base(blocks.Length)
+            : base(blocks.Count)
         {
             this.boardShapeDefinition = boardShapeDefinition;
             this.allowedAngles = allowedAngles;
-            this.blocks = blocks;
+            this.blocks = blocks.ToImmutableArray();
 
             foreach (var (block, index) in this.blocks.WithIndex())
             { // check if the first index is 0 or 1 - it has to be 0
