@@ -1,23 +1,31 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
+using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
     public class TangramFitness : IFitness
     {
-        public TangramFitness(BoardShapeBase boardShapeDefinition)
+        private BoardShapeBase boardShapeDefinition;
+        private IList<BlockBase> blocks;
+
+        public TangramFitness(
+            BoardShapeBase boardShapeDefinition,
+            IList<BlockBase> blocks)
         {
             // TODO: use width, height etc and check the fitness
-            BoardShapeDefinition = boardShapeDefinition;
+            this.boardShapeDefinition = boardShapeDefinition;
+            this.blocks = blocks;
         }
-
-        public BoardShapeBase BoardShapeDefinition { private set; get; }
 
         // TODO: implement as is in ga-tangram
         // use the ConvexHull method from the nettopologysuite
         public double Evaluate(IChromosome chromosome)
         {
             var aa = chromosome as TangramChronosome;
+            // get data from the chromosome
+            // based on it clone the specific block 
+            // from the collection
             double n = 9;
             var x = (int)chromosome.GetGene(0).Value;
             var y = (int)chromosome.GetGene(1).Value;

@@ -19,7 +19,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
             this.MoveToZero();
         }
 
-        public BlockBase Clone()
+        // use this method in fitness function
+        public BlockBase Clone()// pass x,y, angle and isflipped here? then 
+            // block is rotated, flipped moved to zero and then returned
         {
             return new BlockBase(Polygon, Color);
         }

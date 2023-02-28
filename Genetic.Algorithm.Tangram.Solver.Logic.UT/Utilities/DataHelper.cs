@@ -72,10 +72,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             blocks.Add(czerwonyBloczek);
 
             // solver
-            // TODO: need to be implemented
-            // reuse some data from above
+            // TODO: reuse some data from above
+            // and check everything once again
             var generationChromosomesNumber = 50;
-            var chromosome = new TangramChronosome();
+            var chromosome = new TangramChronosome(boardDefinition, angles);
             var population = new Population(
                 generationChromosomesNumber,
                 generationChromosomesNumber,
@@ -83,7 +83,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
             var crossover = new UniformCrossover(0.1f);// maybe custom needs to be implemented
             var mutation = new ReverseSequenceMutation();// maybe another one, need to be tested
-            var fitness = new TangramFitness(boardDefinition);// pass shape via the constructor
+            var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
 

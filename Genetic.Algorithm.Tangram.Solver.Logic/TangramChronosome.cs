@@ -7,7 +7,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
     {
         private BoardShapeBase boardShapeDefinition;
         private int[] allowedAngles;
+
         private int allowedAnglesCount => allowedAngles.Length;
+
         public TangramChronosome(
             BoardShapeBase boardShapeDefinition,
             int[] allowedAngles)
