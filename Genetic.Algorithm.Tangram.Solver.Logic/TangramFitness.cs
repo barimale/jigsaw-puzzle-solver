@@ -22,6 +22,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         // use the ConvexHull method from the nettopologysuite
         public double Evaluate(IChromosome chromosome)
         {
+            // put to the chromosome collection of blocks 
+            // use two or three genes only but it needs to be checked
             var aa = chromosome as TangramChronosome;
             // get data from the chromosome
             // based on it clone the specific block 
