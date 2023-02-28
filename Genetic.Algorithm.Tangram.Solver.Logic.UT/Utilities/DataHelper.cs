@@ -15,8 +15,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var scaleFactor = 1;
 
             // allowed angles
-            var angles = new int[6]
+            var angles = new int[7]
                 {
+                    -270,
                     -180,
                     -90,
                     0,
