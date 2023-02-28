@@ -8,6 +8,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
         public int WidthUnit { private set; get; }
         public int HeightUnit { private set; get; }
         public int ScaleFactor { private set; get; } = 1;
+        // use together with the scalefactor maybe
+        public int Width => WidthUnit;
+        public int Height => HeightUnit;
         public Polygon Polygon { private set; get; }
         public double Area => Polygon.Area;
 

@@ -7,6 +7,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
     {
         public TangramFitness(BoardShapeBase boardShapeDefinition)
         {
+            // TODO: use width, height etc and check the fitness
             BoardShapeDefinition = boardShapeDefinition;
         }
 
