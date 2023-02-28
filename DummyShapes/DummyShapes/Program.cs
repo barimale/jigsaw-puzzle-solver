@@ -1,7 +1,6 @@
 ﻿using ConsoleGraphics.Graphics2D.Bases;
 using geometry = NetTopologySuite.Geometries;
 using algorithm = NetTopologySuite.Algorithm;
-using System.Diagnostics;
 
 Scene2D Scene = new Scene2D(GraphicsType.ColoredPoints);
 int sceneScaleFactor = 2;

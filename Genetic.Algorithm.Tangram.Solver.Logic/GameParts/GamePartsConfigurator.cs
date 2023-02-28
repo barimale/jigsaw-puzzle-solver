@@ -23,11 +23,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 
         public bool Validate()
         {
-            //var summarizeBlocksArea = Blocks.ToList().Sum(p => p.Polygon.)
-            // TODO: check if the area of the board is
-            // equal or bigger than the sum of block's areas
-
-            throw new NotImplementedException();
+            var summarizeBlocksArea = Blocks.ToList().Sum(p => p.Area);
+            var boardArea = Board.Area;
+            return boardArea >= summarizeBlocksArea;
         }
     }
 }

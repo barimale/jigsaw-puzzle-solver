@@ -1,4 +1,6 @@
-﻿namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
+﻿using NetTopologySuite.Geometries;
+
+namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 {
     public class BoardShapeBase
     {
@@ -6,6 +8,8 @@
         public int WidthUnit { private set; get; }
         public int HeightUnit { private set; get; }
         public int ScaleFactor { private set; get; } = 1;
+        public Polygon Polygon { private set; get; }
+        public double Area => Polygon.Area;
 
         public BoardShapeBase(
 
@@ -15,9 +19,25 @@
             int scaleFactor)
         {
             BoardFieldsDefinition = boardFieldsDefinition;
+            Polygon = MapFieldsToPolygon();
             WidthUnit = widthUnit;
             HeightUnit = heightUnit;
             ScaleFactor = scaleFactor;
+        }
+
+        private Polygon MapFieldsToPolygon()
+        {
+            var coordinates = BoardFieldsDefinition
+                .Select(p => p.ToCoordinate())
+                .ToArray();
+
+            // add first as last to have the geometry closed
+            coordinates.Append(coordinates[0]);
+
+            var polygon = new GeometryFactory()
+                .CreatePolygon(coordinates);
+
+            return polygon;
         }
 
         public BoardShapeBase Clone()

@@ -1,4 +1,6 @@
-﻿namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
+﻿using NetTopologySuite.Geometries;
+
+namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 {
     public class BoardFieldDefinition
     {
@@ -18,6 +20,11 @@
             ScaleFactor = scaleFactor;
             X = x;
             Y = y;
+        }
+
+        public Coordinate ToCoordinate()
+        {
+            return new Coordinate(this.X, this.Y);
         }
     }
 }

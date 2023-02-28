@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OIpgkLBunn6TdyY9w0sCpNY9zIoO82ahfzPCl1Is2h9cW33L/1mbF/v2OYybD/sHRbuScF8hZgvDPOnU2YZ36Q==",
+  "dgSpecHash": "wzmmJj3JAXTPS3j2CJ1K6yD15Baq8VRHZshyedw3veXpaQZmcJJYR03FKM+ibZgGce8xYIEGz/ecronMP+Ahlw==",
   "success": true,
   "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver\\Genetic.Algorithm.Tangram.Solver.WPF.csproj",
   "expectedPackageFiles": [
@@ -15,6 +15,7 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\ncalc.netcore\\1.0.1\\ncalc.netcore.1.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\netstandard.library\\1.6.0\\netstandard.library.1.6.0.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.native.system\\4.0.0\\runtime.native.system.4.0.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.native.system.net.http\\4.0.1\\runtime.native.system.net.http.4.0.1.nupkg.sha512",
@@ -41,6 +42,7 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.net.http\\4.1.0\\system.net.http.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.net.primitives\\4.0.11\\system.net.primitives.4.0.11.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.net.sockets\\4.1.0\\system.net.sockets.4.1.0.nupkg.sha512",

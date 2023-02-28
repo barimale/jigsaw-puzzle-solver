@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gkZL8QR3IWm9la/y3xSBdkJR7gNC7AmsE/qj3ekXefCby2aAhRGwYCazI+aOB0prIKGKP8akazl/xKs9GHvFGg==",
+  "dgSpecHash": "SNVvUMdfWyI27Ad9pYTH90yTjYrpyU9hk/Z84ssjay7A3cc1cw2LnekBarVnp9qPgaU6Rj1kCzF1qhOduH+pEg==",
   "success": true,
   "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj",
   "expectedPackageFiles": [
@@ -21,6 +21,7 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\ncalc.netcore\\1.0.1\\ncalc.netcore.1.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\nettopologysuite\\2.5.0\\nettopologysuite.2.5.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\nuget.frameworks\\5.11.0\\nuget.frameworks.5.11.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
@@ -62,6 +63,7 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
+    "C:\\Users\\Mateusz\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.net.http\\4.3.0\\system.net.http.4.3.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.net.sockets\\4.3.0\\system.net.sockets.4.3.0.nupkg.sha512",
