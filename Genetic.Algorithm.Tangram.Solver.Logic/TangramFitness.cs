@@ -1,7 +1,6 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using GeneticSharp;
-using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Union;
 using System.Collections.Immutable;
