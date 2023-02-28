@@ -4,6 +4,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
 using SixLabors.Shapes;
 using System.Drawing;
 using GeneticSharp;
+using NetTopologySuite.Geometries;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 {
@@ -13,6 +14,17 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
         {
             // common
             var scaleFactor = 1;
+
+            // settings: allowed angles
+            var angles = new int[6]
+                {
+                    -180,
+                    -90,
+                    0,
+                    90,
+                    180,
+                    270
+                };
 
             // board
             var fields = new List<BoardFieldDefinition>()
@@ -26,15 +38,36 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
             // blocks
             var blocks = new List<BlockBase>();
-            var polygon = new RectangularPolygon(0, 0, 1, 2);
+            var polygon = new GeometryFactory()
+                .CreatePolygon(new Coordinate[] {
+                new Coordinate(0,0),// first the same as last
+                new Coordinate(0,2),
+                new Coordinate(2,1),
+                new Coordinate(1,0),
+                new Coordinate(0,0)// last the same as first
+                });
             var zielonyBloczek = new BlockBase(polygon, Color.Green);
             blocks.Add(zielonyBloczek);
 
-            var polygon2 = new RectangularPolygon(0, 0, 1, 1);
+            var polygon2 = new GeometryFactory()
+                .CreatePolygon(new Coordinate[] {
+                new Coordinate(0,0),// first the same as last
+                new Coordinate(0,1),
+                new Coordinate(1,1),
+                new Coordinate(1,0),
+                new Coordinate(0,0)// last the same as first
+                });
             var niebieskiBloczek = new BlockBase(polygon2, Color.Blue);
             blocks.Add(niebieskiBloczek);
 
-            var polygon3 = new RectangularPolygon(0, 0, 1, 1);
+            var polygon3 = new GeometryFactory()
+                .CreatePolygon(new Coordinate[] {
+                    new Coordinate(0,0),// first the same as last
+                    new Coordinate(0,1),
+                    new Coordinate(1,1),
+                    new Coordinate(1,0),
+                    new Coordinate(0,0)// last the same as first
+                });
             var czerwonyBloczek = new BlockBase(polygon3, Color.Red);
             blocks.Add(czerwonyBloczek);
 
@@ -71,7 +104,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var gameConfiguration = new GamePartsConfigurator(
                 blocks,
                 boardDefinition,
-                solver);
+                solver,
+                angles);
 
             return gameConfiguration;
         }

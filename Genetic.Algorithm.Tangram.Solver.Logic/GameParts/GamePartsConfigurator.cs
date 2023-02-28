@@ -8,17 +8,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
     {
         public BoardShapeBase Board { private set; get; }
         public IList<BlockBase> Blocks { private set; get; }
+        public int[] AllowedAngles { get; private set; }
+
         public GeneticAlgorithm Algorithm { private set; get; }
 
         public GamePartsConfigurator(
             IList<BlockBase> blocks,
             BoardShapeBase boardShape,
-            GeneticAlgorithm algorithm
+            GeneticAlgorithm algorithm,
+            int[] allowedAngles
         )
         {
             Board = boardShape;
             Blocks = blocks;
             Algorithm = algorithm;
+            AllowedAngles = allowedAngles;
         }
 
         public bool Validate()
