@@ -39,7 +39,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                 );
 
             Polygon.Apply(rotation);
-            this.MoveToZero();
+            this.MoveToZero();// maybe not necessary
         }
 
         // reflection / mirror
@@ -55,7 +55,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                     minAndMaxXYs.MinY);
 
             Polygon.Apply(mirror);
-            this.MoveToZero();
+            this.MoveToZero();// maybe not necessary
         }
 
         //move to the (0, 0)
@@ -69,6 +69,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                 );
 
             Polygon.Apply(moveToZero);
+        }
+
+        public void MoveTo(int x, int y)
+        {
+            var transform = new AffineTransformation();
+            var moveTo = transform
+                .Translate(
+                    x,
+                    y
+                );
+
+            Polygon.Apply(moveTo);
         }
 
         public override string ToString()
