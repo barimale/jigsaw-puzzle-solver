@@ -114,3 +114,4 @@ R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\ob
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\obj\Debug\net6.0\Genetic.Algorithm.Tangram.Solver.Logic.UT.pdb
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\obj\Debug\net6.0\Genetic.Algorithm.Tangram.Solver.Logic.UT.genruntimeconfig.cache
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\obj\Debug\net6.0\ref\Genetic.Algorithm.Tangram.Solver.Logic.UT.dll
+R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\NetTopologySuite.dll

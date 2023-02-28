@@ -1,0 +1,45 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Console/1.0.0": {
+        "dependencies": {
+          "GeneticSharp": "3.1.4"
+        },
+        "runtime": {
+          "Console.dll": {}
+        }
+      },
+      "GeneticSharp/3.1.4": {
+        "runtime": {
+          "lib/net6.0/GeneticSharp.Domain.dll": {
+            "assemblyVersion": "3.1.4.0",
+            "fileVersion": "3.1.4.0"
+          },
+          "lib/net6.0/GeneticSharp.Infrastructure.Framework.dll": {
+            "assemblyVersion": "3.1.4.0",
+            "fileVersion": "3.1.4.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Console/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "GeneticSharp/3.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-U7NfUCVoiX0tKl6uvN7QGj6rHiM+jWRip+SbWYwG8RqZZcTwCBWO5IPwgKhSnh0vjV/LzRMUBEuSiZKAPl6I+Q==",
+      "path": "geneticsharp/3.1.4",
+      "hashPath": "geneticsharp.3.1.4.nupkg.sha512"
+    }
+  }
+}
