@@ -24,7 +24,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
         }
         public static void ShowChromosome(TangramChromosome c)
         {
-            Console.WriteLine("Fitness: {0:n2}", c.Fitness);
+            Console.WriteLine("Fitness: {0:n2}", c.Fitness.Value);
+            var aa = Math.Round(c.Fitness.Value, 4);
 
             Console.WriteLine("Shapes:");
             var blocksAmount = c.GenesCount;

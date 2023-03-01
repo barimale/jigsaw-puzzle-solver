@@ -41,7 +41,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                 evaluatedGeometry.ToArray(),
                 boardShapeDefinition);
 
-            return f1;
+            var result = f1* -1d;
+
+            if (result < 0 && result > -0.001)
+            {
+                var iii = 0;
+            }
+
+            return result;
         }
 
         private double CalculatePolygonsIntersectDiff(Geometry[] polygons)

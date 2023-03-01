@@ -92,11 +92,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 generationChromosomesNumber,
                 chromosome);// understand the population parameters, estimate the maximal value by multiply amount of blocks
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
-            var crossover = new TangramCrossover(0.8f);// 0.8f maybe custom needs to be implemented
-            var mutation = new UniformMutation(false);// maybe another one, need to be tested
+            var crossover = new TangramCrossover(0.9f);// 0.8f maybe custom needs to be implemented
+            var mutation = new UniformMutation(false);//custom here maybe another one, need to be tested
             var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
+            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)
 
             var solverBuilder = Factory.Factory.CreateNew();
             var solver = solverBuilder
@@ -105,10 +106,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
                 // TODO: maybe custom mutation with do nothing class
-                .WithMutation(mutation, 0.01f) // with mutation probability 0.1f ?
+                .WithMutation(mutation, 0.1f) // with mutation probability 0.1f ?
                 .WithCrossover(crossover)
                 //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
-                .WithTermination(new FitnessThresholdTermination(1.2f)) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
+                .WithTermination(termination) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();
 
             // think how to implement the crossover, is it reasonable to invoke the mutation class from there
