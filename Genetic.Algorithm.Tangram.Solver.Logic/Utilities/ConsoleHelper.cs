@@ -1,4 +1,5 @@
-﻿using GeneticSharp;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
+using GeneticSharp;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
@@ -28,11 +29,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
             var aa = Math.Round(c.Fitness.Value, 4);
 
             Console.WriteLine("Shapes:");
-            var blocksAmount = c.GenesCount;
-            for(int i = 0; i < blocksAmount; i++)
+            var solution = c
+                    .GetGenes()
+                    .Select(p => (BlockBase)p.Value)
+                    .ToList();
+
+            foreach(var block in solution)
             {
-                var blockAsString = c[i].ToString();
-                Console.WriteLine(blockAsString);
+                Console.WriteLine(
+                    block.Color.ToString() + " coords: " + block.ToString());
             }
         }
     }

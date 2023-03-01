@@ -4,8 +4,10 @@ using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
 using System.Drawing;
 using GeneticSharp;
 using NetTopologySuite.Geometries;
+using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard.Blocks;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
 {
     public static class BigBoardData
     {
@@ -16,73 +18,52 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
             // allowed angles
             var angles = new int[]
-                {
-                    -270,
-                    -180,
-                    -90,
-                    0,
-                    90,
-                    180,
-                    270
-                };
+            {
+                -270,
+                -180,
+                -90,
+                0,
+                90,
+                180,
+                270
+            };
 
             // board
             var fieldHeight = 1d;
             var fieldWidth = 1d;
-            var fields = new List<BoardFieldDefinition>()
-            {
-                new BoardFieldDefinition(0,0,fieldWidth, fieldHeight, true, scaleFactor),
-                new BoardFieldDefinition(0,1,fieldWidth, fieldHeight, true, scaleFactor),
-                new BoardFieldDefinition(1,1,fieldWidth, fieldHeight, true, scaleFactor),
-                new BoardFieldDefinition(1,0,fieldWidth, fieldHeight, true, scaleFactor)
-            };
-            BoardShapeBase boardDefinition = new BoardShapeBase(fields, 2, 2, scaleFactor);
+            var boardColumnsCount = 10;
+            var boardRowsCount = 5;
+            var fields = GamePartsHelper.GenerateFields(
+                scaleFactor,
+                fieldHeight,
+                fieldWidth,
+                boardColumnsCount,
+                boardRowsCount);
+
+            var boardDefinition = new BoardShapeBase(
+                fields,
+                boardColumnsCount,
+                boardRowsCount,
+                scaleFactor);
 
             // blocks
-            var blocks = new List<BlockBase>();
-            var polygon = new GeometryFactory()
-                .CreatePolygon(new Coordinate[] {
-                new Coordinate(0,0),// first the same as last
-                new Coordinate(0,1),
-                new Coordinate(2,1),
-                new Coordinate(2,0),
-                new Coordinate(0,0)// last the same as first
-                });
-            var zielonyBloczek = new BlockBase(polygon, Color.Green);
-            var toStringFromClone1 = zielonyBloczek.ToString();
-
-            blocks.Add(zielonyBloczek);
-
-            var polygon2 = new GeometryFactory()
-                .CreatePolygon(new Coordinate[] {
-                new Coordinate(0,0),// first the same as last
-                new Coordinate(0,1),
-                new Coordinate(1,1),
-                new Coordinate(1,0),
-                new Coordinate(0,0)// last the same as first
-                });
-            var niebieskiBloczek = new BlockBase(polygon2, Color.Blue);
-            var toStringFromClone2 = niebieskiBloczek.ToString();
-
-            blocks.Add(niebieskiBloczek);
-
-            var polygon3 = new GeometryFactory()
-                .CreatePolygon(new Coordinate[] {
-                    new Coordinate(0,0),// first the same as last
-                    new Coordinate(0,1),
-                    new Coordinate(1,1),
-                    new Coordinate(1,0),
-                    new Coordinate(0,0)// last the same as first
-                });
-            var czerwonyBloczek = new BlockBase(polygon3, Color.Red);
-            var toStringFromClone3 = czerwonyBloczek.ToString();
-
-            blocks.Add(czerwonyBloczek);
+            var blocks = new List<BlockBase>()
+            {
+                DarkBlue.Create(),
+                Red.Create(),
+                LightBlue.Create(),
+                Purple.Create(),
+                Blue.Create(),
+                Pink.Create(),
+                Green.Create(),
+                LightGreen.Create(),
+                Orange.Create(),
+                Yellow.Create(),
+            };
 
             // solver
-            // TODO: reuse some data from above
             // and check everything once again
-            var generationChromosomesNumber = 5000;
+            var generationChromosomesNumber = 500;
             var mutationProbability = 0.1f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
@@ -121,5 +102,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
             return gameConfiguration;
         }
+
+        
     }
 }

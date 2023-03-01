@@ -1,4 +1,5 @@
-﻿using NetTopologySuite.Algorithm;
+﻿using GeneticSharp;
+using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using System.Drawing;

@@ -14,7 +14,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         public void With_shape_of_2x2_fields_by_using_3_blocks()
         {
             // given
-            var konfiguracjaGry = SimpleBoardData.SimpleBoardData();
+            var konfiguracjaGry = SimpleBoardData.DemoData();
 
             // when
             konfiguracjaGry.Algorithm.TerminationReached += Algorithm_TerminationReached;
