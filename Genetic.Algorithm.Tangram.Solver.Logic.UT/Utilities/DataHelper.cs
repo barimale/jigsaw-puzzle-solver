@@ -51,7 +51,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var zielonyBloczek = new BlockBase(polygon, Color.Green);
             var toStringFromClone1 = zielonyBloczek.ToString();
 
-            //blocks.Add(zielonyBloczek);
+            blocks.Add(zielonyBloczek);
 
             var polygon2 = new GeometryFactory()
                 .CreatePolygon(new Coordinate[] {
