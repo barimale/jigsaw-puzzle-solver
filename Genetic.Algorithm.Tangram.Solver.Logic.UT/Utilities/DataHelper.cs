@@ -27,14 +27,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 };
 
             // board
+            var fieldHeight = 1d;
+            var fieldWidth = 1d;
             var fields = new List<BoardFieldDefinition>()
             {
-                new BoardFieldDefinition(0,0, true, scaleFactor),
-                new BoardFieldDefinition(0,1, true, scaleFactor),
-                new BoardFieldDefinition(1,0, true, scaleFactor),
-                new BoardFieldDefinition(1,1, true, scaleFactor)
+                new BoardFieldDefinition(0,0,fieldWidth, fieldHeight, true, scaleFactor),
+                new BoardFieldDefinition(0,1,fieldWidth, fieldHeight, true, scaleFactor),
+                new BoardFieldDefinition(1,1,fieldWidth, fieldHeight, true, scaleFactor),
+                new BoardFieldDefinition(1,0,fieldWidth, fieldHeight, true, scaleFactor)
             };
-            BoardShapeBase boardDefinition = new BoardShapeBase(fields, 2, 2, 1);
+            BoardShapeBase boardDefinition = new BoardShapeBase(fields, 2, 2, scaleFactor);
 
             // blocks
             var blocks = new List<BlockBase>();
@@ -74,8 +76,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // solver
             // TODO: reuse some data from above
             // and check everything once again
-            var generationChromosomesNumber = 50;
-            var chromosome = new TangramChronosome(
+            var generationChromosomesNumber = 500;
+            var chromosome = new TangramChromosome(
                 blocks,
                 boardDefinition,
                 angles);
@@ -97,7 +99,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
                 .WithMutation(mutation, 0.1f) // with mutation probability
-                .WithCrossover(crossover, 0.75f)
+                .WithCrossover(crossover)
                 .WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
                 .WithTermination(new FitnessThresholdTermination()) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();

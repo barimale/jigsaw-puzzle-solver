@@ -174,28 +174,6 @@
           "Microsoft.NETCore.Targets": "1.0.1"
         }
       },
-      "SixLabors.Core/1.0.0-beta0008": {
-        "dependencies": {
-          "System.Runtime.CompilerServices.Unsafe": "4.5.1"
-        },
-        "runtime": {
-          "lib/netcoreapp2.1/SixLabors.Core.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "SixLabors.Shapes/1.0.0-beta0009": {
-        "dependencies": {
-          "SixLabors.Core": "1.0.0-beta0008"
-        },
-        "runtime": {
-          "lib/netstandard2.0/SixLabors.Shapes.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
       "System.AppContext/4.1.0": {
         "dependencies": {
           "System.Runtime": "4.1.0"
@@ -515,7 +493,6 @@
           "Microsoft.NETCore.Targets": "1.0.1"
         }
       },
-      "System.Runtime.CompilerServices.Unsafe/4.5.1": {},
       "System.Runtime.Extensions/4.1.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.4",
@@ -774,8 +751,7 @@
           "GeneticSharp": "3.1.4",
           "GeneticSharp.Extensions": "3.1.4",
           "MIConvexHull": "1.1.19.1019",
-          "NetTopologySuite": "2.5.0",
-          "SixLabors.Shapes": "1.0.0-beta0009"
+          "NetTopologySuite": "2.5.0"
         },
         "runtime": {
           "Genetic.Algorithm.Tangram.Solver.Logic.dll": {}
@@ -900,20 +876,6 @@
       "sha512": "sha512-2CQK0jmO6Eu7ZeMgD+LOFbNJSXHFVQbCJJkEyEwowh1SCgYnrn9W9RykMfpeeVGw7h4IBvYikzpGUlmZTUafJw==",
       "path": "runtime.native.system.security.cryptography/4.0.0",
       "hashPath": "runtime.native.system.security.cryptography.4.0.0.nupkg.sha512"
-    },
-    "SixLabors.Core/1.0.0-beta0008": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-rrKPDN107tVOh+mUoNh+kHELa7WfYZREPPbYdiKJ3Rd6dex/UgDWDGBOjPJn4BBhmts/VGuaXMXyfT/BwiuH2g==",
-      "path": "sixlabors.core/1.0.0-beta0008",
-      "hashPath": "sixlabors.core.1.0.0-beta0008.nupkg.sha512"
-    },
-    "SixLabors.Shapes/1.0.0-beta0009": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-H9c2mZ4JYHdkv1xFfU3f2kUE8qzzFrlc9tIPVewz/tqp3sZh91fvXZM520MaJGDvh/+BnsBnjEgkArZqDy36Yw==",
-      "path": "sixlabors.shapes/1.0.0-beta0009",
-      "hashPath": "sixlabors.shapes.1.0.0-beta0009.nupkg.sha512"
     },
     "System.AppContext/4.1.0": {
       "type": "package",
@@ -1152,13 +1114,6 @@
       "sha512": "sha512-v6c/4Yaa9uWsq+JMhnOFewrYkgdNHNG2eMKuNqRn8P733rNXeRCGvV5FkkjBXn2dbVkPXOsO0xjsEeM1q2zC0g==",
       "path": "system.runtime/4.1.0",
       "hashPath": "system.runtime.4.1.0.nupkg.sha512"
-    },
-    "System.Runtime.CompilerServices.Unsafe/4.5.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Zh8t8oqolRaFa9vmOZfdQm/qKejdqz0J9kr7o2Fu0vPeoH3BL1EOXipKWwkWtLT1JPzjByrF19fGuFlNbmPpiw==",
-      "path": "system.runtime.compilerservices.unsafe/4.5.1",
-      "hashPath": "system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
     },
     "System.Runtime.Extensions/4.1.0": {
       "type": "package",

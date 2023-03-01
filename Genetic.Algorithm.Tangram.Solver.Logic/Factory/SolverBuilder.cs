@@ -47,7 +47,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Factory
         }
 
         // check implementations once again
-        public SolverBuilder WithCrossover(ICrossover crossover, float crossoverProbability = 0.75f)
+        public SolverBuilder WithCrossover(ICrossover crossover, float? crossoverProbability = null)
         {
             this.crossover = crossover;
             this.crossoverProbability = crossoverProbability;

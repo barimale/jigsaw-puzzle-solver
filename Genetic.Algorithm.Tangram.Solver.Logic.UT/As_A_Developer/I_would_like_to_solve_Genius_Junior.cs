@@ -38,7 +38,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             // when
             ga.Start();
             Console.WriteLine("Best chromosome before chromossomes serialization is:");
-            ConsoleHelper.ShowChromosome(ga.BestChromosome as TspChromosome);
+            ConsoleHelper.ShowChromosome(ga.BestChromosome as TangramChromosome);
             ConsoleHelper.SerializeChromosomes(population.CurrentGeneration.Chromosomes);
 
             // Reload GA with serialized chromossomes from previous GA.
@@ -59,7 +59,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             ga_second.Termination = new GenerationNumberTermination(1);
             ga_second.Start();
             Console.WriteLine("Best chromosome is:");
-            ConsoleHelper.ShowChromosome(ga_second.BestChromosome as TspChromosome);
+            ConsoleHelper.ShowChromosome(ga_second.BestChromosome as TangramChromosome);
             // then
         }
 

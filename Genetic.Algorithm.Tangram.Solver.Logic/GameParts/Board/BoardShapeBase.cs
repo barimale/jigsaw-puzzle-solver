@@ -1,4 +1,6 @@
-﻿using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Algorithm;
+using NetTopologySuite.Geometries;
+using NetTopologySuite.Operation.Union;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 {
@@ -23,6 +25,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
         {
             BoardFieldsDefinition = boardFieldsDefinition;
             Polygon = MapFieldsToPolygon();
+
+            // TODO: has to be removed maybe together with the method ToString
+            var asString = this.ToString();
+
             WidthUnit = widthUnit;
             HeightUnit = heightUnit;
             ScaleFactor = scaleFactor;
@@ -30,15 +36,25 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 
         private Polygon MapFieldsToPolygon()
         {
-            var coordinates = BoardFieldsDefinition
-                .Select(p => p.ToCoordinate())
+            var boardPolygons = BoardFieldsDefinition
+                .Select(p =>
+                {
+                    return new GeometryFactory()
+                        .CreatePolygon(p.ToCoordinates());
+                })
                 .ToArray();
 
-            // add first as last to have the geometry closed
-            coordinates.Append(coordinates[0]);
+            var mergedPolygon = new CascadedPolygonUnion(boardPolygons)
+                .Union();
 
+            // add first as last to have the geometry closed
+            //var aslastOne = new Coordinate(coordinates[0]);
+            //coordinates = coordinates
+            //    .Append(aslastOne)
+            //    .ToArray();
+            
             var polygon = new GeometryFactory()
-                .CreatePolygon(coordinates);
+                .CreatePolygon(mergedPolygon.Coordinates);
 
             return polygon;
         }
@@ -50,6 +66,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
                 this.WidthUnit,
                 this.HeightUnit,
                 this.ScaleFactor);
+        }
+
+        public override string ToString()
+        {
+            var toString = Polygon
+                .Coordinates
+                .Select(p =>
+                    "(" +
+                    Math.Round(p.X, 2)
+                        .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                    "," +
+                    Math.Round(p.Y, 2)
+                        .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                    ")").ToArray();
+            var toStringAsArray = string.Join(',', toString);
+
+            return toStringAsArray;
         }
     }
 }

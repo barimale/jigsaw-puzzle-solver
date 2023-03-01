@@ -26,8 +26,6 @@ R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bi
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\NCalc.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\Newtonsoft.Json.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\NuGet.Frameworks.dll
-R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\SixLabors.Core.dll
-R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\SixLabors.Shapes.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\System.Drawing.Common.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\xunit.abstractions.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver.Logic.UT\bin\Debug\net6.0\xunit.assert.dll

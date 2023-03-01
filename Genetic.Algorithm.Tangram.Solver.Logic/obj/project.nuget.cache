@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "vIEZt/p4iVHb1VCemyx7PDG5k7VrbwIGVhErcRAQytWOYcAu4xP1bsFch6Ham4wWXIeMebV0/s1SUR9U7jTzAA==",
+  "dgSpecHash": "StCYQbfiCOMGtqMmFSIcvfwFqX4TiV9n4vJBhVF/2tLnM2Od/WxlbHdhCZVJFHFPQMtY12mVnJbRhol8hNfBrQ==",
   "success": true,
   "projectFilePath": "R:\\genetic-algorithm-tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic\\Genetic.Algorithm.Tangram.Solver.Logic.csproj",
   "expectedPackageFiles": [
@@ -20,8 +20,6 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.native.system.io.compression\\4.1.0\\runtime.native.system.io.compression.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.native.system.net.http\\4.0.1\\runtime.native.system.net.http.4.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\runtime.native.system.security.cryptography\\4.0.0\\runtime.native.system.security.cryptography.4.0.0.nupkg.sha512",
-    "C:\\Users\\Mateusz\\.nuget\\packages\\sixlabors.core\\1.0.0-beta0008\\sixlabors.core.1.0.0-beta0008.nupkg.sha512",
-    "C:\\Users\\Mateusz\\.nuget\\packages\\sixlabors.shapes\\1.0.0-beta0009\\sixlabors.shapes.1.0.0-beta0009.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.buffers\\4.0.0\\system.buffers.4.0.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.collections\\4.0.11\\system.collections.4.0.11.nupkg.sha512",
@@ -56,7 +54,6 @@
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.reflection.typeextensions\\4.1.0\\system.reflection.typeextensions.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.resources.resourcemanager\\4.0.1\\system.resources.resourcemanager.4.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.runtime\\4.1.0\\system.runtime.4.1.0.nupkg.sha512",
-    "C:\\Users\\Mateusz\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.runtime.extensions\\4.1.0\\system.runtime.extensions.4.1.0.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.runtime.handles\\4.0.1\\system.runtime.handles.4.0.1.nupkg.sha512",
     "C:\\Users\\Mateusz\\.nuget\\packages\\system.runtime.interopservices\\4.1.0\\system.runtime.interopservices.4.1.0.nupkg.sha512",

@@ -18,8 +18,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             // then
             // TODO: think how many cycles are needed here, implement the wrapper
             Console.WriteLine("Best chromosome before chromossomes serialization is:");
-            ConsoleHelper.ShowChromosome(konfiguracjaGry.Algorithm.BestChromosome as TspChromosome);
-            // all suitable solutions are displayed in console
+            ConsoleHelper.ShowChromosome(konfiguracjaGry.Algorithm.BestChromosome as TangramChromosome);
         }
 
         // TODO: field type X allowed or O allowed, and block types X or O.

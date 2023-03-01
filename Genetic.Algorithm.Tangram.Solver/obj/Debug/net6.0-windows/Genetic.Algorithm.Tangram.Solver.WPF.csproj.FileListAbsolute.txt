@@ -11,8 +11,6 @@ R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\n
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\MIConvexHull.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\NCalc.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\NetTopologySuite.dll
-R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\SixLabors.Core.dll
-R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\SixLabors.Shapes.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\Genetic.Algorithm.Tangram.Solver.Logic.dll
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\bin\Debug\net6.0-windows\Genetic.Algorithm.Tangram.Solver.Logic.pdb
 R:\genetic-algorithm-tangram-solver\Genetic.Algorithm.Tangram.Solver\obj\Debug\net6.0-windows\Genetic.Algorithm.Tangram.Solver.WPF.csproj.AssemblyReference.cache

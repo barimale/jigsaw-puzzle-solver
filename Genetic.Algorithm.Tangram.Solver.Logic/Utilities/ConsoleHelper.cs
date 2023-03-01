@@ -1,5 +1,4 @@
-﻿using GeneticSharp.Extensions;
-using GeneticSharp;
+﻿using GeneticSharp;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
@@ -23,14 +22,17 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
                 return bf.Deserialize(stream) as IList<IChromosome>;
             }
         }
-        public static void ShowChromosome(TspChromosome c)
+        public static void ShowChromosome(TangramChromosome c)
         {
             Console.WriteLine("Fitness: {0:n2}", c.Fitness);
-            Console.WriteLine("Cities: {0:n0}", c.Length);
-            Console.WriteLine("Distance: {0:n2}", c.Distance);
 
-            var cities = c.GetGenes().Select(g => g.Value.ToString()).ToArray();
-            Console.WriteLine("City tour: {0}", string.Join(", ", cities));
+            Console.WriteLine("Shapes:");
+            var blocksAmount = c.GenesCount;
+            for(int i = 0; i < blocksAmount; i++)
+            {
+                var blockAsString = c[i].ToString();
+                Console.WriteLine(blockAsString);
+            }
         }
     }
 }

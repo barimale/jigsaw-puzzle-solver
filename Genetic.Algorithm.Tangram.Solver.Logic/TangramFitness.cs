@@ -22,7 +22,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
         public double Evaluate(IChromosome chromosome)
         {
-            var solution = chromosome as TangramChronosome;
+            var solution = chromosome as TangramChromosome;
             var evaluatedGeometry = solution
                 .GetGenes()
                 .Select(p => p.Value as BlockBase)
@@ -101,7 +101,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
         private double PolygonsIntersect(Geometry polygon1, Geometry polygon2)
         {
-            // maybe simplify it later just to use Intersection
             var isIntersected = polygon1.Intersects(polygon2);
 
             if (isIntersected)
@@ -127,7 +126,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             }
             else
             {
-                return polygon.Distance(boardShapeDefinition.Polygon);
+                // TODO: correct it as described in ga-tangram
+                var distance = polygon.Distance(boardShapeDefinition.Polygon);
+
+                return distance;
             }
         }
     }

@@ -2,12 +2,11 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using GeneticSharp;
-using System;
 using System.Collections.Immutable;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
-    public class TangramChronosome : ChromosomeBase
+    public class TangramChromosome : ChromosomeBase
     {
         private ImmutableArray<BlockBase> blocks;
         private BoardShapeBase boardShapeDefinition;
@@ -15,7 +14,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
         private int allowedAnglesCount => allowedAngles.Length;
 
-        public TangramChronosome(
+        public TangramChromosome(
             IList<BlockBase> blocks,
             BoardShapeBase boardShapeDefinition,
             int[] allowedAngles)
@@ -26,10 +25,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             this.blocks = blocks.ToImmutableArray();
 
             foreach (var (block, index) in this.blocks.WithIndex())
-            { // check if the first index is 0 or 1 - it has to be 0
+            {
                 ReplaceGene(index, GenerateGene(index));
             }
         }
+
+        public int GenesCount => this.blocks.Length;
 
         // These properties represents your phenotype.
         public BlockBase this[int index] => (BlockBase)GetGene(index).Value;
@@ -67,7 +68,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
         public override IChromosome CreateNew()
         {
-            return new TangramChronosome(
+            return new TangramChromosome(
                 blocks,
                 boardShapeDefinition,
                 allowedAngles);
@@ -77,7 +78,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         // according to tbe base class implementation
         public override IChromosome Clone()
         {
-            var clone = base.Clone() as TangramChronosome;
+            var clone = base.Clone() as TangramChromosome;
 
             return clone;
         }

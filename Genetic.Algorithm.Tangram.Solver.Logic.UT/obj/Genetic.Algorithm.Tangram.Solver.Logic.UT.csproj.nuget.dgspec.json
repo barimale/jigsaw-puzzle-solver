@@ -150,10 +150,6 @@
             "NetTopologySuite": {
               "target": "Package",
               "version": "[2.5.0, )"
-            },
-            "SixLabors.Shapes": {
-              "target": "Package",
-              "version": "[1.0.0-beta0009, )"
             }
           },
           "imports": [
