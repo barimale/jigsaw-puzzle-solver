@@ -82,7 +82,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // solver
             // TODO: reuse some data from above
             // and check everything once again
-            var generationChromosomesNumber = 5000;
+            var generationChromosomesNumber = 500;
             var chromosome = new TangramChromosome(
                 blocks,
                 boardDefinition,
