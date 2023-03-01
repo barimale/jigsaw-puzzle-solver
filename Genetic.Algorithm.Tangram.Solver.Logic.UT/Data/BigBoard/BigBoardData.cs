@@ -64,7 +64,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             // solver
             // and check everything once again
             var generationChromosomesNumber = 1000;
-            var mutationProbability = 0.2f;
+            var mutationProbability = 0.05f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
                 blocks,
