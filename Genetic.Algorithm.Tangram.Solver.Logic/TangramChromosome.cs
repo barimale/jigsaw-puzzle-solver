@@ -57,12 +57,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             // width range - position across X line
             var newX = RandomizationProvider
                     .Current
-                    .GetInt(0, boardShapeDefinition.Width);
+                    .GetInt(0, BoardShapeDefinition.Width);
 
             // height range - position across Y line
             var newY = RandomizationProvider
                    .Current
-                   .GetInt(0, boardShapeDefinition.Height);
+                   .GetInt(0, BoardShapeDefinition.Height);
             newBlock.MoveTo(newX, newY);
 
             var toString = newBlock.ToString();
@@ -74,7 +74,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         {
             return new TangramChromosome(
                 blocks,
-                boardShapeDefinition,
+                BoardShapeDefinition,
                 allowedAngles);
         }
 
