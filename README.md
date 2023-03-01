@@ -10,3 +10,8 @@ The GENIUS Junior
 ```
 https://www.mathsisfun.com/geometry/polygons-interactive.html
 ```
+
+# Usefull webpages
+```
+https://diegogiacomelli.com.br/function-optimization-with-geneticsharp/
+```
