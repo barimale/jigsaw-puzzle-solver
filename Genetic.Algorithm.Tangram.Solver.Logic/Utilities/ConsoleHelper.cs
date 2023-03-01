@@ -43,10 +43,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
                     .Select(p => (BlockBase)p.Value)
                     .ToList();
 
-            var allBlocksAsString = string.Join(',', solution
-                .Select(pp => pp.ToString())
-                .ToList());
-
             foreach (var block in solution)
             {
                 Console.WriteLine(
