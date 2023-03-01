@@ -43,11 +43,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
             var result = f1 * (-1d);
 
-            if (result < 0 && result > -0.001)
-            {
-                var iii = 0;
-            }
-
             return result;
         }
 
