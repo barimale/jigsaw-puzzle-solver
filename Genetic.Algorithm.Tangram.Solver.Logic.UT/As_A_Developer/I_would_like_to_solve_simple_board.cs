@@ -1,6 +1,6 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
-using GeneticSharp.Extensions;
+using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
@@ -13,12 +13,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var konfiguracjaGry = DataHelper.SimpleBoardData();
 
             // when
-            konfiguracjaGry.Algorithm.Start();
+            konfiguracjaGry.Algorithm.TerminationReached += Algorithm_TerminationReached;
 
             // then
-            // TODO: think how many cycles are needed here, implement the wrapper
+            konfiguracjaGry.Algorithm.Start();
+        }
+
+        private void Algorithm_TerminationReached(object? sender, EventArgs e)
+        {
+            var algorithmResult = sender as GeneticAlgorithm;
+
             Console.WriteLine("Best chromosome before chromossomes serialization is:");
-            ConsoleHelper.ShowChromosome(konfiguracjaGry.Algorithm.BestChromosome as TangramChromosome);
+            ConsoleHelper.ShowChromosome(algorithmResult.BestChromosome as TangramChromosome);
         }
 
         // TODO: field type X allowed or O allowed, and block types X or O.

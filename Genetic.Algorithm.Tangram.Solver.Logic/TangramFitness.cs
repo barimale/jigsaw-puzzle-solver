@@ -127,9 +127,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             else
             {
                 // TODO: correct it as described in ga-tangram
-                var distance = polygon.Distance(boardShapeDefinition.Polygon);
+                //var distance = polygon.Distance(boardShapeDefinition.Polygon);
 
-                return distance;
+                return diff.Area;
             }
         }
     }

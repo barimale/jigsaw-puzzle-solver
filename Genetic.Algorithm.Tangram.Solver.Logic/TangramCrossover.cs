@@ -10,7 +10,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         private float mutation_probability;
 
         public TangramCrossover(float mutation_probability)
-            : base(2, 1) // TODO double check it, maybe (2,2)
+            : base(2, 3) // TODO double check it, maybe (2,2)
         {
             this.mutation_probability = mutation_probability;
         }

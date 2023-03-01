@@ -82,7 +82,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // solver
             // TODO: reuse some data from above
             // and check everything once again
-            var generationChromosomesNumber = 500;
+            var generationChromosomesNumber = 5000;
             var chromosome = new TangramChromosome(
                 blocks,
                 boardDefinition,
@@ -92,22 +92,22 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 generationChromosomesNumber,
                 chromosome);// understand the population parameters, estimate the maximal value by multiply amount of blocks
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
-            var crossover = new TangramCrossover(0.1f);// maybe custom needs to be implemented
-            var mutation = new UniformMutation(true);// maybe another one, need to be tested
+            var crossover = new TangramCrossover(0.4f);// 0.2f maybe custom needs to be implemented
+            var mutation = new UniformMutation(false);// maybe another one, need to be tested
             var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
-            var reinsertion = new ElitistReinsertion();
+          //  var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
 
             var solverBuilder = Factory.Factory.CreateNew();
             var solver = solverBuilder
                 .WithPopulation(population)
-                .WithReinsertion(reinsertion)
+                //.WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
-                .WithMutation(mutation, 0.75f) // with mutation probability 0.1f ?
+                .WithMutation(mutation, 0.35f) // with mutation probability 0.1f ?
                 .WithCrossover(crossover)
                 //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
-                .WithTermination(new FitnessThresholdTermination(1.2f)) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
+                .WithTermination(new FitnessThresholdTermination(2.2f)) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();
 
             // think how to implement the crossover, is it reasonable to invoke the mutation class from there
