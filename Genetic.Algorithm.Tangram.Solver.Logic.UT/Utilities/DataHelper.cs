@@ -106,6 +106,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
                 // TODO: maybe custom mutation with do nothing class
+                // for more complicated board it has to be custom here
                 .WithMutation(mutation, 0.1f) // with mutation probability 0.1f ?
                 .WithCrossover(crossover)
                 //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
