@@ -57,14 +57,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 Pink.Create(),
                 Green.Create(),
                 LightGreen.Create(),
-                Orange.Create(),
-                Yellow.Create(),
+                //Orange.Create(),
+                //Yellow.Create(),
             };
 
             // solver
-            // and check everything once again
-            var generationChromosomesNumber = 5000;
-            var mutationProbability = 0.2f;
+            var generationChromosomesNumber = 1000;
+            var mutationProbability = 0.1f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
                 blocks,
@@ -73,14 +72,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             var population = new Population(
                 generationChromosomesNumber,
                 generationChromosomesNumber,
-                chromosome);// understand the population parameters, estimate the maximal value by multiply amount of blocks
-            var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
+                chromosome);// understand the population parameters
+            var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
-            var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
+            var fitness = new TangramFitness(boardDefinition, blocks);
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
-            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)
+            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100);
 
             var solverBuilder = Factory.Factory.CreateNew();
             var solver = solverBuilder
@@ -88,10 +87,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
-                .WithMutation(mutation, mutationProbability) // with mutation probability 0.1f ?
+                .WithMutation(mutation, mutationProbability)
                 .WithCrossover(crossover, crossoverProbability)
-                //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
-                .WithTermination(termination) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
+                .WithOperatorsStrategy(operatorStrategy)
+                .WithTermination(termination)
                 .Build();
 
             var gameConfiguration = new GamePartsConfigurator(
@@ -103,7 +102,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             var isConfigurationValid = gameConfiguration.Validate();
 
             if (!isConfigurationValid)
-                throw new Exception("The summarized area of blocks cannot be bigger than the board area.");
+                throw new Exception("The summarized block definitions area cannot be bigger than the board area.");
             
             return gameConfiguration;
         }
