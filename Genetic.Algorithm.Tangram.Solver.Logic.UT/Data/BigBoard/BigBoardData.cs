@@ -64,7 +64,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             // solver
             // and check everything once again
             var generationChromosomesNumber = 500;
-            var mutationProbability = 0.1f;
+            var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
                 blocks,
@@ -100,6 +100,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 solver,
                 angles);
 
+            var isConfigurationValid = gameConfiguration.Validate();
+
+            if (!isConfigurationValid)
+                throw new Exception("The summarized area of blocks cannot be bigger than the board area.");
+            
             return gameConfiguration;
         }
 
