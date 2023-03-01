@@ -41,7 +41,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                 evaluatedGeometry.ToArray(),
                 boardShapeDefinition);
 
-            var result = f1* -1d;
+            var result = f1 * (-1d);
 
             if (result < 0 && result > -0.001)
             {

@@ -1,12 +1,11 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard;
 using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
-using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
     public class I_would_like_to_solve_big_board
     {
-        double latestFitness = double.MinValue;
+        private AlgorithmResultsHelper AlgorithmResultsHelper = new AlgorithmResultsHelper();
 
         [Fact]
         public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields()
@@ -14,48 +13,20 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             // given
             var konfiguracjaGry = BigBoardData.DemoData();
 
+            konfiguracjaGry
+                .Algorithm
+                .TerminationReached += AlgorithmResultsHelper
+                    .Algorithm_TerminationReached;
+            
+            konfiguracjaGry
+                .Algorithm
+                .GenerationRan += AlgorithmResultsHelper
+                    .Algorithm_Ran;
+
             // when
-            konfiguracjaGry.Algorithm.TerminationReached += Algorithm_TerminationReached;
-            konfiguracjaGry.Algorithm.GenerationRan += Algorithm_Ran;
+            konfiguracjaGry.Algorithm.Start();
 
             // then
-            konfiguracjaGry.Algorithm.Start();
-        }
-
-        private void Algorithm_Ran(object? sender, EventArgs e)
-        {
-            var algorithmResult = sender as GeneticAlgorithm;
-
-            if(algorithmResult == null)
-                return;
-
-            var bestChromosome = algorithmResult
-                .BestChromosome as TangramChromosome;
-
-            if (bestChromosome == null || !bestChromosome.Fitness.HasValue)
-                return;
-
-            var bestFitness = bestChromosome
-                .Fitness
-                .Value;
-
-            if (bestFitness >= latestFitness)
-            {
-                latestFitness = bestFitness;
-                ConsoleHelper.ShowChromosome(bestChromosome);
-            }
-        }
-
-        private void Algorithm_TerminationReached(object? sender, EventArgs e)
-        {
-            var algorithmResult = sender as GeneticAlgorithm;
-            if (algorithmResult != null)
-            {
-                var bestChromosome = algorithmResult
-                    .BestChromosome as TangramChromosome;
-
-                ConsoleHelper.ShowChromosome(bestChromosome);
-            }
         }
     }
 }
