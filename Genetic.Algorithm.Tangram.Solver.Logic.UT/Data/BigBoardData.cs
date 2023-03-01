@@ -7,9 +7,9 @@ using NetTopologySuite.Geometries;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 {
-    public static class DataHelper
+    public static class BigBoardData
     {
-        public static GamePartsConfigurator SimpleBoardData()
+        public static GamePartsConfigurator DemoData()
         {
             // common
             var scaleFactor = 1;
@@ -83,6 +83,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             // TODO: reuse some data from above
             // and check everything once again
             var generationChromosomesNumber = 5000;
+            var mutationProbability = 0.1f;
+            var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
                 blocks,
                 boardDefinition,
@@ -92,8 +94,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 generationChromosomesNumber,
                 chromosome);// understand the population parameters, estimate the maximal value by multiply amount of blocks
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
-            var crossover = new TangramCrossover(0.9f);// 0.8f maybe custom needs to be implemented
-            var mutation = new UniformMutation(false);//custom here maybe another one, need to be tested
+            var crossover = new TangramCrossover(crossoverProbability);// 0.8f maybe custom needs to be implemented
+            var mutation = new TworsMutation(); // new UniformMutation(false);//TworsMutation or custom and modify cross//custom here maybe another one, need to be tested
             var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
@@ -105,15 +107,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
-                // TODO: maybe custom mutation with do nothing class
-                // for more complicated board it has to be custom here
-                .WithMutation(mutation, 0.1f) // with mutation probability 0.1f ?
-                .WithCrossover(crossover)
+                .WithMutation(mutation, mutationProbability) // with mutation probability 0.1f ?
+                .WithCrossover(crossover, crossoverProbability)
                 //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
                 .WithTermination(termination) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();
-
-            // think how to implement the crossover, is it reasonable to invoke the mutation class from there
 
             var gameConfiguration = new GamePartsConfigurator(
                 blocks,

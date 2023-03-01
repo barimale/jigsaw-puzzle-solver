@@ -4,6 +4,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
+    // WIP
     public class I_would_like_to_solve_Genius_Junior
     {
         // TODO: probably ot has to be a wrapper containing some logic related with 

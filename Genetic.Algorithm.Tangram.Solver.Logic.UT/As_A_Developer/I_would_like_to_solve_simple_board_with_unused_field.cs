@@ -4,15 +4,17 @@ using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
-    public class I_would_like_to_solve_simple_board
+    // WIP
+    public class I_would_like_to_solve_simple_board_with_unused_field
     {
         double latestFitness = double.MinValue;
 
+        // TODO: implement it
         [Fact]
-        public void With_shape_of_2x2_fields_by_using_3_blocks_and_no_unused_fields()
+        public void With_shape_of_2x2_fields_by_using_3_blocks()
         {
             // given
-            var konfiguracjaGry = SimpleBoardData.DemoData();
+            var konfiguracjaGry = SimpleBoardData.SimpleBoardData();
 
             // when
             konfiguracjaGry.Algorithm.TerminationReached += Algorithm_TerminationReached;
