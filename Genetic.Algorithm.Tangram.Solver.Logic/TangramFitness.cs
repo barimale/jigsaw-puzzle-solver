@@ -22,6 +22,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
         public double Evaluate(IChromosome chromosome)
         {
+            // TODO: debug it why fitness 1 is minimum and means the solution is found
+            // custom mutation class
+            // check the diff between mutation and cross
             var solution = chromosome as TangramChromosome;
             var evaluatedGeometry = solution
                 .GetGenes()
