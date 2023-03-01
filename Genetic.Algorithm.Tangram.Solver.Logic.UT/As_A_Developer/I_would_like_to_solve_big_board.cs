@@ -39,9 +39,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         private void Algorithm_TerminationReached(object? sender, EventArgs e)
         {
             var algorithmResult = sender as GeneticAlgorithm;
+            if (algorithmResult != null)
+            {
+                var bestChromosome = algorithmResult
+                    .BestChromosome as TangramChromosome;
 
-            Console.WriteLine("Best chromosome before chromossomes serialization is:");
-            ConsoleHelper.ShowChromosome(algorithmResult.BestChromosome as TangramChromosome);
+                ConsoleHelper.ShowChromosome(bestChromosome);
+            }
         }
     }
 }

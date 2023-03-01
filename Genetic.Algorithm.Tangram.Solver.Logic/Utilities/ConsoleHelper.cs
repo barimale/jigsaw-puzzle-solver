@@ -23,12 +23,19 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
                 return bf.Deserialize(stream) as IList<IChromosome>;
             }
         }
-        public static void ShowChromosome(TangramChromosome c)
+        public static void ShowChromosome(TangramChromosome? c)
         {
-            Console.WriteLine("Fitness: {0:n2}", c.Fitness.Value);
-            var aa = Math.Round(c.Fitness.Value, 4);
+            if(c == null)
+                return;
 
-            Console.WriteLine("Shapes:");
+            if (!c.Fitness.HasValue)
+                return;
+
+            var fitnessValue = c.Fitness.Value;
+
+            Console.WriteLine("Solution fitness: {0:n2}", Math.Round(fitnessValue, 4));
+            Console.WriteLine("Blocks:");
+
             var solution = c
                     .GetGenes()
                     .Select(p => (BlockBase)p.Value)
