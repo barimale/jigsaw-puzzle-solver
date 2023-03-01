@@ -36,12 +36,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
             Console.WriteLine("Solution fitness: {0:n2}", Math.Round(fitnessValue, 4));
             Console.WriteLine("Blocks:");
 
+            var board = c.BoardShapeDefinition.ToString();
+
             var solution = c
                     .GetGenes()
                     .Select(p => (BlockBase)p.Value)
                     .ToList();
 
-            foreach(var block in solution)
+            var allBlocksAsString = string.Join(',', solution
+                .Select(pp => pp.ToString())
+                .ToList());
+
+            foreach (var block in solution)
             {
                 Console.WriteLine(
                     block.Color.ToString() + " coords: " + block.ToString());

@@ -39,7 +39,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .Fitness
                 .Value;
 
-            if (bestFitness > latestFitness)
+            if (bestFitness >= latestFitness)
             {
                 latestFitness = bestFitness;
                 ConsoleHelper.ShowChromosome(bestChromosome);

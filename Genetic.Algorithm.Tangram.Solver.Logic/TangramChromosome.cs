@@ -9,9 +9,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
     public class TangramChromosome : ChromosomeBase
     {
         private ImmutableArray<BlockBase> blocks;
-        private BoardShapeBase boardShapeDefinition;
         private int[] allowedAngles;
-
         private int allowedAnglesCount => allowedAngles.Length;
 
         public TangramChromosome(
@@ -20,7 +18,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             int[] allowedAngles)
             : base(blocks.Count)
         {
-            this.boardShapeDefinition = boardShapeDefinition;
+            BoardShapeDefinition = boardShapeDefinition;
+
             this.allowedAngles = allowedAngles;
             this.blocks = blocks.ToImmutableArray();
 
@@ -29,6 +28,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                 ReplaceGene(index, GenerateGene(index));
             }
         }
+        public BoardShapeBase BoardShapeDefinition { private set; get; }
 
         public int GenesCount => this.blocks.Length;
 
