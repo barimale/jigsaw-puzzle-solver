@@ -26,13 +26,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         {
             var algorithmResult = sender as GeneticAlgorithm;
 
-            var bestChromosome = algorithmResult.BestChromosome as TangramChromosome;
-            var bestFitness = bestChromosome.Fitness.Value;
+            if(algorithmResult == null)
+                return;
+
+            var bestChromosome = algorithmResult
+                .BestChromosome as TangramChromosome;
+
+            if (bestChromosome == null || !bestChromosome.Fitness.HasValue)
+                return;
+
+            var bestFitness = bestChromosome
+                .Fitness
+                .Value;
 
             if (bestFitness > latestFitness)
             {
                 latestFitness = bestFitness;
-                ConsoleHelper.ShowChromosome(algorithmResult.BestChromosome as TangramChromosome);
+                ConsoleHelper.ShowChromosome(bestChromosome);
             }
         }
 
