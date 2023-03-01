@@ -43,12 +43,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var polygon = new GeometryFactory()
                 .CreatePolygon(new Coordinate[] {
                 new Coordinate(0,0),// first the same as last
-                new Coordinate(0,2),
+                new Coordinate(0,1),
                 new Coordinate(2,1),
-                new Coordinate(1,0),
+                new Coordinate(2,0),
                 new Coordinate(0,0)// last the same as first
                 });
             var zielonyBloczek = new BlockBase(polygon, Color.Green);
+            var toStringFromClone1 = zielonyBloczek.ToString();
+
             blocks.Add(zielonyBloczek);
 
             var polygon2 = new GeometryFactory()
@@ -60,6 +62,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 new Coordinate(0,0)// last the same as first
                 });
             var niebieskiBloczek = new BlockBase(polygon2, Color.Blue);
+            var toStringFromClone2 = niebieskiBloczek.ToString();
+
             blocks.Add(niebieskiBloczek);
 
             var polygon3 = new GeometryFactory()
@@ -71,6 +75,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                     new Coordinate(0,0)// last the same as first
                 });
             var czerwonyBloczek = new BlockBase(polygon3, Color.Red);
+            var toStringFromClone3 = czerwonyBloczek.ToString();
+
             blocks.Add(czerwonyBloczek);
 
             // solver
@@ -87,7 +93,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 chromosome);// understand the population parameters, estimate the maximal value by multiply amount of blocks
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter, maybe another one, need to be tested
             var crossover = new TangramCrossover(0.1f);// maybe custom needs to be implemented
-            var mutation = new ReverseSequenceMutation();// maybe another one, need to be tested
+            var mutation = new UniformMutation(true);// maybe another one, need to be tested
             var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
@@ -98,10 +104,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
-                .WithMutation(mutation, 0.1f) // with mutation probability
+                .WithMutation(mutation, 0.75f) // with mutation probability 0.1f ?
                 .WithCrossover(crossover)
-                .WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
-                .WithTermination(new FitnessThresholdTermination()) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
+                //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
+                .WithTermination(new FitnessThresholdTermination(1.2f)) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
                 .Build();
 
             // think how to implement the crossover, is it reasonable to invoke the mutation class from there

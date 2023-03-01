@@ -39,6 +39,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         {
             BlockBase newBlock = this.blocks[geneIndex].Clone();
 
+            var toStringFromClone = newBlock.ToString();
+
             // angle random
             var allowedAnglesIndex = RandomizationProvider
                     .Current
@@ -62,6 +64,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                    .Current
                    .GetInt(0, boardShapeDefinition.Height);
             newBlock.MoveTo(newX, newY);
+
+            var toString = newBlock.ToString();
 
             return new Gene(newBlock);
         }

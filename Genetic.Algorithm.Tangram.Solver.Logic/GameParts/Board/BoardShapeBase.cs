@@ -1,5 +1,6 @@
 ﻿using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
@@ -46,26 +47,28 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 
             var mergedPolygon = new CascadedPolygonUnion(boardPolygons)
                 .Union();
-
-            // add first as last to have the geometry closed
-            //var aslastOne = new Coordinate(coordinates[0]);
-            //coordinates = coordinates
-            //    .Append(aslastOne)
-            //    .ToArray();
             
             var polygon = new GeometryFactory()
                 .CreatePolygon(mergedPolygon.Coordinates);
 
+            polygon = MoveToZero(polygon);
+
             return polygon;
         }
 
-        public BoardShapeBase Clone()
+        //move to the (0, 0)
+        private Polygon MoveToZero(Polygon polygon)
         {
-            return new BoardShapeBase(
-                this.BoardFieldsDefinition,
-                this.WidthUnit,
-                this.HeightUnit,
-                this.ScaleFactor);
+            var transformToZeroZero = new AffineTransformation();
+            var moveToZero = transformToZeroZero
+                .Translate(
+                    -polygon.Boundary.EnvelopeInternal.MinX,
+                    -polygon.Boundary.EnvelopeInternal.MinY
+                );
+
+            polygon.Apply(moveToZero);
+
+            return polygon;
         }
 
         public override string ToString()
