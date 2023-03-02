@@ -27,7 +27,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
 
         public BlockBase Clone()
         {
-            return new BlockBase(Polygon, Color);
+            var cloned =  new BlockBase(Polygon, Color);
+            cloned.SetAllowedLocations(AllowedLocations);
+
+            return cloned;
         }
 
         public void Rotate(double angleDegrees)

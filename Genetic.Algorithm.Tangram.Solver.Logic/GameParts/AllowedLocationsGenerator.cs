@@ -43,22 +43,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
                 {
                     for(int a = 0; a < anglesCount; a++)
                     {
-                        var modified = block.Clone();
-                        modified.Reflection();
-                        modified.Rotate(allowedAngles[a]);
-                        modified.MoveTo(i, j);
-                        if (board.Polygon.Covers(modified.Polygon))
-                        {
-                            locations.Add(modified.Polygon);
-                        }
+                        var newWithFlip = Check(block, board, allowedAngles, i, j, a, true);
 
-                        var modifiedWithoutFlip = block.Clone();
-                        modifiedWithoutFlip.Rotate(allowedAngles[a]);
-                        modifiedWithoutFlip.MoveTo(i, j);
-                        if (board.Polygon.Covers(modifiedWithoutFlip.Polygon))
-                        {
-                            locations.Add(modifiedWithoutFlip.Polygon);
-                        }
+                        if(newWithFlip != null)
+                            locations.Add(newWithFlip);
+
+                        var newWithoutFlip = Check(block, board, allowedAngles, i, j, a, false);
+                        if (newWithoutFlip != null)
+                            locations.Add(newWithoutFlip);
                     }
                 }
             }
@@ -67,6 +59,46 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             return locations
                 .Distinct()
                 .ToArray();
+        }
+
+        private Geometry? Check(
+            BlockBase block,
+            BoardShapeBase board,
+            int[] allowedAngles,
+            int i,
+            int j,
+            int a,
+            bool hasToBeFlipped)
+        {
+            var modified = block.Clone();
+            if(hasToBeFlipped)
+            {
+                modified.Reflection();
+            }
+            modified.Rotate(allowedAngles[a]);
+            modified.MoveTo(i, j);
+
+            if (board.Polygon.Covers(modified.Polygon))
+            {
+                //modified.Polygon.Normalize();
+
+                var newGeometry = new GeometryFactory()
+                    .CreateGeometry(modified.Polygon);
+
+                var minimalDiff = 0.01d; // or d
+                foreach(var cc in newGeometry.Coordinates)
+                {
+                    if(Math.Abs(cc.CoordinateValue.X - (int)cc.CoordinateValue.X) < minimalDiff)
+                        cc.CoordinateValue.X = (int)cc.CoordinateValue.X;
+
+                    if (Math.Abs(cc.CoordinateValue.Y - (int)cc.CoordinateValue.Y) < minimalDiff)
+                        cc.CoordinateValue.Y = (int)cc.CoordinateValue.Y;
+                }
+
+                return newGeometry;
+            }
+
+            return null;
         }
     }
 }
