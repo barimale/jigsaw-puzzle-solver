@@ -57,12 +57,30 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             // width range - position across X line
             var newX = RandomizationProvider
                     .Current
-                    .GetInt(0, BoardShapeDefinition.Width);
+                    .GetInt(
+                        0,
+                        Convert.ToInt32(
+                            Math.Round(
+                                (BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Width -
+                                 newBlock.Polygon.Boundary.EnvelopeInternal.Width),
+                                MidpointRounding.AwayFromZero
+                            )
+                        )
+                    );
 
             // height range - position across Y line
             var newY = RandomizationProvider
                    .Current
-                   .GetInt(0, BoardShapeDefinition.Height);
+                   .GetInt(
+                        0,
+                         Convert.ToInt32(
+                            Math.Round(
+                                (BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Height -
+                                 newBlock.Polygon.Boundary.EnvelopeInternal.Height),
+                                MidpointRounding.AwayFromZero
+                            )
+                        )
+                    );
             newBlock.MoveTo(newX, newY);
 
             var toString = newBlock.ToString();
@@ -78,8 +96,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                 allowedAngles);
         }
 
-        // TODO:correct it, only first gen is cloned
-        // according to tbe base class implementation
         public override IChromosome Clone()
         {
             var clone = base.Clone() as TangramChromosome;

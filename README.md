@@ -15,3 +15,9 @@ https://www.mathsisfun.com/geometry/polygons-interactive.html
 ```
 https://diegogiacomelli.com.br/function-optimization-with-geneticsharp/
 ```
+
+# Githubs
+```
+https://github.com/leprekon91/tangram-ga/blob/master/tangram-ga/tangram.py
+https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/Mutations/UniformMutation.cs
+```
