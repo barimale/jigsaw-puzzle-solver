@@ -98,7 +98,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var mutation = new TangramMutation();
             var fitness = new TangramFitness(boardDefinition, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
-            var operatorStrategy = new DefaultOperatorsStrategy();
+            var operatorStrategy = new VaryRatioOperatorsStrategy(); // DefaultOperatorsStrategy(); // TplOperatorsStrategy();
             var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)
 
             var solverBuilder = Factory.Factory.CreateNew();
@@ -109,8 +109,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 .WithFitnessFunction(fitness)
                 .WithMutation(mutation, mutationProbability) // with mutation probability 0.1f ?
                 .WithCrossover(crossover, crossoverProbability)
-                //.WithOperatorsStrategy(operatorStrategy) // copy default strategy class and put brakepoints there to check the correlation between crossover and mutation
-                .WithTermination(termination) // The default expected fitness is 1.00. but another value may be provided via the constructor's argument
+                .WithOperatorsStrategy(operatorStrategy)
+                .WithTermination(termination)
                 .Build();
 
             var gameConfiguration = new GamePartsConfigurator(
