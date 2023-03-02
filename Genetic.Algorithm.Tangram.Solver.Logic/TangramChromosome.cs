@@ -61,7 +61,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                         0,
                         Convert.ToInt32(
                             Math.Round(
-                                (BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Width -
+                                (1+ BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Width -
                                  newBlock.Polygon.Boundary.EnvelopeInternal.Width),
                                 MidpointRounding.AwayFromZero
                             )
@@ -75,7 +75,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                         0,
                          Convert.ToInt32(
                             Math.Round(
-                                (BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Height -
+                                (1 + BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Height -
                                  newBlock.Polygon.Boundary.EnvelopeInternal.Height),
                                 MidpointRounding.AwayFromZero
                             )
