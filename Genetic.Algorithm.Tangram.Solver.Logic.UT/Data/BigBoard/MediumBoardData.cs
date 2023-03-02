@@ -55,12 +55,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 Blue.Create(),
             };
 
+            // calculate allowed locations of blocks
+            // ( blocks may be use as well, but the chromosome behaviour
+            // is going to be more complex)
+            var modificator = new AllowedLocationsGenerator();
+            var preconfiguredBlocks = modificator.Preconfigure(
+                blocks,
+                boardDefinition,
+                angles);
+
             // solver
-            var generationChromosomesNumber = 1000;
+            var generationChromosomesNumber = 2000;
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
-                blocks,
+                preconfiguredBlocks,
                 boardDefinition,
                 angles);
             var population = new Population(

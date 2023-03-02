@@ -38,8 +38,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
         public override Gene GenerateGene(int geneIndex)
         {
             BlockBase newBlock = this.blocks[geneIndex].Clone();
-
             var toStringFromClone = newBlock.ToString();
+
+            // do one random only if allowed locations of the block specified
+            if (newBlock.IsAllowedLocationsEnabled)
+            {
+                var randomIndex = new FastRandomRandomization()
+                    .GetInt(
+                        0,
+                        newBlock.AllowedLocations.Length - 1);
+
+                var randomMutatedBlock = newBlock.AllowedLocations[randomIndex];
+                newBlock.Apply(randomMutatedBlock);
+
+                var asString = newBlock.ToString();
+
+                return new Gene(newBlock);
+            }
 
             // angle random
             var allowedAnglesIndex = RandomizationProvider
@@ -51,7 +66,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             // true false isflipped
             var trueOrFalse = RandomizationProvider.Current.GetInt(0, 1);
             var hasToBeReflected = trueOrFalse == 1 ? true : false;
-            if(hasToBeReflected)
+            if (hasToBeReflected)
                 newBlock.Reflection();
 
             // width range - position across X line
@@ -61,8 +76,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                         0,
                         Convert.ToInt32(
                             Math.Round(
-                                (1* BoardShapeDefinition.ScaleFactor + BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Width -
-                                 newBlock.Polygon.Boundary.EnvelopeInternal.Width),
+                                (1 * BoardShapeDefinition.ScaleFactor + BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Width -
+                                    newBlock.Polygon.Boundary.EnvelopeInternal.Width),
                                 MidpointRounding.AwayFromZero
                             )// as the minimal
                         )
@@ -70,13 +85,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 
             // height range - position across Y line
             var newY = RandomizationProvider
-                   .Current
-                   .GetInt(
+                    .Current
+                    .GetInt(
                         0,
-                         Convert.ToInt32(
+                            Convert.ToInt32(
                             Math.Round(
                                 (1 * BoardShapeDefinition.ScaleFactor + BoardShapeDefinition.Polygon.Boundary.EnvelopeInternal.Height -
-                                 newBlock.Polygon.Boundary.EnvelopeInternal.Height),
+                                    newBlock.Polygon.Boundary.EnvelopeInternal.Height),
                                 MidpointRounding.AwayFromZero
                             )
                         )

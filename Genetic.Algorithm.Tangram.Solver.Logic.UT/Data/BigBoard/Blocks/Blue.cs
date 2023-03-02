@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard.Blocks
 {
-    public static class Blue
+    public sealed class Blue
     {
         public static BlockBase Create()
         {

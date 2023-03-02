@@ -1,5 +1,4 @@
-﻿using GeneticSharp;
-using NetTopologySuite.Algorithm;
+﻿using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using System.Drawing;
@@ -10,7 +9,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
     {
         public Geometry Polygon { private set; get; }
         public Color Color { private set; get; }
-
+        public Geometry[] AllowedLocations { private set; get; } = new Geometry[0];
+        public bool IsAllowedLocationsEnabled => AllowedLocations != null && AllowedLocations.Length > 0;
         public double Area => Polygon.Area;
 
         public BlockBase(Geometry polygon, Color color)
@@ -18,6 +18,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
             Polygon = polygon;
             Color = color;
             this.MoveToZero();
+        }
+
+        public void SetAllowedLocations(Geometry[] locations)
+        {
+            this.AllowedLocations = locations;
         }
 
         public BlockBase Clone()
@@ -55,6 +60,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
 
             Polygon.Apply(mirror);
             this.MoveToZero();// maybe not necessary
+        }
+
+        public void Apply(Geometry template)
+        {
+            Polygon = template;
         }
 
         //move to the (0, 0)

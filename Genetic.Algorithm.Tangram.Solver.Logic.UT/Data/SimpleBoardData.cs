@@ -79,14 +79,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
             blocks.Add(czerwonyBloczek);
 
+            // calculate allowed locations of blocks
+            var modificator = new AllowedLocationsGenerator();
+            var preconfiguredBlocks = modificator.Preconfigure(
+                blocks,
+                boardDefinition,
+                angles);
+
             // solver
             // TODO: reuse some data from above
             // and check everything once again
-            var generationChromosomesNumber = 5000;
+            var generationChromosomesNumber = 500;
             var mutationProbability = 0.1f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
-                blocks,
+                preconfiguredBlocks,
                 boardDefinition,
                 angles);
             var population = new Population(
