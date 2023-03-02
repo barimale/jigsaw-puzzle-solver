@@ -57,13 +57,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 Pink.Create(),
                 Green.Create(),
                 LightGreen.Create(),
-                //Orange.Create(),
-                //Yellow.Create(),
+                Orange.Create(),
+                Yellow.Create(),
             };
 
             // solver
-            var generationChromosomesNumber = 1000;
-            var mutationProbability = 0.1f;
+            var generationChromosomesNumber = 5000;
+            var mutationProbability = 0.3f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
                 blocks,
