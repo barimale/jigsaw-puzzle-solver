@@ -1,9 +1,7 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
-using System.Drawing;
 using GeneticSharp;
-using NetTopologySuite.Geometries;
 using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard.Blocks;
 
