@@ -9,7 +9,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
     {
         private AlgorithmResultsHelper AlgorithmResultsHelper = new AlgorithmResultsHelper();
         private int CurrentGeneration { get; set; } = -1;
-        private int GenerationsNumber { get; set; } = 1000;
+        private int GenerationsNumber { get; set; } = 2000;
 
         private GamePartsConfigurator konfiguracjaGry;
 

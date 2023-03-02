@@ -85,14 +85,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
                 var newGeometry = new GeometryFactory()
                     .CreateGeometry(modified.Polygon);
 
-                var minimalDiff = 0.01d; // or d
+                var digits = 3;
+                var minimalDiff = 0.001d;
                 foreach(var cc in newGeometry.Coordinates)
                 {
-                    if(Math.Abs(cc.CoordinateValue.X - (int)cc.CoordinateValue.X) < minimalDiff)
-                        cc.CoordinateValue.X = (int)cc.CoordinateValue.X;
+                    if(Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X,digits,MidpointRounding.ToEven)) < minimalDiff)
+                    {
+                        var result = Convert.ToInt32(
+                                Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven));
+                        cc.CoordinateValue.X = result;
+                    }
 
-                    if (Math.Abs(cc.CoordinateValue.Y - (int)cc.CoordinateValue.Y) < minimalDiff)
-                        cc.CoordinateValue.Y = (int)cc.CoordinateValue.Y;
+                    if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven)) < minimalDiff)
+                    {
+                        var result = Convert.ToInt32(
+                                Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven));
+                        cc.CoordinateValue.Y = result;
+                    }
                 }
 
                 return newGeometry;
