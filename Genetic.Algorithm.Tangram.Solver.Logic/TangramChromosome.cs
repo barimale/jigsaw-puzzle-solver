@@ -57,22 +57,20 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             }
 
             // angle random
-            var allowedAnglesIndex = RandomizationProvider
-                    .Current
+            var allowedAnglesIndex = new FastRandomRandomization()
                     .GetInt(0, allowedAnglesCount - 1);
             var newAngle = allowedAngles[allowedAnglesIndex];
             newBlock.Rotate(newAngle);
 
             // true false isflipped
-            var trueOrFalse = RandomizationProvider.Current.GetInt(0, 1);
+            var trueOrFalse = new FastRandomRandomization().GetInt(0, 1);
             var hasToBeReflected = trueOrFalse == 1 ? true : false;
             if (hasToBeReflected)
                 newBlock.Reflection();
 
             // width range - position across X line
-            var newX = RandomizationProvider
-                    .Current
-                    .GetInt(
+            var newX = new FastRandomRandomization()
+                .GetInt(
                         0,
                         Convert.ToInt32(
                             Math.Round(
@@ -84,9 +82,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                     );
 
             // height range - position across Y line
-            var newY = RandomizationProvider
-                    .Current
-                    .GetInt(
+            var newY = new FastRandomRandomization()
+                .GetInt(
                         0,
                             Convert.ToInt32(
                             Math.Round(
