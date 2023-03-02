@@ -1,6 +1,7 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using GeneticSharp;
+using NetTopologySuite.Geometries;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 {
@@ -34,8 +35,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 
         public bool Validate()
         {
-            var summarizeBlocksArea = Blocks.ToList().Sum(p => p.Area);
-            var boardArea = Board.Area;
+            var digits = 3;
+
+            var summarizeBlocksArea = Math.Round(
+                    Blocks.ToList().Sum(p => p.Area),
+                    digits,
+                    MidpointRounding.ToEven);
+
+            var boardArea = Math.Round(
+                    Board.Area,
+                    digits,
+                    MidpointRounding.ToEven);
+
             return boardArea >= summarizeBlocksArea;
         }
     }
