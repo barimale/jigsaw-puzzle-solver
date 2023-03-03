@@ -41,12 +41,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                     
                     if(showAllowedLocations)
                     {
+                        base.Display(string.Empty);
+                        base.Display("Block locations start:");
                         foreach(var location in block.AllowedLocations)
                         {
                             // display allowed locations
                             base.Display("Block " + block.Color.ToString() + "definition(allOfThem:" + block.AllowedLocations.Length + ")");
                             base.Display(GamePartsConfigurator.LocationAsStringArray(location));
                         }
+                        base.Display("Block locations END:");
+                        base.Display(string.Empty);
                     }
                 }
 
