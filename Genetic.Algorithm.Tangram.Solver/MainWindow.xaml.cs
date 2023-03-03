@@ -24,5 +24,21 @@ namespace Genetic.Algorithm.Tangram.Solver
         {
             InitializeComponent();
         }
+
+        private void Canvas_Loaded(object sender, RoutedEventArgs e)
+        {
+            var a = sender as Canvas;
+
+            RectangleGeometry myRectangleGeometry = new RectangleGeometry();
+            myRectangleGeometry.Rect = new Rect(50, 50, 25, 25);
+
+            Path myPath = new Path();
+            myPath.Fill = Brushes.LemonChiffon;
+            myPath.Stroke = Brushes.Black;
+            myPath.StrokeThickness = 1;
+            myPath.Data = myRectangleGeometry;
+
+            a.Children.Add(myPath);
+        }
     }
 }

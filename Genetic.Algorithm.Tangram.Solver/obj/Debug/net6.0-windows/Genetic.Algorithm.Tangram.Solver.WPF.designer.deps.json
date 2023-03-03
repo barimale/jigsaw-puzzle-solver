@@ -17,6 +17,14 @@
           }
         }
       },
+      "ConsoleGraphics/0.1.4": {
+        "runtime": {
+          "lib/net6.0/ConsoleGraphics.dll": {
+            "assemblyVersion": "0.1.4.0",
+            "fileVersion": "0.1.4.0"
+          }
+        }
+      },
       "GeneticSharp/3.1.4": {
         "runtime": {
           "lib/net6.0/GeneticSharp.Domain.dll": {
@@ -39,6 +47,14 @@
           "lib/net6.0/GeneticSharp.Extensions.dll": {
             "assemblyVersion": "3.1.4.0",
             "fileVersion": "3.1.4.0"
+          }
+        }
+      },
+      "MIConvexHull/1.1.19.1019": {
+        "runtime": {
+          "lib/netstandard2.0/MIConvexHull.dll": {
+            "assemblyVersion": "1.1.19.1018",
+            "fileVersion": "1.1.19.1018"
           }
         }
       },
@@ -127,6 +143,17 @@
           "System.Threading.Timer": "4.0.1",
           "System.Xml.ReaderWriter": "4.0.11",
           "System.Xml.XDocument": "4.0.11"
+        }
+      },
+      "NetTopologySuite/2.5.0": {
+        "dependencies": {
+          "System.Memory": "4.5.4"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NetTopologySuite.dll": {
+            "assemblyVersion": "2.0.0.0",
+            "fileVersion": "2.0.0.0"
+          }
         }
       },
       "runtime.native.System/4.0.0": {
@@ -441,6 +468,7 @@
           }
         }
       },
+      "System.Memory/4.5.4": {},
       "System.Net.Http/4.1.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.4",
@@ -1013,6 +1041,13 @@
       "path": "antlr3.runtime/3.5.1",
       "hashPath": "antlr3.runtime.3.5.1.nupkg.sha512"
     },
+    "ConsoleGraphics/0.1.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Rt3X3NIfwso3GzE2qnOIT7W5EKwiQwC+v+0JtFYOjgzAY7zgNG5nOPryOazQTd4hR2w62Tn2RGISD/S3ij62KQ==",
+      "path": "consolegraphics/0.1.4",
+      "hashPath": "consolegraphics.0.1.4.nupkg.sha512"
+    },
     "GeneticSharp/3.1.4": {
       "type": "package",
       "serviceable": true,
@@ -1026,6 +1061,13 @@
       "sha512": "sha512-e7ZU2FHhtFaJkZo/oO1Hjo2NfUjDYXjBpkUJvF0kgH/JGZSg1tuRPJEz0lgZLGp2WIPe7JY6wOPRcY2aKHyB+A==",
       "path": "geneticsharp.extensions/3.1.4",
       "hashPath": "geneticsharp.extensions.3.1.4.nupkg.sha512"
+    },
+    "MIConvexHull/1.1.19.1019": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Qz0BIRVyflj9jMkIKG1tpON5Xz1lFEA9XyRH0Pw5qIsCE75heHF4cHrBr8RqvQJRaaNXH+5jdWAfFP3m3OfTOA==",
+      "path": "miconvexhull/1.1.19.1019",
+      "hashPath": "miconvexhull.1.1.19.1019.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.4": {
       "type": "package",
@@ -1068,6 +1110,13 @@
       "sha512": "sha512-ypsCvIdCZ4IoYASJHt6tF2fMo7N30NLgV1EbmC+snO490OMl9FvVxmumw14rhReWU3j3g7BYudG6YCrchwHJlA==",
       "path": "netstandard.library/1.6.0",
       "hashPath": "netstandard.library.1.6.0.nupkg.sha512"
+    },
+    "NetTopologySuite/2.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5/+2O2ADomEdUn09mlSigACdqvAf0m/pVPGtIPEPQWnyrVykYY0NlfXLIdkMgi41kvH9kNrPqYaFBTZtHYH7Xw==",
+      "path": "nettopologysuite/2.5.0",
+      "hashPath": "nettopologysuite.2.5.0.nupkg.sha512"
     },
     "runtime.native.System/4.0.0": {
       "type": "package",
@@ -1236,6 +1285,13 @@
       "sha512": "sha512-I+y02iqkgmCAyfbqOmSDOgqdZQ5tTj80Akm5BPSS8EeB0VGWdy6X1KCoYe8Pk6pwDoAKZUOdLVxnTJcExiv5zw==",
       "path": "system.linq.expressions/4.1.0",
       "hashPath": "system.linq.expressions.4.1.0.nupkg.sha512"
+    },
+    "System.Memory/4.5.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-1MbJTHS1lZ4bS4FmsJjnuGJOu88ZzTT2rLvrhW7Ygic+pC0NWA+3hgAen0HRdsocuQXCkUTdFn9yHJJhsijDXw==",
+      "path": "system.memory/4.5.4",
+      "hashPath": "system.memory.4.5.4.nupkg.sha512"
     },
     "System.Net.Http/4.1.0": {
       "type": "package",
