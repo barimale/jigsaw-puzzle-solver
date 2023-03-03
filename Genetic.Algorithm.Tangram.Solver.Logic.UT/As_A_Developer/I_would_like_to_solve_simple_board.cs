@@ -25,7 +25,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var konfiguracjaGry = SimpleBoardData.DemoData();
 
                 // settings
-                var showAllowedLocations = false;
+                var showAllowedLocations = true;
                 var multicolorSupported = false;
 
                 // display board
@@ -44,6 +44,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                         foreach(var location in block.AllowedLocations)
                         {
                             // display allowed locations
+                            base.Display("Block " + block.Color.ToString() + "definition(allOfThem:" + block.AllowedLocations.Length + ")");
                             base.Display(GamePartsConfigurator.LocationAsStringArray(location));
                         }
                     }
