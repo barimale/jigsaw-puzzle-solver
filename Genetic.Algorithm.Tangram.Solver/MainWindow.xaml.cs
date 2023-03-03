@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+using Genetic.Algorithm.Tangram.Solver.WPF;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +22,8 @@ namespace Genetic.Algorithm.Tangram.Solver
     /// </summary>
     public partial class MainWindow : Window
     {
+        private AlgorithmDisplayHelper algorithmDisplayHelper;
+        private GameExecutor gameExecutor;
         public MainWindow()
         {
             InitializeComponent();
@@ -27,8 +31,14 @@ namespace Genetic.Algorithm.Tangram.Solver
 
         private void Canvas_Loaded(object sender, RoutedEventArgs e)
         {
-            var a = sender as Canvas;
+            var canvas = sender as Canvas;
 
+            if (canvas == null)
+                throw new Exception("Canvas not loaded correctly");
+
+            algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas);
+
+            gameExecutor = new GameExecutor(algorithmDisplayHelper);
             RectangleGeometry myRectangleGeometry = new RectangleGeometry();
             myRectangleGeometry.Rect = new Rect(50, 50, 25, 25);
 

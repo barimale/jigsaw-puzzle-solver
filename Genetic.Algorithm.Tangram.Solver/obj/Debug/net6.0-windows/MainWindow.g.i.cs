@@ -53,7 +53,7 @@ namespace Genetic.Algorithm.Tangram.Solver {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/Genetic.Algorithm.Tangram.Solver.WPF;component/mainwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/Genetic.Algorithm.Tangram.Solver.WPF;V1.0.0.0;component/mainwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\MainWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
