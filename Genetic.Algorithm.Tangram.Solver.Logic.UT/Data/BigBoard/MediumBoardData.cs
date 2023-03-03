@@ -62,8 +62,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 boardDefinition,
                 angles);
 
+            var dynamicPopulationSize = blocks
+                .Select(p => p.AllowedLocations.Length)
+                .ToList();
+
+            var multipliedDynamicPopulationSize = 1;
+            foreach(var item in dynamicPopulationSize)
+            {
+                multipliedDynamicPopulationSize = multipliedDynamicPopulationSize * item;
+            }
+
             // solver
-            var generationChromosomesNumber = 200000;
+            var generationChromosomesNumber = Math.Max(multipliedDynamicPopulationSize / blocks.Count, 500);
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(

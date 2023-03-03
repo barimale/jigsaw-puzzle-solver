@@ -9,7 +9,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
     {
         private AlgorithmDebugHelper AlgorithmResultsHelper = new AlgorithmDebugHelper();
         private int CurrentGeneration { get; set; } = -1;
-        private int GenerationsNumber { get; set; } = 200000;
+        private int GenerationsNumber { get; set; } = -1;
 
         private GamePartsConfigurator konfiguracjaGry;
 
@@ -18,6 +18,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         {
             // given
             konfiguracjaGry = MediumBoardData.DemoData();
+            GenerationsNumber = konfiguracjaGry.Algorithm.Population.MaxSize;
 
             konfiguracjaGry
                 .Algorithm
