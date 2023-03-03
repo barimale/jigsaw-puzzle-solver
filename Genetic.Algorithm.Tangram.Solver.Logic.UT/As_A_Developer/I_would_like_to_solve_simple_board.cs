@@ -24,6 +24,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
                 // settings
                 var showAllowedLocations = false;
+                var multicolorSupported = false;
 
                 // display board
                 base.Display("Board definition:");
@@ -54,7 +55,5 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             // then
         }
-
-
     }
 }
