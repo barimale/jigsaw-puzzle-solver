@@ -43,9 +43,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             var polygon = new GeometryFactory()
                 .CreatePolygon(new Coordinate[] {
                 new Coordinate(0,0),// first the same as last
-                new Coordinate(0,1),
-                new Coordinate(2,1),
-                new Coordinate(2,0),
+                new Coordinate(0,2),
+                new Coordinate(1,2),
+                new Coordinate(1,0),
                 new Coordinate(0,0)// last the same as first
                 });
             var zielonyBloczek = new BlockBase(polygon, Color.Green);

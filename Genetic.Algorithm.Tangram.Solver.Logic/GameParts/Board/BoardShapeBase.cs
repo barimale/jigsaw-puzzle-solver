@@ -1,7 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
-using System.Text;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 {
@@ -78,6 +77,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
                     Math.Round(p.Y, 2)
                         .ToString(System.Globalization.CultureInfo.InvariantCulture) +
                     ")").ToArray();
+
             var toStringAsArray = string.Join(',', toString);
 
             return toStringAsArray;

@@ -55,12 +55,49 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
                 }
             }
 
-            // TODO: check distinct
-            // there are the same geometricies with shifted coordinates,
-            // and as the first needs to be the last
-            // not so easy to distinct in a regular way
-            return locations
-                .Distinct()
+            var distinctedLocations = new HashSet<Geometry>();
+            foreach(var location in locations)
+            {
+                var exists = distinctedLocations.Any(p =>
+                {
+                    var zip1 =  p
+                        .Coordinates
+                        .ToList()
+                        .DistinctBy(d => $@"{d.X} - {d.Y}")
+                        .OrderBy(pp => pp.X)
+                        .ThenBy(ppp => ppp.Y)
+                        .ToList();
+
+                    var zip2 =
+                            location
+                                .Coordinates
+                                .ToList()
+                                .DistinctBy(dd => $@"{dd.X} - {dd.Y}")
+                                .OrderBy(ss => ss.X)
+                                .ThenBy(sss => sss.Y)
+                                .ToList();
+
+                    var zipped = zip1.Zip(zip2);
+
+                    var result = true;
+                    foreach(var pair in zipped)
+                    {
+                        if(pair.First.X != pair.Second.X || pair.First.Y != pair.Second.Y)
+                        {
+                            result = false;
+                        }
+                    }
+
+                    return result;
+                });
+
+                if (!exists)
+                {
+                    distinctedLocations.Add(location);
+                }
+            }
+
+            return distinctedLocations
                 .ToArray();
         }
 
@@ -83,8 +120,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 
             if (board.Polygon.Covers(modified.Polygon))
             {
-                //modified.Polygon.Normalize();
-
                 var newGeometry = new GeometryFactory()
                     .CreateGeometry(modified.Polygon);
 

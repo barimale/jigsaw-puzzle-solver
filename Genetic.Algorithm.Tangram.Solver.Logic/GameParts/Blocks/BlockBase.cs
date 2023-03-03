@@ -46,7 +46,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                 );
 
             Polygon.Apply(rotation);
-            this.MoveToZero();// maybe not necessary
+            this.MoveToZero();
+            CleanCoordinateDigits();
         }
 
         // reflection / mirror
@@ -62,7 +63,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                     minAndMaxXYs.MinY);
 
             Polygon.Apply(mirror);
-            this.MoveToZero();// maybe not necessary
+            this.MoveToZero();
+            CleanCoordinateDigits();
         }
 
         public void Apply(Geometry template)
@@ -81,6 +83,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                 );
 
             Polygon.Apply(moveToZero);
+            CleanCoordinateDigits();
         }
 
         public void MoveTo(int x, int y)
@@ -93,6 +96,30 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
                 );
 
             Polygon.Apply(moveTo);
+            CleanCoordinateDigits();
+        }
+
+        private void CleanCoordinateDigits()
+        {
+            var digits = 3;
+            var minimalDiff = 0.001d;
+
+            foreach (var cc in Polygon.Coordinates)
+            {
+                if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven)) < minimalDiff)
+                {
+                    var result = Convert.ToInt32(
+                            Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven));
+                    cc.CoordinateValue.X = result;
+                }
+
+                if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven)) < minimalDiff)
+                {
+                    var result = Convert.ToInt32(
+                            Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven));
+                    cc.CoordinateValue.Y = result;
+                }
+            }
         }
 
         public override string ToString()
