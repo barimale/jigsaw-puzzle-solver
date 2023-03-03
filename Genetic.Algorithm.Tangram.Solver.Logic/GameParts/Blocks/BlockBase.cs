@@ -111,5 +111,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
 
             return toStringAsArray;
         }
+
+        // TODO:
+        public string[] BlockAsStringArray()
+        {
+            return new string[0] { };
+        }
     }
 }

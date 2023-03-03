@@ -7,7 +7,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
     public class I_would_like_to_solve_medium_board
     {
-        private AlgorithmResultsHelper AlgorithmResultsHelper = new AlgorithmResultsHelper();
+        private AlgorithmDebugHelper AlgorithmResultsHelper = new AlgorithmDebugHelper();
         private int CurrentGeneration { get; set; } = -1;
         private int GenerationsNumber { get; set; } = 2000;
 

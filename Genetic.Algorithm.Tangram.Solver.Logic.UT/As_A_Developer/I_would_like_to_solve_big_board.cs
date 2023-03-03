@@ -5,7 +5,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
     public class I_would_like_to_solve_big_board
     {
-        private AlgorithmResultsHelper AlgorithmResultsHelper = new AlgorithmResultsHelper();
+        private AlgorithmDebugHelper AlgorithmResultsHelper = new AlgorithmDebugHelper();
 
         [Fact]
         public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields()

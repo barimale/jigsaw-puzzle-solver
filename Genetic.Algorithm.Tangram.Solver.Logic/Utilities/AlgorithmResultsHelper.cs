@@ -2,9 +2,9 @@
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Utilities
 {
-    public class AlgorithmResultsHelper
+    public class AlgorithmDebugHelper
     {
-        public AlgorithmResultsHelper()
+        public AlgorithmDebugHelper()
         {
             LatestFitness = double.MinValue;
         }

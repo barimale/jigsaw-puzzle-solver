@@ -1,5 +1,4 @@
-﻿using NetTopologySuite.Algorithm;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
 
@@ -11,7 +10,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
         public int WidthUnit { private set; get; }
         public int HeightUnit { private set; get; }
         public int ScaleFactor { private set; get; } = 1;
-        // use together with the scalefactor maybe
         public int Width => WidthUnit * ScaleFactor;
         public int Height => HeightUnit * ScaleFactor;
         public Polygon Polygon { private set; get; }
@@ -26,10 +24,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
         {
             BoardFieldsDefinition = boardFieldsDefinition;
             Polygon = MapFieldsToPolygon();
-
-            // TODO: has to be removed maybe together with the method ToString
-            var asString = this.ToString();
-
             WidthUnit = widthUnit;
             HeightUnit = heightUnit;
             ScaleFactor = scaleFactor;
@@ -86,6 +80,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
             var toStringAsArray = string.Join(',', toString);
 
             return toStringAsArray;
+        }
+
+        public string[] BoardPolygonAsStringArray()
+        {
+            return new string[0] { };
         }
     }
 }
