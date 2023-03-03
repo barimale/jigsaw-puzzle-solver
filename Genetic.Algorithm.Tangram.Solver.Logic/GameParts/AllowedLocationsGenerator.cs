@@ -56,6 +56,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             }
 
             // TODO: check distinct
+            // there are the same geometricies with shifted coordinates,
+            // and as the first needs to be the last
+            // not so easy to distinct in a regular way
             return locations
                 .Distinct()
                 .ToArray();

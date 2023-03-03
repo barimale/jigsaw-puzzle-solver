@@ -2,6 +2,8 @@ Board definition:
 (1,0),(0,0),(0,1),(0,2),(1,2),(2,2),(2,1),(2,0),(1,0)
 Block definitions:
 (2,0),(2,1),(0,1),(0,0),(2,0)
+
+Block locations START:
 Block Color [Green]definition(allOfThem:6)
 (1,2),(0,2),(0,0),(1,0),(1,2)
 Block Color [Green]definition(allOfThem:6)
@@ -14,7 +16,11 @@ Block Color [Green]definition(allOfThem:6)
 (2,0),(2,1),(0,1),(0,0),(2,0)
 Block Color [Green]definition(allOfThem:6)
 (0,1),(0,2),(2,2),(2,1),(0,1)
+Block locations END.
+
 (1,0),(1,1),(0,1),(0,0),(1,0)
+
+Block locations START:
 Block Color [Blue]definition(allOfThem:20)
 (1,1),(0,1),(0,0),(1,0),(1,1)
 Block Color [Blue]definition(allOfThem:20)
@@ -55,7 +61,11 @@ Block Color [Blue]definition(allOfThem:20)
 (2,2),(2,1),(1,1),(1,2),(2,2)
 Block Color [Blue]definition(allOfThem:20)
 (2,1),(2,2),(1,2),(1,1),(2,1)
+Block locations END.
+
 (1,0),(1,1),(0,1),(0,0),(1,0)
+
+Block locations START:
 Block Color [Red]definition(allOfThem:20)
 (1,1),(0,1),(0,0),(1,0),(1,1)
 Block Color [Red]definition(allOfThem:20)
@@ -96,16 +106,18 @@ Block Color [Red]definition(allOfThem:20)
 (2,2),(2,1),(1,1),(1,2),(2,2)
 Block Color [Red]definition(allOfThem:20)
 (2,1),(2,2),(1,2),(1,1),(2,1)
+Block locations END.
+
 Solution fitness: -0
 Blocks:
-Color [Green] coords: (0,0),(0,1),(2,1),(2,0),(0,0)
+Color [Green] coords: (0,1),(0,0),(2,0),(2,1),(0,1)
 Color [Blue] coords: (2,2),(1,2),(1,1),(2,1),(2,2)
-Color [Red] coords: (0,2),(0,1),(1,1),(1,2),(0,2)
+Color [Red] coords: (1,2),(1,1),(0,1),(0,2),(1,2)
 
 Algorithm_TerminationReached
 
 Solution fitness: -0
 Blocks:
-Color [Green] coords: (0,0),(0,1),(2,1),(2,0),(0,0)
+Color [Green] coords: (0,1),(0,0),(2,0),(2,1),(0,1)
 Color [Blue] coords: (2,2),(1,2),(1,1),(2,1),(2,2)
-Color [Red] coords: (0,2),(0,1),(1,1),(1,2),(0,2)
+Color [Red] coords: (1,2),(1,1),(0,1),(0,2),(1,2)
