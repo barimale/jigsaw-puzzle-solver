@@ -21,6 +21,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             : this()
         {
             Canvas = canvas;
+            Canvas.RenderTransform = new ScaleTransform(
+                1, 1);
         }
 
         public double LatestFitness { private set; get; }
@@ -59,6 +61,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                     .BestChromosome as TangramChromosome;
 
                 ShowChromosome(bestChromosome);
+                Canvas.RenderTransform = new ScaleTransform(
+                30, 30);
             }
         }
 
@@ -80,7 +84,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             board.Points = new PointCollection();
             board.Fill = Brushes.White;
             board.Stroke = Brushes.Black;
-            board.StrokeThickness = 2;
+            board.StrokeThickness = 0.1d;
 
             c.BoardShapeDefinition
                 .Polygon
@@ -107,8 +111,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                         .Select(pp => new Point(pp.X, pp.Y))
                         .ToList());
                     shape.Fill = ConvertColor(p.Color);
-                    shape.Stroke = Brushes.Black;
-                    shape.StrokeThickness = 1;
+                    //shape.Stroke = Brushes.Black;
+                    shape.StrokeThickness =0;
                     return (UIElement)shape;
                 })
                 .ToList();
