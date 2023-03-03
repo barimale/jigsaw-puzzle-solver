@@ -9,11 +9,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
     public class I_would_like_to_solve_simple_board: PrintToConsoleUTBase
     {
         private AlgorithmDebugHelper AlgorithmDebugHelper;
+        private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
         public I_would_like_to_solve_simple_board(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmDebugHelper = new AlgorithmDebugHelper();
+            AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
         [Fact]
@@ -48,7 +50,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 }
 
             konfiguracjaGry.Algorithm.TerminationReached += AlgorithmDebugHelper.Algorithm_TerminationReached;
+            konfiguracjaGry.Algorithm.TerminationReached += AlgorithmUTConsoleHelper.Algorithm_TerminationReached;
+
             konfiguracjaGry.Algorithm.GenerationRan += AlgorithmDebugHelper.Algorithm_Ran;
+            konfiguracjaGry.Algorithm.GenerationRan += AlgorithmUTConsoleHelper.Algorithm_Ran;
 
             // when
             konfiguracjaGry.Algorithm.Start();

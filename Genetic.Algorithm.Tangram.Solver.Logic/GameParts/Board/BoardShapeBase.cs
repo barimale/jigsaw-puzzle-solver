@@ -1,6 +1,7 @@
 ﻿using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
+using System.Text;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 {
@@ -84,7 +85,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
 
         public string[] BoardPolygonAsStringArray()
         {
-            return new string[0] { };
+            return new string[1] { this.ToString() };
         }
     }
 }

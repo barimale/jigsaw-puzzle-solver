@@ -32,14 +32,19 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 
         public static string[] LocationAsStringArray(Geometry location)
         {
-            // TODO
-            return new string[0] { };
-        }
-
-        public string[] BlocksAsStringArray()
-        {
-            // TODO: implement here
-            return new string[0] { } ;
+            var toString = location
+                .Coordinates
+                .Select(p =>
+                    "(" +
+                    Math.Round(p.X, 2)
+                        .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                    "," +
+                    Math.Round(p.Y, 2)
+                        .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                    ")").ToArray();
+            var toStringAsArray = string.Join(',', toString);
+            
+            return new string[1] { toStringAsArray };
         }
 
         public string[] BoardAsStringArray()
