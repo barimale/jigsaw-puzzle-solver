@@ -96,6 +96,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 .Permutate<Geometry>(allLocations);
 
             var blocksAsArray = blocks.ToArray();
+            var preloadFitness = double.MinValue;
+            var preloadSolutions = new List<Tuple<double, TangramChromosome>>();
+            var tangramFitness = new TangramFitness(boardDefinition, blocks);
 
             foreach (var permutation in allPermutations)
             {
@@ -116,16 +119,32 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                         new Gene(newBlockAsGene));
                 }
 
+                var newFitness = tangramFitness.Evaluate(newChromosome);
+                if(newFitness >= preloadFitness)
+                {
+                    preloadFitness = newFitness;
+                    preloadSolutions.Add(
+                        Tuple.Create(
+                            newFitness,
+                            newChromosome));
+                }
                 chromosomes.Add(newChromosome);
             }
 
             var chromosomesAmount = chromosomes.Count;
+            var chromosomesWithFitnessBelowFive = preloadSolutions
+                .Where(p => p.Item1 > -5f)
+                .ToList();
+
+            var onlyCompleteSolutions = preloadSolutions
+                .Where(ppp => ppp.Item1 == 0f)
+                .ToList();
 
             var preloadedPopulation = new PreloadedPopulation(
                 multipliedDynamicPopulationSize,
                 generationChromosomesNumber,
                 chromosomes);
-            preloadedPopulation.GenerationStrategy = new TrackingGenerationStrategy();
+            //preloadedPopulation.GenerationStrategy = new TrackingGenerationStrategy();
             //population.CreateInitialGeneration();
 
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
@@ -160,18 +179,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 throw new Exception("The summarized block definitions area cannot be bigger than the board area.");
             
             return gameConfiguration;
-        }
-
-        private static int Silnia(int n)
-        {
-            int result = 1;
-            while(n > 0)
-            {
-                result = result * n;
-                n = n - 1;
-            }
-
-            return result;
         }
     }
 }

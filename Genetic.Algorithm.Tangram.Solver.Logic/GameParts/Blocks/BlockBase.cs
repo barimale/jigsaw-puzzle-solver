@@ -17,7 +17,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
         {
             Polygon = polygon;
             Color = color;
-            this.MoveToZero();
+            if(moveToZero)
+            {
+                this.MoveToZero();
+            }
         }
 
         public void SetAllowedLocations(Geometry[] locations)

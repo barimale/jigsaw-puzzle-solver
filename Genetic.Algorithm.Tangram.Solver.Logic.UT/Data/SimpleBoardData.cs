@@ -4,6 +4,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
 using System.Drawing;
 using GeneticSharp;
 using NetTopologySuite.Geometries;
+using Genetic.Algorithm.Tangram.Solver.Logic.Extensions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 {
@@ -85,6 +86,61 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 blocks,
                 boardDefinition,
                 angles);
+
+
+            var chromosomes = new List<IChromosome>();
+
+            var allLocations = preconfiguredBlocks
+                .Select(p => p.AllowedLocations.ToArray())
+                .ToArray();
+
+            var allPermutations = PopulationHelper
+                .Permutate<Geometry>(allLocations);
+
+            var blocksAsArray = blocks.ToArray();
+            var preloadFitness = double.MinValue;
+            var preloadSolutions = new List<Tuple<double, TangramChromosome>>();
+            var tangramFitness = new TangramFitness(boardDefinition, blocks);
+
+            foreach (var permutation in allPermutations)
+            {
+                var newChromosome = new TangramChromosome(
+                    preconfiguredBlocks,
+                    boardDefinition,
+                    angles);
+
+                foreach (var (gene, index) in permutation.WithIndex())
+                {
+                    var newBlockAsGene = new BlockBase(
+                        gene,
+                        blocksAsArray[index].Color,
+                        false);
+
+                    newChromosome.ReplaceGene(
+                        index,
+                        new Gene(newBlockAsGene));
+                }
+
+                var newFitness = tangramFitness.Evaluate(newChromosome);
+                if (newFitness >= preloadFitness)
+                {
+                    preloadFitness = newFitness;
+                    preloadSolutions.Add(
+                        Tuple.Create(
+                            newFitness,
+                            newChromosome));
+                }
+                chromosomes.Add(newChromosome);
+            }
+
+            var chromosomesAmount = chromosomes.Count;
+            var chromosomesWithFitnessBelowFive = preloadSolutions
+                .Where(p => p.Item1 > -5f)
+                .ToList();
+
+            var onlyCompleteSolutions = preloadSolutions
+                .Where(ppp => ppp.Item1 == 0f)
+                .ToList();
 
             // solver
             // TODO: reuse some data from above
