@@ -63,7 +63,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 angles);
 
             // solver
-            var generationChromosomesNumber = 2000;
+            var generationChromosomesNumber = 200000;
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var chromosome = new TangramChromosome(
@@ -75,7 +75,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 generationChromosomesNumber,
                 chromosome);// understand the population parameters
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
-            var crossover = new OrderedCrossover(); //  TangramCrossover
+            var crossover = new TangramCrossover(); //  TangramCrossover
             var mutation = new TangramMutation(); // RouletteWheelSelection
             var fitness = new TangramFitness(boardDefinition, blocks);
             var reinsertion = new ElitistReinsertion();
@@ -108,6 +108,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             return gameConfiguration;
         }
 
-        
+        private static int Silnia(int n)
+        {
+            int result = 1;
+            while(n > 0)
+            {
+                result = result * n;
+                n = n - 1;
+            }
+
+            return result;
+        }
     }
 }
