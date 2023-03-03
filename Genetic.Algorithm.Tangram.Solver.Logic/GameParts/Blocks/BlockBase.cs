@@ -13,7 +13,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
         public bool IsAllowedLocationsEnabled => AllowedLocations != null && AllowedLocations.Length > 0;
         public double Area => Polygon.Area;
 
-        public BlockBase(Geometry polygon, Color color)
+        public BlockBase(Geometry polygon, Color color, bool moveToZero = true)
         {
             Polygon = polygon;
             Color = color;

@@ -4,6 +4,8 @@ using Genetic.Algorithm.Tangram.Solver.Logic.GameParts;
 using GeneticSharp;
 using Genetic.Algorithm.Tangram.Solver.Logic.Utilities;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard.Blocks;
+using NetTopologySuite.Geometries;
+using Genetic.Algorithm.Tangram.Solver.Logic.Extensions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
 {
@@ -73,17 +75,59 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             }
 
             // solver
-            var generationChromosomesNumber = Math.Max(multipliedDynamicPopulationSize / blocks.Count, 500);
+            var generationChromosomesNumber = Math.Max(multipliedDynamicPopulationSize, 30000);
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
+
+            // use together with the population class
             var chromosome = new TangramChromosome(
                 preconfiguredBlocks,
                 boardDefinition,
                 angles);
-            var population = new Population(
+
+            // all combinations of genes as an initial set of chromosomes
+            var chromosomes = new List<IChromosome>();
+
+            var allLocations = preconfiguredBlocks
+                .Select(p => p.AllowedLocations.ToArray())
+                .ToArray();
+
+            var allPermutations = PopulationHelper
+                .Permutate<Geometry>(allLocations);
+
+            var blocksAsArray = blocks.ToArray();
+
+            foreach (var permutation in allPermutations)
+            {
+                var newChromosome = new TangramChromosome(
+                    preconfiguredBlocks,
+                    boardDefinition,
+                    angles);
+
+                foreach(var (gene, index) in permutation.WithIndex())
+                {
+                    var newBlockAsGene = new BlockBase(
+                        gene,
+                        blocksAsArray[index].Color,
+                        false);
+
+                    newChromosome.ReplaceGene(
+                        index,
+                        new Gene(newBlockAsGene));
+                }
+
+                chromosomes.Add(newChromosome);
+            }
+
+            var chromosomesAmount = chromosomes.Count;
+
+            var preloadedPopulation = new PreloadedPopulation(
+                multipliedDynamicPopulationSize,
                 generationChromosomesNumber,
-                generationChromosomesNumber,
-                chromosome);// understand the population parameters
+                chromosomes);
+            preloadedPopulation.GenerationStrategy = new TrackingGenerationStrategy();
+            //population.CreateInitialGeneration();
+
             var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
             var crossover = new TangramCrossover(); //  TangramCrossover
             var mutation = new TangramMutation(); // RouletteWheelSelection
@@ -94,7 +138,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
 
             var solverBuilder = Factory.Factory.CreateNew();
             var solver = solverBuilder
-                .WithPopulation(population)
+                .WithPopulation(preloadedPopulation)
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)
