@@ -76,7 +76,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             Canvas.Children.Clear();
 
             // show board
-            var board = c.BoardShapeDefinition.ToString();
+            var board = new Polygon();
+            board.Points = new PointCollection();
+            board.Fill = Brushes.White;
+            board.Stroke = Brushes.Black;
+            board.StrokeThickness = 2;
+
+            c.BoardShapeDefinition
+                .Polygon
+                .Coordinates
+                .ToList()
+                .ForEach(p => board
+                    .Points
+                    .Add(new Point(p.X, p.Y)));
+
+            Canvas.Children.Add(board);
 
             // show blocks
             var solution = c

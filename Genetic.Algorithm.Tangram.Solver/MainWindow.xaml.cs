@@ -1,19 +1,8 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Genetic.Algorithm.Tangram.Solver
 {
@@ -24,6 +13,7 @@ namespace Genetic.Algorithm.Tangram.Solver
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private GameExecutor gameExecutor;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -36,19 +26,28 @@ namespace Genetic.Algorithm.Tangram.Solver
             if (canvas == null)
                 throw new Exception("Canvas not loaded correctly");
 
-            algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas);
+            if(algorithmDisplayHelper == null)
+                algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas);
 
-            gameExecutor = new GameExecutor(algorithmDisplayHelper);
-            RectangleGeometry myRectangleGeometry = new RectangleGeometry();
-            myRectangleGeometry.Rect = new Rect(50, 50, 25, 25);
+            if(gameExecutor == null)
+                gameExecutor = new GameExecutor(
+                    algorithmDisplayHelper,
+                    SimpleBoardData.DemoData());
+        }
 
-            Path myPath = new Path();
-            myPath.Fill = Brushes.LemonChiffon;
-            myPath.Stroke = Brushes.Black;
-            myPath.StrokeThickness = 1;
-            myPath.Data = myRectangleGeometry;
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            gameExecutor.Execute();
+        }
 
-            a.Children.Add(myPath);
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            gameExecutor.Pause();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            gameExecutor.Resume();
         }
     }
 }

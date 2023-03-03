@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Logic.UT\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj" />
     <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Logic\Genetic.Algorithm.Tangram.Solver.Logic.csproj" />
   </ItemGroup>
 
