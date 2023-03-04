@@ -1,6 +1,8 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.Geometries.Prepared;
+using System;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 {
@@ -36,35 +38,33 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             var minY = (int)board.Polygon.EnvelopeInternal.MinY;
             var maxY = (int)board.Polygon.EnvelopeInternal.MaxY;
             var anglesCount = allowedAngles.Length;
+            bool[] flips ={ false, true };
 
-            var hasToBeFlipped = true;
-            for (int a = 0; a < anglesCount; a++)
+            object[][] allInputsAsArray = new[] {
+                Enumerable.Range(minX, maxX - minX).Select(p => (object)p).ToArray(), // x
+                Enumerable.Range(minY, maxY - minY).Select(p => (object)p).ToArray(), // y
+                Enumerable.Range(0, anglesCount - 1).Select(p => (object)p).ToArray(), // angles
+                flips.Select(p => (object)p).ToArray() // flips
+            };
+
+            var permutated = PopulationHelper.Permutate<object>(allInputsAsArray);
+
+            foreach(var permutation in permutated.ToList())
             {
-                for (int i = minX; i <= maxX; i++)
-                {
-                    for (int j = minY; j <= maxY; j++)
-                    {
-                        var newWithFlip = Check(block, board, allowedAngles, i, j, a, hasToBeFlipped);
+                var permutationAsArray = permutation.ToArray();
 
-                        if (newWithFlip != null)
-                            locations.Add(newWithFlip);
-                    }
-                }
-            }
+                var newWithFlip = Check(
+                    block,
+                    board,
+                    allowedAngles,
+                    (int)permutationAsArray[0],
+                    (int)permutationAsArray[1],
+                    (int)permutationAsArray[2],
+                    (bool)permutationAsArray[3]
+                );
 
-            hasToBeFlipped = false;
-            for (int a = 0; a < anglesCount; a++)
-            {
-                for (int i = minX; i <= maxX; i++)
-                {
-                    for (int j = minY; j <= maxY; j++)
-                    {
-                        var newWithFlip = Check(block, board, allowedAngles, i, j, a, hasToBeFlipped);
-
-                        if (newWithFlip != null)
-                            locations.Add(newWithFlip);
-                    }
-                }
+                if (newWithFlip != null)
+                    locations.Add(newWithFlip);
             }
 
             var distinctedLocations = new HashSet<Geometry>();
@@ -131,7 +131,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             modified.MoveTo(i, j);
 
             //var slightlyBiggerBoard = board.CoverableBoard;
-            if (board.Polygon.Covers(modified.Polygon))
+            IPreparedGeometry preparedBoard = PreparedGeometryFactory
+                .Prepare(board.Polygon);
+            if (preparedBoard.Covers(modified.Polygon))
             {
                 var newGeometry = new GeometryFactory()
                     .CreateGeometry(modified.Polygon);

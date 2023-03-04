@@ -10,7 +10,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
     {
         private ImmutableArray<BlockBase> blocks;
         private int[] allowedAngles;
-        private int allowedAnglesCount => allowedAngles.Length;
+        private int allowedAnglesCount => allowedAngles.Length + 1; // TODO WIP
 
         public TangramChromosome(
             IList<BlockBase> blocks,
@@ -46,7 +46,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
                 var randomIndex = new FastRandomRandomization()
                     .GetInt(
                         0,
-                        newBlock.AllowedLocations.Length - 1);
+                        newBlock.AllowedLocations.Length); // TODO WIP
 
                 var randomMutatedBlock = newBlock.AllowedLocations[randomIndex];
                 newBlock.Apply(randomMutatedBlock);
