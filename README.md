@@ -24,3 +24,7 @@ https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/M
 
 # BUGS
 Check all .Length and .Count occurences in Logic project
+
+create the static demo data with purple block only 
+contianing permutation of angles xy for medium board
+and draw all combinations in wpf 
