@@ -13,7 +13,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
         {
             var modified = new List<BlockBase>();
             // calculate allowed locations of blocks
-            foreach (var block in blocks)
+            foreach (var block in blocks.ToList())
             {
                 var locations = Generate(
                     block,
@@ -130,8 +130,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             modified.Rotate(allowedAngles[a]);
             modified.MoveTo(i, j);
 
-            var slightlyBiggerBoard = board.CoverableBoard;
-            if (slightlyBiggerBoard.Covers(modified.Polygon)) // board.Polygon
+            //var slightlyBiggerBoard = board.CoverableBoard;
+            if (board.Polygon.Covers(modified.Polygon))
             {
                 var newGeometry = new GeometryFactory()
                     .CreateGeometry(modified.Polygon);

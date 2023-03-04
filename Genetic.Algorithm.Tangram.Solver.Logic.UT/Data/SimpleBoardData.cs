@@ -87,64 +87,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 boardDefinition,
                 angles);
 
-
-            var chromosomes = new List<IChromosome>();
-
-            var allLocations = preconfiguredBlocks
-                .Select(p => p.AllowedLocations.ToArray())
-                .ToArray();
-
-            var allPermutations = PopulationHelper
-                .Permutate<Geometry>(allLocations);
-
-            var blocksAsArray = blocks.ToArray();
-            var preloadFitness = double.MinValue;
-            var preloadSolutions = new List<Tuple<double, TangramChromosome>>();
-            var tangramFitness = new TangramFitness(boardDefinition, blocks);
-
-            foreach (var permutation in allPermutations)
-            {
-                var newChromosome = new TangramChromosome(
-                    preconfiguredBlocks,
-                    boardDefinition,
-                    angles);
-
-                foreach (var (gene, index) in permutation.WithIndex())
-                {
-                    var newBlockAsGene = new BlockBase(
-                        gene,
-                        blocksAsArray[index].Color,
-                        false);
-
-                    newChromosome.ReplaceGene(
-                        index,
-                        new Gene(newBlockAsGene));
-                }
-
-                var newFitness = tangramFitness.Evaluate(newChromosome);
-                if (newFitness >= preloadFitness)
-                {
-                    preloadFitness = newFitness;
-                    preloadSolutions.Add(
-                        Tuple.Create(
-                            newFitness,
-                            newChromosome));
-                }
-                chromosomes.Add(newChromosome);
-            }
-
-            var chromosomesAmount = chromosomes.Count;
-            var chromosomesWithFitnessBelowFive = preloadSolutions
-                .Where(p => p.Item1 > -5f)
-                .ToList();
-
-            var onlyCompleteSolutions = preloadSolutions
-                .Where(ppp => ppp.Item1 == 0f)
-                .ToList();
-
             // solver
-            // TODO: reuse some data from above
-            // and check everything once again
             var generationChromosomesNumber = 500;
             var mutationProbability = 0.1f;
             var crossoverProbability = 1.0f - mutationProbability;

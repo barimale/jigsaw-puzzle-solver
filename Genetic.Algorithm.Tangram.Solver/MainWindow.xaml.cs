@@ -1,4 +1,5 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using System;
 using System.Windows;
@@ -32,7 +33,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             if(gameExecutor == null)
                 gameExecutor = new GameExecutor(
                     algorithmDisplayHelper,
-                    SimpleBoardData.DemoData());
+                    BigBoardData.DemoData());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

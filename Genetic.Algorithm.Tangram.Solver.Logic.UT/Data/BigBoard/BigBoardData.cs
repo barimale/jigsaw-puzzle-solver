@@ -17,9 +17,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             // allowed angles
             var angles = new int[]
             {
-                //-270,
-                //-180,
-                //-90,
+                -270,
+                -180,
+                -90,
                 0,
                 90,
                 180,
@@ -56,7 +56,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 Green.Create(),
                 LightGreen.Create(),
                 Orange.Create(),
-                Yellow.Create(),
+                Yellow.Create()
             };
 
             // calculate allowed locations of blocks
