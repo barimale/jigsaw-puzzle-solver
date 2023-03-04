@@ -78,7 +78,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 generationChromosomesNumber,
                 generationChromosomesNumber,
                 chromosome);// understand the population parameters
-            var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
+            var selection = new RouletteWheelSelection(); // EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
             var fitness = new TangramFitness(boardDefinition, blocks);
