@@ -135,7 +135,26 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             {
                 var newGeometry = new GeometryFactory()
                     .CreateGeometry(modified.Polygon);
-                // optionally clearcoordinates here
+
+                var digits = 3;
+                var minimalDiff = 0.001d;
+
+                foreach (var cc in newGeometry.Coordinates)
+                {
+                    if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven)) < minimalDiff)
+                    {
+                        var result = Convert.ToInt32(
+                                Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven));
+                        cc.CoordinateValue.X = result;
+                    }
+
+                    if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven)) < minimalDiff)
+                    {
+                        var result = Convert.ToInt32(
+                                Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven));
+                        cc.CoordinateValue.Y = result;
+                    }
+                }
 
                 return newGeometry;
             }

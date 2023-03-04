@@ -21,8 +21,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             : this()
         {
             Canvas = canvas;
-            Canvas.RenderTransform = new ScaleTransform(
-                1, 1);
         }
 
         public double LatestFitness { private set; get; }

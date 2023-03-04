@@ -24,12 +24,14 @@ namespace Genetic.Algorithm.Tangram.Solver.WPF
 
         public void Pause()
         {
-            konfiguracjaGry.Algorithm.Stop();
+            if(konfiguracjaGry.Algorithm.IsRunning)
+                konfiguracjaGry.Algorithm.Stop();
         }
 
         public void Resume()
         {
-            konfiguracjaGry.Algorithm.Resume();
+            if (konfiguracjaGry.Algorithm.IsRunning)
+                konfiguracjaGry.Algorithm.Resume();
         }
     }
 }

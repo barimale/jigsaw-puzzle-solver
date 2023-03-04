@@ -14,7 +14,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
         public int Width => WidthUnit * ScaleFactor;
         public int Height => HeightUnit * ScaleFactor;
         public Polygon Polygon { private set; get; }
-        public Polygon CoverableBoard { private set; get; }
         public double Area => Polygon.Area;
 
         public BoardShapeBase(
@@ -26,7 +25,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
         {
             BoardFieldsDefinition = boardFieldsDefinition;
             Polygon = MapFieldsToPolygon();
-            CoverableBoard = AsCoverableBoard();
             WidthUnit = widthUnit;
             HeightUnit = heightUnit;
             ScaleFactor = scaleFactor;
@@ -66,20 +64,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Board
             polygon.Apply(moveToZero);
 
             return polygon;
-        }
-
-        private Polygon AsCoverableBoard()
-        {
-            var scaleF = (double)((ScaleFactor / 20d + 1d));
-            var transform = new AffineTransformation();
-            var rotation = transform.Scale(scaleF, scaleF);
-
-            var newGeometry = new GeometryFactory()
-                    .CreatePolygon(Polygon.Coordinates.ToArray());
-
-            newGeometry.Apply(rotation);
-
-            return newGeometry;
         }
 
         public override string ToString()
