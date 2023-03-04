@@ -65,6 +65,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 boardDefinition,
                 angles);
 
+            // dynamic initial population size idea
             var dynamicPopulationSize = blocks
                 .Select(p => p.AllowedLocations.Length)
                 .ToList();
