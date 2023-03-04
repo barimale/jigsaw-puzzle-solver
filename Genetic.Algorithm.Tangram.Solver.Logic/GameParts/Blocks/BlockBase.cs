@@ -109,17 +109,17 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
 
             foreach (var cc in Polygon.Coordinates)
             {
-                if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven)) < minimalDiff)
+                if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
                 {
                     var result = Convert.ToInt32(
-                            Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven));
+                            Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero));
                     cc.CoordinateValue.X = result;
                 }
 
-                if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven)) < minimalDiff)
+                if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
                 {
                     var result = Convert.ToInt32(
-                            Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven));
+                            Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero));
                     cc.CoordinateValue.Y = result;
                 }
             }

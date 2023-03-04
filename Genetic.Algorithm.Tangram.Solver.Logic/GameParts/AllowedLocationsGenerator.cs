@@ -73,30 +73,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             {
                 var exists = distinctedLocations.Any(p =>
                 {
-                    var zip1 =  p
-                        .Coordinates
-                        .ToList()
-                        .DistinctBy(d => $@"{d.X} & {d.Y}")
-                        .OrderBy(pp => pp.X)
-                        .ThenBy(ppp => ppp.Y)
-                        .ToList();
-
-                    var zip2 =
-                            location
-                                .Coordinates
-                                .ToList()
-                                .DistinctBy(dd => $@"{dd.X} & {dd.Y}")
-                                .OrderBy(ss => ss.X)
-                                .ThenBy(sss => sss.Y)
-                                .ToList();
-
-                    var zipped = zip1.Zip(zip2);
-
-                    var areBothTheSame = zipped.All(pair =>
-                        pair.First.X == pair.Second.X
-                        && pair.First.Y == pair.Second.Y);
-
-                    return areBothTheSame;
+                   return p.CoveredBy(location) && !p.Crosses(location);
                 });
 
                 if (!exists)
@@ -146,7 +123,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             modified.Rotate(allowedAngles[a]);
             modified.MoveTo(i, j);
 
-            //var slightlyBiggerBoard = board.CoverableBoard;
             IPreparedGeometry preparedBoard = PreparedGeometryFactory
                 .Prepare(board.Polygon);
             if (preparedBoard.Covers(modified.Polygon))
@@ -159,17 +135,17 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 
                 foreach (var cc in newGeometry.Coordinates)
                 {
-                    if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven)) < minimalDiff)
+                    if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
                     {
                         var result = Convert.ToInt32(
-                                Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven));
+                                Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero));
                         cc.CoordinateValue.X = result;
                     }
 
-                    if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven)) < minimalDiff)
+                    if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
                     {
                         var result = Convert.ToInt32(
-                                Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven));
+                                Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero));
                         cc.CoordinateValue.Y = result;
                     }
                 }
