@@ -51,7 +51,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             {
                 DarkBlue.Create(),
                 LightBlue.Create(),
-                Purple.Create(),
+                Purple.Create(), // a problem with shapes like C, not all allowed locations are generated
                 Blue.Create(),
                 //Blue.Create(),// with another blue works ok
             };
@@ -149,9 +149,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             //preloadedPopulation.GenerationStrategy = new TrackingGenerationStrategy();
             //population.CreateInitialGeneration();
 
-            var selection = new EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
-            var crossover = new TangramCrossover(); //  TangramCrossover
-            var mutation = new TangramMutation(); // RouletteWheelSelection
+            var selection = new RouletteWheelSelection(); // new EliteSelection(generationChromosomesNumber);//RouletteWheelSelection
+            var crossover = new TangramCrossover();
+            var mutation = new TangramMutation();
             var fitness = new TangramFitness(boardDefinition, blocks);
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy(); // DefaultOperatorsStrategy(); //TplOperatorsStrategy
