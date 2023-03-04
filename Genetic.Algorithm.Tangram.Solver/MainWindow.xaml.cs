@@ -33,7 +33,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             if(gameExecutor == null)
                 gameExecutor = new GameExecutor(
                     algorithmDisplayHelper,
-                    SimpleBoardData.DemoData());
+                    MediumBoardData.DemoData()); // SimpleBoardData
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

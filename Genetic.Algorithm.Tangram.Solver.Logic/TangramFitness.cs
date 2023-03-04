@@ -33,10 +33,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
             var f1 = CalculatePolygonsIntersectDiff(evaluatedGeometry.ToArray());
             f1 += CalculateOutOfBoundsDiff(
                 evaluatedGeometry.ToArray(),
-                boardShapeDefinition);
-            f1 += CalculateVolumeDiff(
-                evaluatedGeometry.ToArray(),
-                boardShapeDefinition);
+                boardShapeDefinition);// TODO WIP what in case the area of blocks is smaller then board
+            //f1 += CalculateVolumeDiff(
+            //    evaluatedGeometry.ToArray(),
+            //    boardShapeDefinition);
 
             var result = f1 * (-1d);
 
