@@ -43,13 +43,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             object[][] allInputsAsArray = new[] {
                 Enumerable.Range(minX, maxX - minX).Select(p => (object)p).ToArray(), // x
                 Enumerable.Range(minY, maxY - minY).Select(p => (object)p).ToArray(), // y
-                Enumerable.Range(0, anglesCount - 1).Select(p => (object)p).ToArray(), // angles
+                Enumerable.Range(0, anglesCount).Select(p => (object)p).ToArray(), // angles
                 flips.Select(p => (object)p).ToArray() // flips
             };
 
             var permutated = PopulationHelper.Permutate<object>(allInputsAsArray);
+            var permutatedCount = permutated.ToList().Count;
 
-            foreach(var permutation in permutated.ToList())
+            foreach (var permutation in permutated.ToList())
             {
                 var permutationAsArray = permutation.ToArray();
 
@@ -75,7 +76,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
                     var zip1 =  p
                         .Coordinates
                         .ToList()
-                        .DistinctBy(d => $@"{d.X} - {d.Y}")
+                        .DistinctBy(d => $@"{d.X} & {d.Y}")
                         .OrderBy(pp => pp.X)
                         .ThenBy(ppp => ppp.Y)
                         .ToList();
@@ -84,23 +85,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
                             location
                                 .Coordinates
                                 .ToList()
-                                .DistinctBy(dd => $@"{dd.X} - {dd.Y}")
+                                .DistinctBy(dd => $@"{dd.X} & {dd.Y}")
                                 .OrderBy(ss => ss.X)
                                 .ThenBy(sss => sss.Y)
                                 .ToList();
 
                     var zipped = zip1.Zip(zip2);
 
-                    var result = true;
-                    foreach(var pair in zipped)
-                    {
-                        if(pair.First.X != pair.Second.X || pair.First.Y != pair.Second.Y)
-                        {
-                            result = false;
-                        }
-                    }
+                    var areBothTheSame = zipped.All(pair =>
+                        pair.First.X == pair.Second.X
+                        && pair.First.Y == pair.Second.Y);
 
-                    return result;
+                    return areBothTheSame;
                 });
 
                 if (!exists)
@@ -108,6 +104,26 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
                     distinctedLocations.Add(location);
                 }
             }
+
+            var toHtmlDrawer = distinctedLocations
+                .Select(p =>
+                {
+                    var toString = p
+                        .Coordinates
+                        .Select(p =>
+                            "(" +
+                            Math.Round(p.X, 2)
+                                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                            "," +
+                            Math.Round(p.Y, 2)
+                                .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                            ")").ToArray();
+
+                    var toStringAsArray = string.Join(',', toString);
+
+                    return toStringAsArray;
+                })
+                .ToArray();
 
             return distinctedLocations
                 .ToArray();

@@ -23,4 +23,4 @@ https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/M
 ```
 
 # BUGS
-Check all .Length and Count occurences in Logic project
+Check all .Length and .Count occurences in Logic project
