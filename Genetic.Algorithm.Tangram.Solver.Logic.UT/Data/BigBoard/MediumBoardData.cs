@@ -53,7 +53,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
                 LightBlue.Create(),
                 Purple.Create(), // a problem with shapes like C, not all allowed locations are generated
                 Blue.Create(),
-                //Blue.Create(),// with another blue works ok
             };
 
             // calculate allowed locations of blocks
