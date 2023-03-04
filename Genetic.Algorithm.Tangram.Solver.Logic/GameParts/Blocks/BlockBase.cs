@@ -28,9 +28,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks
             this.AllowedLocations = locations;
         }
 
-        public BlockBase Clone()
+        public BlockBase Clone(bool moveToZero = true)
         {
-            var cloned =  new BlockBase(Polygon, Color);
+            var cloned =  new BlockBase(Polygon, Color, moveToZero);
             cloned.SetAllowedLocations(AllowedLocations);
 
             return cloned;

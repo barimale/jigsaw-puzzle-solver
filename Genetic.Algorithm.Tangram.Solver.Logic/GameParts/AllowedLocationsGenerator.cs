@@ -22,7 +22,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
 
                 block.SetAllowedLocations(locations);
 
-                modified.Add(block);
+                modified.Add(block.Clone());
             }
 
             return modified;
@@ -37,20 +37,32 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             var maxY = (int)board.Polygon.EnvelopeInternal.MaxY;
             var anglesCount = allowedAngles.Length;
 
-            for(int i = minX; i <= maxX; i++)
+            var hasToBeFlipped = true;
+            for (int a = 0; a < anglesCount; a++)
             {
-                for(int j = minY; j <= maxY; j++)
+                for (int i = minX; i <= maxX; i++)
                 {
-                    for(int a = 0; a < anglesCount; a++)
+                    for (int j = minY; j <= maxY; j++)
                     {
-                        var newWithFlip = Check(block, board, allowedAngles, i, j, a, true);
+                        var newWithFlip = Check(block, board, allowedAngles, i, j, a, hasToBeFlipped);
 
-                        if(newWithFlip != null)
+                        if (newWithFlip != null)
                             locations.Add(newWithFlip);
+                    }
+                }
+            }
 
-                        var newWithoutFlip = Check(block, board, allowedAngles, i, j, a, false);
-                        if (newWithoutFlip != null)
-                            locations.Add(newWithoutFlip);
+            hasToBeFlipped = false;
+            for (int a = 0; a < anglesCount; a++)
+            {
+                for (int i = minX; i <= maxX; i++)
+                {
+                    for (int j = minY; j <= maxY; j++)
+                    {
+                        var newWithFlip = Check(block, board, allowedAngles, i, j, a, hasToBeFlipped);
+
+                        if (newWithFlip != null)
+                            locations.Add(newWithFlip);
                     }
                 }
             }
@@ -110,7 +122,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             int a,
             bool hasToBeFlipped)
         {
-            var modified = block.Clone();
+            BlockBase modified = block.Clone(true);
             if(hasToBeFlipped)
             {
                 modified.Reflection();
@@ -118,34 +130,17 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.GameParts
             modified.Rotate(allowedAngles[a]);
             modified.MoveTo(i, j);
 
-            if (board.Polygon.Covers(modified.Polygon))
+            var slightlyBiggerBoard = board.CoverableBoard;
+            if (slightlyBiggerBoard.Covers(modified.Polygon)) // board.Polygon
             {
                 var newGeometry = new GeometryFactory()
                     .CreateGeometry(modified.Polygon);
-
-                var digits = 3;
-                var minimalDiff = 0.001d;
-                foreach(var cc in newGeometry.Coordinates)
-                {
-                    if(Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X,digits,MidpointRounding.ToEven)) < minimalDiff)
-                    {
-                        var result = Convert.ToInt32(
-                                Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.ToEven));
-                        cc.CoordinateValue.X = result;
-                    }
-
-                    if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven)) < minimalDiff)
-                    {
-                        var result = Convert.ToInt32(
-                                Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.ToEven));
-                        cc.CoordinateValue.Y = result;
-                    }
-                }
+                // optionally clearcoordinates here
 
                 return newGeometry;
             }
 
-            return null;
+            return null; // null here?
         }
     }
 }
