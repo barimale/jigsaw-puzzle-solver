@@ -84,7 +84,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard
             var fitness = new TangramFitness(boardDefinition, blocks);
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy();
-            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100);
+            var termination = new FitnessStagnationTermination(100); // new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100);
 
             var solverBuilder = Factory.Factory.CreateNew();
             var solver = solverBuilder
