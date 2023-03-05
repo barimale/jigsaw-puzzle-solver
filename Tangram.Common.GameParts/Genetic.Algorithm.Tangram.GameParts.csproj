@@ -7,14 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeneticSharp" Version="3.1.4" />
-    <PackageReference Include="GeneticSharp.Extensions" Version="3.1.4" />
-    <PackageReference Include="NetTopologySuite" Version="2.5.0" />
+	  <PackageReference Include="NetTopologySuite" Version="2.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj" />
-    <ProjectReference Include="..\Tangram.Utilities\Genetic.Algorithm.Tangram.Common.csproj" />
   </ItemGroup>
 
 </Project>

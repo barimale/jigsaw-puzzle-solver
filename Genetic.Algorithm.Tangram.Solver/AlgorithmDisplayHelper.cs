@@ -1,4 +1,5 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Logic.GameParts.Blocks;
+﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
 using System;
 using System.Linq;

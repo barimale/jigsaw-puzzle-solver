@@ -1,4 +1,4 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Logic.UT.Data.BigBoard;
+﻿using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using System;
@@ -30,10 +30,26 @@ namespace Genetic.Algorithm.Tangram.Solver
             if(algorithmDisplayHelper == null)
                 algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas);
 
-            if(gameExecutor == null)
+            var gameParts = GamePartConfiguratorBuilder
+               .AvalaibleGameSets
+               .CreateMediumBoard(withAllowedLocations: true);
+
+            var algorithm = GamePartConfiguratorBuilder
+                .AvalaibleTunedAlgorithms
+                .CreateMediumBoardSettings(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles);
+
+            var konfiguracjaGry = new GamePartConfiguratorBuilder()
+                .WithAlgorithm(algorithm)
+                .WithGamePartsConfigurator(gameParts)
+                .Build();
+
+            if (gameExecutor == null)
                 gameExecutor = new GameExecutor(
                     algorithmDisplayHelper,
-                    BigBoardData.DemoData());
+                    konfiguracjaGry);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

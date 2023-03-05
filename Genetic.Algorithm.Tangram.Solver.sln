@@ -3,21 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.WPF", "Genetic.Algorithm.Tangram.Solver\Genetic.Algorithm.Tangram.Solver.WPF.csproj", "{399AB789-9241-4FFD-B5E4-49FAE8716535}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Console", "Genetic.Algorithm.Tangram.Solver.Console\Genetic.Algorithm.Tangram.Solver.Console.csproj", "{2F6F810B-0590-44CC-AAAD-687E0539244D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Executor.WPF", "Genetic.Algorithm.Tangram.Solver\Algorithm.Executor.WPF.csproj", "{399AB789-9241-4FFD-B5E4-49FAE8716535}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Logic", "Genetic.Algorithm.Tangram.Solver.Logic\Genetic.Algorithm.Tangram.Solver.Logic.csproj", "{61731936-5AE6-4C55-AD71-B1D6E5B99AED}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dummies", "Dummies", "{7A569942-0036-4B5C-8C28-E9DE15C32826}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Console", "Dummies\Console\Console.csproj", "{A84321AF-923A-45AB-8665-956FECF6DCE6}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TspBlazor", "Dummies\TspBlazor\TspBlazor.csproj", "{ADF9FDC3-AFEF-47FB-A9F8-E71D3F79DA06}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TspConsole", "Dummies\TspConsole\TspConsole.csproj", "{0DF87AF5-59BB-4E5A-8CAC-025FAF3CBFC8}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unity3D - files on the disk, tutorial first", "Unity3D - files on the disk, tutorial first", "{4F6E0001-86DC-4E2D-8CEA-9554BE8ED9BE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Logic.UT", "Genetic.Algorithm.Tangram.Solver.Logic.UT\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj", "{DBA18022-6412-47A1-BFA5-5515EB81FCA8}"
 EndProject
@@ -26,9 +14,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConsoleGraphicsSamples", "ConsoleGraphicsSamples", "{09E751C2-5FBB-4C12-B6E3-2F16118183D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.GameParts", "Tangram.Common.GameParts\Genetic.Algorithm.Tangram.GameParts.csproj", "{ABCAA61C-B0E6-4684-9423-23552B8B1739}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DummyShapes", "DummyShapes\DummyShapes\DummyShapes.csproj", "{5BC7E278-3F4F-4B05-80D7-E82DED92A157}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Domain", "Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj", "{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Common", "Tangram.Utilities\Genetic.Algorithm.Tangram.Common.csproj", "{4E30A002-4720-475A-8767-F5DC7EC1784A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.AlgorithmSettings", "Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.AlgorithmSettings.csproj", "{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Configurator", "Tangram.Common.GameParts.Configurator\Genetic.Algorithm.Tangram.Configurator.csproj", "{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "engine", "engine", "{A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "unit-tests", "unit-tests", "{0D3E1247-6DE9-4E80-B3D9-AEE723124542}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solver", "solver", "{BD780A89-0748-4A6C-931A-CADBD8C4B41E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "game-parts", "game-parts", "{2F317253-CF7A-4799-B5DB-F040319A3CD5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{73FE0012-BA52-45F3-911D-20A7569C6FEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -40,44 +44,49 @@ Global
 		{399AB789-9241-4FFD-B5E4-49FAE8716535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{399AB789-9241-4FFD-B5E4-49FAE8716535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{399AB789-9241-4FFD-B5E4-49FAE8716535}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2F6F810B-0590-44CC-AAAD-687E0539244D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2F6F810B-0590-44CC-AAAD-687E0539244D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2F6F810B-0590-44CC-AAAD-687E0539244D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2F6F810B-0590-44CC-AAAD-687E0539244D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{61731936-5AE6-4C55-AD71-B1D6E5B99AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{61731936-5AE6-4C55-AD71-B1D6E5B99AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61731936-5AE6-4C55-AD71-B1D6E5B99AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61731936-5AE6-4C55-AD71-B1D6E5B99AED}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A84321AF-923A-45AB-8665-956FECF6DCE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A84321AF-923A-45AB-8665-956FECF6DCE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A84321AF-923A-45AB-8665-956FECF6DCE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A84321AF-923A-45AB-8665-956FECF6DCE6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ADF9FDC3-AFEF-47FB-A9F8-E71D3F79DA06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ADF9FDC3-AFEF-47FB-A9F8-E71D3F79DA06}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ADF9FDC3-AFEF-47FB-A9F8-E71D3F79DA06}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ADF9FDC3-AFEF-47FB-A9F8-E71D3F79DA06}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DF87AF5-59BB-4E5A-8CAC-025FAF3CBFC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DF87AF5-59BB-4E5A-8CAC-025FAF3CBFC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DF87AF5-59BB-4E5A-8CAC-025FAF3CBFC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DF87AF5-59BB-4E5A-8CAC-025FAF3CBFC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DBA18022-6412-47A1-BFA5-5515EB81FCA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DBA18022-6412-47A1-BFA5-5515EB81FCA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DBA18022-6412-47A1-BFA5-5515EB81FCA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DBA18022-6412-47A1-BFA5-5515EB81FCA8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5BC7E278-3F4F-4B05-80D7-E82DED92A157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5BC7E278-3F4F-4B05-80D7-E82DED92A157}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5BC7E278-3F4F-4B05-80D7-E82DED92A157}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5BC7E278-3F4F-4B05-80D7-E82DED92A157}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABCAA61C-B0E6-4684-9423-23552B8B1739}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCAA61C-B0E6-4684-9423-23552B8B1739}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCAA61C-B0E6-4684-9423-23552B8B1739}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCAA61C-B0E6-4684-9423-23552B8B1739}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{A84321AF-923A-45AB-8665-956FECF6DCE6} = {7A569942-0036-4B5C-8C28-E9DE15C32826}
-		{ADF9FDC3-AFEF-47FB-A9F8-E71D3F79DA06} = {7A569942-0036-4B5C-8C28-E9DE15C32826}
-		{0DF87AF5-59BB-4E5A-8CAC-025FAF3CBFC8} = {7A569942-0036-4B5C-8C28-E9DE15C32826}
-		{4F6E0001-86DC-4E2D-8CEA-9554BE8ED9BE} = {7A569942-0036-4B5C-8C28-E9DE15C32826}
-		{5BC7E278-3F4F-4B05-80D7-E82DED92A157} = {09E751C2-5FBB-4C12-B6E3-2F16118183D3}
+		{61731936-5AE6-4C55-AD71-B1D6E5B99AED} = {BD780A89-0748-4A6C-931A-CADBD8C4B41E}
+		{DBA18022-6412-47A1-BFA5-5515EB81FCA8} = {0D3E1247-6DE9-4E80-B3D9-AEE723124542}
+		{ABCAA61C-B0E6-4684-9423-23552B8B1739} = {2F317253-CF7A-4799-B5DB-F040319A3CD5}
+		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21} = {BD780A89-0748-4A6C-931A-CADBD8C4B41E}
+		{4E30A002-4720-475A-8767-F5DC7EC1784A} = {73FE0012-BA52-45F3-911D-20A7569C6FEA}
+		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61} = {2F317253-CF7A-4799-B5DB-F040319A3CD5}
+		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27} = {2F317253-CF7A-4799-B5DB-F040319A3CD5}
+		{BD780A89-0748-4A6C-931A-CADBD8C4B41E} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
+		{2F317253-CF7A-4799-B5DB-F040319A3CD5} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
+		{73FE0012-BA52-45F3-911D-20A7569C6FEA} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADC3F980-CAA3-45AF-A179-5C449EB5704C}
