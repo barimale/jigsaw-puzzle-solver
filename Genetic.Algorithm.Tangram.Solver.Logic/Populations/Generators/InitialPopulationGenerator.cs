@@ -34,7 +34,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators
                 var narrowedLocations = allLocations
                     .Select(p => 
                         p.Shuffle(new FastRandomRandomization())
-                        .Take((int)(p.Length * percentOfAllPermutationsInPercents / 100d))
+                        .Take(Convert.ToInt32(
+                            Math.Round(p.Length * percentOfAllPermutationsInPercents / 100d, MidpointRounding.ToPositiveInfinity)))
                         .ToList()
                      );
 
