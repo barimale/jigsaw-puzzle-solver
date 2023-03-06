@@ -4,9 +4,9 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
-    public class Permutation_needs_to_be_tested : PrintToConsoleUTBase
+    public class Generator_needs_to_be_tested: PrintToConsoleUTBase
     {
-        public Permutation_needs_to_be_tested(ITestOutputHelper output)
+        public Generator_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             // intentionally left blank

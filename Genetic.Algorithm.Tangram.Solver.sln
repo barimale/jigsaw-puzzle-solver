@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.S
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Logic.UT", "Genetic.Algorithm.Tangram.Solver.Logic.UT\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj", "{DBA18022-6412-47A1-BFA5-5515EB81FCA8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution-items", "solution-items", "{52BC3AEC-5C10-4976-A7FF-5902D13CC443}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-items", ".solution-items", "{52BC3AEC-5C10-4976-A7FF-5902D13CC443}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
