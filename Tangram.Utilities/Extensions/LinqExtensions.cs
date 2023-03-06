@@ -14,13 +14,6 @@
             return result;
         }
 
-        public static IEnumerable<IEnumerable<T>> PermutatePartially<T>(this T[][] sequences, double percentOfAllPermutationsInPercents)
-        {
-            var result = sequences.PartiallCartesianProduct(percentOfAllPermutationsInPercents);
-
-            return result;
-        }
-
         public static IEnumerable<IEnumerable<T>> Permutate<T>(this IEnumerable<IEnumerable<T>> sequences)
         {
             var result = sequences.CartesianProduct();
@@ -30,19 +23,6 @@
 
         private static IEnumerable<IEnumerable<T>> CartesianProduct<T>
             (this IEnumerable<IEnumerable<T>> sequences)
-        {
-            IEnumerable<IEnumerable<T>> emptyProduct =
-              new[] { Enumerable.Empty<T>() };
-            return sequences.Aggregate(
-              emptyProduct,
-              (accumulator, sequence) =>
-                from accseq in accumulator
-                from item in sequence
-                select accseq.Concat(new[] { item }));
-        }
-
-        private static IEnumerable<IEnumerable<T>> PartiallCartesianProduct<T>
-            (this IEnumerable<IEnumerable<T>> sequences, double percentOfAllPermutationsInPercents)
         {
             IEnumerable<IEnumerable<T>> emptyProduct =
               new[] { Enumerable.Empty<T>() };

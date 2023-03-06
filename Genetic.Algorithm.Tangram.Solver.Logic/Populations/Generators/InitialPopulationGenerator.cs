@@ -31,15 +31,22 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators
 
             if (percentOfAllPermutationsInPercents != 100d)
             {
-                finalPermutations = allLocations
-                    .PermutatePartially(percentOfAllPermutationsInPercents)
+                var narrowedLocations = allLocations
+                    .Select(p => 
+                        p.Shuffle(new FastRandomRandomization())
+                        .Take((int)(p.Length * percentOfAllPermutationsInPercents / 100d))
+                        .ToList()
+                     );
+
+                finalPermutations = narrowedLocations
+                    .Permutate()
                     .ToList();
             }
             else
             {
                 finalPermutations = allLocations
-                .Permutate()
-                .ToList();
+                    .Permutate()
+                    .ToList();
             }
 
             finalPermutations.AsParallel().ForAll(permutation =>
