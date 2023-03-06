@@ -1,8 +1,6 @@
 ﻿using GeneticSharp;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Logic;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Crossovers;
 using Genetic.Algorithm.Tangram.Solver.Logic.Mutations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
@@ -31,7 +29,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                     blocks,
                     fitness,
                     allowedAngles,
-                    1d);
+                    4d);
 
             var preloadedPopulation = new PreloadedPopulation(
                 generationChromosomesNumber / 2,

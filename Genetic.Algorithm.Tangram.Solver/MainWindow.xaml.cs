@@ -17,7 +17,7 @@ namespace Genetic.Algorithm.Tangram.Solver
         private AlgorithmDisplayHelper? algorithmDisplayHelper;
         private static GameExecutor? gameExecutor;
 
-        private Thread thread = new Thread(Execute);
+        //private Thread thread = new Thread(Execute);
 
         public MainWindow()
         {
@@ -63,8 +63,8 @@ namespace Genetic.Algorithm.Tangram.Solver
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            thread.Start();
-            //gameExecutor?.Execute();
+            //thread.Start();
+            gameExecutor?.Execute();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
