@@ -30,15 +30,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             };
 
             int[] angles = new int[]
-{
-            -270,
-            -180,
-            -90,
-            0,
-            90,
-            180,
-            270
-};
+            {
+                -270,
+                -180,
+                -90,
+                0,
+                90,
+                180,
+                270
+            };
 
             var fieldHeight = 1d;
             var fieldWidth = 1d;
