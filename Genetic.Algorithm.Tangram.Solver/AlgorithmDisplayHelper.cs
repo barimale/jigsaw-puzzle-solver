@@ -53,7 +53,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             if (bestFitness >= LatestFitness)
             {
                 LatestFitness = bestFitness;
-                //ShowChromosome(bestChromosome);
+                ShowChromosome(bestChromosome);
             }
         }
 
