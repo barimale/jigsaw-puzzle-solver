@@ -22,6 +22,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             : this()
         {
             Canvas = canvas;
+            Canvas.RenderTransform = new ScaleTransform(
+                30, 30);
         }
 
         public double LatestFitness { private set; get; }
@@ -60,8 +62,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                     .BestChromosome as TangramChromosome;
 
                 ShowChromosome(bestChromosome);
-                Canvas.RenderTransform = new ScaleTransform(
-                30, 30);
             }
         }
 

@@ -2,6 +2,7 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -13,7 +14,9 @@ namespace Genetic.Algorithm.Tangram.Solver
     public partial class MainWindow : Window
     {
         private AlgorithmDisplayHelper? algorithmDisplayHelper;
-        private GameExecutor? gameExecutor;
+        private static GameExecutor? gameExecutor;
+
+        private Thread thread = new Thread(Execute);
 
         public MainWindow()
         {
@@ -52,9 +55,15 @@ namespace Genetic.Algorithm.Tangram.Solver
                     konfiguracjaGry);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private static void Execute(object? obj)
         {
             gameExecutor?.Execute();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            thread.Start();
+            //gameExecutor?.Execute();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

@@ -13,6 +13,7 @@ namespace Genetic.Algorithm.Tangram.Solver.WPF
         {
             this.algorithmDisplayHelper = algorithmDisplayHelper;
             this.konfiguracjaGry = dataInput;
+
             if (konfiguracjaGry.Algorithm == null)
                 throw new System.Exception();
 
