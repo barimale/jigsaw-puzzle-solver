@@ -1,6 +1,12 @@
 using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
+using Genetic.Algorithm.Tangram.GameParts;
+using Genetic.Algorithm.Tangram.GameParts.Blocks;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Xunit.Abstractions;
+using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
@@ -13,28 +19,56 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         }
 
         [Fact]
-        public void Check_permutation_for_integers()
+        public void Check_if_all_possible_locations_are_generated()
         {
             // given
-            int[] list1 = { 1, 2 };
-            int[] list2 = { 3, 4, 5};
+            int scaleFactor = 1;
 
-            int[][] input = new[] {
-                list1,
-                list2
+            IList<BlockBase> blocks = new List<BlockBase>()
+            {
+                Purple.Create()
             };
 
+            int[] angles = new int[]
+{
+            -270,
+            -180,
+            -90,
+            0,
+            90,
+            180,
+            270
+};
+
+            var fieldHeight = 1d;
+            var fieldWidth = 1d;
+            var boardColumnsCount = 3;
+            var boardRowsCount = 3;
+            var fields = GamePartsFactory
+                .GeneratorsFactory
+                .FieldsGenerator
+                .GenerateFields(
+                    scaleFactor,
+                    fieldHeight,
+                    fieldWidth,
+                    boardColumnsCount,
+                    boardRowsCount);
+
+            var boardDefinition = new BoardShapeBase(
+                fields,
+                boardColumnsCount,
+                boardRowsCount,
+                scaleFactor);
+
             // when
-            var result = input.Permutate();
+            var modificator = new AllowedLocationsGenerator();
+            var preconfiguredBlocks = modificator.Preconfigure(
+                blocks.ToList(),
+                boardDefinition,
+                angles);
 
             // then
-            base.Display("expected values: six of them=> 1,3 1,4 1,5 2,3 2,4 2,5");
-            base.Display("actual values:");
-            foreach (var item in result)
-            {
-                var solution = string.Join(",", item);
-                base.Display(solution);
-            }
+            Assert.Equal(8, preconfiguredBlocks.FirstOrDefault()?.AllowedLocations.Count());
         }
     }
 }
