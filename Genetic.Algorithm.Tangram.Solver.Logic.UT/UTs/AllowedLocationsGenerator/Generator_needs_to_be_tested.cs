@@ -40,8 +40,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             var fieldHeight = 1d;
             var fieldWidth = 1d;
-            var boardColumnsCount = 3;
-            var boardRowsCount = 3;
+            var boardColumnsCount = 5;
+            var boardRowsCount = 4;
             var fields = GamePartsFactory
                 .GeneratorsFactory
                 .FieldsGenerator
@@ -66,7 +66,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 angles);
 
             // then
-            Assert.Equal(8, preconfiguredBlocks.FirstOrDefault()?.AllowedLocations.Count());
+            Assert.Equal(34, preconfiguredBlocks.FirstOrDefault()?.AllowedLocations.Count());
         }
     }
 }

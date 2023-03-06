@@ -4,7 +4,6 @@ using GeneticSharp;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
-    // TODO: put it to the another place
     public class I_would_like_to_solve_medium_board
     {
         private AlgorithmDebugHelper AlgorithmResultsHelper = new AlgorithmDebugHelper();
