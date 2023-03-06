@@ -2,6 +2,7 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using System;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +18,7 @@ namespace Genetic.Algorithm.Tangram.Solver
         private AlgorithmDisplayHelper? algorithmDisplayHelper;
         private static GameExecutor? gameExecutor;
 
-        //private Thread thread = new Thread(Execute);
+        private Thread thread = new Thread(Execute);
 
         public MainWindow()
         {
@@ -32,7 +33,7 @@ namespace Genetic.Algorithm.Tangram.Solver
                 throw new Exception("Canvas not loaded correctly");
 
             if(algorithmDisplayHelper == null)
-                algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas);
+                algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas, this.Dispatcher);
 
             var gameParts = GamePartConfiguratorBuilder
                .AvalaibleGameSets
@@ -63,8 +64,8 @@ namespace Genetic.Algorithm.Tangram.Solver
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //thread.Start();
-            gameExecutor?.Execute();
+            thread.Start();
+            //gameExecutor?.Execute();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

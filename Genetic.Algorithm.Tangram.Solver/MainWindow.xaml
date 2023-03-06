@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Canvas Background="#FF0B8FAE" Loaded="Canvas_Loaded" Margin="0,0,82,0">
-            <Button Content="RUN" Height="22" Canvas.Left="739" Canvas.Top="10" Width="51" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click"/>
-                <Button Content="PAUSE" Height="22" Canvas.Left="740" Canvas.Top="36" Width="50" Click="Button_Click_1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-                <Button Content="STOP" Height="22" Canvas.Left="739" Canvas.Top="64" Width="51" Click="Button_Click_2" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </Canvas>
+        <Canvas Background="#FF0B8FAE" Loaded="Canvas_Loaded" Margin="91,10,137,76">
+            
+        </Canvas>
+        <Button Content="RUN" Height="22" Canvas.Left="-83" Canvas.Top="4" Width="51" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click" Panel.ZIndex="100" RenderTransformOrigin="0.601,-9.06"/>
+        <Button Content="PAUSE" Height="22" Canvas.Top="30" Width="50" Click="Button_Click_1" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="-82"/>
+        <Button Content="STOP" Height="22" Canvas.Left="-83" Canvas.Top="58" Width="51" Click="Button_Click_2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Grid>
 </Window>
