@@ -34,7 +34,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var mutation = new TangramMutation();
             var fitness = new TangramFitness(board, blocks);// pass shape via the constructor
             var reinsertion = new ElitistReinsertion();
-            var operatorStrategy = new VaryRatioOperatorsStrategy(); // DefaultOperatorsStrategy(); // TplOperatorsStrategy();
+            var operatorStrategy = new DefaultOperatorsStrategy(); // DefaultOperatorsStrategy(); // TplOperatorsStrategy();
             var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)
 
             var solverBuilder = SolverFactory.CreateNew();
