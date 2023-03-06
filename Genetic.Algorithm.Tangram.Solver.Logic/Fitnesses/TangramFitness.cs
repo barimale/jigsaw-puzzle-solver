@@ -21,6 +21,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitness
             this.blocks = blocks;
         }
 
+        public BoardShapeBase Board => boardShapeDefinition;
+
         public double Evaluate(IChromosome chromosome)
         {
             var solution = chromosome as TangramChromosome;

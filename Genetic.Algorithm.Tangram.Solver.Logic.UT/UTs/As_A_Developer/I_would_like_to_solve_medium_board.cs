@@ -57,11 +57,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                     .Algorithm_TerminationReached;
 
             // when
-            //konfiguracjaGry.Algorithm.TaskExecutor = new ParallelTaskExecutor
-            //{
-            //    MinThreads = 100,
-            //    MaxThreads = 300
-            //};
             konfiguracjaGry.Algorithm.Start();
 
             // then
