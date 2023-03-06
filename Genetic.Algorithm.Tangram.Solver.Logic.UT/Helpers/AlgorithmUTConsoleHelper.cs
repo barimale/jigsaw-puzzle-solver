@@ -57,7 +57,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             }
         }
 
-        private void ShowChromosome(TangramChromosome? c)
+        public void ShowChromosome(TangramChromosome? c)
         {
             if (c == null)
                 return;

@@ -1,12 +1,24 @@
 using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.GameParts;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using GeneticSharp;
+using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
-    public class I_would_like_to_solve_medium_board
+    public class I_would_like_to_solve_medium_board: PrintToConsoleUTBase
     {
-        private AlgorithmDebugHelper AlgorithmResultsHelper = new AlgorithmDebugHelper();
+        private AlgorithmDebugHelper AlgorithmDebugHelper;
+        private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
+
+        public I_would_like_to_solve_medium_board(ITestOutputHelper output)
+            : base(output)
+        {
+            AlgorithmDebugHelper = new AlgorithmDebugHelper();
+            AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
+        }
+
         private int CurrentGeneration { get; set; } = -1;
         private int GenerationsNumber { get; set; } = -1;
 
@@ -39,12 +51,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             konfiguracjaGry
                 .Algorithm
-                .TerminationReached += AlgorithmResultsHelper
+                .TerminationReached += AlgorithmDebugHelper
                     .Algorithm_TerminationReached;
             
             konfiguracjaGry
                 .Algorithm
-                .GenerationRan += AlgorithmResultsHelper
+                .GenerationRan += AlgorithmDebugHelper
                     .Algorithm_Ran;
 
             konfiguracjaGry
@@ -53,7 +65,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             konfiguracjaGry
                 .Algorithm
-                .Stopped += AlgorithmResultsHelper
+                .Stopped += AlgorithmDebugHelper
                     .Algorithm_TerminationReached;
 
             // when
