@@ -1,4 +1,3 @@
-using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
@@ -6,7 +5,6 @@ using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Xunit.Abstractions;
-using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
