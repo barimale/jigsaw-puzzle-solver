@@ -5,6 +5,7 @@ using System;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using System.Xml.Linq;
 
 namespace Genetic.Algorithm.Tangram.Solver
 {
@@ -35,11 +36,11 @@ namespace Genetic.Algorithm.Tangram.Solver
 
             var gameParts = GamePartConfiguratorBuilder
                .AvalaibleGameSets
-               .CreateBigBoard(withAllowedLocations: true);
+               .CreateSimpleBoard(withAllowedLocations: true);
 
             var algorithm = GamePartConfiguratorBuilder
                 .AvalaibleTunedAlgorithms
-                .CreateBigBoardSettings(
+                .CreateSimpleBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
