@@ -1,6 +1,4 @@
 ﻿using GeneticSharp;
-using NetTopologySuite.Geometries;
-using Genetic.Algorithm.Tangram.GameParts.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
