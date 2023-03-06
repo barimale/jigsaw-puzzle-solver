@@ -27,9 +27,9 @@ namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
 
         private int[] Angles = new int[]
         {
-            -270,
-            -180,
-            -90,
+            //-270,
+            //-180,
+            //-90,
             0,
             90,
             180,

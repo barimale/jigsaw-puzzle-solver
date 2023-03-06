@@ -14,6 +14,13 @@
             return result;
         }
 
+        public static IEnumerable<IEnumerable<T>> PermutatePartially<T>(this T[][] sequences, double percentOfAllPermutationsInPercents)
+        {
+            var result = sequences.CartesianProduct();
+
+            return result;
+        }
+
         public static IEnumerable<IEnumerable<T>> Permutate<T>(this IEnumerable<IEnumerable<T>> sequences)
         {
             var result = sequences.CartesianProduct();

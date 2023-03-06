@@ -15,37 +15,31 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators
             IList<BlockBase> blocksWithAllowedLocations,
             TangramFitness fitnessDefinition,
             int[] angles,
-            double percentOfAllPermutationsInProcents = 20d)
+            double percentOfAllPermutationsInPercents = 20d)
         {
-            if (percentOfAllPermutationsInProcents > 100d)
+            if (percentOfAllPermutationsInPercents > 100d)
             {
-                throw new ArgumentException("percentOfAllPermutationsInProcents cannot be higher than 100");
+                throw new ArgumentException("percentOfAllPermutationsInPercents cannot be bigger than 100");
             }
 
             var allLocations = blocksWithAllowedLocations
                .Select(p => p.AllowedLocations.ToArray())
                .ToArray();
 
-            var allPermutations = allLocations
-                .Permutate()
-                .ToList();
-
             var chromosomes = new ConcurrentBag<TangramChromosome>();
             IEnumerable<IEnumerable<Geometry>> finalPermutations;
 
-            if (percentOfAllPermutationsInProcents != 100d)
+            if (percentOfAllPermutationsInPercents != 100d)
             {
-                var randomizer = new FastRandomRandomization();
-                var length = (int)(allPermutations.Count * percentOfAllPermutationsInProcents / 100d);
-                var uniqueIndexes = randomizer.GetUniqueInts(length, 0, (allPermutations.Count - 1));
-
-                var narrowedPermutations = allPermutations.Where(p => uniqueIndexes
-                    .Contains(allPermutations.IndexOf(p)));
-                finalPermutations = narrowedPermutations;
+                finalPermutations = allLocations
+                    .PermutatePartially(percentOfAllPermutationsInPercents)
+                    .ToList();
             }
             else
             {
-                finalPermutations = allPermutations;
+                finalPermutations = allLocations
+                .Permutate()
+                .ToList();
             }
 
             finalPermutations.AsParallel().ForAll(permutation =>
