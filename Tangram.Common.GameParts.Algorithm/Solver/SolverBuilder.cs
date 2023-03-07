@@ -12,8 +12,38 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
         private ITermination? termination;
         private IReinsertion? reinsertion;
         private IOperatorsStrategy? operatorsStrategy;
+        private ITaskExecutor? taskExecutor;
         private float? crossoverProbability;
         private float? mutationProbability;
+
+        public SolverBuilder WithParallelTaskExecutor(
+            int minThreads = 200,
+            int maxThreads = 200
+            // TODO WIP timeout here in seconds
+            )
+        {
+            if(minThreads < 1)
+                throw new ArgumentOutOfRangeException(nameof(minThreads));
+
+            if(minThreads > maxThreads)
+                throw new ArgumentOutOfRangeException(nameof(maxThreads));
+
+
+            this.taskExecutor = new ParallelTaskExecutor()
+            {
+                MinThreads = minThreads,
+                MaxThreads = maxThreads
+            };
+
+            return this;
+        }
+
+        public SolverBuilder WithTaskExecutor(ITaskExecutor taskExecutor)
+        {
+            this.taskExecutor = taskExecutor;
+
+            return this;
+        }
 
         public SolverBuilder WithOperatorsStrategy(IOperatorsStrategy operatorsStrategy)
         {
@@ -22,8 +52,6 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
             return this;
         }
 
-        //TODO: check if it is an equivalent of the preloadPopulation method
-        // as presented in the Issue9 sample
         public SolverBuilder WithReinsertion(IReinsertion reinsertion)
         {
             this.reinsertion = reinsertion;
@@ -46,7 +74,6 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
             return this;
         }
 
-        // check implementations once again
         public SolverBuilder WithCrossover(ICrossover crossover, float? crossoverProbability = null)
         {
             this.crossover = crossover;
@@ -116,6 +143,9 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
 
             if (operatorsStrategy != null)
                 ga.OperatorsStrategy = operatorsStrategy;
+
+            if (taskExecutor != null)
+                ga.TaskExecutor = taskExecutor;
 
             return ga;
         }

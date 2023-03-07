@@ -18,7 +18,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             int[] allowedAngles)
         {
             // solver
-            var generationChromosomesNumber = 6000; // 5000 30000
+            var generationChromosomesNumber = 6000;
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var fitness = new TangramFitness(board, blocks);
@@ -29,20 +29,25 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                     blocks,
                     fitness,
                     allowedAngles,
-                    40d); //4d
+                    4d); //40d
 
             var preloadedPopulation = new PreloadedPopulation(
                 generationChromosomesNumber / 2,
                 generationChromosomesNumber,
                 chromosomes);
 
-            var selection = new RouletteWheelSelection(); // EliteSelection(generationChromosomesNumber);//maybe half or 20% of the defined population, understand the parameter
+            var selection = new RouletteWheelSelection(); // EliteSelection(generationChromosomesNumber);
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
             var reinsertion = new ElitistReinsertion();
             // maybe varystrategy here
             var operatorStrategy = new DefaultOperatorsStrategy();
-            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100);
+            var terminations = new TerminationBase[]{
+                new FitnessThresholdTermination(-0.01f),
+                new FitnessStagnationTermination(100)
+            };
+
+            var thresholdOrStagnationTermination = new OrTermination(terminations);
 
             var solverBuilder = SolverFactory.CreateNew();
             var solver = solverBuilder
@@ -53,7 +58,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                 .WithMutation(mutation, mutationProbability)
                 .WithCrossover(crossover, crossoverProbability)
                 .WithOperatorsStrategy(operatorStrategy)
-                .WithTermination(termination)
+                .WithTermination(thresholdOrStagnationTermination)
                 .Build();
 
             return solver;
