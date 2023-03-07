@@ -39,7 +39,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var konfiguracjaGry = new GamePartConfiguratorBuilder()
+            konfiguracjaGry = new GamePartConfiguratorBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();
