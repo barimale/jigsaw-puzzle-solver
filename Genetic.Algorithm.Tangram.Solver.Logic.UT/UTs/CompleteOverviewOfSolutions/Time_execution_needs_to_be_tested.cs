@@ -62,11 +62,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .Factory
                 .StartNew(async () =>
                 {
-                    var result = await fitnessFunction.EvaluateAsync(p);
-                    if (result <= 0 && result >= expectedFitnessValue)
-                    {
-                        solutions.Add((TangramChromosome)p);
-                    }
+                    await fitnessFunction
+                        .EvaluateAsync(p)
+                        .ContinueWith(result =>
+                        {
+                            if (result.IsCompleted 
+                                && result.Result <= 0 
+                                && result.Result >= expectedFitnessValue)
+                            {
+                                p.Fitness = result.Result;
+                                solutions.Add((TangramChromosome)p);
+                            }
+                        });
                 });
             }).ToArray();
 
