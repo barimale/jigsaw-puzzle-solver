@@ -12,4 +12,14 @@
     <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Logic\Genetic.Algorithm.Tangram.Solver.Logic.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Sounds\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sounds\applause.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

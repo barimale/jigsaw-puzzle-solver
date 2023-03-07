@@ -2,7 +2,9 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
 using System;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -59,14 +61,35 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
         public void Algorithm_TerminationReached(object? sender, EventArgs e)
         {
-            var algorithmResult = sender as GeneticAlgorithm;
+            var isTerminated = false;
 
-            if (algorithmResult != null)
+            try
             {
-                var bestChromosome = algorithmResult
-                    .BestChromosome as TangramChromosome;
+                var algorithmResult = sender as GeneticAlgorithm;
 
-                ShowChromosome(bestChromosome);
+                if (algorithmResult != null)
+                {
+                    var bestChromosome = algorithmResult
+                        .BestChromosome as TangramChromosome;
+
+                    ShowChromosome(bestChromosome);
+                }
+            }
+            catch (Exception)
+            {
+                isTerminated = true;
+            }
+            finally
+            {
+                if(!isTerminated)
+                {
+                    var pathToApplause = System.IO.Path.Join(
+                        Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName,
+                        @"Sounds\applause.wav");
+
+                    var player = new System.Media.SoundPlayer(pathToApplause);
+                    player.Play();
+                }
             }
         }
 
