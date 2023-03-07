@@ -57,7 +57,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                 .WithCrossover(crossover, crossoverProbability)
                 .WithOperatorsStrategy(operatorStrategy)
                 .WithTermination(termination)
-                .WithParallelTaskExecutor() // parallel
+                //.WithParallelTaskExecutor(1, 4) // parallel
                 .Build();
 
             return solver;
