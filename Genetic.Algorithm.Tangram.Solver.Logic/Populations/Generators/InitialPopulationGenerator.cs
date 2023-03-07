@@ -1,7 +1,7 @@
 ﻿using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
 using GeneticSharp;
 using NetTopologySuite.Geometries;
 using System.Collections.Concurrent;
@@ -13,7 +13,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators
     {
         public IList<IChromosome> Generate(
             IList<BlockBase> blocksWithAllowedLocations,
-            TangramFitness fitnessDefinition,
+            BoardShapeBase board,
             int[] angles,
             double percentOfAllPermutationsInPercents = 20d)
         {
@@ -54,7 +54,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators
             {
                 var newChromosome = new TangramChromosome(
                     blocksWithAllowedLocations,
-                    fitnessDefinition.Board,
+                    board,
                     angles);
 
                 foreach (var (gene, index) in permutation.WithIndex())

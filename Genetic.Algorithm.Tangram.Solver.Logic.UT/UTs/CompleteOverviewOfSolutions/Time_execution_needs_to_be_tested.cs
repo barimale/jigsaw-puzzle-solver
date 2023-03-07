@@ -47,16 +47,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var chromosomes = initialPopulationGenerator
                 .Generate(
                     gameParts.Blocks,
-                    fitnessFunction!,
+                    gameParts.Board,
                     gameParts.AllowedAngles,
                     100d)
                 .ToList();
 
             var expectedFitnessValue = -0.01f;
             var solutions = new ConcurrentBag<TangramChromosome>();
-            chromosomes.AsParallel().ForAll(p =>
+            chromosomes.AsParallel().ForAll(async p =>
             {
-                var result = fitnessFunction.Evaluate(p);
+                var result = await fitnessFunction.EvaluateAsync(p);
                 if(result <= 0 && result >= expectedFitnessValue)
                 {
                     solutions.Add((TangramChromosome)p);

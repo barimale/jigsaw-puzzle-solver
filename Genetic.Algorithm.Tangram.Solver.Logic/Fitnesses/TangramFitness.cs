@@ -40,5 +40,22 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitness
 
             return diff;
         }
+
+        public async Task<double> EvaluateAsync(IChromosome chromosome)
+        {
+            var solution = chromosome as TangramChromosome;
+
+            var evaluatedGeometry = solution
+                .GetGenes()
+                .Select(p => p.Value as BlockBase)
+                .Select(pp => pp.Polygon)
+                .ToImmutableList();
+
+            var diff = await fitnessService.EvaluateAsync(
+                evaluatedGeometry.ToArray(),
+                boardShapeDefinition);
+
+            return diff;
+        }
     }
 }

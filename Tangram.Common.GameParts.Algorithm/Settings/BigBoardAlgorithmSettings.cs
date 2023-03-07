@@ -27,7 +27,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var chromosomes = initialPopulationGenerator
                 .Generate(
                     blocks,
-                    fitness,
+                    board,
                     allowedAngles,
                     4d); //40d
 
@@ -59,7 +59,6 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                 .WithCrossover(crossover, crossoverProbability)
                 .WithOperatorsStrategy(operatorStrategy)
                 .WithTermination(thresholdOrStagnationTermination)
-                //.WithParallelTaskExecutor() // parallel
                 .Build();
 
             return solver;

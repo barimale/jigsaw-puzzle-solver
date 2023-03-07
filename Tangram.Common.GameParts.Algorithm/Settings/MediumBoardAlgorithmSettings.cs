@@ -30,7 +30,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var chromosomes = initialPopulationGenerator
                 .Generate(
                     blocks,
-                    fitness,
+                    board,
                     allowedAngles,
                     20d);
 
