@@ -17,7 +17,7 @@ namespace Tangram.Common.GameParts.Boards
             DarkBlue.Create(),
             LightBlue.Create(),
             Purple.Create(),
-            Blue.Create()
+            Blue.Create(),
         };
 
         private int[] Angles = new int[]
