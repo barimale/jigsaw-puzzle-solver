@@ -2,11 +2,9 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using System;
-using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Xml.Linq;
 
 namespace Genetic.Algorithm.Tangram.Solver
 {
