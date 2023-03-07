@@ -19,7 +19,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             int[] allowedAngles)
         {
             // solver
-            var generationChromosomesNumber = 30000;
+            var generationChromosomesNumber = 300;
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
 
@@ -37,7 +37,10 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var preloadedPopulation = new PreloadedPopulation(
                 generationChromosomesNumber / 2,
                 generationChromosomesNumber,
-                chromosomes);
+                chromosomes
+                    .Shuffle(new FastRandomRandomization())
+                    .Take(generationChromosomesNumber)
+                    .ToList());
             //preloadedPopulation.GenerationStrategy = new TrackingGenerationStrategy();
 
             var selection = new RouletteWheelSelection(); // new EliteSelection(generationChromosomesNumber);//RouletteWheelSelection
