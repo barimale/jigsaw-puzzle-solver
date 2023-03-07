@@ -1,5 +1,4 @@
 ﻿using Genetic.Algorithm.Tangram.GameParts.Blocks;
-using Genetic.Algorithm.Tangram.Solver.Domain;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
