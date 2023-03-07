@@ -62,6 +62,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                 .WithCrossover(crossover, crossoverProbability)
                 .WithOperatorsStrategy(operatorStrategy)
                 .WithTermination(thresholdOrStagnationTermination)
+                //.WithParallelTaskExecutor(1, Math.Max(2, generationChromosomesNumber / 10))
                 .Build();
 
             return solver;
