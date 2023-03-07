@@ -4,7 +4,6 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
-using GeneticSharp;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;
