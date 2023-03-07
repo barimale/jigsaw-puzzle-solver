@@ -4,6 +4,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+using GeneticSharp;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;
@@ -54,14 +55,22 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             var expectedFitnessValue = -0.01f;
             var solutions = new ConcurrentBag<TangramChromosome>();
-            chromosomes.AsParallel().ForAll(async p =>
+
+            var tasks = chromosomes.Select(p =>
             {
-                var result = await fitnessFunction.EvaluateAsync(p);
-                if(result <= 0 && result >= expectedFitnessValue)
+                return Task
+                .Factory
+                .StartNew(async () =>
                 {
-                    solutions.Add((TangramChromosome)p);
-                }
-            });
+                    var result = await fitnessFunction.EvaluateAsync(p);
+                    if (result <= 0 && result >= expectedFitnessValue)
+                    {
+                        solutions.Add((TangramChromosome)p);
+                    }
+                });
+            }).ToArray();
+
+            await Task.WhenAll(tasks);
 
             sw.Stop();
 
