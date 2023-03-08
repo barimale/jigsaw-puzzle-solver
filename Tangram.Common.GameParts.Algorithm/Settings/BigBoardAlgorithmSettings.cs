@@ -30,7 +30,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                     blocks,
                     board,
                     allowedAngles,
-                    5d); //40d
+                    3d); //40d
 
             var preloadedPopulation = new PreloadedPopulation(
                 generationChromosomesNumber / 2,
