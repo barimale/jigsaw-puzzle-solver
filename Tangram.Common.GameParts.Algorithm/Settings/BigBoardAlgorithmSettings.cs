@@ -7,6 +7,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
 using Genetic.Algorithm.Tangram.AlgorithmSettings.Solver;
 using Genetic.Algorithm.Tangram.Solver.Logic.Population;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
+using Genetic.Algorithm.Tangram.Solver.Logic.OperatorStrategies;
 
 namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
 {
@@ -44,7 +45,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var mutation = new TangramMutation();
             var reinsertion = new ElitistReinsertion();
             // maybe varystrategy here
-            var operatorStrategy = new DefaultOperatorsStrategy();
+            var operatorStrategy = new VaryRatioOperatorsStrategy(); // DefaultOperatorsStrategy
             var terminations = new TerminationBase[]{
                 new FitnessThresholdTermination(-0.01f),
                 new FitnessStagnationTermination(100)

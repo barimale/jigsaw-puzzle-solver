@@ -16,7 +16,6 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
         private float? crossoverProbability;
         private float? mutationProbability;
 
-        // obsolete
         public SolverBuilder WithParallelTaskExecutor(
             int minThreads = 200,
             int maxThreads = 200
