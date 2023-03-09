@@ -10,7 +10,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Chromosome
     {
         private ImmutableArray<BlockBase> blocks;
         private int[] allowedAngles;
-        private int allowedAnglesCount => allowedAngles.Length + 1; // TODO WIP
+        private int allowedAnglesCount => allowedAngles.Length;
 
         public TangramChromosome(
             IList<BlockBase> blocks,
@@ -46,19 +46,17 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Chromosome
                 var randomIndex = new FastRandomRandomization()
                     .GetInt(
                         0,
-                        newBlock.AllowedLocations.Length); // TODO WIP
+                        newBlock.AllowedLocations.Length);
 
                 var randomMutatedBlock = newBlock.AllowedLocations[randomIndex];
                 newBlock.Apply(randomMutatedBlock);
-
-                var asString = newBlock.ToString();
 
                 return new Gene(newBlock);
             }
 
             // angle random
             var allowedAnglesIndex = new FastRandomRandomization()
-                    .GetInt(0, allowedAnglesCount - 1);
+                    .GetInt(0, allowedAnglesCount);
             var newAngle = allowedAngles[allowedAnglesIndex];
             newBlock.Rotate(newAngle);
 
@@ -94,8 +92,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Chromosome
                         )
                     );
             newBlock.MoveTo(newX, newY);
-
-            var toString = newBlock.ToString();
 
             return new Gene(newBlock);
         }

@@ -1,5 +1,6 @@
 using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
+using GeneticSharp;
 using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
@@ -35,6 +36,20 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 var solution = string.Join(",", item);
                 base.Display(solution);
             }
+        }
+
+        [Fact]
+        public void Check_fast_randomization()
+        {
+            // given
+            var randomizer = new FastRandomRandomization();
+
+            // when
+            var result = randomizer.GetInt(0,1);
+            var check = result == 0 || result == 1;
+
+            // then
+            Assert.Equal(check, true);
         }
     }
 }
