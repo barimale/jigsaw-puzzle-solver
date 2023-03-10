@@ -46,7 +46,6 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
             var reinsertion = new ElitistReinsertion();
-            // maybe varystrategy here
             var operatorStrategy = new DefaultOperatorsStrategy(); // VaryRatioOperatorsStrategy 
             var terminations = new TerminationBase[]{
                 new FitnessThresholdTermination(-0.01f),
