@@ -2,7 +2,6 @@
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Population
 {
-    // TODO: ensure it is needed
     public class PreloadedPopulation : GeneticSharp.Population
     {
         private IList<IChromosome> m_preloadChromosome;

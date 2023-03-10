@@ -41,8 +41,8 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                     .Shuffle(new FastRandomRandomization())
                     .Take(generationChromosomesNumber)
                     .ToList());
-            //preloadedPopulation.GenerationStrategy = new TrackingGenerationStrategy();
             preloadedPopulation.GenerationStrategy = new PerformanceGenerationStrategy();
+            preloadedPopulation.CreateInitialGeneration();
 
             var selection = new RouletteWheelSelection(); // new EliteSelection(generationChromosomesNumber);//RouletteWheelSelection
             var crossover = new TangramCrossover();

@@ -38,7 +38,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Chromosome
         public override Gene GenerateGene(int geneIndex)
         {
             BlockBase newBlock = blocks[geneIndex].Clone();
-            var toStringFromClone = newBlock.ToString();
 
             // do one random only if allowed locations of the block specified
             if (newBlock.IsAllowedLocationsEnabled)

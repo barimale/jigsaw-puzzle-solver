@@ -28,8 +28,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Crossovers
 
             foreach (var (pair, index) in zipped.WithIndex())
             {
-                var prob = RandomizationProvider
-                    .Current
+                var prob = new FastRandomRandomization()
                     .GetFloat(
                         probMin,
                         probMax);

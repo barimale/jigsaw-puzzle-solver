@@ -21,10 +21,3 @@ https://diegogiacomelli.com.br/function-optimization-with-geneticsharp/
 https://github.com/leprekon91/tangram-ga/blob/master/tangram-ga/tangram.py
 https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/Mutations/UniformMutation.cs
 ```
-
-# BUGS
-Check all .Length and .Count occurences in Logic project
-
-create the static demo data with purple block only 
-contianing permutation of angles xy for medium board
-and draw all combinations in wpf 

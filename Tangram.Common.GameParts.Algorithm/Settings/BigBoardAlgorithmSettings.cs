@@ -7,7 +7,6 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
 using Genetic.Algorithm.Tangram.AlgorithmSettings.Solver;
 using Genetic.Algorithm.Tangram.Solver.Logic.Population;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
-using Genetic.Algorithm.Tangram.Solver.Logic.OperatorStrategies;
 
 namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
 {
@@ -41,13 +40,14 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                     .ToList());
 
             preloadedPopulation.GenerationStrategy = new PerformanceGenerationStrategy();
+            preloadedPopulation.CreateInitialGeneration();
 
-            var selection = new RouletteWheelSelection(); // EliteSelection(generationChromosomesNumber);
+            var selection = new EliteSelection(Convert.ToInt32(generationChromosomesNumber*0.1)); // RouletteWheelSelection (generationChromosomesNumber);
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
             var reinsertion = new ElitistReinsertion();
             // maybe varystrategy here
-            var operatorStrategy = new VaryRatioOperatorsStrategy(); // DefaultOperatorsStrategy
+            var operatorStrategy = new DefaultOperatorsStrategy(); // VaryRatioOperatorsStrategy 
             var terminations = new TerminationBase[]{
                 new FitnessThresholdTermination(-0.01f),
                 new FitnessStagnationTermination(100)
