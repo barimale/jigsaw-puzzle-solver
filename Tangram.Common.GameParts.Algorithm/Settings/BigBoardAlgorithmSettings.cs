@@ -42,17 +42,18 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             preloadedPopulation.GenerationStrategy = new PerformanceGenerationStrategy();
             preloadedPopulation.CreateInitialGeneration();
 
-            var selection = new EliteSelection(Convert.ToInt32(generationChromosomesNumber*0.1)); // RouletteWheelSelection (generationChromosomesNumber);
+            var selection = new RouletteWheelSelection(); // EliteSelection(Convert.ToInt32(generationChromosomesNumber*0.1)); // RouletteWheelSelection (generationChromosomesNumber);
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy(); // VaryRatioOperatorsStrategy 
-            var terminations = new TerminationBase[]{
-                new FitnessThresholdTermination(-0.01f),
-                new FitnessStagnationTermination(100)
-            };
+            //var terminations = new TerminationBase[]{
+            //    new FitnessThresholdTermination(-0.01f),
+            //    new FitnessStagnationTermination(10000)
+            //};
+            //var thresholdOrStagnationTermination = new OrTermination(terminations);
 
-            var thresholdOrStagnationTermination = new OrTermination(terminations);
+            var termination = new FitnessThresholdTermination(-0.01f);
 
             var solverBuilder = SolverFactory.CreateNew();
             var solver = solverBuilder
@@ -63,7 +64,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                 .WithMutation(mutation, mutationProbability)
                 .WithCrossover(crossover, crossoverProbability)
                 .WithOperatorsStrategy(operatorStrategy)
-                .WithTermination(thresholdOrStagnationTermination)
+                .WithTermination(termination)
                 //.WithParallelTaskExecutor(1, Math.Max(2, generationChromosomesNumber / 10))
                 .Build();
 
