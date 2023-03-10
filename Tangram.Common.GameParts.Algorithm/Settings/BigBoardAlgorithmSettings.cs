@@ -19,7 +19,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
         {
             // solver
             var generationChromosomesNumber = 500; //6000 500 300
-            var mutationProbability = 0.5f;
+            var mutationProbability = 0.1f;
             var crossoverProbability = 1.0f - mutationProbability;
             var fitness = new TangramFitness(board, blocks);
 
