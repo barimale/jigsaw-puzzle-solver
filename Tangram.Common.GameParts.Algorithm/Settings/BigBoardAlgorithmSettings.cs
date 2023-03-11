@@ -18,8 +18,8 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             int[] allowedAngles)
         {
             // solver
-            var generationChromosomesNumber = 500; //6000 500 300
-            var mutationProbability = 0.1f;
+            var generationChromosomesNumber = 15; //6000 500 300
+            var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var fitness = new TangramFitness(board, blocks);
 
@@ -29,7 +29,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                     blocks,
                     board,
                     allowedAngles,
-                    3d); //40d
+                    4d); //40d
 
             var preloadedPopulation = new PreloadedPopulation(
                 generationChromosomesNumber / 2,
