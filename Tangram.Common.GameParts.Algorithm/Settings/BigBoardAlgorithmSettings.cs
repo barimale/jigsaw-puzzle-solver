@@ -41,7 +41,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                         blocks,
                         board,
                         allowedAngles,
-                        8d);
+                        4d);
 
                 initialPopulation = new PreloadedPopulation(
                     generationChromosomesNumber / 2,
