@@ -73,24 +73,24 @@ namespace Genetic.Algorithm.Tangram.Solver
             if(algorithmDisplayHelper == null)
                 algorithmDisplayHelper = new AlgorithmDisplayHelper(canvas, this.Dispatcher);
 
-            var gameParts = GamePartConfiguratorBuilder
+            if (gameExecutor == null)
+            {
+                var gameParts = GamePartConfiguratorBuilder
                .AvalaibleGameSets
                .CreateBigBoard(withAllowedLocations: true);
 
-            var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
-                .CreateBigBoardSettings(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    gameParts.AllowedAngles);
+                var algorithm = GamePartConfiguratorBuilder
+                    .AvalaibleTunedAlgorithms
+                    .CreateBigBoardSettings(
+                        gameParts.Board,
+                        gameParts.Blocks,
+                        gameParts.AllowedAngles);
 
-            var konfiguracjaGry = new GamePartConfiguratorBuilder()
-                .WithAlgorithm(algorithm)
-                .WithGamePartsConfigurator(gameParts)
-                .Build();
+                var konfiguracjaGry = new GamePartConfiguratorBuilder()
+                    .WithAlgorithm(algorithm)
+                    .WithGamePartsConfigurator(gameParts)
+                    .Build();
 
-            if (gameExecutor == null)
-            {
                 gameExecutor = new GameExecutor(
                     algorithmDisplayHelper,
                     konfiguracjaGry);
