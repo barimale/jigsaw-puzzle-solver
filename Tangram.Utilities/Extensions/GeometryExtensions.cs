@@ -4,6 +4,9 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
 {
     public static class GeometryExtensions
     {
+        // to have the coordinates prepared in a form of copable string to use here:
+        // https://www.mathsisfun.com/geometry/polygons-interactive.html
+        // (copy-paste to the modal window shown on click the edit button)
         public static string[] ToDrawerString(this IEnumerable<Geometry> input)
         {
             return input
