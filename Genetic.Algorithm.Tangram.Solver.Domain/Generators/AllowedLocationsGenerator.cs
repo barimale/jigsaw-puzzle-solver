@@ -133,6 +133,6 @@ public class AllowedLocationsGenerator
             return newGeometry;
         }
 
-        return null; // null here?
+        return null;
     }
 }

@@ -1,30 +1,10 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using GeneticSharp;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
     public static class ConsoleHelper
     {
-        // TODO: WIP 
-        public static void SerializeChromosomes(IList<IChromosome> chromosomes)
-        {
-            using (var stream = File.Create("chromosomes.bin"))
-            {
-                var bf = new BinaryFormatter();
-                bf.Serialize(stream, chromosomes);
-            }
-        }
-
-        public static IList<IChromosome> DerializeChromosomes()
-        {
-            using (var stream = File.OpenRead("chromosomes.bin"))
-            {
-                var bf = new BinaryFormatter();
-                return bf.Deserialize(stream) as IList<IChromosome>;
-            }
-        }
         public static void ShowChromosome(TangramChromosome? c)
         {
             if (c == null)
