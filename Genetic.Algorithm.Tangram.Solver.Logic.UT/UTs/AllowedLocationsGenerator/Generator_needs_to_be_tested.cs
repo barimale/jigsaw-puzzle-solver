@@ -66,7 +66,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 angles);
 
             // then
-            Assert.Equal(34, preconfiguredBlocks.FirstOrDefault()?.AllowedLocations.Count());
+            Assert.Equal(34, preconfiguredBlocks
+                .FirstOrDefault()?
+                .AllowedLocations
+                .Count());
         }
     }
 }

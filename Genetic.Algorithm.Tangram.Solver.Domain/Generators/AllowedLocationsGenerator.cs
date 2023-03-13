@@ -105,6 +105,7 @@ public class AllowedLocationsGenerator
 
         IPreparedGeometry preparedBoard = PreparedGeometryFactory
             .Prepare(board.Polygon);
+
         if (preparedBoard.Covers(modified.Polygon))
         {
             var newGeometry = new GeometryFactory()
