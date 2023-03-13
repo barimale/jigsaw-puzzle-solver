@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Text.Json;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -91,9 +92,7 @@ namespace Genetic.Algorithm.Tangram.Solver
                 ResultsSource.Add(new AlgorithmResult()
                 {
                     Fitness = ga.BestChromosome.Fitness ?? -1d,
-                    SolutionAsJson = string.Join(
-                        ',',
-                        solvedPolygons.ToDrawerString())
+                    SolutionAsJson = JsonSerializer.Serialize(solvedPolygons.ToDrawerString())
                 });
             });
         }
