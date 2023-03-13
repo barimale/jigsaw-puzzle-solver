@@ -10,12 +10,18 @@
     <Compile Update="Tabs\GamePartsDetails.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Tabs\Results.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Tabs\GamePartsDetails.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tabs\Results.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

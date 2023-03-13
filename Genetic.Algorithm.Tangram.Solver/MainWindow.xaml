@@ -20,6 +20,8 @@
         <TabItem Header="Game parts" >
             <tabs:GamePartsDetails />
         </TabItem>
-        <TabItem Header="Results" />
+        <TabItem Header="Results" >
+            <tabs:Results />
+        </TabItem>
     </TabControl>
 </Window>
