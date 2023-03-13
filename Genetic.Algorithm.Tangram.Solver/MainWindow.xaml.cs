@@ -70,6 +70,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             DataContext = this;
 
             MyTitle = string.Empty;
+            ResultsSource = new List<AlgorithmResult>();
         }
 
         private void GameExecutor_GenerationRan(object? sender, EventArgs e)
@@ -89,11 +90,16 @@ namespace Genetic.Algorithm.Tangram.Solver
                         .Select(p => ((BlockBase)p.Value).Polygon)
                         .ToList();
 
-                ResultsSource.Add(new AlgorithmResult()
+                // TODO use MVVM
+                var copiedList = ResultsSource.ToList();
+                copiedList.Add(new AlgorithmResult()
                 {
                     Fitness = ga.BestChromosome.Fitness ?? -1d,
                     SolutionAsJson = JsonSerializer.Serialize(solvedPolygons.ToDrawerString())
                 });
+
+                ResultsSource.Clear();
+                ResultsSource = copiedList;
             });
         }
 

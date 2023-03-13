@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
+using System.Collections.ObjectModel;
 
 namespace Algorithm.Executor.WPF.Tabs
 {
@@ -19,9 +20,9 @@ namespace Algorithm.Executor.WPF.Tabs
                 typeof(Results)
             );
 
-        public List<AlgorithmResult> ResultItems
+        public ObservableCollection<AlgorithmResult> ResultItems
         {
-            get { return (List<AlgorithmResult>)GetValue(Results.ResultItemsProperty); }
+            get { return (ObservableCollection<AlgorithmResult>)GetValue(Results.ResultItemsProperty); }
             set
             {
                 SetValue(Results.ResultItemsProperty, value);
