@@ -21,7 +21,7 @@
             <tabs:GamePartsDetails />
         </TabItem>
         <TabItem Header="Results" >
-            <tabs:Results />
+            <tabs:Results ResultItems="{Binding ResultsSource}" />
         </TabItem>
     </TabControl>
 </Window>

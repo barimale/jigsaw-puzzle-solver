@@ -1,7 +1,8 @@
-﻿using Genetic.Algorithm.Tangram.GameParts;
+﻿using Algorithm.Executor.WPF.Model;
+using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
-using GeneticSharp;
 using System;
+using System.Collections.Generic;
 
 namespace Genetic.Algorithm.Tangram.Solver.WPF
 {
@@ -9,8 +10,11 @@ namespace Genetic.Algorithm.Tangram.Solver.WPF
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private GamePartsConfigurator konfiguracjaGry;
+        private IEnumerable<AlgorithmResult> results;
 
         public event EventHandler GenerationRan;
+
+        public IEnumerable<AlgorithmResult> Results => this.results;
 
         public string AlgorithmState => this
             .konfiguracjaGry?
@@ -39,6 +43,8 @@ namespace Genetic.Algorithm.Tangram.Solver.WPF
             this.konfiguracjaGry
                 .Algorithm
                 .GenerationRan += this.Algorithm_Ran;
+
+            this.results = new List<AlgorithmResult>();
         }
 
         public void Execute()

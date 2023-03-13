@@ -1,13 +1,17 @@
-﻿using Genetic.Algorithm.Tangram.Configurator;
+﻿using Algorithm.Executor.WPF.Model;
+using Genetic.Algorithm.Tangram.Common.Extensions;
+using Genetic.Algorithm.Tangram.Configurator;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Genetic.Algorithm.Tangram.Solver.WPF;
 using GeneticSharp;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace Genetic.Algorithm.Tangram.Solver
 {
@@ -30,6 +34,23 @@ namespace Genetic.Algorithm.Tangram.Solver
             {
                 SetValue(MainWindow.MyTitleProperty, value);
                 OnPropertyChanged("MyTitle");
+            }
+        }
+
+        public static readonly DependencyProperty ResultsSourceProperty = DependencyProperty
+            .Register(
+                "ResultsSource",
+                typeof(List<AlgorithmResult>),
+                typeof(MainWindow)
+            );
+
+        public List<AlgorithmResult> ResultsSource
+        {
+            get { return (List<AlgorithmResult>)GetValue(MainWindow.ResultsSourceProperty); }
+            set
+            {
+                SetValue(MainWindow.ResultsSourceProperty, value);
+                OnPropertyChanged("ResultsSource");
             }
         }
 
@@ -60,6 +81,20 @@ namespace Genetic.Algorithm.Tangram.Solver
             Dispatcher.Invoke(() =>
             {
                 MyTitle = ga.State.ToString();
+
+                var solvedPolygons = ga.BestChromosome
+                        .GetGenes()
+                        .ToList()
+                        .Select(p => ((BlockBase)p.Value).Polygon)
+                        .ToList();
+
+                ResultsSource.Add(new AlgorithmResult()
+                {
+                    Fitness = ga.BestChromosome.Fitness ?? -1d,
+                    SolutionAsJson = string.Join(
+                        ',',
+                        solvedPolygons.ToDrawerString())
+                });
             });
         }
 
@@ -76,12 +111,12 @@ namespace Genetic.Algorithm.Tangram.Solver
             if (gameExecutor == null)
             {
                 var gameParts = GamePartConfiguratorBuilder
-               .AvalaibleGameSets
-               .CreateBigBoard(withAllowedLocations: true);
+                   .AvalaibleGameSets
+                   .CreateMediumBoard(withAllowedLocations: true);
 
                 var algorithm = GamePartConfiguratorBuilder
                     .AvalaibleTunedAlgorithms
-                    .CreateBigBoardSettings(
+                    .CreateMediumBoardSettings(
                         gameParts.Board,
                         gameParts.Blocks,
                         gameParts.AllowedAngles);
