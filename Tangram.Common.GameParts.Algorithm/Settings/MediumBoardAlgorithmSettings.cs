@@ -8,6 +8,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Mutations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Crossovers;
 using Genetic.Algorithm.Tangram.AlgorithmSettings.Solver;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 
 namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
 {
@@ -18,31 +19,52 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             IList<BlockBase> blocks,
             int[] allowedAngles)
         {
+            // settings
+            var withAllowedLocations = blocks
+                .ToList()
+                .SelectMany(p => p.AllowedLocations.ToList())
+                .ToList()
+                .Count > 0;
+                
             // solver
             var generationChromosomesNumber = 300;
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
-
-            // initial population
             var fitness = new TangramFitness(board, blocks);
 
-            var initialPopulationGenerator = new InitialPopulationGenerator();
-            var chromosomes = initialPopulationGenerator
-                .Generate(
+            // initial population
+            IPopulation initialPopulation;
+            if (withAllowedLocations)
+            {
+                var initialPopulationGenerator = new InitialPopulationGenerator();
+                var chromosomes = initialPopulationGenerator
+                    .Generate(
+                        blocks,
+                        board,
+                        allowedAngles,
+                        20d);
+
+                initialPopulation = new PreloadedPopulation(
+                    generationChromosomesNumber / 2,
+                    generationChromosomesNumber,
+                    chromosomes
+                        .Shuffle(new FastRandomRandomization())
+                        .Take(generationChromosomesNumber)
+                        .ToList());
+                initialPopulation.GenerationStrategy = new PerformanceGenerationStrategy();
+                initialPopulation.CreateInitialGeneration();
+            }else
+            {
+                var chromosome = new TangramChromosome(
                     blocks,
                     board,
-                    allowedAngles,
-                    20d);
+                    allowedAngles);
 
-            var preloadedPopulation = new PreloadedPopulation(
-                generationChromosomesNumber / 2,
-                generationChromosomesNumber,
-                chromosomes
-                    .Shuffle(new FastRandomRandomization())
-                    .Take(generationChromosomesNumber)
-                    .ToList());
-            preloadedPopulation.GenerationStrategy = new PerformanceGenerationStrategy();
-            preloadedPopulation.CreateInitialGeneration();
+                initialPopulation = new Population(
+                    generationChromosomesNumber / 2,
+                    generationChromosomesNumber,
+                    chromosome);
+            }
 
             var selection = new RouletteWheelSelection(); // new EliteSelection(generationChromosomesNumber);//RouletteWheelSelection
             var crossover = new TangramCrossover();
@@ -53,7 +75,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
 
             var solverBuilder = SolverFactory.CreateNew();
             var solver = solverBuilder
-                .WithPopulation(preloadedPopulation)
+                .WithPopulation(initialPopulation)
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)
                 .WithFitnessFunction(fitness)

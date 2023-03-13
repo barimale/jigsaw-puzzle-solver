@@ -75,7 +75,7 @@ namespace Genetic.Algorithm.Tangram.Solver
 
             var gameParts = GamePartConfiguratorBuilder
                .AvalaibleGameSets
-               .CreateMediumBoard(withAllowedLocations: true); // TODO WIP correct for false
+               .CreateMediumBoard(withAllowedLocations: false); // TODO WIP correct for false
 
             var algorithm = GamePartConfiguratorBuilder
                 .AvalaibleTunedAlgorithms
