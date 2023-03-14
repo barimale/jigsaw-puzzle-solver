@@ -81,9 +81,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             var resultRS100 = Minimize.Start(solution).RakeSearch(100);
             Display($"RakeSearch(100) {resultRS100.BestQuality} {resultRS100.VisitedNodes} ({(resultRS100.VisitedNodes / resultRS100.Elapsed.TotalSeconds):F2} nodes/sec)");
-
-            var resultAnytimeLD = Minimize.Start(solution).AnytimeLDSearch(3);
-            Display($"AnytimeLDSearch(3) {resultAnytimeLD.BestQuality} {resultAnytimeLD.VisitedNodes} ({(resultAnytimeLD.VisitedNodes / resultAnytimeLD.Elapsed.TotalSeconds):F2} nodes/sec)");
         }
     }
 }
