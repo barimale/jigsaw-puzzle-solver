@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.G
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Domain", "Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj", "{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Common", "Tangram.Utilities\Genetic.Algorithm.Tangram.Common.csproj", "{4E30A002-4720-475A-8767-F5DC7EC1784A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Tangram.Common", "Tangram.Utilities\Algorithm.Tangram.Common.csproj", "{4E30A002-4720-475A-8767-F5DC7EC1784A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.AlgorithmSettings", "Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.AlgorithmSettings.csproj", "{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}"
 EndProject
@@ -33,6 +33,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "game-parts", "game-parts", "{2F317253-CF7A-4799-B5DB-F040319A3CD5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{73FE0012-BA52-45F3-911D-20A7569C6FEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm.Tangram.MCTS.Logic", "MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.MCTS.Logic.csproj", "{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -72,6 +74,10 @@ Global
 		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{BD780A89-0748-4A6C-931A-CADBD8C4B41E} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
 		{2F317253-CF7A-4799-B5DB-F040319A3CD5} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
 		{73FE0012-BA52-45F3-911D-20A7569C6FEA} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
+		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0} = {2F317253-CF7A-4799-B5DB-F040319A3CD5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADC3F980-CAA3-45AF-A179-5C449EB5704C}

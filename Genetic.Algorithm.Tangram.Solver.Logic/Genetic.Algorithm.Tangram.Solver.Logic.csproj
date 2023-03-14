@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj" />
-    <ProjectReference Include="..\Tangram.Utilities\Genetic.Algorithm.Tangram.Common.csproj" />
+    <ProjectReference Include="..\Tangram.Utilities\Algorithm.Tangram.Common.csproj" />
   </ItemGroup>
 
 </Project>
