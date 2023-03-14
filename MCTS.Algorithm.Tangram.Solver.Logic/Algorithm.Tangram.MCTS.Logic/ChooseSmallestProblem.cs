@@ -1,57 +1,79 @@
+using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
+using GeneticSharp;
 using TreesearchLib;
 
 namespace Algorithm.Tangram.MCTS.Logic
 {
-    public class ChooseSmallestProblem : IMutableState<ChooseSmallestProblem, int, Minimize>
+    public class ChooseSmallestProblem : IMutableState<ChooseSmallestProblem, TangramChromosome, Minimize>
     {
+        // constraints
         public const int minChoices = 2;
         public const int maxChoices = 10;
         public const int maxDistance = 50;
-        private int size;
-        private Stack<int> choicesMade;
 
-        public ChooseSmallestProblem(int size)
+        // settings
+        private int size;
+        private Stack<TangramChromosome> choicesMade;
+
+        private readonly BoardShapeBase board;
+        private readonly TangramFitness fitnessService;
+
+        public ChooseSmallestProblem(
+            int size,
+            TangramFitness fitnessService)
         {
             this.size = size;
-            choicesMade = new Stack<int>();
+            this.fitnessService = fitnessService;
+            this.choicesMade = new Stack<TangramChromosome>();
         }
 
         public bool IsTerminal => choicesMade.Count == size;
 
-        public Minimize Bound => new Minimize(choicesMade.Peek() + (size - choicesMade.Count));
+        public Minimize Bound => new Minimize(
+            (int)(fitnessService.Evaluate(this.choicesMade.Peek()) * 100));
 
-        public Minimize? Quality => IsTerminal ? new Minimize(choicesMade.Peek()) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize((int)(fitnessService.Evaluate(this.choicesMade.Peek()) * 100)) : null;
 
-        public void Apply(int choice)
+        public void Apply(TangramChromosome choice)
         {
             choicesMade.Push(choice);
         }
 
-
         public object Clone()
         {
-            var clone = new ChooseSmallestProblem(size);
-            clone.choicesMade = new Stack<int>(choicesMade.Reverse());
+            var clone = new ChooseSmallestProblem(
+                this.size,
+                this.fitnessService);
+
+            clone.choicesMade = new Stack<TangramChromosome>(choicesMade.Reverse());
+
             return clone;
         }
 
-        public IEnumerable<int> GetChoices()
+
+         // TODO what for is that
+        public IEnumerable<TangramChromosome> GetChoices()
         {
             if (choicesMade.Count >= size)
             {
                 yield break;
             }
-            var current = 0;
+
+            object current = null;
             if (choicesMade.Count > 0)
             {
                 current = choicesMade.Peek();
             }
-            var rng = new Random(current);
-            for (int i = 0; i < rng.Next(minChoices, maxChoices); i++)
-            {
-                yield return rng.Next(current + 1, current + maxDistance);
-            }
 
+            var rng = new FastRandomRandomization();
+            
+            for (int i = 0; i < rng.GetInt(minChoices, maxChoices); i++)
+            {
+                yield break;
+                //yield return rng.Next(current + 1, current + maxDistance);
+            }
         }
 
         public void UndoLast()

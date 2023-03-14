@@ -13,7 +13,7 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
             var polygon = new GeometryFactory()
                 .CreatePolygon(new Coordinate[] {
                     new Coordinate(0,0),// first the same as last
-                    new Coordinate(0,1),
+                    new Coordinate(1,0),
                     new Coordinate(1,1),
                     new Coordinate(0,1),
                     new Coordinate(0,0)// last the same as first
