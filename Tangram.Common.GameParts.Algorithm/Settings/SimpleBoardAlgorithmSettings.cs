@@ -68,7 +68,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var selection = new EliteSelection(generationChromosomesNumber);
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
-            var fitness = new TangramFitness(board, blocks);
+            var fitness = new TangramService(board, blocks);
             var reinsertion = new ElitistReinsertion();
             var operatorStrategy = new DefaultOperatorsStrategy(); // DefaultOperatorsStrategy()
             var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)

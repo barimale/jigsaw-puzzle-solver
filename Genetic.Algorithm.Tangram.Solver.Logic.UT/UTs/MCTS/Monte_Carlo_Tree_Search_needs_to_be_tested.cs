@@ -7,6 +7,7 @@ using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
+using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using TreesearchLib;
 using Xunit.Abstractions;
@@ -70,22 +71,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                     boardDefinition,
                     angles);
 
-            var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
-                .CreateSimpleBoardSettings(
-                    boardDefinition,
-                    preconfiguredBlocks,
-                    angles);
-
             // when
             var stack = new Stack<TangramChromosome>();
             int size = preconfiguredBlocks.Count;
             var root = preconfiguredBlocks.ToArray()[0];
-            TangramFitness? fitnessFunction = algorithm.Fitness as TangramFitness;
+            var fitnessEvaluator = new FitnessService(boardDefinition);
 
             // then
-            var solution = new ChooseSmallestProblem(size,fitnessFunction)
-                .DepthFirst();
+            var solution = new FindFittestSolution(
+                size,
+                boardDefinition,
+                preconfiguredBlocks
+                ).DepthFirst();
         }
     }
 }

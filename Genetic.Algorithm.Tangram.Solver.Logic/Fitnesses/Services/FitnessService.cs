@@ -4,16 +4,19 @@ using NetTopologySuite.Operation.Union;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
 {
-    internal class FitnessService
+    public class FitnessService
     {
+        private BoardShapeBase? board;
+
         public FitnessService()
         {
             // intentionally left blank
         }
 
-        public double Evaluate(IEnumerable<Geometry> evaluatedGeometry, BoardShapeBase board)
+        public FitnessService(BoardShapeBase board)
+            : this()
         {
-            return EvaluateAsync(evaluatedGeometry, board).Result;
+            this.board = board;
         }
 
         public async Task<double> EvaluateAsync(
@@ -41,6 +44,27 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             var invertedSummarizedDiff = -1d * summarizedDiff;
 
             return invertedSummarizedDiff;
+        }
+
+        public Task<double> EvaluateAsync(IEnumerable<Geometry> evaluatedGeometry)
+        {
+            if (this.board == null)
+                throw new ArgumentNullException("board cannot be null");
+
+            return EvaluateAsync(evaluatedGeometry, this.board);
+        }
+
+        public double Evaluate(IEnumerable<Geometry> evaluatedGeometry)
+        {
+            if (this.board == null)
+                throw new ArgumentNullException("board cannot be null");
+
+            return EvaluateAsync(evaluatedGeometry, this.board).Result;
+        }
+
+        public double Evaluate(IEnumerable<Geometry> evaluatedGeometry, BoardShapeBase board)
+        {
+            return EvaluateAsync(evaluatedGeometry, board).Result;
         }
 
         // TODO: parallel deeper

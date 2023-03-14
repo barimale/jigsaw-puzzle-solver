@@ -7,14 +7,14 @@ using System.Collections.Immutable;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitness
 {
-    public class TangramFitness : IFitness
+    public class TangramService : IFitness
     {
         private FitnessService fitnessService = new FitnessService();
 
         private BoardShapeBase boardShapeDefinition;
         private IList<BlockBase> blocks;
 
-        public TangramFitness(
+        public TangramService(
             BoardShapeBase boardShapeDefinition,
             IList<BlockBase> blocks)
         {

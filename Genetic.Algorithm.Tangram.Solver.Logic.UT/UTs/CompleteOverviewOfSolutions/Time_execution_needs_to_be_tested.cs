@@ -37,7 +37,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                     gameParts.AllowedAngles);
 
             // reuse async here
-            TangramFitness? fitnessFunction = algorithm.Fitness as TangramFitness;
+            TangramService? fitnessFunction = algorithm.Fitness as TangramService;
 
             // when
             Stopwatch sw = new Stopwatch();

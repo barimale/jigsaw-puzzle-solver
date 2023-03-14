@@ -30,7 +30,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
             var generationChromosomesNumber = 300;
             var mutationProbability = 0.0f;
             var crossoverProbability = 1.0f - mutationProbability;
-            var fitness = new TangramFitness(board, blocks);
+            var fitness = new TangramService(board, blocks);
 
             // initial population
             IPopulation initialPopulation;
