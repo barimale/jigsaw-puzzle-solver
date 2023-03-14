@@ -1,12 +1,10 @@
 using Algorithm.Tangram.MCTS.Logic;
-using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using TreesearchLib;
@@ -83,6 +81,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 boardDefinition,
                 preconfiguredBlocks
                 ).DepthFirst();
+
+            var controlledSolution = Minimize
+                .Start(new FindFittestSolution(
+                    size,
+                    boardDefinition,
+                    preconfiguredBlocks))
+                //.WithUpperBound(new Minimize(int.MaxValue))
+                .WithImprovementCallback((ctrl, state, quality) => Display($"Found new best solution with {quality} after {ctrl.Elapsed}"))
+                .DepthFirst();
         }
     }
 }

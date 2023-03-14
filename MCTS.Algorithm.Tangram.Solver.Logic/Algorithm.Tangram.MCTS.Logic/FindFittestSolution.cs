@@ -44,7 +44,7 @@ namespace Algorithm.Tangram.MCTS.Logic
 
             var diffAsInt = diff > Int32.MaxValue ? Int32.MaxValue : Convert.ToInt32(diff * 100);
 
-            return 0;
+            return diffAsInt;
         }
 
         public bool IsTerminal => choicesMade.Count == size;
