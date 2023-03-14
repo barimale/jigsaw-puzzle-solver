@@ -30,7 +30,10 @@ namespace Algorithm.Tangram.MCTS.Logic
             this.choicesMade = new Stack<IndexedBlockBase>();
         }
 
-        private int CheckFitness()
+        private int CheckFitness(
+            bool withPolygonsIntersectionsDiff,
+            bool withOutOfBoundsDiff,
+            bool withVolumeDiff)
         {
             var evaluatedGeometry = this.choicesMade
                 .Select(p => p.TransformedBlock)
@@ -40,7 +43,10 @@ namespace Algorithm.Tangram.MCTS.Logic
 
             var diff = fitnessService.Evaluate(
                 evaluatedGeometry.ToArray(),
-                this.board);
+                this.board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff);
 
             var diffAsInt = diff > Int32.MaxValue ? Int32.MaxValue : Convert.ToInt32(diff);
 
@@ -49,9 +55,9 @@ namespace Algorithm.Tangram.MCTS.Logic
 
         public bool IsTerminal => choicesMade.Count == size;
 
-        public Minimize Bound => new Minimize(CheckFitness());
+        public Minimize Bound => new Minimize(CheckFitness(true, false, true));
 
-        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness()) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, true, true)) : null;
 
         public void Apply(IndexedBlockBase choice)
         {
@@ -69,7 +75,7 @@ namespace Algorithm.Tangram.MCTS.Logic
                 this.board,
                 this.blocks);
 
-            clone.choicesMade = new Stack<IndexedBlockBase>(choicesMade.Reverse());
+            clone.choicesMade = new Stack<IndexedBlockBase>(choicesMade);
 
             return clone;
         }
@@ -78,7 +84,7 @@ namespace Algorithm.Tangram.MCTS.Logic
         {
             return this.blocks
                 .Skip(choicesMade.Count)
-                .Select(p => new IndexedBlockBase(p, 0)) // TODO: double check it
+                .Select(p => new IndexedBlockBase(p, 0))
                 .AsEnumerable();
         }
 
@@ -89,7 +95,7 @@ namespace Algorithm.Tangram.MCTS.Logic
 
         public override string ToString()
         {
-            return $"FindFittestSolution [{string.Join(", ", choicesMade.Reverse())}]";
+            return $"FindFittestSolution [{string.Join(", ", choicesMade)}]";
         }
     }
 }

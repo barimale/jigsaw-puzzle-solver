@@ -21,24 +21,40 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
 
         public async Task<double> EvaluateAsync(
             IEnumerable<Geometry> evaluatedGeometry,
-            BoardShapeBase board)
+            BoardShapeBase board,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true)
         {
-            Task<double> polygonsDiff = Task
-                .Factory
-                .StartNew(() => CalculatePolygonsIntersectDiff(evaluatedGeometry.ToArray()));
+            var tasks = new List<Task<double>>();
 
-            Task<double> outOfBoundsDiff = Task
+            if (withPolygonsIntersectionsDiff)
+            {
+                Task<double> polygonsDiff = Task
+                    .Factory
+                    .StartNew(() => CalculatePolygonsIntersectDiff(evaluatedGeometry.ToArray()));
+
+                tasks.Add(polygonsDiff);
+            }
+
+            if (withOutOfBoundsDiff)
+            {
+                Task<double> outOfBoundsDiff = Task
                 .Factory
                 .StartNew(() => CalculateOutOfBoundsDiff(evaluatedGeometry.ToArray(), board));
 
-            Task<double> volumeDiff = Task
-                .Factory
-                .StartNew(() => CalculateVolumeDiff(evaluatedGeometry.ToArray(), board));
+                tasks.Add(outOfBoundsDiff);
+            }
 
-            var diffArray = await Task.WhenAll(
-                polygonsDiff,
-                outOfBoundsDiff,
-                volumeDiff);
+            if (withVolumeDiff)
+            {
+                Task<double> volumeDiff = Task
+                    .Factory
+                    .StartNew(() => CalculateVolumeDiff(evaluatedGeometry.ToArray(), board));
+
+                tasks.Add(volumeDiff);
+            }
+            var diffArray = await Task.WhenAll(tasks.AsEnumerable());
 
             var summarizedDiff = diffArray.Sum();
             var invertedSummarizedDiff = -1d * summarizedDiff;
@@ -46,25 +62,53 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             return invertedSummarizedDiff;
         }
 
-        public Task<double> EvaluateAsync(IEnumerable<Geometry> evaluatedGeometry)
+        public Task<double> EvaluateAsync(
+            IEnumerable<Geometry> evaluatedGeometry,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true)
         {
             if (this.board == null)
                 throw new ArgumentNullException("board cannot be null");
 
-            return EvaluateAsync(evaluatedGeometry, this.board);
+            return EvaluateAsync(
+                evaluatedGeometry,
+                this.board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff);
         }
 
-        public double Evaluate(IEnumerable<Geometry> evaluatedGeometry)
+        public double Evaluate(
+            IEnumerable<Geometry> evaluatedGeometry,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true)
         {
             if (this.board == null)
                 throw new ArgumentNullException("board cannot be null");
 
-            return EvaluateAsync(evaluatedGeometry, this.board).Result;
+            return EvaluateAsync(
+                evaluatedGeometry,
+                this.board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff).Result;
         }
 
-        public double Evaluate(IEnumerable<Geometry> evaluatedGeometry, BoardShapeBase board)
+        public double Evaluate(
+            IEnumerable<Geometry> evaluatedGeometry,
+            BoardShapeBase board,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true)
         {
-            return EvaluateAsync(evaluatedGeometry, board).Result;
+            return EvaluateAsync(
+                evaluatedGeometry,
+                board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff).Result;
         }
 
         // TODO: parallel deeper

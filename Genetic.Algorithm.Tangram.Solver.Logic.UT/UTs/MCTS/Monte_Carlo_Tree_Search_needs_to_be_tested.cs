@@ -74,8 +74,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var solution = new FindFittestSolution(
                 size,
                 boardDefinition,
-                preconfiguredBlocks
-                );
+                preconfiguredBlocks);
 
             var depthFirst = solution.DepthFirst();
 

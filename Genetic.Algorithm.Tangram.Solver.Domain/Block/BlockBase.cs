@@ -7,6 +7,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
 {
     public class BlockBase
     {
+        public Guid ID { get; private set; }
+
         public Geometry Polygon { private set; get; }
         public Color Color { private set; get; }
         public Geometry[] AllowedLocations { private set; get; } = new Geometry[0];
@@ -15,8 +17,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
 
         public BlockBase(Geometry polygon, Color color, bool moveToZero = true)
         {
-            Polygon = polygon;
-            Color = color;
+            this.ID = Guid.NewGuid();
+            this.Polygon = polygon;
+            this.Color = color;
+
             if (moveToZero)
             {
                 MoveToZero();
