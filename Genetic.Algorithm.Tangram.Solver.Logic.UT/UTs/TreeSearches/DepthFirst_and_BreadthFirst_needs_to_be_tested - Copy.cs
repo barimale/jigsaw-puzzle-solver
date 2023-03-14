@@ -10,9 +10,9 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
-    public class Monte_Carlo_Tree_Search_needs_to_be_tested : PrintToConsoleUTBase
+    public class DepthFirst_and_BreadthFirst_needs_to_be_tested : PrintToConsoleUTBase
     {
-        public Monte_Carlo_Tree_Search_needs_to_be_tested(ITestOutputHelper output)
+        public DepthFirst_and_BreadthFirst_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             // intentionally left blank
