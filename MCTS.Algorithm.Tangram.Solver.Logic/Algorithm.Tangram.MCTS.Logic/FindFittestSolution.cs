@@ -50,7 +50,8 @@ namespace Algorithm.Tangram.MCTS.Logic
                 this.board,
                 withPolygonsIntersectionsDiff,
                 withOutOfBoundsDiff,
-                withVolumeDiff);
+                withVolumeDiff,
+                false);
 
             var diffAsInt = diff > Int32.MaxValue ? Int32.MaxValue : Convert.ToInt32(diff);
 

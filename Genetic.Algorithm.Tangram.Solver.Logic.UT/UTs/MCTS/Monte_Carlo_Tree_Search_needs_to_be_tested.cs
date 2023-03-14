@@ -78,12 +78,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 
             var depthFirst = solution.DepthFirst();
 
-            var mcts = solution.MCTS(
-                runtime: TimeSpan.FromMinutes(1),
-                nodelimit: 20);
+            //var mcts = solution.MCTS(
+            //    runtime: TimeSpan.FromMinutes(1),
+            //    nodelimit: 20);
 
-            var resultRS100 = Minimize.Start(solution).RakeSearch(100);
-            Display($"RakeSearch(100) {resultRS100.BestQuality} {resultRS100.VisitedNodes} ({(resultRS100.VisitedNodes / resultRS100.Elapsed.TotalSeconds):F2} nodes/sec)");
+            var resultRS = Minimize.Start(solution).RakeSearch(preconfiguredBlocks.Count);
+            Display($"RakeSearch(100) {resultRS.BestQuality} {resultRS.VisitedNodes} ({(resultRS.VisitedNodes / resultRS.Elapsed.TotalSeconds):F2} nodes/sec)");
         }
     }
 }

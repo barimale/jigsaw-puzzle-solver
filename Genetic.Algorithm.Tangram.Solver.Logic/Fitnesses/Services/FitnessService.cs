@@ -24,7 +24,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             BoardShapeBase board,
             bool withPolygonsIntersectionsDiff = true,
             bool withOutOfBoundsDiff = true,
-            bool withVolumeDiff = true)
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
         {
             var tasks = new List<Task<double>>();
 
@@ -57,16 +58,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             var diffArray = await Task.WhenAll(tasks.AsEnumerable());
 
             var summarizedDiff = diffArray.Sum();
-            var invertedSummarizedDiff = -1d * summarizedDiff;
 
-            return invertedSummarizedDiff;
+            if(resultInverted)
+            {
+                return -1d * summarizedDiff;
+            }
+
+            return summarizedDiff;
         }
 
         public Task<double> EvaluateAsync(
             IEnumerable<Geometry> evaluatedGeometry,
             bool withPolygonsIntersectionsDiff = true,
             bool withOutOfBoundsDiff = true,
-            bool withVolumeDiff = true)
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
         {
             if (this.board == null)
                 throw new ArgumentNullException("board cannot be null");
@@ -76,14 +82,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 this.board,
                 withPolygonsIntersectionsDiff,
                 withOutOfBoundsDiff,
-                withVolumeDiff);
+                withVolumeDiff,
+                resultInverted);
         }
 
         public double Evaluate(
             IEnumerable<Geometry> evaluatedGeometry,
             bool withPolygonsIntersectionsDiff = true,
             bool withOutOfBoundsDiff = true,
-            bool withVolumeDiff = true)
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
         {
             if (this.board == null)
                 throw new ArgumentNullException("board cannot be null");
@@ -93,7 +101,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 this.board,
                 withPolygonsIntersectionsDiff,
                 withOutOfBoundsDiff,
-                withVolumeDiff).Result;
+                withVolumeDiff,
+                resultInverted).Result;
         }
 
         public double Evaluate(
@@ -101,14 +110,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             BoardShapeBase board,
             bool withPolygonsIntersectionsDiff = true,
             bool withOutOfBoundsDiff = true,
-            bool withVolumeDiff = true)
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
         {
             return EvaluateAsync(
                 evaluatedGeometry,
                 board,
                 withPolygonsIntersectionsDiff,
                 withOutOfBoundsDiff,
-                withVolumeDiff).Result;
+                withVolumeDiff,
+                resultInverted).Result;
         }
 
         // TODO: parallel deeper
