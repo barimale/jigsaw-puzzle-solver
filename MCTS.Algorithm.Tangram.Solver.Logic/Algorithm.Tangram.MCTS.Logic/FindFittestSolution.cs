@@ -42,7 +42,7 @@ namespace Algorithm.Tangram.MCTS.Logic
                 evaluatedGeometry.ToArray(),
                 this.board);
 
-            var diffAsInt = diff > Int32.MaxValue ? Int32.MaxValue : Convert.ToInt32(diff * 100);
+            var diffAsInt = diff > Int32.MaxValue ? Int32.MaxValue : Convert.ToInt32(diff);
 
             return diffAsInt;
         }

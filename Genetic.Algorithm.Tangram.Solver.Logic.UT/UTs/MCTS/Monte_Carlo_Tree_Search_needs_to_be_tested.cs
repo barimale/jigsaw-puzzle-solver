@@ -70,10 +70,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                     angles);
 
             // when
-            var stack = new Stack<TangramChromosome>();
             int size = preconfiguredBlocks.Count;
-            var root = preconfiguredBlocks.ToArray()[0];
-            var fitnessEvaluator = new FitnessService(boardDefinition);
 
             // then
             var solution = new FindFittestSolution(
@@ -82,14 +79,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 preconfiguredBlocks
                 ).DepthFirst();
 
-            var controlledSolution = Minimize
-                .Start(new FindFittestSolution(
-                    size,
-                    boardDefinition,
-                    preconfiguredBlocks))
-                //.WithUpperBound(new Minimize(int.MaxValue))
-                .WithImprovementCallback((ctrl, state, quality) => Display($"Found new best solution with {quality} after {ctrl.Elapsed}"))
-                .DepthFirst();
+            var solutionAsString = solution.ToString();
         }
     }
 }
