@@ -15,7 +15,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
         public bool IsAllowedLocationsEnabled => AllowedLocations != null && AllowedLocations.Length > 0;
         public double Area => Polygon.Area;
 
-        public BlockBase(Geometry polygon, Color color, bool moveToZero = true)
+        public BlockBase(
+            Geometry polygon,
+            Color color,
+            bool moveToZero = true)
         {
             this.ID = Guid.NewGuid();
             this.Polygon = polygon;

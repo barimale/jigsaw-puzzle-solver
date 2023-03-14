@@ -1,7 +1,9 @@
 using Algorithm.Tangram.MCTS.Logic.Domain;
+using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
+using GeneticSharp;
 using System.Collections.Immutable;
 using TreesearchLib;
 
@@ -12,6 +14,7 @@ namespace Algorithm.Tangram.MCTS.Logic
         // settings
         private int size; // amount of blocks
         private Stack<IndexedBlockBase> choicesMade; // solution with vary size depending on the level of the generated tree
+        public HashSet<BlockBase> remaining;
 
         // game parts
         private readonly BoardShapeBase board;
@@ -28,6 +31,7 @@ namespace Algorithm.Tangram.MCTS.Logic
             this.blocks = blocks;
             this.fitnessService = new FitnessService(this.board);
             this.choicesMade = new Stack<IndexedBlockBase>();
+            this.remaining = new HashSet<BlockBase>(this.blocks);
         }
 
         private int CheckFitness(
@@ -55,17 +59,14 @@ namespace Algorithm.Tangram.MCTS.Logic
 
         public bool IsTerminal => choicesMade.Count == size;
 
-        public Minimize Bound => new Minimize(CheckFitness(true, false, true));
+        public Minimize Bound => new Minimize(CheckFitness(true, false, false));
 
-        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, true, true)) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, false, false)) : null;
 
         public void Apply(IndexedBlockBase choice)
         {
-            var indexedChoice = new IndexedBlockBase(
-                choice.BlockDefinition,
-                choice.Index + 1);
-
-            choicesMade.Push(indexedChoice);
+            remaining.Remove(choice.BlockDefinition);
+            choicesMade.Push(choice);
         }
 
         public object Clone()
@@ -76,21 +77,36 @@ namespace Algorithm.Tangram.MCTS.Logic
                 this.blocks);
 
             clone.choicesMade = new Stack<IndexedBlockBase>(choicesMade);
+            clone.remaining = new HashSet<BlockBase>(remaining);
 
             return clone;
         }
 
         public IEnumerable<IndexedBlockBase> GetChoices()
         {
-            return this.blocks
-                .Skip(choicesMade.Count)
-                .Select(p => new IndexedBlockBase(p, 0))
+            var results = new List<IndexedBlockBase>();
+
+            foreach (var item in remaining)
+            {
+                var innerResult = new List<IndexedBlockBase>();
+
+                foreach ( var (pp, index) in item.AllowedLocations.WithIndex())
+                {
+                    innerResult.Add(new IndexedBlockBase(item, index));
+                }
+
+                results.AddRange(innerResult);
+            }
+
+            return results
+                .Shuffle(new FastRandomRandomization())
                 .AsEnumerable();
         }
 
         public void UndoLast()
         {
-            choicesMade.Pop();
+            var popped = choicesMade.Pop();
+            remaining.Add(popped.BlockDefinition);
         }
 
         public override string ToString()
