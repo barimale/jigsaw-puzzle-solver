@@ -77,13 +77,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 preconfiguredBlocks);
 
             var depthFirst = solution.DepthFirst();
+            var breadthFirst = solution.BreadthFirst();
 
             //var mcts = solution.MCTS(
-            //    runtime: TimeSpan.FromMinutes(1),
+            //    runtime: TimeSpan.FromSeconds(20),
             //    nodelimit: 20);
 
-            var resultRS = Minimize.Start(solution).RakeSearch(preconfiguredBlocks.Count);
-            Display($"RakeSearch(100) {resultRS.BestQuality} {resultRS.VisitedNodes} ({(resultRS.VisitedNodes / resultRS.Elapsed.TotalSeconds):F2} nodes/sec)");
+            //var resultRS = Minimize.Start(solution).RakeSearch(preconfiguredBlocks.Count);
+            //Display($"RakeSearch(100) {resultRS.BestQuality} {resultRS.VisitedNodes} ({(resultRS.VisitedNodes / resultRS.Elapsed.TotalSeconds):F2} nodes/sec)");
         }
     }
 }
