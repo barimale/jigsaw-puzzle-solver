@@ -4,8 +4,6 @@ using Genetic.Algorithm.Tangram.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using TreesearchLib;
 using Xunit.Abstractions;
@@ -77,9 +75,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 size,
                 boardDefinition,
                 preconfiguredBlocks
-                ).DepthFirst();
+                );
 
-            var solutionAsString = solution.ToString();
+            var depthFirst = solution.DepthFirst();
+
+            var resultRS100 = Minimize.Start(solution).RakeSearch(100);
+            Display($"RakeSearch(100) {resultRS100.BestQuality} {resultRS100.VisitedNodes} ({(resultRS100.VisitedNodes / resultRS100.Elapsed.TotalSeconds):F2} nodes/sec)");
+
+            var resultAnytimeLD = Minimize.Start(solution).AnytimeLDSearch(3);
+            Display($"AnytimeLDSearch(3) {resultAnytimeLD.BestQuality} {resultAnytimeLD.VisitedNodes} ({(resultAnytimeLD.VisitedNodes / resultAnytimeLD.Elapsed.TotalSeconds):F2} nodes/sec)");
         }
     }
 }
