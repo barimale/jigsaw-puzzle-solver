@@ -34,6 +34,9 @@ namespace Algorithm.Tangram.MCTS.Logic
             this.remaining = new HashSet<BlockBase>(this.blocks);
         }
 
+        public ImmutableList<IndexedBlockBase> Solution => choicesMade.ToImmutableList();
+        public BoardShapeBase Board => this.board;
+
         private int CheckFitness(
             bool withPolygonsIntersectionsDiff,
             bool withOutOfBoundsDiff,

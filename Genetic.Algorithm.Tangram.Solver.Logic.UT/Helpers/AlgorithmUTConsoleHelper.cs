@@ -1,4 +1,5 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+﻿using Algorithm.Tangram.MCTS.Logic;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using GeneticSharp;
@@ -66,18 +67,44 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 return;
 
             var fitnessValue = c.Fitness.Value;
-
             base.Display("Solution fitness: " + Math.Round(fitnessValue, 4));
-            base.Display("Blocks:");
 
             var board = c.BoardShapeDefinition.ToString();
+            base.Display("Board:");
+            base.Display(board);
 
             var solution = c
                     .GetGenes()
                     .Select(p => (BlockBase)p.Value)
                     .ToList();
 
+            base.Display("Blocks:");
             foreach (var block in solution)
+            {
+                base.Display(
+                    block.Color.ToString() + " coords: " + block.ToString());
+            }
+        }
+
+        public void ShowMadeChoices(FindFittestSolution? solution)
+        {
+            if (solution == null)
+                return;
+
+            var fitnessValue = solution.Quality.HasValue ? solution.Quality.Value.ToString() : "unknown";
+            base.Display("Solution fitness: " + fitnessValue);
+
+            var board = solution.Board.ToString();
+            base.Display("Board:");
+            base.Display(board);
+
+            var blocks = solution
+                .Solution
+                .Select(p => p.TransformedBlock)
+                .ToList();
+
+            base.Display("Blocks:");
+            foreach (var block in blocks)
             {
                 base.Display(
                     block.Color.ToString() + " coords: " + block.ToString());

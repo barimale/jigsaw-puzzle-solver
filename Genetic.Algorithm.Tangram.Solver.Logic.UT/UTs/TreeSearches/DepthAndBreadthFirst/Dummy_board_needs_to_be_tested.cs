@@ -5,21 +5,24 @@ using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using TreesearchLib;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
-    public class DepthFirst_and_BreadthFirst_needs_to_be_tested : PrintToConsoleUTBase
+    public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
     {
-        public DepthFirst_and_BreadthFirst_needs_to_be_tested(ITestOutputHelper output)
+        private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
+
+        public Dummy_board_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
-            // intentionally left blank
+            AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
         [Fact]
-        public void For_simple_board_with_two_blocks_only()
+        public void With_two_blocks()
         {
             // given
             int scaleFactor = 1;
@@ -79,12 +82,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var depthFirst = solution.DepthFirst();
             var breadthFirst = solution.BreadthFirst();
 
-            //var mcts = solution.MCTS(
-            //    runtime: TimeSpan.FromSeconds(20),
-            //    nodelimit: 20);
+            // finally
+            Display("DepthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(depthFirst);
 
-            //var resultRS = Minimize.Start(solution).RakeSearch(preconfiguredBlocks.Count);
-            //Display($"RakeSearch(100) {resultRS.BestQuality} {resultRS.VisitedNodes} ({(resultRS.VisitedNodes / resultRS.Elapsed.TotalSeconds):F2} nodes/sec)");
+            Display("BreadthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(breadthFirst);
         }
     }
 }
