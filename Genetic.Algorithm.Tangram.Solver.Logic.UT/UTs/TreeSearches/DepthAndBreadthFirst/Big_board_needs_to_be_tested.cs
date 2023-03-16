@@ -50,10 +50,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             var depthFirst = solution.DepthFirstAsync();
             var breadthFirst = solution.BreadthFirstAsync();
+            var pilot = solution.PilotMethodAsync();
 
-            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst });
+            var results = await Task.WhenAll(new[] { 
+                depthFirst, breadthFirst, pilot });
 
-            Assert.Equal(2, results.Length);
+            Assert.Equal(3, results.Length);
 
             // finally
             Display("DepthFirst");
@@ -61,6 +63,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             Display("BreadthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
+
+            Display("Pilot");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
         }
     }
 }

@@ -11,6 +11,7 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
 {
+    // WIP
     public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
@@ -22,7 +23,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
         }
 
         [Fact]
-        public void With_two_blocks()
+        public async Task With_two_blocks()
         {
             // given
             int scaleFactor = 1;
@@ -79,11 +80,19 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 boardDefinition,
                 preconfiguredBlocks);
 
-            var mcts = solution.MCTS(nodelimit: preconfiguredBlocks.Count);
+            var cts = new CancellationTokenSource();
+            var ct = cts.Token;
+
+            var pilot = solution.PilotMethodAsync();
+
+            var results = await Task.WhenAll(new Task<FindFittestSolution>[]
+            {
+                pilot
+            });
 
             // finally
-            Display("MCTS");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(mcts);
+            Display("Pilot");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
         }
     }
 }
