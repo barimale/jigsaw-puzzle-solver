@@ -42,19 +42,19 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 gameParts.Board,
                 gameParts.Blocks);
 
-            var depthFirst = solution.DepthFirstAsync();
-            var breadthFirst = solution.BreadthFirstAsync();
+            var depthFirst = solution.DepthFirst(); // Async
+            var breadthFirst = solution.BreadthFirst(); //Async
 
-            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst });
+            //var results = await Task.WhenAll(new[] { depthFirst, breadthFirst });
 
-            Assert.Equal(2, results.Length);
+            //Assert.Equal(2, results.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(depthFirst);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(breadthFirst);
         }
     }
 }

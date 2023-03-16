@@ -117,11 +117,11 @@ namespace Genetic.Algorithm.Tangram.Solver
             {
                 var gameParts = GamePartConfiguratorBuilder
                    .AvalaibleGameSets
-                   .CreateMediumBoard(withAllowedLocations: true);
+                   .CreateBigBoard(withAllowedLocations: true);
 
                 var algorithm = GamePartConfiguratorBuilder
                     .AvalaibleTunedAlgorithms
-                    .CreateMediumBoardSettings(
+                    .CreateBigBoardSettings(
                         gameParts.Board,
                         gameParts.Blocks,
                         gameParts.AllowedAngles);

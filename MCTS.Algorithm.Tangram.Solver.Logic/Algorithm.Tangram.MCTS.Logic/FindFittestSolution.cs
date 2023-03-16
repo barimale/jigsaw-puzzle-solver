@@ -1,9 +1,9 @@
 using Algorithm.Tangram.MCTS.Logic.Domain;
+using Algorithm.Tangram.MCTS.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
-using GeneticSharp;
 using System.Collections.Immutable;
 using TreesearchLib;
 
@@ -56,7 +56,7 @@ namespace Algorithm.Tangram.MCTS.Logic
                 withVolumeDiff,
                 false);
 
-            var diffAsInt = diff > Int32.MaxValue ? Int32.MaxValue : Convert.ToInt32(diff);
+            var diffAsInt = diff.ConvertToInt32();
 
             return diffAsInt;
         }
@@ -89,21 +89,24 @@ namespace Algorithm.Tangram.MCTS.Logic
         public IEnumerable<IndexedBlockBase> GetChoices()
         {
             var results = new List<IndexedBlockBase>();
+            var nextOne = remaining.FirstOrDefault();
 
-            foreach (var item in remaining)
+            if(nextOne == null)
             {
-                var innerResult = new List<IndexedBlockBase>();
-
-                foreach ( var (pp, index) in item.AllowedLocations.WithIndex())
-                {
-                    innerResult.Add(new IndexedBlockBase(item, index));
-                }
-
-                results.AddRange(innerResult);
+                return results;
             }
 
+            var innerResult = new List<IndexedBlockBase>();
+
+            foreach ( var (pp, index) in nextOne.AllowedLocations.WithIndex())
+            {
+                innerResult.Add(new IndexedBlockBase(nextOne, index));
+            }
+
+            results.AddRange(innerResult);
+
             return results
-                .Shuffle(new FastRandomRandomization())
+                //.Shuffle(new FastRandomRandomization()) or Reverse first <- some extras
                 .AsEnumerable();
         }
 
