@@ -28,8 +28,4 @@
     <ProjectReference Include="..\Tangram.Common.GameParts\Genetic.Algorithm.Tangram.GameParts.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="UTs\TreeSearches\MCTS\" />
-  </ItemGroup>
-
 </Project>
