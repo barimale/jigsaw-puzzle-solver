@@ -165,6 +165,7 @@ public class AllowedLocationsGenerator
         {
             fieldsToBeTransformed.Reflection();
         }
+
         fieldsToBeTransformed.Rotate(angleInDegreesFromAllowedAngles);
         fieldsToBeTransformed.MoveTo(i, j);
 
