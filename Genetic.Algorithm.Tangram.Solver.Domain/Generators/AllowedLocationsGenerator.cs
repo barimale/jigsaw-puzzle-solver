@@ -88,15 +88,15 @@ public class AllowedLocationsGenerator
             var permutationAsArray = permutation.ToArray();
 
             var newWithFlip = TryCheck(
-                    block,
-                    board,
-                    allowedAngles,
-                    (int)permutationAsArray[0],
-                    (int)permutationAsArray[1],
-                    (int)permutationAsArray[2],
-                    (bool)permutationAsArray[3],
-                    withMarkups
-                );
+                block,
+                board,
+                allowedAngles,
+                (int)permutationAsArray[0],
+                (int)permutationAsArray[1],
+                (int)permutationAsArray[2],
+                (bool)permutationAsArray[3],
+                withMarkups
+            );
 
             if (newWithFlip != null)
                 locations.Add(newWithFlip);
@@ -170,14 +170,45 @@ public class AllowedLocationsGenerator
         fieldsToBeTransformed.MoveTo(i, j);
 
         // and board fields
-        var boardFields = board.BoardFieldsDefinition;
+        var boardFields = board
+            .BoardFieldsDefinition
+            .ConvertToGeometryCollection();
 
         // match fields
-        // foreach check the matchcing
-        // return bool
-        var isOk = true;
+        var isOk = fieldsToBeTransformed?
+            .ToList()
+            .TrueForAll(blockField =>
+            {
+                var foundBoardField = boardFields?
+                    .FirstOrDefault(pp => pp.CoveredBy(blockField));
 
-        if (!isOk)
+                if (foundBoardField == null)
+                {
+                    return false;
+                }
+
+                if (this.skippedMarkup != null
+                && this.skippedMarkup.Contains(blockField.UserData))
+                {
+                    return true;
+                }
+
+                var matchCandidate = Tuple.Create<string, int>(
+                    (string)blockField.UserData,
+                    (int)foundBoardField.UserData);
+
+                if (this.allowedMatches != null
+                && this.allowedMatches.Contains(matchCandidate))
+                {
+                    return true;
+                }
+                else
+                { 
+                    return false;
+                }
+            });
+
+        if (!isOk.HasValue || (isOk.HasValue && isOk.Value == false))
         {
             return null;
         }

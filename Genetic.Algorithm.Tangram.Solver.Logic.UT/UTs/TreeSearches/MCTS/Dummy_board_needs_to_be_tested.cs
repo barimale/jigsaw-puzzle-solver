@@ -55,7 +55,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                     fieldWidth,
                     boardColumnsCount,
                     boardRowsCount,
-                    new object[,] { { 1, 0, 1 }, { 0, 1, 0 } }
+                    new object[,] { { 1, 0, 1 }, { 0, 1, 0 } } // TODO check maybe inversed order
                 );
 
             var boardDefinition = new BoardShapeBase(

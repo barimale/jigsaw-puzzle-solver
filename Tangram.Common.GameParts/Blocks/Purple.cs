@@ -7,7 +7,8 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
     public static class Purple
     {
         // move it later on to the base class or sth like this
-        public const string SkippedMarkup = "";
+        public const string SkippedMarkup = "&&&";
+        private const string SM = SkippedMarkup;
 
         private static Color color = Color.Purple;
 
@@ -25,12 +26,12 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
             });
 
         private static object[,] fieldRestriction1side = new object[,] { 
-            { "O", SkippedMarkup, "O" },
+            { "O", SM, "O" },
             { "X", "O", "X" }
         };
 
         private static object[,] fieldRestriction2side = new object[,] {
-            { "X", "", "X" },
+            { "X", SM, "X" },
             { "O", "X", "O" }
         };
 

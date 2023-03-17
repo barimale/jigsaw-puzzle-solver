@@ -60,7 +60,7 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
             if (collection == null)
                 return;
 
-            var minAndMaxXYs = collection.Boundary.EnvelopeInternal;
+            var minAndMaxXYs = collection.EnvelopeInternal;
             var transform = new AffineTransformation();
             var mirror = transform
                 .Reflect(
@@ -83,8 +83,8 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
             var transformToZeroZero = new AffineTransformation();
             var moveToZero = transformToZeroZero
                 .Translate(
-                    -collection.Boundary.EnvelopeInternal.MinX,
-                    -collection.Boundary.EnvelopeInternal.MinY
+                    -collection.EnvelopeInternal.MinX,
+                    -collection.EnvelopeInternal.MinY
                 );
 
             collection.Apply(moveToZero);
