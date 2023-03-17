@@ -8,13 +8,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
     public class BlockBase
     {
         public Guid ID { get; private set; }
+
         public bool IsExtraRistricted { private set; get; }
-        public object FieldRestrictionMarkup { private set; get; }
+        public object[,] FieldRestrictionMarkups { private set; get; }
 
         public Geometry Polygon { private set; get; }
         public Color Color { private set; get; }
         public Geometry[] AllowedLocations { private set; get; } = new Geometry[0];
-        public bool IsAllowedLocationsEnabled => AllowedLocations != null && AllowedLocations.Length > 0;
+        public bool IsAllowedLocationsEnabled => AllowedLocations != null 
+            && AllowedLocations.Length > 0;
+
         public double Area => Polygon.Area;
 
         public BlockBase(
@@ -36,12 +39,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
         public BlockBase(
             Geometry polygon,
             Color color,
-            object fieldRestrictionMarkup,
+            object[,] fieldRestrictionMarkup,
             bool moveToZero = true)
             : this(polygon, color, moveToZero)
         {
             this.IsExtraRistricted = true;
-            this.FieldRestrictionMarkup = fieldRestrictionMarkup;
+            this.FieldRestrictionMarkups = fieldRestrictionMarkup;
         }
 
         public void SetAllowedLocations(Geometry[] locations)

@@ -131,6 +131,8 @@ public class AllowedLocationsGenerator
                 }
             }
 
+            // execute the extraristrictedcheck
+
             return newGeometry;
         }
 

@@ -67,6 +67,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 boardRowsCount,
                 scaleFactor);
 
+            // TODO check each location against the extraristricted value
+            // pass allowed matches here: {'X' supports 0}, {'O' supports 1}
+            // FIRST add new Creational method for the block class containing markups per side
             var modificator = new AllowedLocationsGenerator();
             var preconfiguredBlocks = modificator.Preconfigure(
                     blocks.ToList(),
