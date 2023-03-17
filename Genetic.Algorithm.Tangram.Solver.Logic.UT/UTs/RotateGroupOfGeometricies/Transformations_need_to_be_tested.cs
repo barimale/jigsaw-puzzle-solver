@@ -1,21 +1,15 @@
-using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
-using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
-using System.Collections.Concurrent;
-using System.Collections.Immutable;
-using System.Diagnostics;
 using Xunit.Abstractions;
 using NetTopologySuite.Geometries;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
+    // TODO: remove it 
     public class Transformations_need_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
@@ -79,7 +73,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .ToArray();
 
             var aa = new GeometryFactory().CreateGeometryCollection(new[] { boardDefinition.Polygon });
-            aa.Apply()
         }
     }
 }
