@@ -1,29 +1,33 @@
-using Algorithm.Tangram.MCTS.Logic;
-using Genetic.Algorithm.Tangram.GameParts;
+using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.GameParts.Blocks;
+using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
+using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
-using TreesearchLib;
+using System.Collections.Concurrent;
+using System.Collections.Immutable;
+using System.Diagnostics;
 using Xunit.Abstractions;
+using NetTopologySuite.Geometries;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
-    // WIP
-    public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
+    public class Transformations_need_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
-        public Dummy_board_needs_to_be_tested(ITestOutputHelper output)
+        public Transformations_need_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
         [Fact]
-        public async Task With_two_blocks()
+        public async Task Rotation_of_group_of_polygons()
         {
             // given
             int scaleFactor = 1;
@@ -64,45 +68,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 boardRowsCount,
                 scaleFactor);
 
-            // leftTuple - blockMarkup
-            // rightTuple - boardMarkup
-            var allowedMatches = new List<Tuple<string, int>>()
-            {
-                Tuple.Create("O", 1),
-                Tuple.Create("X", 0)
-            };
-
-            var modificator = new AllowedLocationsGenerator(
-                allowedMatches,
-                fieldHeight,
-                fieldWidth,
-                new List<object>() { Purple.SkippedMarkup }
-            );
-
-            var preconfiguredBlocks = modificator.Preconfigure(
-                    blocks.ToList(),
-                    boardDefinition,
-                    angles);
-
             // when
-            int size = preconfiguredBlocks.Count;
+            var boardPolygons = boardDefinition
+                .BoardFieldsDefinition
+                .Select(p =>
+                {
+                    return new GeometryFactory()
+                        .CreatePolygon(p.ToCoordinates());
+                })
+                .ToArray();
 
-            // then
-            var solution = new FindFittestSolution(
-                size,
-                boardDefinition,
-                preconfiguredBlocks);
-
-            var pilot = solution.PilotMethodAsync();
-
-            var results = await Task.WhenAll(new Task<FindFittestSolution>[]
-            {
-                pilot
-            });
-
-            // finally
-            Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
+            var aa = new GeometryFactory().CreateGeometryCollection(new[] { boardDefinition.Polygon });
+            aa.Apply()
         }
     }
 }

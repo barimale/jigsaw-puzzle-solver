@@ -2,6 +2,7 @@
 using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Genetic.Algorithm.Tangram.Solver.Domain.Extensions;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Prepared;
 
@@ -120,14 +121,14 @@ public class AllowedLocationsGenerator
     }
 
     private Geometry? TryCheck(
-    BlockBase block,
-    BoardShapeBase board,
-    int[] allowedAngles,
-    int i,
-    int j,
-    int a,
-    bool hasToBeFlipped,
-    bool withMarkups)
+        BlockBase block,
+        BoardShapeBase board,
+        int[] allowedAngles,
+        int i,
+        int j,
+        int a,
+        bool hasToBeFlipped,
+        bool withMarkups)
     {
         if(withMarkups)
         {
@@ -148,38 +149,34 @@ public class AllowedLocationsGenerator
         bool hasToBeFlipped)
     {
         BlockBase modifiedMadeOfFields = block.Clone(true);
-        if (hasToBeFlipped)
-        {
-            modifiedMadeOfFields.Reflection();
-        }
-        modifiedMadeOfFields.Rotate(angleInDegreesFromAllowedAngles);
-        modifiedMadeOfFields.MoveTo(i, j);
 
-        // having
-        // TODO continue from here
-        // block fields
         var blockSideMarkups = modifiedMadeOfFields.FieldRestrictionMarkups[hasToBeFlipped ? 1 : 0];
-        var modifiedAsGroupOfFields = new RectangularBoardFieldsGenerator()// maybe custom here
+        var fieldsToBeTransformed = new RectangularBoardFieldsGenerator()
             .GenerateFields(
                 board.ScaleFactor,
                 this.fieldHeight,
                 this.fieldWidth,
-                1,
-                1
-                //modifiedMadeOfFields.Polygon.Boundary.UserData // TODO provide  markup here
-            );
+                (int)(modifiedMadeOfFields.Polygon.Boundary.EnvelopeInternal.Width / this.fieldWidth),
+                (int)(modifiedMadeOfFields.Polygon.Boundary.EnvelopeInternal.Height / this.fieldHeight),
+                blockSideMarkups
+            ).ConvertToGeometryCollection();
+
+        if (hasToBeFlipped)
+        {
+            fieldsToBeTransformed.Reflection();
+        }
+        fieldsToBeTransformed.Rotate(angleInDegreesFromAllowedAngles);
+        fieldsToBeTransformed.MoveTo(i, j);
 
         // and board fields
         var boardFields = board.BoardFieldsDefinition;
-        // filter board fields collection by transformations
-        // and compare / check field by field
 
-        // according to i and j get boundaries of the modified from the boardFields
-        // zipped them
-        // and execute the IsMatch method -> maybe provide the method at the constructor level
+        // match fields
+        // foreach check the matchcing
+        // return bool
+        var isOk = true;
 
-        // if not match return null
-        if (modifiedAsGroupOfFields == null)
+        if (!isOk)
         {
             return null;
         }

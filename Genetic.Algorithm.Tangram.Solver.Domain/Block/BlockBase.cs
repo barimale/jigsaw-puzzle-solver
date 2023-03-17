@@ -1,4 +1,5 @@
 ﻿using Genetic.Algorithm.Tangram.Common.Extensions;
+using Genetic.Algorithm.Tangram.Solver.Domain.Extensions;
 using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
@@ -55,7 +56,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
 
         public BlockBase Clone(bool moveToZero = true)
         {
-            var cloned = new BlockBase(Polygon, Color, moveToZero);
+            var cloned = new BlockBase(
+                Polygon,
+                Color,
+                FieldRestrictionMarkups,
+                moveToZero);
+           
             cloned.SetAllowedLocations(AllowedLocations);
 
             return cloned;

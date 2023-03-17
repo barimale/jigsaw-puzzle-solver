@@ -2,6 +2,11 @@
 
 namespace Genetic.Algorithm.Tangram.Solver.Domain.Board
 {
+    // TODO: rename it to be common for board and blocks
+
+    /// <summary>
+    ///  three slashes gives You summary
+    /// </summary>
     public class BoardFieldDefinition
     {
         public bool IsExtraRistricted { private set; get; }
