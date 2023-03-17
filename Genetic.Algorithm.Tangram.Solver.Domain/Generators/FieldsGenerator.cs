@@ -31,7 +31,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
                                r,
                                fieldWidth,
                                fieldHeight,
-                               withExtraRistrictedMarkups[c][r], // TODO double check, maybe r, c
+                               withExtraRistrictedMarkups[c,r], // TODO double check, maybe r, c
                                true,
                                scaleFactor)
                         );
