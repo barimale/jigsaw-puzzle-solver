@@ -7,7 +7,7 @@ namespace Genetic.Algorithm.Tangram.GameParts
 {
     public class GamePartsFactory
     {
-        public static GeneratorsFactory GeneratorsFactory => new GeneratorsFactory();
+        public static GeneratorFactory GeneratorFactory => new GeneratorFactory();
 
         // no algorithm is pass here in any way.
         // it needs to be added later on.

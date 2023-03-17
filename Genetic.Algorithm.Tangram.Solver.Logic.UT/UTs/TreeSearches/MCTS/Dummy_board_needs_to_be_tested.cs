@@ -50,15 +50,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
             var boardColumnsCount = 3;
             var boardRowsCount = 2;
             var fields = GamePartsFactory
-                .GeneratorsFactory
-                .FieldsGenerator
+                .GeneratorFactory
+                .RectangularBoardFieldsGenerator
                 .GenerateFields(
                     scaleFactor,
                     fieldHeight,
                     fieldWidth,
                     boardColumnsCount,
                     boardRowsCount,
-                    new int[,] { {1, 2, 3 }, {4, 5, 6 } }
+                    new int[,] { { 1, 0, 1 }, { 0, 1, 0 } }
                 );
 
             var boardDefinition = new BoardShapeBase(
@@ -81,9 +81,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 size,
                 boardDefinition,
                 preconfiguredBlocks);
-
-            var cts = new CancellationTokenSource();
-            var ct = cts.Token;
 
             var pilot = solution.PilotMethodAsync();
 

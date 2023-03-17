@@ -59,8 +59,8 @@ namespace Tangram.Common.GameParts.Boards
             var boardColumnsCount = 5;
             var boardRowsCount = 4;
             var fields = GamePartsFactory
-                .GeneratorsFactory
-                .FieldsGenerator
+                .GeneratorFactory
+                .RectangularBoardFieldsGenerator
                 .GenerateFields(
                     ScaleFactor,
                     fieldHeight,

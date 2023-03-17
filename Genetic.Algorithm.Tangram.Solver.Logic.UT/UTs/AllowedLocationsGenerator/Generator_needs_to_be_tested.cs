@@ -43,8 +43,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var boardColumnsCount = 5;
             var boardRowsCount = 4;
             var fields = GamePartsFactory
-                .GeneratorsFactory
-                .FieldsGenerator
+                .GeneratorFactory
+                .RectangularBoardFieldsGenerator
                 .GenerateFields(
                     scaleFactor,
                     fieldHeight,

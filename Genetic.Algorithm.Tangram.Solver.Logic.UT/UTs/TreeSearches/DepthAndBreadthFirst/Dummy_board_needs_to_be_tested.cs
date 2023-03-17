@@ -49,8 +49,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             var boardColumnsCount = 3;
             var boardRowsCount = 2;
             var fields = GamePartsFactory
-                .GeneratorsFactory
-                .FieldsGenerator
+                .GeneratorFactory
+                .RectangularBoardFieldsGenerator
                 .GenerateFields(
                     scaleFactor,
                     fieldHeight,

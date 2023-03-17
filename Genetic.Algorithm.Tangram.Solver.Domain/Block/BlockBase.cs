@@ -8,6 +8,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
     public class BlockBase
     {
         public Guid ID { get; private set; }
+        public bool IsExtraRistricted { private set; get; }
+        public object FieldRestrictionMarkup { private set; get; }
 
         public Geometry Polygon { private set; get; }
         public Color Color { private set; get; }
@@ -23,11 +25,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
             this.ID = Guid.NewGuid();
             this.Polygon = polygon;
             this.Color = color;
+            this.IsExtraRistricted = false;
 
             if (moveToZero)
             {
                 MoveToZero();
             }
+        }
+
+        public BlockBase(
+            Geometry polygon,
+            Color color,
+            object fieldRestrictionMarkup,
+            bool moveToZero = true)
+            : this(polygon, color, moveToZero)
+        {
+            this.IsExtraRistricted = true;
+            this.FieldRestrictionMarkup = fieldRestrictionMarkup;
         }
 
         public void SetAllowedLocations(Geometry[] locations)

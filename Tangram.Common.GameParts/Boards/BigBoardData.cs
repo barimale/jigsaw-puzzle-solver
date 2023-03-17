@@ -64,8 +64,8 @@ namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
             var boardColumnsCount = 10;
             var boardRowsCount = 5;
             var fields = GamePartsFactory
-                .GeneratorsFactory
-                .FieldsGenerator
+                .GeneratorFactory
+                .RectangularBoardFieldsGenerator
                 .GenerateFields(
                     ScaleFactor,
                     fieldHeight,

@@ -3,7 +3,7 @@ using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
 {
-    public class FieldsGenerator
+    public class RectangularBoardFieldsGenerator
     {
         public List<BoardFieldDefinition> GenerateFields(
             int scaleFactor,
