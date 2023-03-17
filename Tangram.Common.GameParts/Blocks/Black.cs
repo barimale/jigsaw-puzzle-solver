@@ -6,7 +6,15 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 {
     public sealed class Black
     {
-        public static BlockBase Create()
+        private static object[,] fieldRestriction1side = new object[,] {
+            { "O" }
+        };
+
+        private static object[,] fieldRestriction2side = new object[,] {
+            { "X"}
+        };
+
+        public static BlockBase Create(bool withFieldRestrictions = false)
         {
             var color = Color.Black;
 
@@ -19,9 +27,17 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
                     new Coordinate(0,0)// last the same as first
                 });
 
-            var bloczek = new BlockBase(
+            if (!withFieldRestrictions)
+            {
+                return new BlockBase(
                 polygon,
                 color);
+            }
+
+            var bloczek = new BlockBase(
+                polygon,
+                color,
+                new[] { fieldRestriction1side, fieldRestriction2side });
 
             var punktyBloczkaDoNarysowania = bloczek
                 .ToString();

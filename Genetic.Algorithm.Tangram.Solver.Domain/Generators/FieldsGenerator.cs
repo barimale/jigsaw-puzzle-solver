@@ -11,7 +11,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
             double fieldWidth,
             int boardColumnsCount,
             int boardRowsCount,
-            int[,]? withExtraRistrictedMarkups = null)
+            object[,]? withExtraRistrictedMarkups = null)
         {
             var isExtraRistricted = withExtraRistrictedMarkups != null
                 && withExtraRistrictedMarkups.RowsCount() == boardRowsCount

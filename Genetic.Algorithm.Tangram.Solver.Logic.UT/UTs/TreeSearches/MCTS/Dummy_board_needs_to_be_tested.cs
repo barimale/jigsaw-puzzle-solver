@@ -27,26 +27,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
         {
             // given
             int scaleFactor = 1;
+            var fieldHeight = 1d;
+            var fieldWidth = 1d;
 
             IList<BlockBase> blocks = new List<BlockBase>()
             {
-                Purple.Create(),
-                Black.Create(),
+                Purple.Create(withFieldRestrictions: true),
+                Black.Create(withFieldRestrictions: true),
             };
 
             int[] angles = new int[]
             {
-                //-270,
-                //-180,
-                //-90,
                 0,
                 90,
                 180,
                 270
             };
 
-            var fieldHeight = 1d;
-            var fieldWidth = 1d;
             var boardColumnsCount = 3;
             var boardRowsCount = 2;
             var fields = GamePartsFactory
@@ -58,7 +55,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                     fieldWidth,
                     boardColumnsCount,
                     boardRowsCount,
-                    new int[,] { { 1, 0, 1 }, { 0, 1, 0 } }
+                    new object[,] { { 1, 0, 1 }, { 0, 1, 0 } }
                 );
 
             var boardDefinition = new BoardShapeBase(
@@ -67,10 +64,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 boardRowsCount,
                 scaleFactor);
 
-            // TODO check each location against the extraristricted value
-            // pass allowed matches here: {'X' supports 0}, {'O' supports 1}
-            // FIRST add new Creational method for the block class containing markups per side
-            var modificator = new AllowedLocationsGenerator();
+            // leftTuple - blockMarkup
+            // rightTuple - boardMarkup
+            var allowedMatches = new List<Tuple<string, int>>()
+            {
+                Tuple.Create("O", 1),
+                Tuple.Create("X", 0)
+            };
+
+            var modificator = new AllowedLocationsGenerator(
+                allowedMatches,
+                new List<object>()
+                {
+                    Purple.SkippedMarkup
+                });
+
             var preconfiguredBlocks = modificator.Preconfigure(
                     blocks.ToList(),
                     boardDefinition,

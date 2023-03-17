@@ -1,4 +1,5 @@
-﻿using NetTopologySuite.Algorithm;
+﻿using Genetic.Algorithm.Tangram.Common.Extensions;
+using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using System.Drawing;
@@ -10,7 +11,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
         public Guid ID { get; private set; }
 
         public bool IsExtraRistricted { private set; get; }
-        public object[,] FieldRestrictionMarkups { private set; get; }
+        public object[][,] FieldRestrictionMarkups { private set; get; }
 
         public Geometry Polygon { private set; get; }
         public Color Color { private set; get; }
@@ -39,12 +40,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
         public BlockBase(
             Geometry polygon,
             Color color,
-            object[,] fieldRestrictionMarkup,
+            object[][,] fieldRestrictionMarkups,
             bool moveToZero = true)
             : this(polygon, color, moveToZero)
         {
             this.IsExtraRistricted = true;
-            this.FieldRestrictionMarkups = fieldRestrictionMarkup;
+            this.FieldRestrictionMarkups = fieldRestrictionMarkups;
         }
 
         public void SetAllowedLocations(Geometry[] locations)
@@ -74,7 +75,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
 
             Polygon.Apply(rotation);
             MoveToZero();
-            CleanCoordinateDigits();
+            Polygon.CleanCoordinateDigits();
         }
 
         // reflection / mirror
@@ -91,7 +92,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
 
             Polygon.Apply(mirror);
             MoveToZero();
-            CleanCoordinateDigits();
+            Polygon.CleanCoordinateDigits();
         }
 
         public void Apply(Geometry template)
@@ -110,7 +111,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
                 );
 
             Polygon.Apply(moveToZero);
-            CleanCoordinateDigits();
+            Polygon.CleanCoordinateDigits();
         }
 
         public void MoveTo(int x, int y)
@@ -123,30 +124,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
                 );
 
             Polygon.Apply(moveTo);
-            CleanCoordinateDigits();
-        }
-
-        private void CleanCoordinateDigits()
-        {
-            var digits = 3;
-            var minimalDiff = 0.001d;
-
-            foreach (var cc in Polygon.Coordinates)
-            {
-                if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
-                {
-                    var result = Convert.ToInt32(
-                            Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero));
-                    cc.CoordinateValue.X = result;
-                }
-
-                if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
-                {
-                    var result = Convert.ToInt32(
-                            Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero));
-                    cc.CoordinateValue.Y = result;
-                }
-            }
+            Polygon.CleanCoordinateDigits();
         }
 
         public override string ToString()

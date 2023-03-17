@@ -29,5 +29,59 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
                 })
                 .ToArray();
         }
+
+        public static Geometry? WithPolishedCoordinates(this Geometry? geometry)
+        {
+            if (geometry == null)
+                return geometry;
+
+            var digits = 3;
+            var minimalDiff = 0.001d;
+
+            foreach (var cc in geometry.Coordinates)
+            {
+                if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
+                {
+                    var result = Convert.ToInt32(
+                            Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero));
+                    cc.CoordinateValue.X = result;
+                }
+
+                if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
+                {
+                    var result = Convert.ToInt32(
+                            Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero));
+                    cc.CoordinateValue.Y = result;
+                }
+            }
+
+            return geometry;
+        }
+
+        public static void CleanCoordinateDigits(this Geometry? geometry)
+        {
+            if (geometry == null)
+                return;
+
+            var digits = 3;
+            var minimalDiff = 0.001d;
+
+            foreach (var cc in geometry.Coordinates)
+            {
+                if (Math.Abs(cc.CoordinateValue.X - Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
+                {
+                    var result = Convert.ToInt32(
+                            Math.Round(cc.CoordinateValue.X, digits, MidpointRounding.AwayFromZero));
+                    cc.CoordinateValue.X = result;
+                }
+
+                if (Math.Abs(cc.CoordinateValue.Y - Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero)) < minimalDiff)
+                {
+                    var result = Convert.ToInt32(
+                            Math.Round(cc.CoordinateValue.Y, digits, MidpointRounding.AwayFromZero));
+                    cc.CoordinateValue.Y = result;
+                }
+            }
+        }
     }
 }
