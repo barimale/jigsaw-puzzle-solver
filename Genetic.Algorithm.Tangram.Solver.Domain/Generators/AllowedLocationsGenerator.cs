@@ -156,6 +156,7 @@ public class AllowedLocationsGenerator
         modifiedMadeOfFields.MoveTo(i, j);
 
         // having
+        // TODO continue from here
         // block fields
         var blockSideMarkups = modifiedMadeOfFields.FieldRestrictionMarkups[hasToBeFlipped ? 1 : 0];
         var modifiedAsGroupOfFields = new RectangularBoardFieldsGenerator()// maybe custom here
@@ -163,9 +164,9 @@ public class AllowedLocationsGenerator
                 board.ScaleFactor,
                 this.fieldHeight,
                 this.fieldWidth,
-                modifiedMadeOfFields.Polygon.Boundary.UserData, // TODO provide  markup here
-                board.WidthUnit,
-                blockSideMarkups
+                1,
+                1
+                //modifiedMadeOfFields.Polygon.Boundary.UserData // TODO provide  markup here
             );
 
         // and board fields
@@ -173,14 +174,12 @@ public class AllowedLocationsGenerator
         // filter board fields collection by transformations
         // and compare / check field by field
 
-        
-
         // according to i and j get boundaries of the modified from the boardFields
         // zipped them
         // and execute the IsMatch method -> maybe provide the method at the constructor level
 
         // if not match return null
-        if (modified == null)
+        if (modifiedAsGroupOfFields == null)
         {
             return null;
         }
