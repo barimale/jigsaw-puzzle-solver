@@ -57,7 +57,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                     fieldHeight,
                     fieldWidth,
                     boardColumnsCount,
-                    boardRowsCount);
+                    boardRowsCount,
+                    new int[][] { new int[] { }, new int[] { } }
+                );
 
             var boardDefinition = new BoardShapeBase(
                 fields,

@@ -4,6 +4,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Board
 {
     public class BoardFieldDefinition
     {
+        public bool IsExtraRistricted { private set; get; }
+        public object FieldRestrictionMarkup { private set; get; }
+
         public bool IsEnabled { private set; get; }
         public int ScaleFactor { private set; get; }
 
@@ -26,6 +29,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Board
             Height = height;
             X = x;
             Y = y;
+            IsExtraRistricted = false;
+        }
+
+        public BoardFieldDefinition(
+            int x,
+            int y,
+            double width,
+            double height,
+            object fieldRestrictionMarkup,
+            bool isEnabled = true,
+            int scaleFactor = 1)
+            : this(x, y, width, height, isEnabled, scaleFactor)
+        {
+            IsExtraRistricted = true;
+            FieldRestrictionMarkup = fieldRestrictionMarkup;
         }
 
         public Coordinate[] ToCoordinates()

@@ -1,4 +1,5 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+﻿using Algorithm.Tangram.Common.Extensions;
+using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
 {
@@ -9,17 +10,44 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
             double fieldHeight,
             double fieldWidth,
             int boardColumnsCount,
-            int boardRowsCount)
+            int boardRowsCount,
+            int[,]? withExtraRistrictedMarkups = null)
         {
+            var isExtraRistricted = withExtraRistrictedMarkups != null
+                && withExtraRistrictedMarkups.RowsCount() == boardRowsCount
+                && withExtraRistrictedMarkups.ColumnsCount() == boardColumnsCount;
+
             var fields = new List<BoardFieldDefinition>();
 
             for (int c = 0; c < boardColumnsCount; c++)
             {
                 for (int r = 0; r < boardRowsCount; r++)
                 {
-                    fields.Add(
-                        new BoardFieldDefinition(c, r, fieldWidth, fieldHeight, true, scaleFactor)
-                    );
+                    if(isExtraRistricted)
+                    {
+                        fields.Add(
+                           new BoardFieldDefinition(
+                               c,
+                               r,
+                               fieldWidth,
+                               fieldHeight,
+                               withExtraRistrictedMarkups[c][r], // TODO double check, maybe r, c
+                               true,
+                               scaleFactor)
+                        );
+                    }
+                    else
+                    {
+                        fields.Add(
+                           new BoardFieldDefinition(
+                               c,
+                               r,
+                               fieldWidth,
+                               fieldHeight,
+                               true,
+                               scaleFactor)
+                        );
+                    }
                 }
             }
 
