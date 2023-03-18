@@ -1,34 +1,42 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+﻿using Genetic.Algorithm.Tangram.GameParts.Blocks.CommonSettings;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using NetTopologySuite.Geometries;
 using System.Drawing;
 
 namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 {
-    public static class LightGreen
+    public sealed class LightGreen : PolishGameBaseBlock
     {
-        public static BlockBase Create()
+        public LightGreen()
         {
-            var color = Color.LightGreen;
+            base.fieldRestriction1side = new object[,] {
+                { "O", NA, NA, NA},
+                { "X", "O", "X", "O" }
+            };
 
-            var polygon = new GeometryFactory()
-                .CreatePolygon(new Coordinate[] {
-                    new Coordinate(0,0),// first the same as last
-                    new Coordinate(0,2),
-                    new Coordinate(1,2),
-                    new Coordinate(1,1),
-                    new Coordinate(4,1),
-                    new Coordinate(4,0),
-                    new Coordinate(0,0)// last the same as first
-                });
+            base.fieldRestriction2side = new object[,] {
+                { NA, NA, NA, "X" },
+                { "X", "O", "X", "O" }
+            };
 
-            var bloczek = new BlockBase(
-                polygon,
-                color);
+            base.color = Color.LightGreen;
 
-            var punktyBloczkaDoNarysowania = bloczek
-                .ToString();
+            base.polygon = new GeometryFactory()
+                    .CreatePolygon(new Coordinate[] {
+                        new Coordinate(0,0),// first the same as last
+                        new Coordinate(0,2),
+                        new Coordinate(1,2),
+                        new Coordinate(1,1),
+                        new Coordinate(4,1),
+                        new Coordinate(4,0),
+                        new Coordinate(0,0)// last the same as first
+                    });
+        }
 
-            return bloczek;
+        public static BlockBase Create(bool withFieldRestrictions = false)
+        {
+            return new LightGreen()
+                .CreateNew(withFieldRestrictions);
         }
     }
 }

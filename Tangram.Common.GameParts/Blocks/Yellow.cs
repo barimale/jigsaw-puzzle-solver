@@ -1,36 +1,46 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+﻿using Genetic.Algorithm.Tangram.GameParts.Blocks.CommonSettings;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using NetTopologySuite.Geometries;
 using System.Drawing;
 
 namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 {
-    public static class Yellow
+    public sealed class Yellow : PolishGameBaseBlock
     {
-        public static BlockBase Create()
+        public Yellow()
         {
-            var color = Color.Yellow;
+            base.fieldRestriction1side = new object[,] {
+                { NA, "X", NA },
+                { NA, "O", NA },
+                { "O", "X", "O" }
+            };
 
-            var polygon = new GeometryFactory()
-                .CreatePolygon(new Coordinate[] {
-                    new Coordinate(0,0),// first the same as last
-                    new Coordinate(0,1),
-                    new Coordinate(1,1),
-                    new Coordinate(1,3),
-                    new Coordinate(2,3),
-                    new Coordinate(2,1),
-                    new Coordinate(3,1),
-                    new Coordinate(3,0),
-                    new Coordinate(0,0)// last the same as first
-                });
+            base.fieldRestriction2side = new object[,] {
+                { NA, "O", NA },
+                { NA, "X", NA },
+                { "X", "O", "X" }
+            };
 
-            var bloczek = new BlockBase(
-                polygon,
-                color);
+            base.color = Color.Yellow;
 
-            var punktyBloczkaDoNarysowania = bloczek
-                .ToString();
+            base.polygon = new GeometryFactory()
+                    .CreatePolygon(new Coordinate[] {
+                        new Coordinate(0,0),// first the same as last
+                        new Coordinate(0,1),
+                        new Coordinate(1,1),
+                        new Coordinate(1,3),
+                        new Coordinate(2,3),
+                        new Coordinate(2,1),
+                        new Coordinate(3,1),
+                        new Coordinate(3,0),
+                        new Coordinate(0,0)// last the same as first
+                    });
+        }
 
-            return bloczek;
+        public static BlockBase Create(bool withFieldRestrictions = false)
+        {
+            return new Yellow()
+                .CreateNew(withFieldRestrictions);
         }
     }
 }

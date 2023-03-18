@@ -11,7 +11,6 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
 {
-    // WIP
     public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
@@ -55,7 +54,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                     fieldWidth,
                     boardColumnsCount,
                     boardRowsCount,
-                    new object[,] { { 1, 0, 1 }, { 0, 1, 0 } } // TODO check maybe inversed order
+                    new object[,] { { 1, 0, 1 }, { 0, 1, 0 } }
                 );
 
             var boardDefinition = new BoardShapeBase(

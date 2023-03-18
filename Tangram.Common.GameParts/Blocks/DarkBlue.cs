@@ -1,32 +1,38 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+﻿using Genetic.Algorithm.Tangram.GameParts.Blocks.CommonSettings;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using NetTopologySuite.Geometries;
 using System.Drawing;
 
 namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 {
-    public static class DarkBlue
+    public sealed class DarkBlue : PolishGameBaseBlock
     {
-        public static BlockBase Create()
+        public DarkBlue()
         {
-            var color = Color.DarkBlue;
+            base.fieldRestriction1side = new object[,] {
+                { "O", "X", "O", "X", "O" }
+            };
 
-            var polygon = new GeometryFactory()
-                .CreatePolygon(new Coordinate[] {
-                    new Coordinate(0,0),// first the same as last
-                    new Coordinate(0,1),
-                    new Coordinate(5,1),
-                    new Coordinate(5,0),
-                    new Coordinate(0,0)// last the same as first
-                });
+            base.fieldRestriction2side = new object[,] {
+                { "X", "O", "X", "O", "X" }
+            };
 
-            var bloczek = new BlockBase(
-                polygon,
-                color);
+            base.color = Color.DarkBlue;
 
-            var punktyBloczkaDoNarysowania = bloczek
-                .ToString();
+            base.polygon = new GeometryFactory()
+                    .CreatePolygon(new Coordinate[] {
+                        new Coordinate(0,0),// first the same as last
+                        new Coordinate(0,1),
+                        new Coordinate(5,1),
+                        new Coordinate(5,0),
+                        new Coordinate(0,0)// last the same as first
+                    });
+        }
 
-            return bloczek;
+        public static BlockBase Create(bool withFieldRestrictions = false)
+        {
+            return new DarkBlue()
+                .CreateNew(withFieldRestrictions);
         }
     }
 }
