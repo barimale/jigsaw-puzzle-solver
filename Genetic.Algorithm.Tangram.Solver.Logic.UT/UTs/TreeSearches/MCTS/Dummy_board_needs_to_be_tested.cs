@@ -90,7 +90,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 allowedMatches,
                 fieldHeight,
                 fieldWidth,
-                new List<object>() { PolishGameBaseBlock.SkippedMarkup }
+                new List<object>() { Purple.SkippedMarkup }
             );
 
             var preconfiguredBlocks = modificator.Preconfigure(

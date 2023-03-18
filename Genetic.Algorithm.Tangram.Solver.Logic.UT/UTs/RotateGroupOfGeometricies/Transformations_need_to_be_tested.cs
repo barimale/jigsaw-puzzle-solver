@@ -5,7 +5,6 @@ using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using Xunit.Abstractions;
-using NetTopologySuite.Geometries;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
 {
@@ -63,16 +62,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 scaleFactor);
 
             // when
-            var boardPolygons = boardDefinition
-                .BoardFieldsDefinition
-                .Select(p =>
-                {
-                    return new GeometryFactory()
-                        .CreatePolygon(p.ToCoordinates());
-                })
-                .ToArray();
-
-            var aa = new GeometryFactory().CreateGeometryCollection(new[] { boardDefinition.Polygon });
+            // TODO: geometrycollectionextensions has to be checked step by step
+            // and converted to string
         }
     }
 }

@@ -37,6 +37,9 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 
         public static BlockBase Create(bool withFieldRestrictions = false)
         {
+            var bloczekDoNarysowania = new LightBlue()
+                .CreateNew(withFieldRestrictions).ToString();
+
             return new LightBlue()
                 .CreateNew(withFieldRestrictions);
         }

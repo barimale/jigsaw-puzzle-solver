@@ -5,7 +5,6 @@ using System.Drawing;
 
 namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 {
-    // TODO: double check it
     public sealed class Purple: PolishGameBaseBlock
     {
         public Purple()
@@ -38,6 +37,9 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks
 
         public static BlockBase Create(bool withFieldRestrictions = false)
         {
+            var bloczekDoNarysowania = new Purple()
+                .CreateNew(withFieldRestrictions).ToString();
+
             return new Purple()
                 .CreateNew(withFieldRestrictions);
         }
