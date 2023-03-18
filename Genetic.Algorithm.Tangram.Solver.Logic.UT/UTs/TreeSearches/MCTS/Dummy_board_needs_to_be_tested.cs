@@ -9,7 +9,6 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using TreesearchLib;
 using Xunit.Abstractions;
 
-// WIP TODO step by step check transformations
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
 {
     public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
