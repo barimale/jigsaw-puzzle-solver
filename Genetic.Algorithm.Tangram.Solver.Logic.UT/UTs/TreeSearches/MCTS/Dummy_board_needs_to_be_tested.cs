@@ -1,6 +1,7 @@
 using Algorithm.Tangram.MCTS.Logic;
 using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.GameParts.Blocks;
+using Genetic.Algorithm.Tangram.GameParts.Blocks.CommonSettings;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
@@ -22,7 +23,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
         }
 
         [Fact]
-        public async Task With_two_blocks()
+        public async Task With_ten_blocks()
         {
             // given
             int scaleFactor = 1;
@@ -31,8 +32,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
 
             IList<BlockBase> blocks = new List<BlockBase>()
             {
+                DarkBlue.Create(withFieldRestrictions: true),
+                Red.Create(withFieldRestrictions: true),
+                LightBlue.Create(withFieldRestrictions: true),
                 Purple.Create(withFieldRestrictions: true),
-                Black.Create(withFieldRestrictions: true),
+                Blue.Create(withFieldRestrictions: true),
+                Pink.Create(withFieldRestrictions: true),
+                Green.Create(withFieldRestrictions: true),
+                LightGreen.Create(withFieldRestrictions: true),
+                Orange.Create(withFieldRestrictions: true),
+                Yellow.Create(withFieldRestrictions: true),
             };
 
             int[] angles = new int[]
@@ -43,8 +52,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 270
             };
 
-            var boardColumnsCount = 3;
-            var boardRowsCount = 2;
+            var boardColumnsCount = 10;
+            var boardRowsCount = 5;
             var fields = GamePartsFactory
                 .GeneratorFactory
                 .RectangularBoardFieldsGenerator
@@ -54,7 +63,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                     fieldWidth,
                     boardColumnsCount,
                     boardRowsCount,
-                    new object[,] { { 1, 0, 1 }, { 0, 1, 0 } }
+                    new object[,] {
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
+                    }
                 );
 
             var boardDefinition = new BoardShapeBase(
@@ -75,7 +90,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 allowedMatches,
                 fieldHeight,
                 fieldWidth,
-                new List<object>() { Purple.SkippedMarkup }
+                new List<object>() { PolishGameBaseBlock.SkippedMarkup }
             );
 
             var preconfiguredBlocks = modificator.Preconfigure(
@@ -93,15 +108,22 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 preconfiguredBlocks);
 
             var pilot = solution.PilotMethodAsync();
+            var depthFirst = solution.DepthFirstAsync();
+            var breadthFirst = solution.BreadthFirstAsync();
 
-            var results = await Task.WhenAll(new Task<FindFittestSolution>[]
-            {
-                pilot
-            });
+            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
+
+            Assert.Equal(3, results.Length);
 
             // finally
-            Display("Pilot");
+            Display("DepthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
+
+            Display("BreadthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
+
+            Display("Pilot");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
         }
     }
 }
