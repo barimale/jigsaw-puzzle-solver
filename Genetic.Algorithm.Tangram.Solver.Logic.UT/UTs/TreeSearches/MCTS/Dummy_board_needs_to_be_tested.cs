@@ -125,5 +125,102 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
             Display("Pilot");
             AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
         }
+
+        [Fact]
+        public async Task With_four_blocks()
+        {
+            // given
+            int scaleFactor = 1;
+            var fieldHeight = 1d;
+            var fieldWidth = 1d;
+
+            IList<BlockBase> blocks = new List<BlockBase>()
+            {
+                Purple.Create(withFieldRestrictions: true),
+                DarkBlue.Create(withFieldRestrictions: true),
+                LightBlue.Create(withFieldRestrictions: true),
+                Blue.Create(withFieldRestrictions: true),
+            };
+
+            int[] angles = new int[]
+            {
+                0,
+                90,
+                180,
+                270
+            };
+
+            var boardColumnsCount = 5;
+            var boardRowsCount = 4;
+            var fields = GamePartsFactory
+                .GeneratorFactory
+                .RectangularBoardFieldsGenerator
+                .GenerateFields(
+                    scaleFactor,
+                    fieldHeight,
+                    fieldWidth,
+                    boardColumnsCount,
+                    boardRowsCount,
+                    new object[,] {
+                        { 1, 0, 1, 0, 1},
+                        { 0, 1, 0, 1, 0},
+                        { 1, 0, 1, 0, 1},
+                        { 0, 1, 0, 1, 0},
+                    }
+                );
+
+            var boardDefinition = new BoardShapeBase(
+                fields,
+                boardColumnsCount,
+                boardRowsCount,
+                scaleFactor);
+
+            // leftTuple - blockMarkup
+            // rightTuple - boardMarkup
+            var allowedMatches = new List<Tuple<string, int>>()
+            {
+                Tuple.Create("O", 1),
+                Tuple.Create("X", 0)
+            };
+
+            var modificator = new AllowedLocationsGenerator(
+                allowedMatches,
+                fieldHeight,
+                fieldWidth,
+                new List<object>() { Purple.SkippedMarkup }
+            );
+
+            var preconfiguredBlocks = modificator.Preconfigure(
+                    blocks.ToList(),
+                    boardDefinition,
+                    angles);
+
+            // when
+            int size = preconfiguredBlocks.Count;
+
+            // then
+            var solution = new FindFittestSolution(
+                size,
+                boardDefinition,
+                preconfiguredBlocks);
+
+            var pilot = solution.PilotMethodAsync();
+            var depthFirst = solution.DepthFirstAsync();
+            var breadthFirst = solution.BreadthFirstAsync();
+
+            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
+
+            Assert.Equal(3, results.Length);
+
+            // finally
+            Display("DepthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
+
+            Display("BreadthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
+
+            Display("Pilot");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
+        }
     }
 }

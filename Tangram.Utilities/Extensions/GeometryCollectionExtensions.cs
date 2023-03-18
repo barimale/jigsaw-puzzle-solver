@@ -1,6 +1,7 @@
 ﻿using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
+using NetTopologySuite.Operation.Union;
 
 namespace Genetic.Algorithm.Tangram.Common.Extensions
 {
@@ -11,7 +12,7 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
             if (geometryCollection == null)
                 return;
 
-            foreach(var geometry in geometryCollection)
+            foreach(var geometry in geometryCollection.Geometries)
             {
                 geometry.CleanCoordinateDigits();
             }
@@ -72,6 +73,29 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
             collection.Apply(mirror);
             collection.MoveToZero();
             collection.CleanCoordinateDigits();
+        }
+
+        public static string ToDrawString(this GeometryCollection? collection)
+        {
+            if (collection == null)
+                return string.Empty;
+
+            var mergedPolygon = new CascadedPolygonUnion(collection.Geometries)
+                    .Union();
+
+            var toString = mergedPolygon
+                    .Coordinates
+                    .Select(p =>
+                        "(" +
+                        Math.Round(p.X, 2)
+                            .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                        "," +
+                        Math.Round(p.Y, 2)
+                            .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                        ")").ToArray();
+            var toStringAsArray = string.Join(',', toString);
+
+            return toStringAsArray;
         }
 
         //move to the (0, 0)

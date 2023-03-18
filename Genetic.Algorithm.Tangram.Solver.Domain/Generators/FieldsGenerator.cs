@@ -5,7 +5,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
 {
     public class RectangularBoardFieldsGenerator
     {
-        public List<BoardFieldDefinition> GenerateFields(
+        public IList<BoardFieldDefinition> GenerateFields(
             int scaleFactor,
             double fieldHeight,
             double fieldWidth,

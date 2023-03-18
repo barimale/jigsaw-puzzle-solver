@@ -16,6 +16,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Extensions
                 var polygonAsGeometry = new GeometryFactory()
                     .CreateGeometry(polygonWithData);
                 polygonAsGeometry.UserData = p.FieldRestrictionMarkup;
+                if(p.FieldRestrictionMarkup == null)
+                {
+                    var i = 0;
+                }
 
                 return polygonAsGeometry;
             }).ToArray();

@@ -156,8 +156,8 @@ public class AllowedLocationsGenerator
                 board.ScaleFactor,
                 this.fieldHeight,
                 this.fieldWidth,
-                (int)(modifiedMadeOfFields.Polygon.Boundary.EnvelopeInternal.Width / this.fieldWidth),
-                (int)(modifiedMadeOfFields.Polygon.Boundary.EnvelopeInternal.Height / this.fieldHeight),
+                (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Width / this.fieldWidth),
+                (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Height / this.fieldHeight),
                 blockSideMarkups
             ).ConvertToGeometryCollection();
 
@@ -175,7 +175,8 @@ public class AllowedLocationsGenerator
             .ConvertToGeometryCollection();
 
         // match fields
-        var isOk = fieldsToBeTransformed?
+        var isOk = fieldsToBeTransformed
+            .Geometries
             .ToList()
             .TrueForAll(blockField =>
             {
@@ -208,7 +209,7 @@ public class AllowedLocationsGenerator
                 }
             });
 
-        if (!isOk.HasValue || (isOk.HasValue && isOk.Value == false))
+        if (!isOk)
         {
             return null;
         }
@@ -234,6 +235,7 @@ public class AllowedLocationsGenerator
         bool hasToBeFlipped)
     {
         BlockBase modified = block.Clone(true);
+
         if (hasToBeFlipped)
         {
             modified.Reflection();

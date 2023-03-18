@@ -57,12 +57,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
         public BlockBase Clone(bool moveToZero = true)
         {
             var cloned = new BlockBase(
-                Polygon,
+                new GeometryFactory().CreateGeometry(Polygon),
                 Color,
                 FieldRestrictionMarkups,
                 moveToZero);
            
-            cloned.SetAllowedLocations(AllowedLocations);
+            cloned.SetAllowedLocations(AllowedLocations.ToArray());
 
             return cloned;
         }
@@ -112,8 +112,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
             var transformToZeroZero = new AffineTransformation();
             var moveToZero = transformToZeroZero
                 .Translate(
-                    -Polygon.Boundary.EnvelopeInternal.MinX,
-                    -Polygon.Boundary.EnvelopeInternal.MinY
+                    -Polygon.EnvelopeInternal.MinX,
+                    -Polygon.EnvelopeInternal.MinY
                 );
 
             Polygon.Apply(moveToZero);
