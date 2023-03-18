@@ -1,7 +1,6 @@
 using Algorithm.Tangram.MCTS.Logic;
 using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.GameParts.Blocks;
-using Genetic.Algorithm.Tangram.GameParts.Blocks.CommonSettings;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
@@ -10,6 +9,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using TreesearchLib;
 using Xunit.Abstractions;
 
+// WIP TODO step by step check transformations
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
 {
     public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
