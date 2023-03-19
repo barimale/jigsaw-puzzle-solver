@@ -8,7 +8,8 @@ namespace Genetic.Algorithm.Tangram.GameParts.Blocks.CommonSettings
     {
         public const string SkippedMarkup = "&&&";
 
-        // shortcut to have sides described in a more readable way
+        // shortcut to have sides described in a more compressed way
+        // as it is goin to be used inside the array definition.
         protected const string NA = SkippedMarkup;
 
         protected object[,]? fieldRestriction1side;
