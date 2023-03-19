@@ -80,7 +80,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             // given
             var gameParts = GamePartConfiguratorBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
             var algorithm = GamePartConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms

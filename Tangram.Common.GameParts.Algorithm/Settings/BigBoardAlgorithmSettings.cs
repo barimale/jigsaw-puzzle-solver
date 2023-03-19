@@ -13,6 +13,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
 {
     internal class BigBoardAlgorithmSettings : IAlgorithmSettings
     {
+        // TODO: expose the parameter to enable/disable list of initial chromosomes
         public GeneticAlgorithm CreateNew(
             BoardShapeBase board,
             IList<BlockBase> blocks,
@@ -26,7 +27,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
                 .Count > 0;
 
             // solver
-            var generationChromosomesNumber = 4000; //6000 500 300
+            var generationChromosomesNumber = 500; //6000 500 300
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
             var fitness = new TangramService(board, blocks);
