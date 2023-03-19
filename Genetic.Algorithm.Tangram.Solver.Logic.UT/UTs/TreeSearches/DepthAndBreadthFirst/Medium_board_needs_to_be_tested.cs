@@ -19,7 +19,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
         }
 
         [Fact]
-        public async Task With_5_blocks()
+        public async Task Containing_4_blocksand_5x4_board()
         {
             // given
             var gameParts = GamePartConfiguratorBuilder

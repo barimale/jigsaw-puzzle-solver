@@ -11,18 +11,18 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
-    public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
+    public class Small_board_needs_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
-        public Dummy_board_needs_to_be_tested(ITestOutputHelper output)
+        public Small_board_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
         [Fact]
-        public void With_two_blocks()
+        public void Containing_2_blocks_and_3x2_board()
         {
             // given
             int scaleFactor = 1;
@@ -35,9 +35,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             int[] angles = new int[]
             {
-                //-270,
-                //-180,
-                //-90,
                 0,
                 90,
                 180,

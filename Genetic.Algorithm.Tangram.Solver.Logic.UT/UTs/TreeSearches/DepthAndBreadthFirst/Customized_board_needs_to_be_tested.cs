@@ -9,20 +9,20 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using TreesearchLib;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
-    public class Dummy_board_needs_to_be_tested : PrintToConsoleUTBase
+    public class Customized_board_needs_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
-        public Dummy_board_needs_to_be_tested(ITestOutputHelper output)
+        public Customized_board_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
         [Fact]
-        public async Task With_ten_blocks()
+        public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
         {
             // given
             int scaleFactor = 1;
@@ -89,7 +89,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 allowedMatches,
                 fieldHeight,
                 fieldWidth,
-                new List<object>() { Purple.SkippedMarkup }
+                new List<object>() { GameParts.Blocks.CommonSettings.PolishGameBaseBlock.SkippedMarkup }
             );
 
             var preconfiguredBlocks = modificator.Preconfigure(
@@ -126,7 +126,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
         }
 
         [Fact]
-        public async Task With_four_blocks()
+        public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
         {
             // given
             int scaleFactor = 1;
@@ -186,7 +186,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.MCTS
                 allowedMatches,
                 fieldHeight,
                 fieldWidth,
-                new List<object>() { Purple.SkippedMarkup }
+                new List<object>() { GameParts.Blocks.CommonSettings.PolishGameBaseBlock.SkippedMarkup }
             );
 
             var preconfiguredBlocks = modificator.Preconfigure(
