@@ -1,15 +1,15 @@
 using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.Fitness;
+using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.CompleteOverviewOfSolutions
 {
     public class Time_execution_needs_to_be_tested : PrintToConsoleUTBase
     {
@@ -25,11 +25,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         public async Task Check_time_execution_for_big_board()
         {
             // given
-            var gameParts = GamePartConfiguratorBuilder
+            var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            var algorithm = GamePartConfiguratorBuilder
+            var algorithm = GameConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
                     gameParts.Board,
@@ -65,8 +65,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                         .EvaluateAsync(p)
                         .ContinueWith(result =>
                         {
-                            if (result.IsCompleted 
-                                && result.Result <= 0 
+                            if (result.IsCompleted
+                                && result.Result <= 0
                                 && result.Result >= expectedFitnessValue)
                             {
                                 p.Fitness = result.Result;
@@ -83,12 +83,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             // then
             TimeSpan ts = TimeSpan.FromTicks(sw.ElapsedTicks);
             string elapsed = ts.TotalMilliseconds.ToString();
-            base.Display("Elapsed time in milliseconds: " + elapsed + "ms");
+            Display("Elapsed time in milliseconds: " + elapsed + "ms");
 
             var amountOfSolutions = solutions.Count;
-            base.Display("Solution counts: " + amountOfSolutions);
+            Display("Solution counts: " + amountOfSolutions);
 
-            base.Display("Solutions:");
+            Display("Solutions:");
             foreach (var item in solutions.ToImmutableList())
             {
                 AlgorithmUTConsoleHelper.ShowChromosome(item);

@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.MCTS.Logic.csproj" />
+    <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.AlgorithmSettings.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts.Configurator\Genetic.Algorithm.Tangram.Configurator.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts\Genetic.Algorithm.Tangram.GameParts.csproj" />

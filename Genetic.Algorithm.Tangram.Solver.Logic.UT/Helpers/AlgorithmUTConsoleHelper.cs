@@ -1,13 +1,13 @@
 ﻿using Algorithm.Tangram.MCTS.Logic;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using GeneticSharp;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers
 {
-    public class AlgorithmUTConsoleHelper: PrintToConsoleUTBase
+    public class AlgorithmUTConsoleHelper : PrintToConsoleUTBase
     {
         public AlgorithmUTConsoleHelper(ITestOutputHelper output)
             : base(output)
@@ -43,9 +43,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
         public void Algorithm_TerminationReached(object? sender, EventArgs e)
         {
-            base.Display(string.Empty);
-            base.Display("Algorithm_TerminationReached");
-            base.Display(string.Empty);
+            Display(string.Empty);
+            Display("Algorithm_TerminationReached");
+            Display(string.Empty);
 
             var algorithmResult = sender as GeneticAlgorithm;
 
@@ -67,21 +67,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 return;
 
             var fitnessValue = c.Fitness.Value;
-            base.Display("Solution fitness: " + Math.Round(fitnessValue, 4));
+            Display("Solution fitness: " + Math.Round(fitnessValue, 4));
 
             var board = c.BoardShapeDefinition.ToString();
-            base.Display("Board:");
-            base.Display(board);
+            Display("Board:");
+            Display(board);
 
             var solution = c
                     .GetGenes()
                     .Select(p => (BlockBase)p.Value)
                     .ToList();
 
-            base.Display("Blocks:");
+            Display("Blocks:");
             foreach (var block in solution)
             {
-                base.Display(
+                Display(
                     block.Color.ToString() + " coords: " + block.ToString());
             }
         }
@@ -92,21 +92,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                 return;
 
             var fitnessValue = solution.Quality.HasValue ? solution.Quality.Value.ToString() : "unknown";
-            base.Display("Solution fitness: " + fitnessValue);
+            Display("Solution fitness: " + fitnessValue);
 
             var board = solution.Board.ToString();
-            base.Display("Board:");
-            base.Display(board);
+            Display("Board:");
+            Display(board);
 
             var blocks = solution
                 .Solution
                 .Select(p => p.TransformedBlock)
                 .ToList();
 
-            base.Display("Blocks:");
+            Display("Blocks:");
             foreach (var block in blocks)
             {
-                base.Display(
+                Display(
                     block.Color.ToString() + " coords: " + block.ToString());
             }
         }

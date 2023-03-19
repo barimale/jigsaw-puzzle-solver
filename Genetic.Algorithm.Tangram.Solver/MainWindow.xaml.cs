@@ -1,15 +1,12 @@
-﻿using Algorithm.Executor.WPF.Model;
-using Genetic.Algorithm.Tangram.Common.Extensions;
+﻿using Algorithm.Executor.WPF;
 using Genetic.Algorithm.Tangram.Configurator;
+using Genetic.Algorithm.Tangram.Configurator.Generics;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
-using Genetic.Algorithm.Tangram.Solver.WPF;
 using GeneticSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
-using System.Text.Json;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
@@ -92,11 +89,11 @@ namespace Genetic.Algorithm.Tangram.Solver
 
                 // TODO use MVVM
                 var copiedList = ResultsSource.ToList();
-                copiedList.Add(new AlgorithmResult()
-                {
-                    Fitness = ga.BestChromosome.Fitness ?? -1d,
-                    SolutionAsJson = JsonSerializer.Serialize(solvedPolygons.ToDrawerString())
-                });
+                //copiedList.Add(new AlgorithmResult()
+                //{
+                //    Fitness = ga.BestChromosome.Fitness ?? -1d,
+                //    SolutionAsJson = JsonSerializer.Serialize(solvedPolygons.ToDrawerString())
+                //});
 
                 ResultsSource.Clear();
                 ResultsSource = copiedList;
@@ -115,18 +112,18 @@ namespace Genetic.Algorithm.Tangram.Solver
 
             if (gameExecutor == null)
             {
-                var gameParts = GamePartConfiguratorBuilder
+                var gameParts = GameConfiguratorBuilder
                    .AvalaibleGameSets
                    .CreatePolishBigBoard(withAllowedLocations: true);
 
-                var algorithm = GamePartConfiguratorBuilder
+                var algorithm = GameConfiguratorBuilder
                     .AvalaibleGATunedAlgorithms
                     .CreateBigBoardSettings(
                         gameParts.Board,
                         gameParts.Blocks,
                         gameParts.AllowedAngles);
 
-                var konfiguracjaGry = new GamePartConfiguratorBuilder()
+                var konfiguracjaGry = new GameConfiguratorBuilder()
                     .WithAlgorithm(algorithm)
                     .WithGamePartsConfigurator(gameParts)
                     .Build();

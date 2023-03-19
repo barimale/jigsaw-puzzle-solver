@@ -1,6 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 
-namespace Genetic.Algorithm.Tangram.Common.Extensions
+namespace Algorithm.Tangram.Common.Extensions
 {
     public static class GeometryExtensions
     {

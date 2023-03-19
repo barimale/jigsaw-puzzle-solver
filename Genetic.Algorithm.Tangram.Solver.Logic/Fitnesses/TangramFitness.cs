@@ -5,7 +5,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Immutable;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitness
+namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses
 {
     public class TangramService : IFitness
     {

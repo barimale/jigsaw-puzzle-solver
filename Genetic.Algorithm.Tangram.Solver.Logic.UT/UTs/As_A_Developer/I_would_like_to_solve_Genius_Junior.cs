@@ -1,4 +1,4 @@
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 {
     // WIP
     public class I_would_like_to_solve_Genius_Junior
@@ -7,9 +7,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         public void With_shape_of_5x5_fields_by_using_3_types_of_blocks_and_no_unused_fields()
         {
             // given
-            
+
             // when
-            
+
             // then
         }
     }

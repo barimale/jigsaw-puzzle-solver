@@ -1,11 +1,11 @@
 using Algorithm.Tangram.MCTS.Logic;
 using Genetic.Algorithm.Tangram.GameParts;
-using Genetic.Algorithm.Tangram.GameParts.Blocks;
+using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using TreesearchLib;
 using Xunit.Abstractions;
 
@@ -45,7 +45,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             var fieldWidth = 1d;
             var boardColumnsCount = 3;
             var boardRowsCount = 2;
-            var fields = GamePartsFactory
+            var fields = GameSetFactory
                 .GeneratorFactory
                 .RectangularGameFieldsGenerator
                 .GenerateFields(
@@ -68,18 +68,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     angles);
 
             // when
-            int size = preconfiguredBlocks.Count;
-
-            // then
             var solution = new FindFittestSolution(
-                size,
                 boardDefinition,
                 preconfiguredBlocks);
 
             var depthFirst = solution.DepthFirst();
             var breadthFirst = solution.BreadthFirst();
 
-            // finally
+            // then
             Display("DepthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(depthFirst);
 

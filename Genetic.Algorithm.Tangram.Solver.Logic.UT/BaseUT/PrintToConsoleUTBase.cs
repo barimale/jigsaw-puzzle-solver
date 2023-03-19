@@ -1,6 +1,6 @@
 ﻿using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Base
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT
 {
     public abstract class PrintToConsoleUTBase
     {
@@ -8,19 +8,19 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Base
 
         public PrintToConsoleUTBase(ITestOutputHelper output)
         {
-            this.Output = output;
+            Output = output;
         }
 
         public void Display(string line)
         {
-            this.Output.WriteLine(line);
+            Output.WriteLine(line);
         }
 
         public void Display(string[] lines)
         {
-            foreach(var line in lines)
+            foreach (var line in lines)
             {
-                this.Display(line);
+                Display(line);
             }
         }
     }

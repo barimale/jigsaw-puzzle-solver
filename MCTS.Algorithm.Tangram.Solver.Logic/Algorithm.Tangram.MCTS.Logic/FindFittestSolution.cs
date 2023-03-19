@@ -1,6 +1,6 @@
+using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.MCTS.Logic.Domain;
 using Algorithm.Tangram.MCTS.Logic.Extensions;
-using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
@@ -22,11 +22,10 @@ namespace Algorithm.Tangram.MCTS.Logic
         private readonly FitnessService fitnessService;
 
         public FindFittestSolution(
-            int size,
             BoardShapeBase board,
             IList<BlockBase> blocks)
         {
-            this.size = size;
+            this.size = blocks.Count;
             this.board = board;
             this.blocks = blocks;
             this.fitnessService = new FitnessService(this.board);
@@ -76,7 +75,6 @@ namespace Algorithm.Tangram.MCTS.Logic
         public object Clone()
         {
             var clone = new FindFittestSolution(
-                this.size,
                 this.board,
                 this.blocks);
 

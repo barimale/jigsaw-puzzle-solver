@@ -3,7 +3,7 @@ using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
 
-namespace Genetic.Algorithm.Tangram.Common.Extensions
+namespace Algorithm.Tangram.Common.Extensions
 {
     public static class GeometryCollectionExtensions
     {
@@ -12,7 +12,7 @@ namespace Genetic.Algorithm.Tangram.Common.Extensions
             if (geometryCollection == null)
                 return;
 
-            foreach(var geometry in geometryCollection.Geometries)
+            foreach (var geometry in geometryCollection.Geometries)
             {
                 geometry.CleanCoordinateDigits();
             }

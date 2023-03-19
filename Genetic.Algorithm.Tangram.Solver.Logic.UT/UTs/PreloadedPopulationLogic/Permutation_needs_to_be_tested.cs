@@ -1,9 +1,9 @@
-using Genetic.Algorithm.Tangram.Common.Extensions.Extensions;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
+using Algorithm.Tangram.Common.Extensions;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using GeneticSharp;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.PreloadedPopulationLogic
 {
     public class Permutation_needs_to_be_tested : PrintToConsoleUTBase
     {
@@ -18,7 +18,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         {
             // given
             int[] list1 = { 1, 2 };
-            int[] list2 = { 3, 4, 5};
+            int[] list2 = { 3, 4, 5 };
 
             int[][] input = new[] {
                 list1,
@@ -29,12 +29,12 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var result = input.Permutate();
 
             // then
-            base.Display("expected values: six of them=> 1,3 1,4 1,5 2,3 2,4 2,5");
-            base.Display("actual values:");
+            Display("expected values: six of them=> 1,3 1,4 1,5 2,3 2,4 2,5");
+            Display("actual values:");
             foreach (var item in result)
             {
                 var solution = string.Join(",", item);
-                base.Display(solution);
+                Display(solution);
             }
         }
 
@@ -45,7 +45,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             var randomizer = new FastRandomRandomization();
 
             // when
-            var result = randomizer.GetInt(0,1);
+            var result = randomizer.GetInt(0, 1);
             var check = result == 0 || result == 1;
 
             // then

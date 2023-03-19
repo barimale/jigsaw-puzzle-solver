@@ -1,8 +1,8 @@
 ﻿using GeneticSharp;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.Population
+namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations
 {
-    public class PreloadedPopulation : GeneticSharp.Population
+    public class PreloadedPopulation : Population
     {
         private IList<IChromosome> m_preloadChromosome;
 

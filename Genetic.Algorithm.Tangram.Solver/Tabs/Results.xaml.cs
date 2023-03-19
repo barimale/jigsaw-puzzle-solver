@@ -1,10 +1,10 @@
-﻿using Algorithm.Executor.WPF.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
+using Genetic.Algorithm.Tangram.Configurator.Generics;
 
 namespace Algorithm.Executor.WPF.Tabs
 {

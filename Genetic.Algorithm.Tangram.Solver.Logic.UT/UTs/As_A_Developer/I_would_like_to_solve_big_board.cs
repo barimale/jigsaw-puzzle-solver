@@ -1,11 +1,12 @@
 using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+using Genetic.Algorithm.Tangram.Configurator.Generics;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 {
-    public class I_would_like_to_solve_big_board: PrintToConsoleUTBase
+    public class I_would_like_to_solve_big_board : PrintToConsoleUTBase
     {
         private AlgorithmDebugHelper AlgorithmDebugHelper;
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
@@ -18,21 +19,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         }
 
         [Fact]
-        public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields()
+        public async Task With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields()
         {
             // given
-            var gameParts = GamePartConfiguratorBuilder
+            var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            var algorithm = GamePartConfiguratorBuilder
+            var algorithm = GameConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var konfiguracjaGry = new GamePartConfiguratorBuilder()
+            var konfiguracjaGry = new GameConfiguratorBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();
@@ -40,20 +41,24 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             if (konfiguracjaGry.Algorithm == null)
                 return;
 
-            konfiguracjaGry
-                .Algorithm
-                .TerminationReached += AlgorithmDebugHelper
-                    .Algorithm_TerminationReached;
-            
-            konfiguracjaGry
-                .Algorithm
-                .GenerationRan += AlgorithmDebugHelper
-                    .Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .TerminationReached += AlgorithmDebugHelper
+            //        .Algorithm_TerminationReached;
+
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += AlgorithmDebugHelper
+            //        .Algorithm_Ran;
+
+            //// when
+            //konfiguracjaGry.Algorithm.Start();
 
             // when
-            konfiguracjaGry.Algorithm.Start();
+            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
 
             // then
+            Assert.NotNull(result);
         }
     }
 }

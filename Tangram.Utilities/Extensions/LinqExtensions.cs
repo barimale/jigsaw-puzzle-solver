@@ -1,4 +1,4 @@
-﻿namespace Genetic.Algorithm.Tangram.Common.Extensions.Extensions
+﻿namespace Algorithm.Tangram.Common.Extensions
 {
     public static class LinqExtensions
     {

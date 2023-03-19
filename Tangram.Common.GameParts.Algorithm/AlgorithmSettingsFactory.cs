@@ -1,4 +1,4 @@
-﻿using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings;
+﻿using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.GASettings;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using GeneticSharp;
@@ -12,10 +12,11 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings
             IList<BlockBase> blocks,
             int[] allowedAngles)
         {
-            return new BigBoardAlgorithmSettings().CreateNew(
-                board,
-                blocks,
-                allowedAngles);
+            return new BigBoardAlgorithmSettings()
+                .CreateNew(
+                    board,
+                    blocks,
+                    allowedAngles);
         }
 
         public GeneticAlgorithm CreateMediumBoardSettings(
@@ -23,10 +24,11 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings
             IList<BlockBase> blocks,
             int[] allowedAngles)
         {
-            return new MediumBoardAlgorithmSettings().CreateNew(
-                board,
-                blocks,
-                allowedAngles);
+            return new MediumBoardAlgorithmSettings()
+                .CreateNew(
+                    board,
+                    blocks,
+                    allowedAngles);
         }
 
         public GeneticAlgorithm CreateSimpleBoardSettings(
@@ -34,10 +36,11 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings
             IList<BlockBase> blocks,
             int[] allowedAngles)
         {
-            return new SimpleBoardAlgorithmSettings().CreateNew(
-                board,
-                blocks,
-                allowedAngles);
+            return new SimpleBoardAlgorithmSettings()
+                .CreateNew(
+                    board,
+                    blocks,
+                    allowedAngles);
         }
     }
 }

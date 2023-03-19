@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "game-parts", "game-parts", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{73FE0012-BA52-45F3-911D-20A7569C6FEA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Tangram.MCTS.Logic", "MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.MCTS.Logic.csproj", "{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Tangram.TreeSearch.Logic", "MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj", "{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

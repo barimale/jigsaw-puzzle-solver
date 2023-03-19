@@ -1,13 +1,12 @@
 using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.GameParts;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
-using GeneticSharp;
+using Genetic.Algorithm.Tangram.Configurator.Generics;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 {
-    public class I_would_like_to_solve_medium_board: PrintToConsoleUTBase
+    public class I_would_like_to_solve_medium_board : PrintToConsoleUTBase
     {
         private AlgorithmDebugHelper AlgorithmDebugHelper;
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
@@ -22,24 +21,24 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
         private int CurrentGeneration { get; set; } = -1;
         private int GenerationsNumber { get; set; } = -1;
 
-        private GamePartsConfigurator konfiguracjaGry;
+        private Game konfiguracjaGry;
 
         [Fact]
-        public void With_shape_of_4x5_fields_by_using_4_blocks_and_no_unused_fields()
+        public async Task With_shape_of_4x5_fields_by_using_4_blocks_and_no_unused_fields()
         {
             // given
-            var gameParts = GamePartConfiguratorBuilder
+            var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
                 .CreateMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GamePartConfiguratorBuilder
+            var algorithm = GameConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            konfiguracjaGry = new GamePartConfiguratorBuilder()
+            konfiguracjaGry = new GameConfiguratorBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();
@@ -47,49 +46,50 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             if (konfiguracjaGry.Algorithm == null)
                 return;
 
-            GenerationsNumber = konfiguracjaGry.Algorithm.Population.MaxSize;
+            //GenerationsNumber = konfiguracjaGry.Algorithm.Population.MaxSize;
 
-            konfiguracjaGry
-                .Algorithm
-                .TerminationReached += AlgorithmDebugHelper
-                    .Algorithm_TerminationReached;
-            
-            konfiguracjaGry
-                .Algorithm
-                .GenerationRan += AlgorithmDebugHelper
-                    .Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .TerminationReached += AlgorithmDebugHelper
+            //        .Algorithm_TerminationReached;
 
-            konfiguracjaGry
-                .Algorithm
-                .GenerationRan += Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += AlgorithmDebugHelper
+            //        .Algorithm_Ran;
 
-            konfiguracjaGry
-                .Algorithm
-                .Stopped += AlgorithmDebugHelper
-                    .Algorithm_TerminationReached;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += Algorithm_Ran;
+
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .Stopped += AlgorithmDebugHelper
+            //        .Algorithm_TerminationReached;
 
             // when
-            konfiguracjaGry.Algorithm.Start();
+            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
 
             // then
+            Assert.NotNull(result);
         }
 
         [Fact]
-        public void Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
+        public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
         {
             // given
-            var gameParts = GamePartConfiguratorBuilder
+            var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GamePartConfiguratorBuilder
+            var algorithm = GameConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            konfiguracjaGry = new GamePartConfiguratorBuilder()
+            konfiguracjaGry = new GameConfiguratorBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();
@@ -97,85 +97,89 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             if (konfiguracjaGry.Algorithm == null)
                 return;
 
-            GenerationsNumber = konfiguracjaGry.Algorithm.Population.MaxSize;
+            //GenerationsNumber = konfiguracjaGry.Algorithm.Population.MaxSize;
 
-            konfiguracjaGry
-                .Algorithm
-                .TerminationReached += AlgorithmDebugHelper
-                    .Algorithm_TerminationReached;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .TerminationReached += AlgorithmDebugHelper
+            //        .Algorithm_TerminationReached;
 
-            konfiguracjaGry
-                .Algorithm
-                .GenerationRan += AlgorithmDebugHelper
-                    .Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += AlgorithmDebugHelper
+            //        .Algorithm_Ran;
 
-            konfiguracjaGry
-                .Algorithm
-                .GenerationRan += Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += Algorithm_Ran;
 
-            konfiguracjaGry
-                .Algorithm
-                .Stopped += AlgorithmDebugHelper
-                    .Algorithm_TerminationReached;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .Stopped += AlgorithmDebugHelper
+            //        .Algorithm_TerminationReached;
+
+            //// when
+            //konfiguracjaGry.Algorithm.Start();
 
             // when
-            konfiguracjaGry.Algorithm.Start();
+            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
 
             // then
+            Assert.NotNull(result);
         }
 
-        private void Algorithm_Ran(object? sender, EventArgs e)
-        {
-            var algorithmResult = sender as GeneticAlgorithm;
+        //private void Algorithm_Ran(object? sender, EventArgs e)
+        //{
+        //    var algorithmResult = sender as GeneticAlgorithm;
 
-            if (algorithmResult == null)
-                return;
+        //    if (algorithmResult == null)
+        //        return;
 
-            if (CurrentGeneration > GenerationsNumber)
-            { 
-                konfiguracjaGry.Algorithm.Stop();
-                return;
-            }
+        //    if (CurrentGeneration > GenerationsNumber)
+        //    {
+        //        konfiguracjaGry.Algorithm.Stop();
+        //        return;
+        //    }
 
-            CurrentGeneration = algorithmResult.Population.CurrentGeneration.Number;
+        //    CurrentGeneration = algorithmResult.Population.CurrentGeneration.Number;
 
-            konfiguracjaGry
-                .Algorithm
-                .CrossoverProbability = GetCrossoverProbabilityRatio(konfiguracjaGry
-                    .Algorithm
-                    .CrossoverProbability);
+        //    konfiguracjaGry
+        //        .Algorithm
+        //        .CrossoverProbability = GetCrossoverProbabilityRatio(konfiguracjaGry
+        //            .Algorithm
+        //            .CrossoverProbability);
 
-            konfiguracjaGry
-                .Algorithm
-                .MutationProbability = GetMutationProbabilityRatio(konfiguracjaGry
-                    .Algorithm
-                    .MutationProbability);
-        }
+        //    konfiguracjaGry
+        //        .Algorithm
+        //        .MutationProbability = GetMutationProbabilityRatio(konfiguracjaGry
+        //            .Algorithm
+        //            .MutationProbability);
+        //}
 
-        private float GetCrossoverProbabilityRatio(float crossoverProbability)
-        {
-            if (CurrentGeneration < 0 || GenerationsNumber < 0)
-                return crossoverProbability;
+        //private float GetCrossoverProbabilityRatio(float crossoverProbability)
+        //{
+        //    if (CurrentGeneration < 0 || GenerationsNumber < 0)
+        //        return crossoverProbability;
 
-            return GetDynamicRatios().Item2;
-        }
+        //    return GetDynamicRatios().Item2;
+        //}
 
-        private float GetMutationProbabilityRatio(float mutationProbability)
-        {
-            if (CurrentGeneration < 0 || GenerationsNumber < 0)
-                return mutationProbability;
+        //private float GetMutationProbabilityRatio(float mutationProbability)
+        //{
+        //    if (CurrentGeneration < 0 || GenerationsNumber < 0)
+        //        return mutationProbability;
 
-            return GetDynamicRatios().Item1;
-        }
+        //    return GetDynamicRatios().Item1;
+        //}
 
-        private Tuple<float, float> GetDynamicRatios()
-        {
-            float factor = (float)CurrentGeneration / (float)GenerationsNumber;
+        //private Tuple<float, float> GetDynamicRatios()
+        //{
+        //    float factor = CurrentGeneration / (float)GenerationsNumber;
 
-            // mutation, crossover
-            var ratios = new Tuple<float, float>(1f - factor, factor);
+        //    // mutation, crossover
+        //    var ratios = new Tuple<float, float>(1f - factor, factor);
 
-            return ratios;
-        }
+        //    return ratios;
+        //}
     }
 }

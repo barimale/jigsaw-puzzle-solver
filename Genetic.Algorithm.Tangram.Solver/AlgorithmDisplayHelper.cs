@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
+namespace Algorithm.Executor.WPF
 {
     public class AlgorithmDisplayHelper
     {
@@ -81,7 +81,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
             }
             finally
             {
-                if(!isTerminated)
+                if (!isTerminated)
                 {
                     var pathToApplause = System.IO.Path.Join(
                         Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName,
@@ -132,7 +132,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                         .ToList();
 
                 var shapes = solution
-                    .Select(p => {
+                    .Select(p =>
+                    {
                         var shape = new Polygon();
                         shape.Points = new PointCollection(p
                             .Polygon
@@ -141,7 +142,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
                             .ToList());
                         shape.Fill = ConvertColor(p.Color);
                         //shape.Stroke = Brushes.Black;
-                        shape.StrokeThickness =0;
+                        shape.StrokeThickness = 0;
                         return (UIElement)shape;
                     })
                     .ToList();
@@ -152,8 +153,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities
 
         private SolidColorBrush ConvertColor(System.Drawing.Color value)
         {
-            System.Drawing.Color color = (System.Drawing.Color)value;
-            System.Windows.Media.Color converted = Color.FromArgb(color.A, color.R, color.G, color.B);
+            System.Drawing.Color color = value;
+            Color converted = Color.FromArgb(color.A, color.R, color.G, color.B);
             return new SolidColorBrush(converted);
         }
     }

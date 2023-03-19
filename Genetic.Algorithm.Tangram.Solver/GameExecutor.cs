@@ -1,55 +1,56 @@
-﻿using Algorithm.Executor.WPF.Model;
-using Genetic.Algorithm.Tangram.GameParts;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
+﻿using Genetic.Algorithm.Tangram.Configurator;
+using Genetic.Algorithm.Tangram.Configurator.Generics;
+using Genetic.Algorithm.Tangram.GameParts.Elements;
 using System;
 using System.Collections.Generic;
 
-namespace Genetic.Algorithm.Tangram.Solver.WPF
+namespace Algorithm.Executor.WPF
 {
     public class GameExecutor
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
-        private GamePartsConfigurator konfiguracjaGry;
+        private Game konfiguracjaGry;
         private IEnumerable<AlgorithmResult> results;
 
         public event EventHandler GenerationRan;
 
-        public IEnumerable<AlgorithmResult> Results => this.results;
+        public IEnumerable<AlgorithmResult> Results => results;
 
-        public string AlgorithmState => this
-            .konfiguracjaGry?
-            .Algorithm?
-            .State
-            .ToString();
+        public string AlgorithmState => "TO BE DONE";
+            //konfiguracjaGry?
+            //.Algorithm?
+            //.State
+            //.ToString();
 
         public GameExecutor(
             AlgorithmDisplayHelper algorithmDisplayHelper,
-            GamePartsConfigurator dataInput)
+            Game dataInput)
         {
             this.algorithmDisplayHelper = algorithmDisplayHelper;
-            this.konfiguracjaGry = dataInput;
+            konfiguracjaGry = dataInput;
 
             if (konfiguracjaGry.Algorithm == null)
-                throw new System.Exception();
+                throw new Exception();
 
-            this.konfiguracjaGry
-                .Algorithm
-                .TerminationReached += this.algorithmDisplayHelper.Algorithm_TerminationReached;
+            // TODO WIP 
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .TerminationReached += this.algorithmDisplayHelper.Algorithm_TerminationReached;
 
-            this.konfiguracjaGry
-                .Algorithm
-                .GenerationRan += this.algorithmDisplayHelper.Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += this.algorithmDisplayHelper.Algorithm_Ran;
 
-            this.konfiguracjaGry
-                .Algorithm
-                .GenerationRan += this.Algorithm_Ran;
+            //konfiguracjaGry
+            //    .Algorithm
+            //    .GenerationRan += this.Algorithm_Ran;
 
-            this.results = new List<AlgorithmResult>();
+            results = new List<AlgorithmResult>();
         }
 
         public void Execute()
         {
-            konfiguracjaGry?.Algorithm?.Start();
+            //konfiguracjaGry?.Algorithm?.Start();
             Algorithm_Ran(konfiguracjaGry?.Algorithm, null);
         }
 
@@ -60,14 +61,14 @@ namespace Genetic.Algorithm.Tangram.Solver.WPF
 
         public void Pause()
         {
-            if(konfiguracjaGry.Algorithm != null && konfiguracjaGry.Algorithm.IsRunning)
-                konfiguracjaGry.Algorithm.Stop();
+            //if (konfiguracjaGry.Algorithm != null && konfiguracjaGry.Algorithm.IsRunning)
+            //    konfiguracjaGry.Algorithm.Stop();
         }
 
         public void Resume()
         {
-            if (konfiguracjaGry.Algorithm != null && konfiguracjaGry.Algorithm.IsRunning)
-                konfiguracjaGry.Algorithm.Resume();
+            //if (konfiguracjaGry.Algorithm != null && konfiguracjaGry.Algorithm.IsRunning)
+            //    konfiguracjaGry.Algorithm.Resume();
         }
     }
 }

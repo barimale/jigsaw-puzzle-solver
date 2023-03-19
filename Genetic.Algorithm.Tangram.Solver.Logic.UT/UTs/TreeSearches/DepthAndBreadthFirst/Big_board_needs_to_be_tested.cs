@@ -1,15 +1,16 @@
 using Algorithm.Tangram.MCTS.Logic;
 using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.GameParts.Blocks;
 using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
-using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using TreesearchLib;
 using Xunit.Abstractions;
 using Assert = Xunit.Assert;
+using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
+using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
@@ -27,11 +28,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
         public async Task Containing_10_blocks_and_5x10_board()
         {
             // given
-            var gameParts = GamePartConfiguratorBuilder
+            var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            var algorithm = GamePartConfiguratorBuilder
+            var algorithm = GameConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
                     gameParts.Board,
@@ -39,11 +40,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     gameParts.AllowedAngles);
 
             // when
-            int size = gameParts.Blocks.Count;
 
-            // then
             var solution = new FindFittestSolution(
-                size,
                 gameParts.Board,
                 gameParts.Blocks);
 
@@ -54,6 +52,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             var results = await Task.WhenAll(new[] { 
                 depthFirst, breadthFirst, pilot });
 
+            // then
             Assert.Equal(3, results.Length);
 
             // finally
@@ -100,7 +99,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             var boardColumnsCount = 10;
             var boardRowsCount = 5;
-            var fields = GamePartsFactory
+            var fields = GameSetFactory
                 .GeneratorFactory
                 .RectangularGameFieldsGenerator
                 .GenerateFields(
@@ -136,7 +135,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 allowedMatches,
                 fieldHeight,
                 fieldWidth,
-                new List<object>() { GameParts.Blocks.CommonSettings.PolishGameBaseBlock.SkippedMarkup }
+                new List<object>() { PolishGameBaseBlock.SkippedMarkup }
             );
 
             var preconfiguredBlocks = modificator.Preconfigure(
@@ -145,11 +144,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     angles);
 
             // when
-            int size = preconfiguredBlocks.Count;
-
-            // then
             var solution = new FindFittestSolution(
-                size,
                 boardDefinition,
                 preconfiguredBlocks);
 
@@ -159,6 +154,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
 
+            // then
             Assert.Equal(3, results.Length);
 
             // finally
