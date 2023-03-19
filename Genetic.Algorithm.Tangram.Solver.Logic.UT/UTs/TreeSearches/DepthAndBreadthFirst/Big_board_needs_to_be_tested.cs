@@ -1,5 +1,10 @@
 using Algorithm.Tangram.MCTS.Logic;
 using Genetic.Algorithm.Tangram.Configurator;
+using Genetic.Algorithm.Tangram.GameParts.Blocks;
+using Genetic.Algorithm.Tangram.GameParts;
+using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Base;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Utilities;
 using TreesearchLib;
@@ -26,12 +31,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            // TODO: wrapper over the geneticalgorithm
-            // choosing the algorithm depending on the amount of blocks
-            // <= 5 GA, more TS or parallel or support for parallel and by default selection
-            // depending on the amount of blocks
-            // so the calculationStrategy -> single or array, with mode whenall/first
-            // at the end add the MCTS from GameAI lib
             var algorithm = GamePartConfiguratorBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
@@ -54,6 +53,111 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             var results = await Task.WhenAll(new[] { 
                 depthFirst, breadthFirst, pilot });
+
+            Assert.Equal(3, results.Length);
+
+            // finally
+            Display("DepthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
+
+            Display("BreadthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
+
+            Display("Pilot");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
+        }
+
+
+        [Fact]
+        public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
+        {
+            // given
+            int scaleFactor = 1;
+            var fieldHeight = 1d;
+            var fieldWidth = 1d;
+
+            IList<BlockBase> blocks = new List<BlockBase>()
+            {
+                DarkBlue.Create(withFieldRestrictions: true),
+                Red.Create(withFieldRestrictions: true),
+                LightBlue.Create(withFieldRestrictions: true),
+                Purple.Create(withFieldRestrictions: true),
+                Blue.Create(withFieldRestrictions: true),
+                Pink.Create(withFieldRestrictions: true),
+                Green.Create(withFieldRestrictions: true),
+                LightGreen.Create(withFieldRestrictions: true),
+                Orange.Create(withFieldRestrictions: true),
+                Yellow.Create(withFieldRestrictions: true)
+            };
+
+            int[] angles = new int[]
+            {
+                0,
+                90,
+                180,
+                270
+            };
+
+            var boardColumnsCount = 10;
+            var boardRowsCount = 5;
+            var fields = GamePartsFactory
+                .GeneratorFactory
+                .RectangularGameFieldsGenerator
+                .GenerateFields(
+                    scaleFactor,
+                    fieldHeight,
+                    fieldWidth,
+                    boardColumnsCount,
+                    boardRowsCount,
+                    new object[,] {
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
+                    }
+                );
+
+            var boardDefinition = new BoardShapeBase(
+                fields,
+                boardColumnsCount,
+                boardRowsCount,
+                scaleFactor);
+
+            // leftTuple - blockMarkup
+            // rightTuple - boardMarkup
+            var allowedMatches = new List<Tuple<string, int>>()
+            {
+                Tuple.Create("O", 1),
+                Tuple.Create("X", 0)
+            };
+
+            var modificator = new AllowedLocationsGenerator(
+                allowedMatches,
+                fieldHeight,
+                fieldWidth,
+                new List<object>() { GameParts.Blocks.CommonSettings.PolishGameBaseBlock.SkippedMarkup }
+            );
+
+            var preconfiguredBlocks = modificator.Preconfigure(
+                    blocks.ToList(),
+                    boardDefinition,
+                    angles);
+
+            // when
+            int size = preconfiguredBlocks.Count;
+
+            // then
+            var solution = new FindFittestSolution(
+                size,
+                boardDefinition,
+                preconfiguredBlocks);
+
+            var pilot = solution.PilotMethodAsync();
+            var depthFirst = solution.DepthFirstAsync();
+            var breadthFirst = solution.BreadthFirstAsync();
+
+            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
 
             Assert.Equal(3, results.Length);
 
