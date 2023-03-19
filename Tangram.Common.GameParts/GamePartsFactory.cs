@@ -19,6 +19,16 @@ namespace Genetic.Algorithm.Tangram.GameParts
 
         // no algorithm is pass here in any way.
         // it needs to be added later on.
+
+        // TODO: tangramchromosome needs to be refactored to support withAllowedLocations = false
+        public GamePartsConfigurator CreatePolishBigBoard(bool withAllowedLocations = false)
+        {
+            return new PolishBigBoardData()
+                .CreateNew(true);
+        }
+
+        // no algorithm is pass here in any way.
+        // it needs to be added later on.
         public GamePartsConfigurator CreateMediumBoard(bool withAllowedLocations = false)
         {
             return new MediumBoardData()

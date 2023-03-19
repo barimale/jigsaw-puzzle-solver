@@ -27,7 +27,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .CreateSimpleBoard(withAllowedLocations: true);
 
             var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
+                .AvalaibleGATunedAlgorithms
                 .CreateSimpleBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,

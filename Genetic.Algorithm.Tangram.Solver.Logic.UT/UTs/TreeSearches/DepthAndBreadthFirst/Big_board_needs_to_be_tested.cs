@@ -33,7 +33,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             // so the calculationStrategy -> single or array, with mode whenall/first
             // at the end add the MCTS from GameAI lib
             var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
+                .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,

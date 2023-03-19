@@ -27,7 +27,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 .CreateMediumBoard(withAllowedLocations: true);
 
             var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
+                .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,

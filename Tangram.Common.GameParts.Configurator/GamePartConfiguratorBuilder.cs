@@ -10,8 +10,9 @@ namespace Genetic.Algorithm.Tangram.Configurator
         private GamePartsConfigurator? parts;
 
         public static GamePartsFactory AvalaibleGameSets => new GamePartsFactory(); // without algorithm
-        public static AlgorithmSettingsFactory AvalaibleTunedAlgorithms => new AlgorithmSettingsFactory();
+        public static AlgorithmSettingsFactory AvalaibleGATunedAlgorithms => new AlgorithmSettingsFactory();
 
+        // TODO: wrap the GeneticAlgorithm as it might be replaced by the TreeSearch
         public GamePartConfiguratorBuilder WithAlgorithm(GeneticAlgorithm ga)
         {
             algorithm = ga;

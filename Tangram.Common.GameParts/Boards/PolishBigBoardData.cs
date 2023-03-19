@@ -5,22 +5,23 @@ using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 
 namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
 {
-    internal class PolishBigBoardData : IGameParts
+    // Modify settings directly in the class.
+    internal class BigBoardData: IGameParts
     {
         private int ScaleFactor = 1;
 
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
-            DarkBlue.Create(withFieldRestrictions: true),
-            Red.Create(withFieldRestrictions: true),
-            LightBlue.Create(withFieldRestrictions: true),
-            Purple.Create(withFieldRestrictions: true),
-            Blue.Create(withFieldRestrictions: true),
-            Pink.Create(withFieldRestrictions: true),
-            Green.Create(withFieldRestrictions: true),
-            LightGreen.Create(withFieldRestrictions: true),
-            Orange.Create(withFieldRestrictions: true),
-            Yellow.Create(withFieldRestrictions: true)
+            DarkBlue.Create(),
+            Red.Create(),
+            LightBlue.Create(),
+            Purple.Create(),
+            Blue.Create(),
+            Pink.Create(),
+            Green.Create(),
+            LightGreen.Create(),
+            Orange.Create(),
+            Yellow.Create()
         };
 
         private int[] Angles = new int[]
@@ -70,15 +71,7 @@ namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
                     fieldHeight,
                     fieldWidth,
                     boardColumnsCount,
-                    boardRowsCount,
-                    new object[,] {
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
-                    }
-                );
+                    boardRowsCount);
 
             var boardDefinition = new BoardShapeBase(
                 fields,

@@ -33,7 +33,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .CreateMediumBoard(withAllowedLocations: true);
 
             var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
+                .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,

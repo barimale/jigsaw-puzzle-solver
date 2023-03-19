@@ -17,8 +17,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
-        [Fact]
-        public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields()
+        [Theory]
+        
+        public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields(bool useGA, bool useTS)
         {
             // given
             var gameParts = GamePartConfiguratorBuilder
@@ -26,7 +27,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
                 .CreateBigBoard(withAllowedLocations: true);
 
             var algorithm = GamePartConfiguratorBuilder
-                .AvalaibleTunedAlgorithms
+                .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
