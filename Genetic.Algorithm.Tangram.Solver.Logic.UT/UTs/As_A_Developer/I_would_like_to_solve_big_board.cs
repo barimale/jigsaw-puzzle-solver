@@ -17,9 +17,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
-        [Theory]
-        
-        public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields(bool useGA, bool useTS)
+        [Fact]
+        public void With_shape_of_5x10_fields_by_using_10_blocks_and_no_unused_fields()
         {
             // given
             var gameParts = GamePartConfiguratorBuilder
