@@ -6,6 +6,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain
     {
         public AllowedLocationsGenerator AllowedLocationsGenerator => new AllowedLocationsGenerator();
 
-        public RectangularBoardFieldsGenerator RectangularBoardFieldsGenerator => new RectangularBoardFieldsGenerator();
+        public RectangularGameFieldsGenerator RectangularGameFieldsGenerator => new RectangularGameFieldsGenerator();
     }
 }

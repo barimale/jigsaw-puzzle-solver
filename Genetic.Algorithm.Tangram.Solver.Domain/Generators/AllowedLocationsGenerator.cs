@@ -151,7 +151,7 @@ public class AllowedLocationsGenerator
         BlockBase modifiedMadeOfFields = block.Clone(true);
 
         var blockSideMarkups = modifiedMadeOfFields.FieldRestrictionMarkups[hasToBeFlipped ? 1 : 0];
-        var fieldsToBeTransformed = new RectangularBoardFieldsGenerator()
+        var fieldsToBeTransformed = new RectangularGameFieldsGenerator()
             .GenerateFields(
                 board.ScaleFactor,
                 this.fieldHeight,

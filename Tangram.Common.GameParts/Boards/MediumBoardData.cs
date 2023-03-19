@@ -6,8 +6,7 @@ using Genetic.Algorithm.Tangram.GameParts;
 
 namespace Tangram.Common.GameParts.Boards
 {
-    // Modify settings directly in the class.
-    internal class MediumBoardData: IGameParts
+    internal class PolishMediumBoardData : IGameParts
     {
         private int ScaleFactor = 1;
 
@@ -21,9 +20,6 @@ namespace Tangram.Common.GameParts.Boards
 
         private int[] Angles = new int[]
         {
-            //-270,
-            //-180,
-            //-90,
             0,
             90,
             180,
@@ -60,7 +56,7 @@ namespace Tangram.Common.GameParts.Boards
             var boardRowsCount = 4;
             var fields = GamePartsFactory
                 .GeneratorFactory
-                .RectangularBoardFieldsGenerator
+                .RectangularGameFieldsGenerator
                 .GenerateFields(
                     ScaleFactor,
                     fieldHeight,

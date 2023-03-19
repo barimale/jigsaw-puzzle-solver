@@ -55,7 +55,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             var boardRowsCount = 5;
             var fields = GamePartsFactory
                 .GeneratorFactory
-                .RectangularBoardFieldsGenerator
+                .RectangularGameFieldsGenerator
                 .GenerateFields(
                     scaleFactor,
                     fieldHeight,
@@ -153,7 +153,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             var boardRowsCount = 4;
             var fields = GamePartsFactory
                 .GeneratorFactory
-                .RectangularBoardFieldsGenerator
+                .RectangularGameFieldsGenerator
                 .GenerateFields(
                     scaleFactor,
                     fieldHeight,

@@ -2,32 +2,25 @@
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Genetic.Algorithm.Tangram.GameParts;
 
-namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
+namespace Tangram.Common.GameParts.Boards
 {
-    internal class PolishBigBoardData : IGameParts
+    // Modify settings directly in the class.
+    internal class MediumBoardData: IGameParts
     {
         private int ScaleFactor = 1;
 
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
-            DarkBlue.Create(withFieldRestrictions: true),
-            Red.Create(withFieldRestrictions: true),
-            LightBlue.Create(withFieldRestrictions: true),
             Purple.Create(withFieldRestrictions: true),
+            DarkBlue.Create(withFieldRestrictions: true),
+            LightBlue.Create(withFieldRestrictions: true),
             Blue.Create(withFieldRestrictions: true),
-            Pink.Create(withFieldRestrictions: true),
-            Green.Create(withFieldRestrictions: true),
-            LightGreen.Create(withFieldRestrictions: true),
-            Orange.Create(withFieldRestrictions: true),
-            Yellow.Create(withFieldRestrictions: true)
         };
 
         private int[] Angles = new int[]
         {
-            //-270,
-            //-180,
-            //-90,
             0,
             90,
             180,
@@ -36,7 +29,7 @@ namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
 
         public GamePartsConfigurator CreateNew(bool withAllowedLocations = false)
         {
-            if(withAllowedLocations)
+            if (withAllowedLocations)
             {
                 var modificator = new AllowedLocationsGenerator();
                 var preconfiguredBlocks = modificator.Preconfigure(
@@ -56,12 +49,12 @@ namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
                 Angles);
         }
 
-        private BoardShapeBase Board()
+        public BoardShapeBase Board()
         {
             var fieldHeight = 1d;
             var fieldWidth = 1d;
-            var boardColumnsCount = 10;
-            var boardRowsCount = 5;
+            var boardColumnsCount = 5;
+            var boardRowsCount = 4;
             var fields = GamePartsFactory
                 .GeneratorFactory
                 .RectangularGameFieldsGenerator
@@ -72,11 +65,10 @@ namespace Genetic.Algorithm.Tangram.GameParts.Boards.BigBoard
                     boardColumnsCount,
                     boardRowsCount,
                     new object[,] {
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
+                        { 1, 0, 1, 0, 1},
+                        { 0, 1, 0, 1, 0},
+                        { 1, 0, 1, 0, 1},
+                        { 0, 1, 0, 1, 0},
                     }
                 );
 

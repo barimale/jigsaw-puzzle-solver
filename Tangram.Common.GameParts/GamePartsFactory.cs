@@ -37,6 +37,15 @@ namespace Genetic.Algorithm.Tangram.GameParts
 
         // no algorithm is pass here in any way.
         // it needs to be added later on.
+        // TODO: continue from here as described in the notes
+        public GamePartsConfigurator CreatePolishMediumBoard(bool withAllowedLocations = false)
+        {
+            return new PolishMediumBoardData()
+                .CreateNew(true);
+        }
+
+        // no algorithm is pass here in any way.
+        // it needs to be added later on.
         public GamePartsConfigurator CreateSimpleBoard(bool withAllowedLocations = false)
         {
             return new SimpleBoardData()

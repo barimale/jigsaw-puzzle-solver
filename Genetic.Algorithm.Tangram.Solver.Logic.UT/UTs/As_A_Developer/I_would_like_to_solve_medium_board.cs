@@ -74,6 +74,56 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.As_A_Developer
             // then
         }
 
+        [Fact]
+        public void Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
+        {
+            // given
+            var gameParts = GamePartConfiguratorBuilder
+                .AvalaibleGameSets
+                .CreatePolishBigBoard(withAllowedLocations: true);
+
+            var algorithm = GamePartConfiguratorBuilder
+                .AvalaibleGATunedAlgorithms
+                .CreateMediumBoardSettings(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles);
+
+            konfiguracjaGry = new GamePartConfiguratorBuilder()
+                .WithAlgorithm(algorithm)
+                .WithGamePartsConfigurator(gameParts)
+                .Build();
+
+            if (konfiguracjaGry.Algorithm == null)
+                return;
+
+            GenerationsNumber = konfiguracjaGry.Algorithm.Population.MaxSize;
+
+            konfiguracjaGry
+                .Algorithm
+                .TerminationReached += AlgorithmDebugHelper
+                    .Algorithm_TerminationReached;
+
+            konfiguracjaGry
+                .Algorithm
+                .GenerationRan += AlgorithmDebugHelper
+                    .Algorithm_Ran;
+
+            konfiguracjaGry
+                .Algorithm
+                .GenerationRan += Algorithm_Ran;
+
+            konfiguracjaGry
+                .Algorithm
+                .Stopped += AlgorithmDebugHelper
+                    .Algorithm_TerminationReached;
+
+            // when
+            konfiguracjaGry.Algorithm.Start();
+
+            // then
+        }
+
         private void Algorithm_Ran(object? sender, EventArgs e)
         {
             var algorithmResult = sender as GeneticAlgorithm;
