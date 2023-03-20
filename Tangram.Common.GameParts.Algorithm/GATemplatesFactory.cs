@@ -1,7 +1,7 @@
 ﻿using Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings;
 using GeneticSharp;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
 {

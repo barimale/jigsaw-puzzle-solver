@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using System.Drawing;
 
-namespace Tangram.GameParts.Logic.Block
+namespace Tangram.GameParts.Logic.GameParts.Block
 {
     public class BlockBase
     {

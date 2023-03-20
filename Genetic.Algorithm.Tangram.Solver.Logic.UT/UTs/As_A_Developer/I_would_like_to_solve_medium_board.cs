@@ -3,7 +3,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Solver.Tangram.AlgorithmDefinitions;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
-using Solver.Tangram.Configuration;
+using Solver.Tangram.Game.Logic;
 using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer

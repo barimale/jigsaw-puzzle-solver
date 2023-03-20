@@ -1,5 +1,5 @@
 ﻿using NetTopologySuite.Geometries;
-using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Tangram.GameParts.Logic.Extensions
 {

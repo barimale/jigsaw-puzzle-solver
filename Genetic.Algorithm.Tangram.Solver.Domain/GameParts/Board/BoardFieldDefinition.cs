@@ -1,6 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 
-namespace Tangram.GameParts.Logic.Board
+namespace Tangram.GameParts.Logic.GameParts.Board
 {
     // TODO: rename it to be common for board and blocks
 

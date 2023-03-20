@@ -3,8 +3,8 @@ using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Algorithm.Tangram.TreeSearch.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using System.Collections.Immutable;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
 
 namespace Algorithm.Tangram.TreeSearch.Logic

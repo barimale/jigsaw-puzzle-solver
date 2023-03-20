@@ -2,8 +2,8 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Immutable;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses
 {

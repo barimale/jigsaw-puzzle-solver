@@ -1,5 +1,5 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
-using Solver.Tangram.Configuration;
+using Solver.Tangram.Game.Logic;
 using System;
 using System.Collections.Generic;
 

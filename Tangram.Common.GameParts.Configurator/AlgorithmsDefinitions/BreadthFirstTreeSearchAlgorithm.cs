@@ -1,8 +1,8 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions

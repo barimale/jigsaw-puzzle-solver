@@ -3,9 +3,9 @@ using GeneticSharp;
 using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Elements;
-using Tangram.GameParts.Elements.Elements;
+using Tangram.GameParts.Logic.GameParts;
 
-namespace Solver.Tangram.Configuration
+namespace Solver.Tangram.Game.Logic
 {
     public class GameConfiguratorBuilder
     {

@@ -1,13 +1,14 @@
 // TODO: add n times for GA UTs
 // TODO: double check UTs, add missing display
 
+// UTs for wrapper -> useless UTs have to be removed
+
 // refactor naming convention for gamepartsconfigurator
 // modify its builder methods
 // to the form of LINQ maybe?
 // use the IsEnabled field of the board field when allowed locations
 // are obtained -> Genius Junior
 
-// TODO: wrapper over the geneticalgorithm
 // choosing the algorithm depending on the amount of blocks
 // <= 5 GA, more TS or parallel or support for parallel and by default selection
 // depending on the amount of blocks

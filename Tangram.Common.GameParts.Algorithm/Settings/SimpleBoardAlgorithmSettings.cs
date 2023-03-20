@@ -6,9 +6,9 @@ using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses;
 using Genetic.Algorithm.Tangram.Solver.Logic;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
 using Solver.Tangram.AlgorithmDefinitions;
+using Tangram.GameParts.Logic.GameParts.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
 {

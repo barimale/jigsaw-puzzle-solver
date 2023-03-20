@@ -9,7 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Algorithm.Executor.WPF
 {

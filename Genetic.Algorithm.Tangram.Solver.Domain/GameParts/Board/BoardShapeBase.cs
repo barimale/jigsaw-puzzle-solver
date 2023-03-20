@@ -2,7 +2,7 @@
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
 
-namespace Tangram.GameParts.Logic.Board
+namespace Tangram.GameParts.Logic.GameParts.Board
 {
     public class BoardShapeBase
     {

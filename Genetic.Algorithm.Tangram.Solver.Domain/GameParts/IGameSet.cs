@@ -1,6 +1,4 @@
-﻿using Tangram.GameParts.Elements.Elements;
-
-namespace Tangram.GameParts.Elements.Contract
+﻿namespace Tangram.GameParts.Logic.GameParts
 {
     public interface IGameSet
     {

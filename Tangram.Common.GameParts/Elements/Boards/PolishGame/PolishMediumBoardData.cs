@@ -1,8 +1,8 @@
 ﻿using Tangram.GameParts.Elements.Elements.Blocks;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
-using Tangram.GameParts.Elements.Contract;
 using Tangram.GameParts.Logic.Generators;
+using Tangram.GameParts.Logic.GameParts;
+using Tangram.GameParts.Logic.GameParts.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
 {

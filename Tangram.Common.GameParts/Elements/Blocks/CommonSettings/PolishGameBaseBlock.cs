@@ -1,6 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 using System.Drawing;
-using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.GameParts.Elements.Elements.Blocks.CommonSettings
 {

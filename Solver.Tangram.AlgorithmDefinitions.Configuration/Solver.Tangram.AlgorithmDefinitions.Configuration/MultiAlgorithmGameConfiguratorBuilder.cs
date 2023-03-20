@@ -1,7 +1,7 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 
-namespace Solver.Tangram.Configuration
+namespace Solver.Tangram.Game.Logic
 {
     // TODO check it step by step
     public class MultiAlgorithmGameConfiguratorBuilder

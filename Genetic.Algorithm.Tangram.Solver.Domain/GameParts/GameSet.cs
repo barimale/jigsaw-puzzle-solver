@@ -1,8 +1,8 @@
 ﻿using NetTopologySuite.Geometries;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 
-namespace Tangram.GameParts.Elements.Elements
+namespace Tangram.GameParts.Logic.GameParts
 {
     // blocks and board
     public class GameSet

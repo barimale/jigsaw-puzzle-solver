@@ -6,11 +6,11 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Tangram.GameParts.Elements.Elements.Blocks;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
-using Tangram.GameParts.Logic.Block;
 using Tangram.GameParts.Elements;
-using Tangram.GameParts.Logic.Board;
 using Tangram.GameParts.Logic.Generators;
-using Solver.Tangram.Configuration;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
+using Solver.Tangram.Game.Logic;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {

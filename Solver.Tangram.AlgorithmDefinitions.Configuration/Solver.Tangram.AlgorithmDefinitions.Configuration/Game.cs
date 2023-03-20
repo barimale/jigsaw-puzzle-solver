@@ -1,8 +1,8 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
-using Tangram.GameParts.Elements.Elements;
+using Tangram.GameParts.Logic.GameParts;
 
-namespace Solver.Tangram.Configuration
+namespace Solver.Tangram.Game.Logic
 {
     public class Game : IRunGame
     {

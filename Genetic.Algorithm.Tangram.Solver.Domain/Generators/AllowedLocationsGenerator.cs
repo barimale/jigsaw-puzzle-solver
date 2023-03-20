@@ -1,9 +1,9 @@
 ﻿using Algorithm.Tangram.Common.Extensions;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Prepared;
-using Tangram.GameParts.Logic.Block;
-using Tangram.GameParts.Logic.Board;
 using Tangram.GameParts.Logic.Extensions;
+using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Tangram.GameParts.Logic.Generators;
 
