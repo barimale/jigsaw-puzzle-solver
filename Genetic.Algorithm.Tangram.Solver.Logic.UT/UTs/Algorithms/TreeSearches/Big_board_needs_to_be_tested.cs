@@ -48,9 +48,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAll)
-                .WithAlgorithms(depthFirstAlg,
-                        breadthFirstAlg,
-                        pilotAlg)
+                .WithAlgorithms(
+                    depthFirstAlg,
+                    breadthFirstAlg,
+                    pilotAlg)
                 .Build();
 
             // when
@@ -102,9 +103,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAll)
-                .WithAlgorithms(depthFirstAlg,
-                        breadthFirstAlg,
-                        pilotAlg)
+                .WithAlgorithms(
+                    depthFirstAlg,
+                    breadthFirstAlg,
+                    pilotAlg)
                 .Build();
 
             // when

@@ -7,6 +7,7 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 {
+    // move it to vary genetic algorithm wrapper
     public class I_would_like_to_solve_medium_board : PrintToConsoleUTBase
     {
         private AlgorithmDebugHelper AlgorithmDebugHelper;
