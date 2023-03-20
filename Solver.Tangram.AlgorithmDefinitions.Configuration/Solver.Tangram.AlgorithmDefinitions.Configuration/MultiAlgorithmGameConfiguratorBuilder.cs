@@ -6,10 +6,9 @@ namespace Solver.Tangram.Game.Logic
 {
     public class MultiAlgorithmGameConfiguratorBuilder
     {
-        private readonly IExecutableAlgorithm? alreadyDefinedAlgorithm;
         private readonly GameSet alreadyDefinedParts;
 
-        private ExecutionMode? algorithmExecutionMode;
+        private ExecutionMode algorithmExecutionMode = ExecutionMode.WhenAll;
         private List<IExecutableAlgorithm> algorithms;
 
         public MultiAlgorithmGameConfiguratorBuilder(
@@ -47,15 +46,11 @@ namespace Solver.Tangram.Game.Logic
 
         public Game Build()
         {
-            if (algorithmExecutionMode == null)
-                throw new Exception("The algorithmExecutionMode cannot be null.");
-
             if (algorithms.Count == 0)
                 throw new Exception("The algorithms count cannot be zero.");
 
-
             var multiAlgorithm = new MultiAlgorithm(
-                    algorithmExecutionMode.Value,
+                    algorithmExecutionMode,
                     algorithms);
 
             var game = new Game(
