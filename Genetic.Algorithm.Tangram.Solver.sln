@@ -47,7 +47,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solver.Tangram.Game.Logic",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.GA.Solver.Templates", "Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.GA.Solver.Templates.csproj", "{34E734BD-9BFE-47BC-99F7-3D418457BA63}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_configuration", "_configuration", "{4E35660A-A10F-42D2-879B-96E0F9BAC7A0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".configuration", ".configuration", "{4E35660A-A10F-42D2-879B-96E0F9BAC7A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
