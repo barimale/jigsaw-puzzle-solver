@@ -30,13 +30,14 @@ namespace Solver.Tangram.Game.Logic
         public IExecutableAlgorithm? Algorithm { get; private set; }
         public IExecutableMultiAlgorithm? Multialgorithm { get; private set; }
 
-        public async Task<object> RunGameAsync(CancellationToken ct = default)
+        public async Task<Tout?> RunGameAsync<Tout>(CancellationToken ct = default)
+            where Tout : class
         {
             if (Algorithm != null)
-                return await Algorithm.ExecuteAsync(ct);
+                return (await Algorithm.ExecuteAsync(ct)) as Tout;
 
             if (Multialgorithm != null)
-                return await Multialgorithm.ExecuteManyAsync(ct);
+                return (await Multialgorithm.ExecuteManyAsync(ct)) as Tout;
 
             throw new SystemException();
         }

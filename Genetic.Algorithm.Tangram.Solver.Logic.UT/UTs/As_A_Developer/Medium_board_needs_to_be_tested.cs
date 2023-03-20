@@ -5,6 +5,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 {
@@ -33,8 +34,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
+            var game = new Game(gameParts, algorithm);
+
             // when
-            var solution = algorithm.ExecuteAsync();
+            var solution = game.RunGameAsync<AlgorithmResult>();
 
             var results = await Task.WhenAll(new[] { solution });
 
@@ -61,8 +64,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
+            var game = new Game(gameParts, algorithm);
+
             // when
-            var solution = algorithm.ExecuteAsync();
+            var solution = game.RunGameAsync<AlgorithmResult>();
 
             var results = await Task.WhenAll(new[] { solution });
 

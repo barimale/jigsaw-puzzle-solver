@@ -2,6 +2,7 @@
 {
     public interface IRunGame
     {
-        public Task<object> RunGameAsync(CancellationToken ct = default);
+        public Task<T?> RunGameAsync<T>(CancellationToken ct = default)
+            where T : class;
     }
 }

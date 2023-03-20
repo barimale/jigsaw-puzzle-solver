@@ -3,15 +3,14 @@ using System.Collections.Immutable;
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
-    public class MultiAlgorithm<T> : IExecutableMultiAlgorithm
-        where T : IExecutableAlgorithm
+    public class MultiAlgorithm: IExecutableMultiAlgorithm
     {
-        private readonly ImmutableList<T> algorithms;
+        private readonly ImmutableList<IExecutableAlgorithm> algorithms;
         private readonly ExecutionMode executionMode;
 
         public MultiAlgorithm(
             ExecutionMode executionMode,
-            IList<T> algorithms)
+            IList<IExecutableAlgorithm> algorithms)
         {
             this.algorithms = algorithms.ToImmutableList();
             this.executionMode = executionMode;
@@ -19,7 +18,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
 
         public MultiAlgorithm(
             ExecutionMode executionMode,
-            params T[] algorithms)
+            params IExecutableAlgorithm[] algorithms)
         {
             this.executionMode = executionMode;
             this.algorithms = algorithms.ToImmutableList();

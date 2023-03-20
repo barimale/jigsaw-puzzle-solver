@@ -1,7 +1,6 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.Helpers;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
-using Solver.Tangram.AlgorithmDefinitions;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 using Tangram.GameParts.Logic.GameParts;
@@ -83,7 +82,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
             //// when
             //konfiguracjaGry.Algorithm.Start();
             // when
-            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
+            var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
             // then
             Assert.NotNull(result);

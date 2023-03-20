@@ -57,7 +57,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
             //konfiguracjaGry.Algorithm.Start();
 
             // when
-            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
+            var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
             // then
             Assert.NotNull(result);

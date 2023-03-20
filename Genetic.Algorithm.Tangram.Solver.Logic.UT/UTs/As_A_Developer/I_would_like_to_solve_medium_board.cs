@@ -1,7 +1,6 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.Helpers;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
-using Solver.Tangram.AlgorithmDefinitions;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 using Xunit.Abstractions;
@@ -70,7 +69,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
             //        .Algorithm_TerminationReached;
 
             // when
-            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
+            var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
             // then
             Assert.NotNull(result);
@@ -124,7 +123,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
             //konfiguracjaGry.Algorithm.Start();
 
             // when
-            var result = await konfiguracjaGry.RunGameAsync() as AlgorithmResult;
+            var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
             // then
             Assert.NotNull(result);
