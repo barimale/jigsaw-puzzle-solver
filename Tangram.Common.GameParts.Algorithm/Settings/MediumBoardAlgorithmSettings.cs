@@ -29,7 +29,7 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
 
             // solver
             var generationChromosomesNumber = 300;
-            var mutationProbability = 0.0f;
+            var mutationProbability = 0.2f; // quick for 0.0f and 300 chromosomes / 1 generation
             var crossoverProbability = 1.0f - mutationProbability;
             var fitness = new TangramService(board, blocks);
 
