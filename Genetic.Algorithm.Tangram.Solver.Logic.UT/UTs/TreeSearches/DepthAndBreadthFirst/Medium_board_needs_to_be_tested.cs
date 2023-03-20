@@ -6,6 +6,7 @@ using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
+using TreesearchLib;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
@@ -45,25 +46,32 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     gameParts.Board,
                     gameParts.Blocks);
 
-            // when
-            var pilot = breadthFirstAlg.ExecuteAsync();
-            var depthFirst = depthFirstAlg.ExecuteAsync();
-            var breadthFirst = pilotAlg.ExecuteAsync();
+            var game = new GameConfiguratorBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAll)
+                .WithAlgorithms(depthFirstAlg,
+                        breadthFirstAlg,
+                        pilotAlg)
+                .Build();
 
-            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
+            // when
+            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
+            var resultsAsArray = results.ToArray();
 
             // then
-            Assert.Equal(3, results.Length);
+            Assert.NotNull(resultsAsArray);
+            Assert.Equal(3, resultsAsArray.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
         }
 
         [Fact]
@@ -72,7 +80,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             // given
             var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
-            .CreateMediumBoard(withAllowedLocations: true);
+                .CreateMediumBoard(withAllowedLocations: true);
 
             var breadthFirstAlg = GameConfiguratorBuilder
                 .AvalaibleTSTemplatesAlgorithms
@@ -92,16 +100,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     gameParts.Board,
                     gameParts.Blocks);
 
-            // TODO use WithAlgorithms method and provide builder for Game class
-            // hide anything else if possible 
-            var game = new Game(
-                gameParts,
-                new MultiAlgorithm(
-                    ExecutionMode.WhenAll,
-                    new IExecutableAlgorithm[] { 
-                        depthFirstAlg,
+            var game = new GameConfiguratorBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAll)
+                .WithAlgorithms(depthFirstAlg,
                         breadthFirstAlg,
-                        pilotAlg }));
+                        pilotAlg)
+                .Build();
 
             // when
             var results = await game.RunGameAsync<IList<AlgorithmResult>>();

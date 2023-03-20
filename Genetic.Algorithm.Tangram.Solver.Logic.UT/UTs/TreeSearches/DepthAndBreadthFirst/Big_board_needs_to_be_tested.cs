@@ -5,6 +5,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
@@ -44,25 +45,32 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     gameParts.Board,
                     gameParts.Blocks);
 
-            // when
-            var pilot = breadthFirstAlg.ExecuteAsync();
-            var depthFirst = depthFirstAlg.ExecuteAsync();
-            var breadthFirst = pilotAlg.ExecuteAsync();
+            var game = new GameConfiguratorBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAll)
+                .WithAlgorithms(depthFirstAlg,
+                        breadthFirstAlg,
+                        pilotAlg)
+                .Build();
 
-            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
+            // when
+            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
+            var resultsAsArray = results.ToArray();
 
             // then
-            Assert.Equal(3, results.Length);
+            Assert.NotNull(resultsAsArray);
+            Assert.Equal(3, resultsAsArray.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
         }
 
 
@@ -92,25 +100,32 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     gameParts.Board,
                     gameParts.Blocks);
 
-            // when
-            var pilot = breadthFirstAlg.ExecuteAsync();
-            var depthFirst = depthFirstAlg.ExecuteAsync();
-            var breadthFirst = pilotAlg.ExecuteAsync();
+            var game = new GameConfiguratorBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAll)
+                .WithAlgorithms(depthFirstAlg,
+                        breadthFirstAlg,
+                        pilotAlg)
+                .Build();
 
-            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
+            // when
+            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
+            var resultsAsArray = results.ToArray();
 
             // then
-            Assert.Equal(3, results.Length);
+            Assert.NotNull(resultsAsArray);
+            Assert.Equal(3, resultsAsArray.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
         }
     }
 }

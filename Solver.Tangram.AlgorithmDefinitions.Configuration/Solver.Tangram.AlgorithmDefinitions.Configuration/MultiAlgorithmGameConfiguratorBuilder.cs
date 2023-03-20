@@ -1,21 +1,26 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using Tangram.GameParts.Logic.GameParts;
 
 namespace Solver.Tangram.Game.Logic
 {
-    // TODO check it step by step
     public class MultiAlgorithmGameConfiguratorBuilder
     {
-        private readonly GameConfiguratorBuilder gameConfiguratorBuilder;
+        private readonly IExecutableAlgorithm? alreadyDefinedAlgorithm;
+        private readonly GameSet alreadyDefinedParts;
 
         private ExecutionMode? algorithmExecutionMode;
         private List<IExecutableAlgorithm> algorithms;
 
         public MultiAlgorithmGameConfiguratorBuilder(
-            GameConfiguratorBuilder gameConfiguratorBuilder)
+            GameSet alreadyDefinedParts,
+            IExecutableAlgorithm? alreadyDefinedAlgorithm)
         {
-            algorithms = new List<IExecutableAlgorithm>();
-            this.gameConfiguratorBuilder = gameConfiguratorBuilder;
+            algorithms = alreadyDefinedAlgorithm != null
+                ? new List<IExecutableAlgorithm>() { alreadyDefinedAlgorithm }
+                : new List<IExecutableAlgorithm>();
+
+            this.alreadyDefinedParts = alreadyDefinedParts;
         }
 
         public MultiAlgorithmGameConfiguratorBuilder WithExecutionMode(
@@ -48,15 +53,13 @@ namespace Solver.Tangram.Game.Logic
             if (algorithms.Count == 0)
                 throw new Exception("The algorithms count cannot be zero.");
 
-            var singleGame = gameConfiguratorBuilder
-                .Build();
 
             var multiAlgorithm = new MultiAlgorithm(
                     algorithmExecutionMode.Value,
                     algorithms);
 
             var game = new Game(
-                    singleGame.GameSet,
+                    alreadyDefinedParts,
                     multiAlgorithm);
 
             return game;

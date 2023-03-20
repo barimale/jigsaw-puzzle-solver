@@ -45,7 +45,12 @@ namespace Solver.Tangram.Game.Logic
 
         public MultiAlgorithmGameConfiguratorBuilder WithManyAlgorithms()
         {
-            return new MultiAlgorithmGameConfiguratorBuilder(this);
+            if (parts == null)
+                throw new Exception("The parts cannot be null.");
+
+            return new MultiAlgorithmGameConfiguratorBuilder(
+                this.parts,
+                this.algorithm);
         }
 
         public Game Build()
