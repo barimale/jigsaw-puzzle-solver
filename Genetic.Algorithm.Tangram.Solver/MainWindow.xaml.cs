@@ -113,19 +113,19 @@ namespace Genetic.Algorithm.Tangram.Solver
             if (gameExecutor == null)
             {
                 var gameParts = GameConfiguratorBuilder
-                   .AvalaibleGameSets
-                   .CreatePolishBigBoard(withAllowedLocations: true);
+                .AvalaibleGameSets
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
                 var algorithm = GameConfiguratorBuilder
                     .AvalaibleGATunedAlgorithms
-                    .CreateBigBoardSettings(
+                    .CreateMediumBoardSettings(
                         gameParts.Board,
                         gameParts.Blocks,
                         gameParts.AllowedAngles);
 
                 var konfiguracjaGry = new GameConfiguratorBuilder()
-                    .WithAlgorithm(algorithm)
                     .WithGamePartsConfigurator(gameParts)
+                    .WithAlgorithm(algorithm)
                     .Build();
 
                 gameExecutor = new GameExecutor(

@@ -7,7 +7,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class ExecutableGeneticAlgorithm : Algorithm<GeneticAlgorithm>, IExecutableAlgorithm
     {
-        // TODO check it step by step
         private SemaphoreSlim signal = new SemaphoreSlim(0, 1);
         private AlgorithmResult result;
         private double latestFitness;

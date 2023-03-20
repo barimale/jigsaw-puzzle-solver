@@ -43,14 +43,16 @@ namespace Experimental.UI.Algorithm.Executor.WPF
             //konfiguracjaGry
             //    .Algorithm
             //    .GenerationRan += this.Algorithm_Ran;
-
             results = new List<AlgorithmResult>();
         }
 
         public void Execute()
         {
+
             //konfiguracjaGry?.Algorithm?.Start();
-            Algorithm_Ran(konfiguracjaGry?.Algorithm, null);
+            var result = konfiguracjaGry.RunGameAsync<AlgorithmResult>().Result;
+
+            Algorithm_Ran(result.Solution, null);
         }
 
         private void Algorithm_Ran(object? sender, EventArgs e)
