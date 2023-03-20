@@ -85,11 +85,6 @@ namespace Experimental.UI.Algorithm.Executor.WPF
                 if (c == null)
                     return;
 
-                if (!c.Fitness.HasValue)
-                    return;
-
-                var fitnessValue = c.Fitness.Value;
-
                 // clear canvas
                 Canvas.Children.Clear();
 
@@ -142,8 +137,6 @@ namespace Experimental.UI.Algorithm.Executor.WPF
             {
                 if (c == null)
                     return;
-
-                var fitnessValue = c.Quality.ToString();
 
                 // clear canvas
                 Canvas.Children.Clear();
