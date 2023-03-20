@@ -1,9 +1,10 @@
-using Generic.Algorithm.Tangram.GameParts.Elements;
 using Genetic.Algorithm.Tangram.Solver.Logic.Helpers;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
-using Solver.Tangram.Configurator;
-using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.AlgorithmDefinitions;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.Configuration;
+using Tangram.GameParts.Elements.Elements;
 using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer

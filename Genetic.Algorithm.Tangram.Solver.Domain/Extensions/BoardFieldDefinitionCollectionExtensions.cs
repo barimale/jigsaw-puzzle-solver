@@ -1,7 +1,7 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
+using Tangram.GameParts.Logic.Board;
 
-namespace Genetic.Algorithm.Tangram.Solver.Domain.Extensions
+namespace Tangram.GameParts.Logic.Extensions
 {
     public static class BoardFieldDefinitionCollectionExtensions
     {

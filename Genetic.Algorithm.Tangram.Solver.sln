@@ -15,15 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-items", ".solutio
 		TODOs.md = TODOs.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generic.Algorithm.Tangram.GameParts", "Tangram.Common.GameParts\Generic.Algorithm.Tangram.GameParts.csproj", "{ABCAA61C-B0E6-4684-9423-23552B8B1739}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.GameParts.Elements", "Tangram.Common.GameParts\Tangram.GameParts.Elements.csproj", "{ABCAA61C-B0E6-4684-9423-23552B8B1739}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.Solver.Domain", "Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj", "{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.GameParts.Logic", "Genetic.Algorithm.Tangram.Solver.Domain\Tangram.GameParts.Logic.csproj", "{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Generic.Algorithm.Tangram.Common", "Tangram.Utilities\Generic.Algorithm.Tangram.Common.csproj", "{4E30A002-4720-475A-8767-F5DC7EC1784A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm.Tangram.Common", "Tangram.Utilities\Algorithm.Tangram.Common.csproj", "{4E30A002-4720-475A-8767-F5DC7EC1784A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.AlgorithmSettings", "Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.AlgorithmSettings.csproj", "{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solver.Tangram.Configurator", "Tangram.Common.GameParts.Configurator\Solver.Tangram.Configurator.csproj", "{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solver.Tangram.AlgorithmDefinitions", "Tangram.Common.GameParts.Configurator\Solver.Tangram.AlgorithmDefinitions.csproj", "{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "engine", "engine", "{A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}"
 EndProject
@@ -41,9 +39,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "genetic-algorithm-solver", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tree-search-solver", "tree-search-solver", "{3217F42B-34C2-4970-A9C2-0BB3B4FA4FF9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solver.configuration", "solver.configuration", "{586303E9-79F5-4E51-8C71-9465E058FE16}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "game-parts.configuration", "game-parts.configuration", "{586303E9-79F5-4E51-8C71-9465E058FE16}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_solver.logic.common", "_solver.logic.common", "{80955DDE-70A5-463F-94A0-6BAED13CF2C2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solver.configuration", "solver.configuration", "{E35B266C-FCBD-4998-BF6E-17CD0FB6274C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Solver.Tangram.Configuration", "Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.Configuration.csproj", "{51FEDAB6-53F0-4537-9E33-0CC94302C148}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Genetic.Algorithm.Tangram.GA.Solver.Templates", "Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.GA.Solver.Templates.csproj", "{34E734BD-9BFE-47BC-99F7-3D418457BA63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,10 +77,6 @@ Global
 		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E30A002-4720-475A-8767-F5DC7EC1784A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,6 +85,14 @@ Global
 		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9439AD09-C7B0-4C70-9D63-30FEFDC2E5C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51FEDAB6-53F0-4537-9E33-0CC94302C148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51FEDAB6-53F0-4537-9E33-0CC94302C148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51FEDAB6-53F0-4537-9E33-0CC94302C148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51FEDAB6-53F0-4537-9E33-0CC94302C148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34E734BD-9BFE-47BC-99F7-3D418457BA63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34E734BD-9BFE-47BC-99F7-3D418457BA63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34E734BD-9BFE-47BC-99F7-3D418457BA63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34E734BD-9BFE-47BC-99F7-3D418457BA63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,10 +101,9 @@ Global
 		{61731936-5AE6-4C55-AD71-B1D6E5B99AED} = {E1F78DA2-AC4B-41A0-808E-2F162031D816}
 		{DBA18022-6412-47A1-BFA5-5515EB81FCA8} = {0D3E1247-6DE9-4E80-B3D9-AEE723124542}
 		{ABCAA61C-B0E6-4684-9423-23552B8B1739} = {2F317253-CF7A-4799-B5DB-F040319A3CD5}
-		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21} = {E1F78DA2-AC4B-41A0-808E-2F162031D816}
+		{1079AAA0-B2F6-4FD0-A572-1C29EC6A7E21} = {2F317253-CF7A-4799-B5DB-F040319A3CD5}
 		{4E30A002-4720-475A-8767-F5DC7EC1784A} = {73FE0012-BA52-45F3-911D-20A7569C6FEA}
-		{D73D6C4B-C1E7-4754-B3A9-A5A3EB545E61} = {586303E9-79F5-4E51-8C71-9465E058FE16}
-		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27} = {80955DDE-70A5-463F-94A0-6BAED13CF2C2}
+		{B27B7E47-98BF-43EE-8636-1F9A4FF30F27} = {BD780A89-0748-4A6C-931A-CADBD8C4B41E}
 		{BD780A89-0748-4A6C-931A-CADBD8C4B41E} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
 		{2F317253-CF7A-4799-B5DB-F040319A3CD5} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
 		{73FE0012-BA52-45F3-911D-20A7569C6FEA} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
@@ -106,7 +111,9 @@ Global
 		{E1F78DA2-AC4B-41A0-808E-2F162031D816} = {BD780A89-0748-4A6C-931A-CADBD8C4B41E}
 		{3217F42B-34C2-4970-A9C2-0BB3B4FA4FF9} = {BD780A89-0748-4A6C-931A-CADBD8C4B41E}
 		{586303E9-79F5-4E51-8C71-9465E058FE16} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
-		{80955DDE-70A5-463F-94A0-6BAED13CF2C2} = {BD780A89-0748-4A6C-931A-CADBD8C4B41E}
+		{E35B266C-FCBD-4998-BF6E-17CD0FB6274C} = {A7572B68-0E0E-4A6F-BEA8-A6717F05FA02}
+		{51FEDAB6-53F0-4537-9E33-0CC94302C148} = {E35B266C-FCBD-4998-BF6E-17CD0FB6274C}
+		{34E734BD-9BFE-47BC-99F7-3D418457BA63} = {586303E9-79F5-4E51-8C71-9465E058FE16}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADC3F980-CAA3-45AF-A179-5C449EB5704C}

@@ -1,6 +1,6 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
+﻿using Tangram.GameParts.Logic.Generators;
 
-namespace Genetic.Algorithm.Tangram.Solver.Domain
+namespace Tangram.GameParts.Logic
 {
     public class GeneratorFactory
     {

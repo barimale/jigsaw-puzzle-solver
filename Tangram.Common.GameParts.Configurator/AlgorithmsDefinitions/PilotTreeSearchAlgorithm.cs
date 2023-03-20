@@ -1,11 +1,11 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Solver.Tangram.Configurator.Generics;
-using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
 using TreesearchLib;
 
-namespace Solver.Tangram.Configurator.Algorithms
+namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class PilotTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {

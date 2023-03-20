@@ -1,9 +1,9 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Immutable;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses
 {

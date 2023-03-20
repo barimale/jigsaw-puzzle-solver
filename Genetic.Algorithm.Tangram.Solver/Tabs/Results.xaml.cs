@@ -4,7 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Collections.ObjectModel;
-using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 
 namespace Algorithm.Executor.WPF.Tabs
 {

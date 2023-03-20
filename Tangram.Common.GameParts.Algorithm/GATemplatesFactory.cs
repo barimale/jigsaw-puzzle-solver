@@ -1,11 +1,11 @@
-﻿using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+﻿using Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings;
 using GeneticSharp;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
 
-namespace Genetic.Algorithm.Tangram.AlgorithmSettings.TemplatesFactory
+namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
 {
-    public class AlgorithmSettingsFactory
+    public class GATemplatesFactory
     {
         public GeneticAlgorithm CreateBigBoardSettings(
             BoardShapeBase board,

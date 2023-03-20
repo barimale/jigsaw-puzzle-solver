@@ -1,11 +1,11 @@
-﻿using Generic.Algorithm.Tangram.GameParts;
-using Generic.Algorithm.Tangram.GameParts.Elements;
-using Genetic.Algorithm.Tangram.AlgorithmSettings.TemplatesFactory;
+﻿using Genetic.Algorithm.Tangram.GA.Solver.Templates;
 using GeneticSharp;
-using Solver.Tangram.Configurator.Algorithms;
-using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
+using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
+using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using Tangram.GameParts.Elements;
+using Tangram.GameParts.Elements.Elements;
 
-namespace Solver.Tangram.Configurator
+namespace Solver.Tangram.Configuration
 {
     public class GameConfiguratorBuilder
     {
@@ -15,8 +15,8 @@ namespace Solver.Tangram.Configurator
         public static GameSetFactory AvalaibleGameSets
             => new GameSetFactory();
 
-        public static AlgorithmSettingsFactory AvalaibleGATunedAlgorithms
-            => new AlgorithmSettingsFactory();
+        public static GATemplatesFactory AvalaibleGATunedAlgorithms
+            => new GATemplatesFactory();
 
         public GameConfiguratorBuilder WithAlgorithm(GeneticAlgorithm ga)
         {

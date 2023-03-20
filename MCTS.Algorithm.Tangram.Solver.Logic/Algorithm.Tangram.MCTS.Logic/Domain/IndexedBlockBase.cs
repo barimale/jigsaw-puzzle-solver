@@ -1,4 +1,4 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
+﻿using Tangram.GameParts.Logic.Block;
 
 namespace Algorithm.Tangram.TreeSearch.Logic.Domain
 {

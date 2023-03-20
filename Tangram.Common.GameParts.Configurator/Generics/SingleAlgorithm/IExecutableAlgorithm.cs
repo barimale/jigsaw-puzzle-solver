@@ -1,4 +1,6 @@
-﻿namespace Solver.Tangram.Configurator.Generics.SingleAlgorithm
+﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
+
+namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
 {
     public interface IExecutableAlgorithm
     {

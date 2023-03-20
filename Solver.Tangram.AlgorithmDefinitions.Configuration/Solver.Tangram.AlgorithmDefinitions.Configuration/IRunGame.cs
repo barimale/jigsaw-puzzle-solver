@@ -1,4 +1,4 @@
-﻿namespace Solver.Tangram.Configurator
+﻿namespace Solver.Tangram.Configuration
 {
     public interface IRunGame
     {

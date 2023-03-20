@@ -1,8 +1,7 @@
 ﻿using Algorithm.Executor.WPF;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using GeneticSharp;
-using Solver.Tangram.Configurator;
-using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.Configuration;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +9,7 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
+using Tangram.GameParts.Logic.Block;
 
 namespace Genetic.Algorithm.Tangram.Solver
 {

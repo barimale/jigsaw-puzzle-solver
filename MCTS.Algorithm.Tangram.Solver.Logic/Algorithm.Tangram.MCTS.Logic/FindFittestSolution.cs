@@ -1,10 +1,10 @@
+using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Algorithm.Tangram.TreeSearch.Logic.Extensions;
-using Generic.Algorithm.Tangram.Common.Extensions;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using System.Collections.Immutable;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
 using TreesearchLib;
 
 namespace Algorithm.Tangram.TreeSearch.Logic

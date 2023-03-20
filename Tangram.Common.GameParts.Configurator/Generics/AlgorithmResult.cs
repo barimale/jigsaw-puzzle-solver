@@ -1,4 +1,4 @@
-﻿namespace Solver.Tangram.Configurator.Generics
+﻿namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
     public class AlgorithmResult
     {

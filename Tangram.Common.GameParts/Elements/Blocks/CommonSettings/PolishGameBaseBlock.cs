@@ -1,8 +1,8 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
 using System.Drawing;
+using Tangram.GameParts.Logic.Block;
 
-namespace Generic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings
+namespace Tangram.GameParts.Elements.Elements.Blocks.CommonSettings
 {
     public abstract class PolishGameBaseBlock
     {

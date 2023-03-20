@@ -1,7 +1,7 @@
 ﻿using GeneticSharp;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace Generic.Algorithm.Tangram.Common.Extensions
+namespace Algorithm.Tangram.Common.Extensions
 {
     public static class TangramChromosomeExtensions
     {

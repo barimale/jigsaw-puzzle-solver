@@ -1,9 +1,9 @@
-﻿using Generic.Algorithm.Tangram.GameParts.Elements;
-using Generic.Algorithm.Tangram.GameParts.Elements.Boards.PolishGame;
-using Generic.Algorithm.Tangram.GameParts.Elements.Boards.PureGame;
-using Genetic.Algorithm.Tangram.Solver.Domain;
+﻿using Tangram.GameParts.Elements.Elements;
+using Tangram.GameParts.Elements.Elements.Boards.PolishGame;
+using Tangram.GameParts.Elements.Elements.Boards.PureGame;
+using Tangram.GameParts.Logic;
 
-namespace Generic.Algorithm.Tangram.GameParts
+namespace Tangram.GameParts.Elements
 {
     public class GameSetFactory
     {

@@ -1,5 +1,5 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+using Tangram.GameParts.Logic.Block;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Helpers
 {

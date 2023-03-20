@@ -23,8 +23,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
-    <ProjectReference Include="..\Tangram.Common.GameParts.Configurator\Solver.Tangram.Configurator.csproj" />
-    <ProjectReference Include="..\Tangram.Common.GameParts\Generic.Algorithm.Tangram.GameParts.csproj" />
+    <ProjectReference Include="..\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.Configuration.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts.Configurator\Solver.Tangram.AlgorithmDefinitions.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts\Tangram.GameParts.Elements.csproj" />
   </ItemGroup>
 
 </Project>

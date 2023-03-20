@@ -1,5 +1,4 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
 using System;
 using System.IO;
@@ -10,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using Tangram.GameParts.Logic.Block;
 
 namespace Algorithm.Executor.WPF
 {

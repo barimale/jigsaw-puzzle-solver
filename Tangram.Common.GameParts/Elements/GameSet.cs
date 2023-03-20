@@ -1,8 +1,8 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
 
-namespace Generic.Algorithm.Tangram.GameParts.Elements
+namespace Tangram.GameParts.Elements.Elements
 {
     // blocks and board
     public class GameSet

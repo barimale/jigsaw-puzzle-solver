@@ -11,9 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj" />
+    <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Tangram.GameParts.Logic.csproj" />
     <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Logic\Genetic.Algorithm.Tangram.Solver.Logic.csproj" />
-    <ProjectReference Include="..\Tangram.Utilities\Generic.Algorithm.Tangram.Common.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts.Configurator\Solver.Tangram.AlgorithmDefinitions.csproj" />
+    <ProjectReference Include="..\Tangram.Utilities\Algorithm.Tangram.Common.csproj" />
   </ItemGroup>
 
 </Project>

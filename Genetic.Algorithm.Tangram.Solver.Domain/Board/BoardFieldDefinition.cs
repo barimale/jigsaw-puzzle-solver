@@ -1,6 +1,6 @@
 ﻿using NetTopologySuite.Geometries;
 
-namespace Genetic.Algorithm.Tangram.Solver.Domain.Board
+namespace Tangram.GameParts.Logic.Board
 {
     // TODO: rename it to be common for board and blocks
 

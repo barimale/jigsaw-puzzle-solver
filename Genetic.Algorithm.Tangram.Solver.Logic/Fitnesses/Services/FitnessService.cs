@@ -1,6 +1,6 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Union;
+using Tangram.GameParts.Logic.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
 {

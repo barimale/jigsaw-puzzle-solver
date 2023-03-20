@@ -1,7 +1,7 @@
-﻿using Generic.Algorithm.Tangram.Common.Extensions;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+﻿using Algorithm.Tangram.Common.Extensions;
+using Tangram.GameParts.Logic.Board;
 
-namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
+namespace Tangram.GameParts.Logic.Generators
 {
     public class RectangularGameFieldsGenerator
     {
@@ -23,7 +23,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
             {
                 for (int r = 0; r < boardRowsCount; r++)
                 {
-                    if(isExtraRistricted)
+                    if (isExtraRistricted)
                     {
                         fields.Add(
                            new BoardFieldDefinition(
@@ -31,7 +31,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators
                                r,
                                fieldWidth,
                                fieldHeight,
-                               withExtraRistrictedMarkups[r,c],
+                               withExtraRistrictedMarkups[r, c],
                                true,
                                scaleFactor)
                         );

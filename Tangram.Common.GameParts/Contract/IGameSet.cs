@@ -1,6 +1,6 @@
-﻿using Generic.Algorithm.Tangram.GameParts.Elements;
+﻿using Tangram.GameParts.Elements.Elements;
 
-namespace Generic.Algorithm.Tangram.GameParts.Contract
+namespace Tangram.GameParts.Elements.Contract
 {
     public interface IGameSet
     {

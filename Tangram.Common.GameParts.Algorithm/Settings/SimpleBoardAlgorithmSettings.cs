@@ -1,16 +1,16 @@
 ﻿using GeneticSharp;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Crossovers;
 using Genetic.Algorithm.Tangram.Solver.Logic.Mutations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses;
-using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.Contract;
 using Genetic.Algorithm.Tangram.Solver.Logic;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
+using Solver.Tangram.AlgorithmDefinitions;
 
-namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
+namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
 {
     internal class SimpleBoardAlgorithmSettings : IAlgorithmSettings
     {

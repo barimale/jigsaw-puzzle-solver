@@ -1,11 +1,10 @@
-﻿using Generic.Algorithm.Tangram.Common.Extensions;
-using Genetic.Algorithm.Tangram.Solver.Domain.Extensions;
+﻿using Algorithm.Tangram.Common.Extensions;
 using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using System.Drawing;
 
-namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
+namespace Tangram.GameParts.Logic.Block
 {
     public class BlockBase
     {
@@ -17,7 +16,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
         public Geometry Polygon { private set; get; }
         public Color Color { private set; get; }
         public Geometry[] AllowedLocations { private set; get; } = new Geometry[0];
-        public bool IsAllowedLocationsEnabled => AllowedLocations != null 
+        public bool IsAllowedLocationsEnabled => AllowedLocations != null
             && AllowedLocations.Length > 0;
 
         public double Area => Polygon.Area;
@@ -27,10 +26,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
             Color color,
             bool moveToZero = true)
         {
-            this.ID = Guid.NewGuid();
-            this.Polygon = polygon;
-            this.Color = color;
-            this.IsExtraRistricted = false;
+            ID = Guid.NewGuid();
+            Polygon = polygon;
+            Color = color;
+            IsExtraRistricted = false;
 
             if (moveToZero)
             {
@@ -45,8 +44,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
             bool moveToZero = true)
             : this(polygon, color, moveToZero)
         {
-            this.IsExtraRistricted = true;
-            this.FieldRestrictionMarkups = fieldRestrictionMarkups;
+            IsExtraRistricted = true;
+            FieldRestrictionMarkups = fieldRestrictionMarkups;
         }
 
         public void SetAllowedLocations(Geometry[] locations)
@@ -61,7 +60,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Domain.Block
                 Color,
                 FieldRestrictionMarkups,
                 moveToZero);
-           
+
             cloned.SetAllowedLocations(AllowedLocations.ToArray());
 
             return cloned;

@@ -1,11 +1,11 @@
-﻿using Generic.Algorithm.Tangram.Common.Extensions;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+﻿using Algorithm.Tangram.Common.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
 using NetTopologySuite.Geometries;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators
 {

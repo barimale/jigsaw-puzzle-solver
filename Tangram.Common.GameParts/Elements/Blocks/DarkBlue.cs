@@ -1,9 +1,9 @@
-﻿using Generic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using NetTopologySuite.Geometries;
+﻿using NetTopologySuite.Geometries;
 using System.Drawing;
+using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
+using Tangram.GameParts.Logic.Block;
 
-namespace Generic.Algorithm.Tangram.GameParts.Elements.Blocks
+namespace Tangram.GameParts.Elements.Elements.Blocks
 {
     public sealed class DarkBlue : PolishGameBaseBlock
     {

@@ -1,8 +1,8 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using GeneticSharp;
+using Tangram.GameParts.Logic.Block;
 using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers

@@ -1,11 +1,11 @@
-﻿using Generic.Algorithm.Tangram.Common.Extensions;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Domain.Extensions;
+﻿using Algorithm.Tangram.Common.Extensions;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Prepared;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.Extensions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Domain.Generators;
+namespace Tangram.GameParts.Logic.Generators;
 
 public class AllowedLocationsGenerator
 {
@@ -47,7 +47,7 @@ public class AllowedLocationsGenerator
                 block,
                 board,
                 angles,
-                this.WithMarkups
+                WithMarkups
             );
 
             block.SetAllowedLocations(locations);
@@ -129,7 +129,7 @@ public class AllowedLocationsGenerator
         bool hasToBeFlipped,
         bool withMarkups)
     {
-        if(withMarkups)
+        if (withMarkups)
         {
             return TryCheckWithMarkups(block, board, allowedAngles[a], i, j, hasToBeFlipped);
         }
@@ -153,10 +153,10 @@ public class AllowedLocationsGenerator
         var fieldsToBeTransformed = new RectangularGameFieldsGenerator()
             .GenerateFields(
                 board.ScaleFactor,
-                this.fieldHeight,
-                this.fieldWidth,
-                (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Width / this.fieldWidth),
-                (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Height / this.fieldHeight),
+                fieldHeight,
+                fieldWidth,
+                (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Width / fieldWidth),
+                (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Height / fieldHeight),
                 blockSideMarkups
             ).ConvertToGeometryCollection();
 
@@ -187,23 +187,23 @@ public class AllowedLocationsGenerator
                     return false;
                 }
 
-                if (this.skippedMarkup != null
-                && this.skippedMarkup.Contains(blockField.UserData))
+                if (skippedMarkup != null
+                && skippedMarkup.Contains(blockField.UserData))
                 {
                     return true;
                 }
 
-                var matchCandidate = Tuple.Create<string, int>(
+                var matchCandidate = Tuple.Create(
                     (string)blockField.UserData,
                     (int)foundBoardField.UserData);
 
-                if (this.allowedMatches != null
-                && this.allowedMatches.Contains(matchCandidate))
+                if (allowedMatches != null
+                && allowedMatches.Contains(matchCandidate))
                 {
                     return true;
                 }
                 else
-                { 
+                {
                     return false;
                 }
             });

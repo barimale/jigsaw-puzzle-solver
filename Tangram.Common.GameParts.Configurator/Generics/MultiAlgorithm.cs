@@ -1,7 +1,7 @@
-﻿using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
+﻿using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
 
-namespace Solver.Tangram.Configurator.Generics
+namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
     public class MultiAlgorithm<T> : IExecutableMultiAlgorithm
         where T : IExecutableAlgorithm

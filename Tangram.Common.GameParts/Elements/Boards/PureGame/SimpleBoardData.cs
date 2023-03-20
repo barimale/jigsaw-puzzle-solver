@@ -1,12 +1,11 @@
 ﻿using System.Drawing;
 using NetTopologySuite.Geometries;
-using Genetic.Algorithm.Tangram.Solver.Domain.Block;
-using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Domain;
-using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
-using Generic.Algorithm.Tangram.GameParts.Contract;
+using Tangram.GameParts.Logic.Board;
+using Tangram.GameParts.Logic.Block;
+using Tangram.GameParts.Elements.Contract;
+using Tangram.GameParts.Logic.Generators;
 
-namespace Generic.Algorithm.Tangram.GameParts.Elements.Boards.PureGame
+namespace Tangram.GameParts.Elements.Elements.Boards.PureGame
 {
     internal class SimpleBoardData : IGameSet
     {
