@@ -4,9 +4,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
-using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
-using TreesearchLib;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
