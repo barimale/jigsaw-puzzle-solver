@@ -113,8 +113,8 @@ namespace Genetic.Algorithm.Tangram.Solver
             if (gameExecutor == null)
             {
                 var gameParts = GameBuilder
-                .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                    .AvalaibleGameSets
+                    .CreatePolishMediumBoard(withAllowedLocations: true);
 
                 var algorithm = GameBuilder
                     .AvalaibleGATunedAlgorithms
