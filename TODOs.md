@@ -1,6 +1,8 @@
 // TODO: add n times for GA UTs
 
-// TODO: add UTs for varyratios ga
+	add mtcs with UCB1 from GameAI
+
+	hide as many classes as possible -> so composition once again	
 
 // refactor naming convention for gamepartsconfigurator
 // modify its builder methods
