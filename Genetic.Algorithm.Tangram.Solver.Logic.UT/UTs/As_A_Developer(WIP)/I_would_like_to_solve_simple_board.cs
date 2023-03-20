@@ -45,7 +45,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 
             // settings
             var showAllowedLocations = true;
-            var multicolorSupported = false;
 
             // display board
             Display("Board definition:");
@@ -73,14 +72,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
                 }
             }
 
-            //konfiguracjaGry.Algorithm.TerminationReached += AlgorithmDebugHelper.Algorithm_TerminationReached;
-            //konfiguracjaGry.Algorithm.TerminationReached += AlgorithmUTConsoleHelper.Algorithm_TerminationReached;
-
-            //konfiguracjaGry.Algorithm.GenerationRan += AlgorithmDebugHelper.Algorithm_Ran;
-            //konfiguracjaGry.Algorithm.GenerationRan += AlgorithmUTConsoleHelper.Algorithm_Ran;
-
-            //// when
-            //konfiguracjaGry.Algorithm.Start();
             // when
             var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 

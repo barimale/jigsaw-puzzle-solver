@@ -42,19 +42,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
             if (konfiguracjaGry.Algorithm == null)
                 return;
 
-            //konfiguracjaGry
-            //    .Algorithm
-            //    .TerminationReached += AlgorithmDebugHelper
-            //        .Algorithm_TerminationReached;
-
-            //konfiguracjaGry
-            //    .Algorithm
-            //    .GenerationRan += AlgorithmDebugHelper
-            //        .Algorithm_Ran;
-
-            //// when
-            //konfiguracjaGry.Algorithm.Start();
-
             // when
             var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
