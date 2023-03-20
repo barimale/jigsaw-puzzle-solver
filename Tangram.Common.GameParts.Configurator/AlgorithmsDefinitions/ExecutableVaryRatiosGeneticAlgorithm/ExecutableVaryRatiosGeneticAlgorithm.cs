@@ -41,8 +41,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
         {
             try
             {
-                algorithm.Stop();
-
                 var varyRatioInstance = sender as VaryRatiosService;
 
                 if (varyRatioInstance == null)
@@ -54,11 +52,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             }
             catch (Exception)
             {
-                // intentionally left blank
-            }
-            finally
-            {
-                algorithm.Resume();
+                // maybe invoke termination here
             }
         }
 
