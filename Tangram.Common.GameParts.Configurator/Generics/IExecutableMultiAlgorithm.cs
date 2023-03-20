@@ -1,4 +1,4 @@
-﻿namespace Genetic.Algorithm.Tangram.Configurator.Generics
+﻿namespace Solver.Tangram.Configurator.Generics
 {
     public interface IExecutableMultiAlgorithm
     {

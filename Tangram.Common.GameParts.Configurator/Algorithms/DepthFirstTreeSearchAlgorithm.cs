@@ -1,11 +1,11 @@
-﻿using Algorithm.Tangram.MCTS.Logic;
-using Genetic.Algorithm.Tangram.Configurator.Generics;
-using Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm;
+﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
 using TreesearchLib;
 
-namespace Genetic.Algorithm.Tangram.Configurator.Wrappers
+namespace Solver.Tangram.Configurator.Algorithms
 {
     public class DepthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
@@ -17,9 +17,9 @@ namespace Genetic.Algorithm.Tangram.Configurator.Wrappers
             // intentionally left blank
         }
 
-        public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default(CancellationToken))
+        public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
-            var result = await base.algorithm.DepthFirstAsync(token: ct);
+            var result = await algorithm.DepthFirstAsync(token: ct);
 
             return new AlgorithmResult()
             {

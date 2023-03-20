@@ -1,7 +1,7 @@
-﻿using Genetic.Algorithm.Tangram.Configurator.Generics;
-using Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm;
+﻿using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
 
-namespace Genetic.Algorithm.Tangram.Configurator
+namespace Solver.Tangram.Configurator
 {
     // TODO check it step by step
     public class MultiAlgorithmGameConfiguratorBuilder
@@ -14,14 +14,14 @@ namespace Genetic.Algorithm.Tangram.Configurator
         public MultiAlgorithmGameConfiguratorBuilder(
             GameConfiguratorBuilder gameConfiguratorBuilder)
         {
-            this.algorithms = new List<IExecutableAlgorithm>();
+            algorithms = new List<IExecutableAlgorithm>();
             this.gameConfiguratorBuilder = gameConfiguratorBuilder;
         }
 
         public MultiAlgorithmGameConfiguratorBuilder WithExecutionMode(
             ExecutionMode executionMode)
         {
-            this.algorithmExecutionMode = executionMode;
+            algorithmExecutionMode = executionMode;
 
             return this;
         }
@@ -42,24 +42,24 @@ namespace Genetic.Algorithm.Tangram.Configurator
 
         public Game Build()
         {
-            if (this.algorithmExecutionMode == null)
+            if (algorithmExecutionMode == null)
                 throw new Exception("The algorithmExecutionMode cannot be null.");
 
-            if (this.algorithms.Count == 0)
+            if (algorithms.Count == 0)
                 throw new Exception("The algorithms count cannot be zero.");
 
             var singleGame = gameConfiguratorBuilder
                 .Build();
 
             var multiAlgorithm = new MultiAlgorithm<IExecutableAlgorithm>(
-                    this.algorithmExecutionMode.Value,
-                    this.algorithms);
+                    algorithmExecutionMode.Value,
+                    algorithms);
 
             var game = new Game(
                     singleGame.GameSet,
                     multiAlgorithm);
 
-            return game;            
+            return game;
         }
     }
 }

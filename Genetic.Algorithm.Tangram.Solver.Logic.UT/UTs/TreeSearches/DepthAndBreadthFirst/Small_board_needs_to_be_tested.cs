@@ -1,6 +1,6 @@
-using Algorithm.Tangram.MCTS.Logic;
-using Genetic.Algorithm.Tangram.GameParts;
-using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Algorithm.Tangram.TreeSearch.Logic;
+using Generic.Algorithm.Tangram.GameParts;
+using Generic.Algorithm.Tangram.GameParts.Elements.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;

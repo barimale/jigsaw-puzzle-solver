@@ -1,7 +1,7 @@
-﻿namespace Genetic.Algorithm.Tangram.Configurator
+﻿namespace Solver.Tangram.Configurator
 {
     public interface IRunGame
     {
-        public Task<object> RunGameAsync(CancellationToken ct = default(CancellationToken));
+        public Task<object> RunGameAsync(CancellationToken ct = default);
     }
 }

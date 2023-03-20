@@ -1,9 +1,9 @@
-﻿using Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm;
+﻿using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
 
-namespace Genetic.Algorithm.Tangram.Configurator.Generics
+namespace Solver.Tangram.Configurator.Generics
 {
-    public class MultiAlgorithm<T>: IExecutableMultiAlgorithm
+    public class MultiAlgorithm<T> : IExecutableMultiAlgorithm
         where T : IExecutableAlgorithm
     {
         private readonly ImmutableList<T> algorithms;

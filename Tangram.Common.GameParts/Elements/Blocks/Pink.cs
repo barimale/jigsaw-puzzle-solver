@@ -1,9 +1,9 @@
-﻿using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings;
+﻿using Generic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using NetTopologySuite.Geometries;
 using System.Drawing;
 
-namespace Genetic.Algorithm.Tangram.GameParts.Elements.Blocks
+namespace Generic.Algorithm.Tangram.GameParts.Elements.Blocks
 {
     public sealed class Pink : PolishGameBaseBlock
     {

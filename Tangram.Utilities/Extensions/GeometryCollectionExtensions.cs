@@ -3,7 +3,7 @@ using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
 
-namespace Algorithm.Tangram.Common.Extensions
+namespace Generic.Algorithm.Tangram.Common.Extensions
 {
     public static class GeometryCollectionExtensions
     {

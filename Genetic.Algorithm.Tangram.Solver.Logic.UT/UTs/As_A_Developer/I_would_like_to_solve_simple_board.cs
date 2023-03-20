@@ -1,7 +1,9 @@
-using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.Configurator.Generics;
+using Generic.Algorithm.Tangram.GameParts.Elements;
+using Genetic.Algorithm.Tangram.Solver.Logic.Helpers;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
+using Solver.Tangram.Configurator;
+using Solver.Tangram.Configurator.Generics;
 using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
@@ -64,7 +66,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
                     {
                         // display allowed locations
                         base.Display("Block " + block.Color.ToString() + "definition(allOfThem:" + block.AllowedLocations.Length + ")");
-                        Display(GameParts.Elements.GameSet.LocationAsStringArray(location));
+                        Display(GameSet.LocationAsStringArray(location));
                     }
                     Display("Block locations END.");
                     Display(string.Empty);

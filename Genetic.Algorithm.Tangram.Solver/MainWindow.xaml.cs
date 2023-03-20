@@ -1,8 +1,8 @@
 ﻿using Algorithm.Executor.WPF;
-using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.Configurator.Generics;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using GeneticSharp;
+using Solver.Tangram.Configurator;
+using Solver.Tangram.Configurator.Generics;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

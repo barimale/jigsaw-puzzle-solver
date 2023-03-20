@@ -2,7 +2,7 @@
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using NetTopologySuite.Geometries;
 
-namespace Genetic.Algorithm.Tangram.GameParts.Elements
+namespace Generic.Algorithm.Tangram.GameParts.Elements
 {
     // blocks and board
     public class GameSet

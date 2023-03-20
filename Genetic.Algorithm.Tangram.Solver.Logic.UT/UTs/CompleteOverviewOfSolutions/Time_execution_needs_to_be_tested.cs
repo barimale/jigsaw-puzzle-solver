@@ -1,9 +1,9 @@
-using Genetic.Algorithm.Tangram.Configurator;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
+using Solver.Tangram.Configurator;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using System.Diagnostics;

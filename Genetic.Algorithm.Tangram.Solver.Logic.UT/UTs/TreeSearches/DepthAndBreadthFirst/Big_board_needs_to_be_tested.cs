@@ -1,16 +1,16 @@
-using Algorithm.Tangram.MCTS.Logic;
-using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.GameParts;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using TreesearchLib;
 using Xunit.Abstractions;
 using Assert = Xunit.Assert;
-using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
-using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
+using Generic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Generic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings;
+using Solver.Tangram.Configurator;
+using Generic.Algorithm.Tangram.GameParts;
+using Algorithm.Tangram.TreeSearch.Logic;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {

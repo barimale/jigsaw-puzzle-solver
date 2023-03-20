@@ -1,17 +1,17 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 
-namespace Algorithm.Tangram.MCTS.Logic.Domain
+namespace Algorithm.Tangram.TreeSearch.Logic.Domain
 {
     public class IndexedBlockBase
     {
         public IndexedBlockBase(BlockBase blockDefinition, int index)
         {
-            this.BlockDefinition = blockDefinition;
-            this.Index = index;
+            BlockDefinition = blockDefinition;
+            Index = index;
 
-            var clonedBlockDefinition = this.BlockDefinition.Clone();
-            clonedBlockDefinition.Apply(clonedBlockDefinition.AllowedLocations[this.Index]);
-            this.TransformedBlock = clonedBlockDefinition;
+            var clonedBlockDefinition = BlockDefinition.Clone();
+            clonedBlockDefinition.Apply(clonedBlockDefinition.AllowedLocations[Index]);
+            TransformedBlock = clonedBlockDefinition;
         }
 
         public BlockBase BlockDefinition { get; private set; }

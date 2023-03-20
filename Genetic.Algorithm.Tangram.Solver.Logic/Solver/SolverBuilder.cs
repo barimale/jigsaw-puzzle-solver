@@ -1,6 +1,6 @@
 ﻿using GeneticSharp;
 
-namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
+namespace Genetic.Algorithm.Tangram.Solver.Logic.Solver
 {
     public class SolverBuilder
     {
@@ -21,14 +21,14 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
             int maxThreads = 200
             )
         {
-            if(minThreads < 1)
+            if (minThreads < 1)
                 throw new ArgumentOutOfRangeException(nameof(minThreads));
 
-            if(minThreads > maxThreads)
+            if (minThreads > maxThreads)
                 throw new ArgumentOutOfRangeException(nameof(maxThreads));
 
 
-            this.taskExecutor = new ParallelTaskExecutor()
+            taskExecutor = new ParallelTaskExecutor()
             {
                 MinThreads = minThreads,
                 MaxThreads = maxThreads

@@ -1,7 +1,7 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic
+namespace Genetic.Algorithm.Tangram.Solver.Logic.Helpers
 {
     public static class ConsoleHelper
     {

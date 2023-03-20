@@ -1,15 +1,15 @@
-﻿namespace Algorithm.Tangram.MCTS.Logic.Extensions
+﻿namespace Algorithm.Tangram.TreeSearch.Logic.Extensions
 {
     public static class DoubleExtensions
     {
-        public static Int32 ConvertToInt32(this Double d)
+        public static int ConvertToInt32(this double d)
         {
-            if (d <= (double)Int32.MinValue)
-                return Int32.MinValue;
-            else if (d >= (double)Int32.MaxValue)
-                return Int32.MaxValue;
+            if (d <= int.MinValue)
+                return int.MinValue;
+            else if (d >= int.MaxValue)
+                return int.MaxValue;
             else
-                return (Int32)d;
+                return (int)d;
         }
     }
 }

@@ -16,7 +16,7 @@
     <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Genetic.Algorithm.Tangram.Solver.Domain.csproj" />
     <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.AlgorithmSettings.csproj" />
-    <ProjectReference Include="..\Tangram.Common.GameParts\Genetic.Algorithm.Tangram.GameParts.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts\Generic.Algorithm.Tangram.GameParts.csproj" />
   </ItemGroup>
 
 </Project>

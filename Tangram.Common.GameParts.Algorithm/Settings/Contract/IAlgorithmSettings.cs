@@ -2,7 +2,7 @@
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using GeneticSharp;
 
-namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
+namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.Contract
 {
     public interface IAlgorithmSettings
     {

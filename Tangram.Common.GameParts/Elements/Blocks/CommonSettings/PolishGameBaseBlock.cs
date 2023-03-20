@@ -2,7 +2,7 @@
 using NetTopologySuite.Geometries;
 using System.Drawing;
 
-namespace Genetic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings
+namespace Generic.Algorithm.Tangram.GameParts.Elements.Blocks.CommonSettings
 {
     public abstract class PolishGameBaseBlock
     {

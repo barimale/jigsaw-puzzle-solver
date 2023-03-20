@@ -1,19 +1,19 @@
-using Algorithm.Tangram.Common.Extensions;
-using Algorithm.Tangram.MCTS.Logic.Domain;
-using Algorithm.Tangram.MCTS.Logic.Extensions;
+using Algorithm.Tangram.TreeSearch.Logic.Domain;
+using Algorithm.Tangram.TreeSearch.Logic.Extensions;
+using Generic.Algorithm.Tangram.Common.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using System.Collections.Immutable;
 using TreesearchLib;
 
-namespace Algorithm.Tangram.MCTS.Logic
+namespace Algorithm.Tangram.TreeSearch.Logic
 {
     public class FindFittestSolution : IMutableState<FindFittestSolution, IndexedBlockBase, Minimize>
     {
         // settings
-        private int size; // amount of blocks
-        private Stack<IndexedBlockBase> choicesMade; // solution with vary size depending on the level of the generated tree
+        private int size;
+        private Stack<IndexedBlockBase> choicesMade;
         public HashSet<BlockBase> remaining;
 
         // game parts
@@ -25,23 +25,23 @@ namespace Algorithm.Tangram.MCTS.Logic
             BoardShapeBase board,
             IList<BlockBase> blocks)
         {
-            this.size = blocks.Count;
             this.board = board;
-            this.blocks = blocks;
-            this.fitnessService = new FitnessService(this.board);
-            this.choicesMade = new Stack<IndexedBlockBase>();
-            this.remaining = new HashSet<BlockBase>(this.blocks);
+            this.blocks = new List<BlockBase>(blocks);
+            size = this.blocks.Count;
+            fitnessService = new FitnessService(this.board);
+            choicesMade = new Stack<IndexedBlockBase>();
+            remaining = new HashSet<BlockBase>(this.blocks);
         }
 
         public ImmutableList<IndexedBlockBase> Solution => choicesMade.ToImmutableList();
-        public BoardShapeBase Board => this.board;
+        public BoardShapeBase Board => board;
 
         private int CheckFitness(
             bool withPolygonsIntersectionsDiff,
             bool withOutOfBoundsDiff,
             bool withVolumeDiff)
         {
-            var evaluatedGeometry = this.choicesMade
+            var evaluatedGeometry = choicesMade
                 .Select(p => p.TransformedBlock)
                 .ToList()
                 .Select(pp => pp.Polygon)
@@ -49,7 +49,7 @@ namespace Algorithm.Tangram.MCTS.Logic
 
             var diff = fitnessService.Evaluate(
                 evaluatedGeometry.ToArray(),
-                this.board,
+                board,
                 withPolygonsIntersectionsDiff,
                 withOutOfBoundsDiff,
                 withVolumeDiff,
@@ -75,8 +75,8 @@ namespace Algorithm.Tangram.MCTS.Logic
         public object Clone()
         {
             var clone = new FindFittestSolution(
-                this.board,
-                this.blocks);
+                board,
+                blocks);
 
             clone.choicesMade = new Stack<IndexedBlockBase>(choicesMade);
             clone.remaining = new HashSet<BlockBase>(remaining);
@@ -89,14 +89,14 @@ namespace Algorithm.Tangram.MCTS.Logic
             var results = new List<IndexedBlockBase>();
             var nextOne = remaining.FirstOrDefault();
 
-            if(nextOne == null)
+            if (nextOne == null)
             {
                 return results;
             }
 
             var innerResult = new List<IndexedBlockBase>();
 
-            foreach ( var (pp, index) in nextOne.AllowedLocations.WithIndex())
+            foreach (var (pp, index) in nextOne.AllowedLocations.WithIndex())
             {
                 innerResult.Add(new IndexedBlockBase(nextOne, index));
             }

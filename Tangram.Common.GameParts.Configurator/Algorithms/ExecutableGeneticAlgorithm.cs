@@ -1,9 +1,9 @@
-﻿using Genetic.Algorithm.Tangram.Configurator.Generics;
-using Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
+using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
 
-namespace Genetic.Algorithm.Tangram.Configurator.Algorithms
+namespace Solver.Tangram.Configurator.Algorithms
 {
     public class ExecutableGeneticAlgorithm : Algorithm<GeneticAlgorithm>, IExecutableAlgorithm
     {

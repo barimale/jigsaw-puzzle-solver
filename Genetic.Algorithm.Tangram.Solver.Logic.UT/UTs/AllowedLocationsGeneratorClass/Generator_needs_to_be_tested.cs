@@ -1,5 +1,5 @@
-using Genetic.Algorithm.Tangram.GameParts;
-using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Generic.Algorithm.Tangram.GameParts;
+using Generic.Algorithm.Tangram.GameParts.Elements.Blocks;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
@@ -29,9 +29,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.AllowedLocationsGenerato
 
             int[] angles = new int[]
             {
-                -270,
-                -180,
-                -90,
                 0,
                 90,
                 180,

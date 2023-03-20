@@ -1,11 +1,11 @@
-﻿using Algorithm.Tangram.MCTS.Logic;
-using Genetic.Algorithm.Tangram.Configurator.Generics;
-using Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm;
+﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
+using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
 using TreesearchLib;
 
-namespace Genetic.Algorithm.Tangram.Configurator.Algorithms
+namespace Solver.Tangram.Configurator.Algorithms
 {
     public class BreadthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {

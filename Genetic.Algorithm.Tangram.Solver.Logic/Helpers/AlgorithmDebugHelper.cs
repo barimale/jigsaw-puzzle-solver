@@ -1,7 +1,7 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic
+namespace Genetic.Algorithm.Tangram.Solver.Logic.Helpers
 {
     public class AlgorithmDebugHelper
     {

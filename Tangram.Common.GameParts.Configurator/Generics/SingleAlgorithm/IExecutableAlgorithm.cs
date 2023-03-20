@@ -1,4 +1,4 @@
-﻿namespace Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm
+﻿namespace Solver.Tangram.Configurator.Generics.SingleAlgorithm
 {
     public interface IExecutableAlgorithm
     {

@@ -1,4 +1,6 @@
-﻿namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Solver
+﻿using Genetic.Algorithm.Tangram.Solver.Logic.Solver;
+
+namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
     public static class SolverFactory
     {

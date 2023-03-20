@@ -1,11 +1,10 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.GameParts.Contract;
-using Genetic.Algorithm.Tangram.GameParts.Elements;
-using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Generic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Generic.Algorithm.Tangram.GameParts.Contract;
 
-namespace Genetic.Algorithm.Tangram.GameParts.Elements.Boards.PureGame
+namespace Generic.Algorithm.Tangram.GameParts.Elements.Boards.PureGame
 {
     internal class PolishMediumBoardData : IGameSet
     {

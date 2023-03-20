@@ -1,17 +1,19 @@
 ﻿using GeneticSharp;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using Genetic.Algorithm.Tangram.Solver.Logic.Crossovers;
+using Genetic.Algorithm.Tangram.Solver.Logic.OperatorStrategies;
 using Genetic.Algorithm.Tangram.Solver.Logic.Mutations;
-using Genetic.Algorithm.Tangram.AlgorithmSettings.Solver;
+using Genetic.Algorithm.Tangram.Solver.Logic.Crossovers;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
-using Genetic.Algorithm.Tangram.Solver.Logic.Populations;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses;
+using Genetic.Algorithm.Tangram.Solver.Logic.Populations;
+using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.Contract;
+using Genetic.Algorithm.Tangram.Solver.Logic;
 
-namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.TreeSearchSettings
+namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings
 {
-    internal class SimpleBoardAlgorithmSettings2 : IAlgorithmSettings
+    internal class MediumBoardAlgorithmSettings : IAlgorithmSettings
     {
         public GeneticAlgorithm CreateNew(
             BoardShapeBase board,
@@ -26,9 +28,10 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.TreeSearchSetting
                 .Count > 0;
 
             // solver
-            var generationChromosomesNumber = 500;
-            var mutationProbability = 0.1f;
+            var generationChromosomesNumber = 300;
+            var mutationProbability = 0.0f;
             var crossoverProbability = 1.0f - mutationProbability;
+            var fitness = new TangramService(board, blocks);
 
             // initial population
             IPopulation initialPopulation;
@@ -40,7 +43,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.TreeSearchSetting
                         blocks,
                         board,
                         allowedAngles,
-                        80d);
+                        100d);
 
                 initialPopulation = new PreloadedPopulation(
                     generationChromosomesNumber / 2,
@@ -65,13 +68,12 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.TreeSearchSetting
                     chromosome);
             }
 
-            var selection = new EliteSelection(generationChromosomesNumber);
+            var selection = new RouletteWheelSelection(); // new EliteSelection(generationChromosomesNumber);//RouletteWheelSelection
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
-            var fitness = new TangramService(board, blocks);
             var reinsertion = new ElitistReinsertion();
-            var operatorStrategy = new DefaultOperatorsStrategy(); // DefaultOperatorsStrategy()
-            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)
+            var operatorStrategy = new VaryRatioOperatorsStrategy(); // DefaultOperatorsStrategy(); //TplOperatorsStrategy
+            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100);
 
             var solverBuilder = SolverFactory.CreateNew();
             var solver = solverBuilder
@@ -83,6 +85,7 @@ namespace Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.TreeSearchSetting
                 .WithCrossover(crossover, crossoverProbability)
                 .WithOperatorsStrategy(operatorStrategy)
                 .WithTermination(termination)
+                //.WithParallelTaskExecutor(1, Math.Max(2, generationChromosomesNumber / 10))
                 .Build();
 
             return solver;

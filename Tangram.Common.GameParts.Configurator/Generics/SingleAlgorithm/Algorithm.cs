@@ -1,4 +1,4 @@
-﻿namespace Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm
+﻿namespace Solver.Tangram.Configurator.Generics.SingleAlgorithm
 {
     public abstract class Algorithm<T> : IExecutableAlgorithm
         where T : class

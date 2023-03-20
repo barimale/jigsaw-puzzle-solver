@@ -1,10 +1,10 @@
-﻿using Genetic.Algorithm.Tangram.Configurator.Generics;
-using Genetic.Algorithm.Tangram.Configurator.Generics.SingleAlgorithm;
-using Genetic.Algorithm.Tangram.GameParts.Elements;
+﻿using Generic.Algorithm.Tangram.GameParts.Elements;
+using Solver.Tangram.Configurator.Generics;
+using Solver.Tangram.Configurator.Generics.SingleAlgorithm;
 
-namespace Genetic.Algorithm.Tangram.Configurator
+namespace Solver.Tangram.Configurator
 {
-    public class Game: IRunGame
+    public class Game : IRunGame
     {
         private readonly GameSet gameSet;
 
@@ -16,13 +16,13 @@ namespace Genetic.Algorithm.Tangram.Configurator
         public Game(GameSet gameSet, IExecutableAlgorithm algorithm)
             : this(gameSet)
         {
-            this.Algorithm = algorithm;
+            Algorithm = algorithm;
         }
 
         public Game(GameSet gameSet, IExecutableMultiAlgorithm multialgorithm)
             : this(gameSet)
         {
-            this.Multialgorithm = multialgorithm;
+            Multialgorithm = multialgorithm;
         }
 
         public GameSet GameSet => gameSet;
@@ -30,7 +30,7 @@ namespace Genetic.Algorithm.Tangram.Configurator
         public IExecutableAlgorithm? Algorithm { get; private set; }
         public IExecutableMultiAlgorithm? Multialgorithm { get; private set; }
 
-        public async Task<object> RunGameAsync(CancellationToken ct = default(CancellationToken))
+        public async Task<object> RunGameAsync(CancellationToken ct = default)
         {
             if (Algorithm != null)
                 return await Algorithm.ExecuteAsync(ct);

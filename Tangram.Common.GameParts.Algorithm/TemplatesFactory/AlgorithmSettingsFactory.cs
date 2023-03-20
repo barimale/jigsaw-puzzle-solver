@@ -1,9 +1,9 @@
-﻿using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings.GASettings;
+﻿using Genetic.Algorithm.Tangram.AlgorithmSettings.Settings;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
 using GeneticSharp;
 
-namespace Genetic.Algorithm.Tangram.AlgorithmSettings
+namespace Genetic.Algorithm.Tangram.AlgorithmSettings.TemplatesFactory
 {
     public class AlgorithmSettingsFactory
     {

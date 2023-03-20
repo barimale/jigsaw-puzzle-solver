@@ -1,11 +1,12 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Domain.Generators;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Domain.Board;
-using Genetic.Algorithm.Tangram.GameParts.Contract;
-using Genetic.Algorithm.Tangram.GameParts.Elements;
-using Genetic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Generic.Algorithm.Tangram.GameParts.Elements.Blocks;
+using Generic.Algorithm.Tangram.GameParts.Elements;
+using Generic.Algorithm.Tangram.GameParts.Contract;
+using Generic.Algorithm.Tangram.GameParts;
 
-namespace Genetic.Algorithm.Tangram.GameParts.Elements.Boards.PolishGame
+namespace Generic.Algorithm.Tangram.GameParts.Elements.Boards.PolishGame
 {
     // Modify settings directly in the class.
     internal class BigBoardData : IGameSet

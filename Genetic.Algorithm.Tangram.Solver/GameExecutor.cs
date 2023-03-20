@@ -1,6 +1,5 @@
-﻿using Genetic.Algorithm.Tangram.Configurator;
-using Genetic.Algorithm.Tangram.Configurator.Generics;
-using Genetic.Algorithm.Tangram.GameParts.Elements;
+﻿using Solver.Tangram.Configurator;
+using Solver.Tangram.Configurator.Generics;
 using System;
 using System.Collections.Generic;
 

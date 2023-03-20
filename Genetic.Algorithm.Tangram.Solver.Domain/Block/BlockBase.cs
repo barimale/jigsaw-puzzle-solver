@@ -1,4 +1,4 @@
-﻿using Algorithm.Tangram.Common.Extensions;
+﻿using Generic.Algorithm.Tangram.Common.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Domain.Extensions;
 using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;

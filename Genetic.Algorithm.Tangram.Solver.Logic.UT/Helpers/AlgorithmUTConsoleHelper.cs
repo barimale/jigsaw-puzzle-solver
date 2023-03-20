@@ -1,4 +1,4 @@
-﻿using Algorithm.Tangram.MCTS.Logic;
+﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Domain.Block;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
