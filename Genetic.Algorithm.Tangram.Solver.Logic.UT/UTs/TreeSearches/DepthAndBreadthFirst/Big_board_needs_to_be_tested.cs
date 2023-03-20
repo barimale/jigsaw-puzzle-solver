@@ -1,16 +1,10 @@
-using TreesearchLib;
 using Xunit.Abstractions;
 using Assert = Xunit.Assert;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
-using Tangram.GameParts.Elements.Elements.Blocks;
-using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
-using Tangram.GameParts.Elements;
-using Tangram.GameParts.Logic.Generators;
-using Tangram.GameParts.Logic.GameParts.Block;
-using Tangram.GameParts.Logic.GameParts.Board;
 using Solver.Tangram.Game.Logic;
+using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
@@ -32,125 +26,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
-                .AvalaibleGATunedAlgorithms
-                .CreateBigBoardSettings(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    gameParts.AllowedAngles);
+            var breadthFirstAlg = new BreadthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+            var depthFirstAlg = new DepthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+            var pilotAlg = new PilotTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
 
             // when
-
-            var solution = new FindFittestSolution(
-                gameParts.Board,
-                gameParts.Blocks);
-
-            var depthFirst = solution.DepthFirstAsync();
-            var breadthFirst = solution.BreadthFirstAsync();
-            var pilot = solution.PilotMethodAsync();
-
-            var results = await Task.WhenAll(new[] { 
-                depthFirst, breadthFirst, pilot });
-
-            // then
-            Assert.Equal(3, results.Length);
-
-            // finally
-            Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
-
-            Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
-
-            Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
-        }
-
-
-        [Fact]
-        public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
-        {
-            // given
-            int scaleFactor = 1;
-            var fieldHeight = 1d;
-            var fieldWidth = 1d;
-
-            IList<BlockBase> blocks = new List<BlockBase>()
-            {
-                DarkBlue.Create(withFieldRestrictions: true),
-                Red.Create(withFieldRestrictions: true),
-                LightBlue.Create(withFieldRestrictions: true),
-                Purple.Create(withFieldRestrictions: true),
-                Blue.Create(withFieldRestrictions: true),
-                Pink.Create(withFieldRestrictions: true),
-                Green.Create(withFieldRestrictions: true),
-                LightGreen.Create(withFieldRestrictions: true),
-                Orange.Create(withFieldRestrictions: true),
-                Yellow.Create(withFieldRestrictions: true)
-            };
-
-            int[] angles = new int[]
-            {
-                0,
-                90,
-                180,
-                270
-            };
-
-            var boardColumnsCount = 10;
-            var boardRowsCount = 5;
-            var fields = GameSetFactory
-                .GeneratorFactory
-                .RectangularGameFieldsGenerator
-                .GenerateFields(
-                    scaleFactor,
-                    fieldHeight,
-                    fieldWidth,
-                    boardColumnsCount,
-                    boardRowsCount,
-                    new object[,] {
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
-                    }
-                );
-
-            var boardDefinition = new BoardShapeBase(
-                fields,
-                boardColumnsCount,
-                boardRowsCount,
-                scaleFactor);
-
-            // leftTuple - blockMarkup
-            // rightTuple - boardMarkup
-            var allowedMatches = new List<Tuple<string, int>>()
-            {
-                Tuple.Create("O", 1),
-                Tuple.Create("X", 0)
-            };
-
-            var modificator = new AllowedLocationsGenerator(
-                allowedMatches,
-                fieldHeight,
-                fieldWidth,
-                new List<object>() { PolishGameBaseBlock.SkippedMarkup }
-            );
-
-            var preconfiguredBlocks = modificator.Preconfigure(
-                    blocks.ToList(),
-                    boardDefinition,
-                    angles);
-
-            // when
-            var solution = new FindFittestSolution(
-                boardDefinition,
-                preconfiguredBlocks);
-
-            var pilot = solution.PilotMethodAsync();
-            var depthFirst = solution.DepthFirstAsync();
-            var breadthFirst = solution.BreadthFirstAsync();
+            var pilot = breadthFirstAlg.ExecuteAsync();
+            var depthFirst = depthFirstAlg.ExecuteAsync();
+            var breadthFirst = pilotAlg.ExecuteAsync();
 
             var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
 
@@ -159,13 +42,47 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0]);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].Solution as FindFittestSolution);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1]);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].Solution as FindFittestSolution);
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2]);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].Solution as FindFittestSolution);
+        }
+
+
+        [Fact]
+        public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
+        {
+            // given
+            var gameParts = GameConfiguratorBuilder
+                .AvalaibleGameSets
+                .CreatePolishBigBoard(withAllowedLocations: true);
+
+            var breadthFirstAlg = new BreadthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+            var depthFirstAlg = new DepthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+            var pilotAlg = new PilotTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+
+            // when
+            var pilot = breadthFirstAlg.ExecuteAsync();
+            var depthFirst = depthFirstAlg.ExecuteAsync();
+            var breadthFirst = pilotAlg.ExecuteAsync();
+
+            var results = await Task.WhenAll(new[] { depthFirst, breadthFirst, pilot });
+
+            // then
+            Assert.Equal(3, results.Length);
+
+            // finally
+            Display("DepthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].Solution as FindFittestSolution);
+
+            Display("BreadthFirst");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].Solution as FindFittestSolution);
+
+            Display("Pilot");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].Solution as FindFittestSolution);
         }
     }
 }

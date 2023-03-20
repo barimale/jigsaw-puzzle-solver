@@ -3,6 +3,7 @@ using Tangram.GameParts.Logic.Generators;
 using Tangram.GameParts.Logic.GameParts;
 using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
 {
@@ -12,6 +13,14 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
     internal class PolishMediumBoardData : IGameSet
     {
         private int ScaleFactor = 1;
+        private double fieldHeight = 1d;
+        private double fieldWidth = 1d;
+
+        private List<Tuple<string, int>> allowedMatches = new List<Tuple<string, int>>()
+        {
+            Tuple.Create("O", 1),
+            Tuple.Create("X", 0)
+        };
 
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
@@ -33,11 +42,17 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
         {
             if (withAllowedLocations)
             {
-                var modificator = new AllowedLocationsGenerator();
+                var modificator = new AllowedLocationsGenerator(
+                        allowedMatches,
+                        fieldHeight,
+                        fieldWidth,
+                        new List<object>() { PolishGameBaseBlock.SkippedMarkup }
+                    );
+
                 var preconfiguredBlocks = modificator.Preconfigure(
-                    Blocks.ToList(),
-                    Board(),
-                    Angles);
+                        Blocks.ToList(),
+                        Board(),
+                        Angles);
 
                 return new GameSet(
                     preconfiguredBlocks,
@@ -53,8 +68,6 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
 
         public BoardShapeBase Board()
         {
-            var fieldHeight = 1d;
-            var fieldWidth = 1d;
             var boardColumnsCount = 5;
             var boardRowsCount = 4;
             var fields = GameSetFactory

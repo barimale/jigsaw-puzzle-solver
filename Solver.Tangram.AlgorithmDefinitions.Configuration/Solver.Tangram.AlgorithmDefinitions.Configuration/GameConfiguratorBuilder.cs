@@ -39,6 +39,11 @@ namespace Solver.Tangram.Game.Logic
             return this;
         }
 
+        public MultiAlgorithmGameConfiguratorBuilder WithManyAlgorithms()
+        {
+            return new MultiAlgorithmGameConfiguratorBuilder(this);
+        }
+
         public Game Build()
         {
             if (parts == null)
