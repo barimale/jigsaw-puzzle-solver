@@ -6,7 +6,7 @@ using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.DepthAndBreadthFirst
 {
     public class Big_board_needs_to_be_tested : PrintToConsoleUTBase
     {
@@ -22,29 +22,29 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
         public async Task Containing_10_blocks_and_5x10_board()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            var breadthFirstAlg = GameConfiguratorBuilder
+            var breadthFirstAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateBreadthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
-            var depthFirstAlg = GameConfiguratorBuilder
+            var depthFirstAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
-            var pilotAlg = GameConfiguratorBuilder
+            var pilotAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreatePilotTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
-            var game = new GameConfiguratorBuilder()
+            var game = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAll)
@@ -76,29 +76,29 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
         public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreatePolishBigBoard(withAllowedLocations: true);
 
-            var breadthFirstAlg = GameConfiguratorBuilder
+            var breadthFirstAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateBreadthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
-            var depthFirstAlg = GameConfiguratorBuilder
+            var depthFirstAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
-            var pilotAlg = GameConfiguratorBuilder
+            var pilotAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreatePilotTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
-            var game = new GameConfiguratorBuilder()
+            var game = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAll)

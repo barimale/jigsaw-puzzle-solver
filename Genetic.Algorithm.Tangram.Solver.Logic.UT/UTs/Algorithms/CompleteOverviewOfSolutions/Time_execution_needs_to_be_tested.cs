@@ -9,7 +9,7 @@ using System.Collections.Immutable;
 using System.Diagnostics;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.CompleteOverviewOfSolutions
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.CompleteOverviewOfSolutions
 {
     public class Time_execution_needs_to_be_tested : PrintToConsoleUTBase
     {
@@ -25,11 +25,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.CompleteOverviewOfSoluti
         public async Task Check_time_execution_for_big_board()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreateBigBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
+            var algorithm = GameBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateBigBoardSettings(
                     gameParts.Board,

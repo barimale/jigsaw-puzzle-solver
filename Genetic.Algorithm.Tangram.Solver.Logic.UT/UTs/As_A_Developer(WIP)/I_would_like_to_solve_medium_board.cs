@@ -28,18 +28,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
         public async Task With_shape_of_4x5_fields_by_using_4_blocks_and_no_unused_fields()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreateMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
+            var algorithm = GameBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            konfiguracjaGry = new GameConfiguratorBuilder()
+            konfiguracjaGry = new GameBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();
@@ -79,18 +79,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
         public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
+            var algorithm = GameBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            konfiguracjaGry = new GameConfiguratorBuilder()
+            konfiguracjaGry = new GameBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();

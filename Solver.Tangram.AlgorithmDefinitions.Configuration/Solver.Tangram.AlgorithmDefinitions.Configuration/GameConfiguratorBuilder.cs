@@ -8,7 +8,7 @@ using TreeSearch.Algorithm.Tangram.Solver.Templates;
 
 namespace Solver.Tangram.Game.Logic
 {
-    public class GameConfiguratorBuilder
+    public class GameBuilder
     {
         private IExecutableAlgorithm? algorithm;
         private GameSet? parts;
@@ -22,21 +22,21 @@ namespace Solver.Tangram.Game.Logic
         public static TSTemplatesFactory AvalaibleTSTemplatesAlgorithms
             => new TSTemplatesFactory();
 
-        public GameConfiguratorBuilder WithAlgorithm(GeneticAlgorithm ga)
+        public GameBuilder WithAlgorithm(GeneticAlgorithm ga)
         {
             algorithm = new ExecutableGeneticAlgorithm(ga);
 
             return this;
         }
 
-        public GameConfiguratorBuilder WithAlgorithm(IExecutableAlgorithm algorithm)
+        public GameBuilder WithAlgorithm(IExecutableAlgorithm algorithm)
         {
             this.algorithm = algorithm;
 
             return this;
         }
 
-        public GameConfiguratorBuilder WithGamePartsConfigurator(GameSet gameParts)
+        public GameBuilder WithGamePartsConfigurator(GameSet gameParts)
         {
             parts = gameParts;
 

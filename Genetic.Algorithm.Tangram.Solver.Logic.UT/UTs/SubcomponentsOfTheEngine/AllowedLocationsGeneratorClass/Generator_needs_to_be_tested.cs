@@ -6,7 +6,7 @@ using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.Generators;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.AllowedLocationsGeneratorClass
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine.AllowedLocationsGeneratorClass
 {
     public class Generator_needs_to_be_tested : PrintToConsoleUTBase
     {

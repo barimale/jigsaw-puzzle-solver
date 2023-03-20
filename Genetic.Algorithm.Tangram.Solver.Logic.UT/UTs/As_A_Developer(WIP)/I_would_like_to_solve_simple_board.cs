@@ -24,18 +24,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
         public async Task With_shape_of_2x2_fields_by_using_3_blocks_and_no_unused_fields()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreateSimpleBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
+            var algorithm = GameBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateSimpleBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var konfiguracjaGry = new GameConfiguratorBuilder()
+            var konfiguracjaGry = new GameBuilder()
                 .WithAlgorithm(algorithm)
                 .WithGamePartsConfigurator(gameParts)
                 .Build();

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace Experimental.UI.Algorithm.Executor.WPF
 {
-    public class GameExecutor
+    public class UIGameManager
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private Game konfiguracjaGry;
@@ -21,7 +21,7 @@ namespace Experimental.UI.Algorithm.Executor.WPF
         //.State
         //.ToString();
 
-        public GameExecutor(
+        public UIGameManager(
             AlgorithmDisplayHelper algorithmDisplayHelper,
             Game dataInput)
         {

@@ -3,7 +3,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using GeneticSharp;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.PreloadedPopulationLogic
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine.PreloadedPopulationLogic
 {
     public class Permutation_needs_to_be_tested : PrintToConsoleUTBase
     {

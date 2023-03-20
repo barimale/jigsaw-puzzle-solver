@@ -6,7 +6,7 @@ using Solver.Tangram.Game.Logic;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.GeneticAlgorithm
 {
     public class Medium_board_needs_to_be_tested : PrintToConsoleUTBase
     {
@@ -22,18 +22,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
         public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
+            var algorithm = GameBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var game = new GameConfiguratorBuilder()
+            var game = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithAlgorithm(algorithm)
                 .Build();
@@ -53,18 +53,18 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
         public async Task Containing_4_blocks_and_5x4_board()
         {
             // given
-            var gameParts = GameConfiguratorBuilder
+            var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreateMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GameConfiguratorBuilder
+            var algorithm = GameBuilder
                 .AvalaibleGATunedAlgorithms
                 .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var game = new GameConfiguratorBuilder()
+            var game = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithAlgorithm(algorithm)
                 .Build();

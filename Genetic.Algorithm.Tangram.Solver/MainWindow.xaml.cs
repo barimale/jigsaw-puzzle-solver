@@ -19,7 +19,7 @@ namespace Genetic.Algorithm.Tangram.Solver
     public partial class MainWindow : Window
     {
         private AlgorithmDisplayHelper? algorithmDisplayHelper;
-        private static GameExecutor? gameExecutor;
+        private static UIGameManager? gameExecutor;
 
         private Thread thread = new Thread(Execute);
 
@@ -112,23 +112,23 @@ namespace Genetic.Algorithm.Tangram.Solver
 
             if (gameExecutor == null)
             {
-                var gameParts = GameConfiguratorBuilder
+                var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-                var algorithm = GameConfiguratorBuilder
+                var algorithm = GameBuilder
                     .AvalaibleGATunedAlgorithms
                     .CreateMediumBoardSettings(
                         gameParts.Board,
                         gameParts.Blocks,
                         gameParts.AllowedAngles);
 
-                var konfiguracjaGry = new GameConfiguratorBuilder()
+                var konfiguracjaGry = new GameBuilder()
                     .WithGamePartsConfigurator(gameParts)
                     .WithAlgorithm(algorithm)
                     .Build();
 
-                gameExecutor = new GameExecutor(
+                gameExecutor = new UIGameManager(
                     algorithmDisplayHelper,
                     konfiguracjaGry);
 
