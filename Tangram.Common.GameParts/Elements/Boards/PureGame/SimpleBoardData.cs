@@ -7,6 +7,9 @@ using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PureGame
 {
+    /// <summary>
+    /// Modify settings directly in the class.
+    /// </summary>
     internal class SimpleBoardData : IGameSet
     {
         private int ScaleFactor = 1;

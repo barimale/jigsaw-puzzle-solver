@@ -6,26 +6,32 @@ using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PureGame
 {
-    internal class PolishBigBoardData : IGameSet
+    /// <summary>
+    /// Modify settings directly in the class.
+    /// </summary>
+    internal class BigBoardData : IGameSet
     {
         private int ScaleFactor = 1;
 
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
-            DarkBlue.Create(withFieldRestrictions: true),
-            Red.Create(withFieldRestrictions: true),
-            LightBlue.Create(withFieldRestrictions: true),
-            Purple.Create(withFieldRestrictions: true),
-            Blue.Create(withFieldRestrictions: true),
-            Pink.Create(withFieldRestrictions: true),
-            Green.Create(withFieldRestrictions: true),
-            LightGreen.Create(withFieldRestrictions: true),
-            Orange.Create(withFieldRestrictions: true),
-            Yellow.Create(withFieldRestrictions: true)
+            DarkBlue.Create(),
+            Red.Create(),
+            LightBlue.Create(),
+            Purple.Create(),
+            Blue.Create(),
+            Pink.Create(),
+            Green.Create(),
+            LightGreen.Create(),
+            Orange.Create(),
+            Yellow.Create()
         };
 
         private int[] Angles = new int[]
         {
+            //-270,
+            //-180,
+            //-90,
             0,
             90,
             180,
@@ -68,15 +74,7 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PureGame
                     fieldHeight,
                     fieldWidth,
                     boardColumnsCount,
-                    boardRowsCount,
-                    new object[,] {
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
-                    }
-                );
+                    boardRowsCount);
 
             var boardDefinition = new BoardShapeBase(
                 fields,

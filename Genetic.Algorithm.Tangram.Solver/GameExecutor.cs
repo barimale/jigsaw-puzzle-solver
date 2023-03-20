@@ -3,7 +3,7 @@ using Solver.Tangram.Game.Logic;
 using System;
 using System.Collections.Generic;
 
-namespace Algorithm.Executor.WPF
+namespace Experimental.UI.Algorithm.Executor.WPF
 {
     public class GameExecutor
     {
@@ -16,10 +16,10 @@ namespace Algorithm.Executor.WPF
         public IEnumerable<AlgorithmResult> Results => results;
 
         public string AlgorithmState => "TO BE DONE";
-            //konfiguracjaGry?
-            //.Algorithm?
-            //.State
-            //.ToString();
+        //konfiguracjaGry?
+        //.Algorithm?
+        //.State
+        //.ToString();
 
         public GameExecutor(
             AlgorithmDisplayHelper algorithmDisplayHelper,

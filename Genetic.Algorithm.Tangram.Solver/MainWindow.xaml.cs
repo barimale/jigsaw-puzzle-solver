@@ -1,4 +1,4 @@
-﻿using Algorithm.Executor.WPF;
+﻿using Experimental.UI.Algorithm.Executor.WPF;
 using GeneticSharp;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;

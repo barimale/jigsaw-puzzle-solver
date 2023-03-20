@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using Tangram.GameParts.Logic.GameParts.Block;
 
-namespace Algorithm.Executor.WPF
+namespace Experimental.UI.Algorithm.Executor.WPF
 {
     public class AlgorithmDisplayHelper
     {

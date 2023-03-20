@@ -6,7 +6,10 @@ using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PureGame
 {
-    internal class PolishMediumBoardData : IGameSet
+    /// <summary>
+    /// Modify settings directly in the class.
+    /// </summary>
+    internal class MediumBoardData : IGameSet
     {
         private int ScaleFactor = 1;
 
