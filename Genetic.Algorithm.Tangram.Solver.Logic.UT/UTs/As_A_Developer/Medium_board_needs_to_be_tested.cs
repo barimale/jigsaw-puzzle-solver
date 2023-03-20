@@ -46,7 +46,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 
             // finally
             Display("GeneticAlgorithm");
-            AlgorithmUTConsoleHelper.ShowChromosome(result.Solution as TangramChromosome);
+            AlgorithmUTConsoleHelper.ShowChromosome(result?.GetSolution<TangramChromosome>());
         }
 
         [Fact]
@@ -77,7 +77,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
 
             // finally
             Display("GeneticAlgorithm");
-            AlgorithmUTConsoleHelper.ShowChromosome(result.Solution as TangramChromosome);
+            AlgorithmUTConsoleHelper.ShowChromosome(result?.GetSolution<TangramChromosome>());
         }
     }
 }

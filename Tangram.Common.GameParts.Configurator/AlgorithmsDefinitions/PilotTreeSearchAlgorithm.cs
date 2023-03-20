@@ -24,7 +24,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             return new AlgorithmResult()
             {
                 Fitness = result.Quality.HasValue ? result.Quality.Value.ToString() : string.Empty,
-                Solution = result.Solution,
+                Solution = result,
                 IsError = !result.Quality.HasValue
             };
         }

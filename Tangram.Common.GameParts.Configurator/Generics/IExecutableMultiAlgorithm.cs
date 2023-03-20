@@ -2,6 +2,6 @@
 {
     public interface IExecutableMultiAlgorithm
     {
-        public Task<IList<AlgorithmResult>> ExecuteManyAsync(CancellationToken ct = default);
+        public Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default);
     }
 }

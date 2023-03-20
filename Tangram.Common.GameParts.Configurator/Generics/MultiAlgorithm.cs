@@ -27,7 +27,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
         public event EventHandler GenerationRan; // of func / action here
         public event EventHandler TerminationReached; // of func / action here
 
-        public async Task<IList<AlgorithmResult>> ExecuteManyAsync(CancellationToken ct = default)
+        public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)
         {
             var allOfThem = algorithms
                     .Select(p => Task
@@ -41,12 +41,12 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
                         .WhenAll(allOfThem);
 
                     return results
-                        .ToList();
+                        .ToArray();
                 case ExecutionMode.WhenAny:
                     var result = await Task
                         .WhenAny(allOfThem);
 
-                    return new List<AlgorithmResult>()
+                    return new AlgorithmResult[]
                     {
                         result.Result
                     };

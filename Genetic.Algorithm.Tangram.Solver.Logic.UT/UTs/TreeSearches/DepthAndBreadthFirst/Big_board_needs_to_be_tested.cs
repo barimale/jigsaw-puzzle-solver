@@ -72,7 +72,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
         }
 
-
         [Fact]
         public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
         {
@@ -118,13 +117,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].GetSolution<FindFittestSolution>());
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].GetSolution<FindFittestSolution>());
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].GetSolution<FindFittestSolution>());
         }
     }
 }

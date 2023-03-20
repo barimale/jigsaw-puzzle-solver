@@ -54,22 +54,25 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 .Build();
 
             // when
-            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
-            var resultsAsArray = results.ToArray();
+            var results = await game.RunGameAsync<AlgorithmResult[]>();
+
+            var resultsTransformed = results
+                .Select(p => p.GetSolution<FindFittestSolution>())
+                .ToArray();
 
             // then
-            Assert.NotNull(resultsAsArray);
-            Assert.Equal(3, resultsAsArray.Length);
+            Assert.NotNull(results);
+            Assert.Equal(3, results.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[0]);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[1]);
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[2]);
         }
 
         [Fact]
@@ -108,22 +111,24 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 .Build();
 
             // when
-            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
-            var resultsAsArray = results.ToArray();
+            var results = await game.RunGameAsync<AlgorithmResult[]>();
+            var resultsAsArray = results?.ToArray();
 
             // then
             Assert.NotNull(resultsAsArray);
-            Assert.Equal(3, resultsAsArray.Length);
+            Assert.Equal(3, resultsAsArray?.Length);
 
             // finally
+            var depthFirst = resultsAsArray[0].GetSolution<FindFittestSolution>();
+
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0]?.GetSolution<FindFittestSolution>());
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1]?.GetSolution<FindFittestSolution>());
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2]?.GetSolution<FindFittestSolution>());
         }
     }
 }
