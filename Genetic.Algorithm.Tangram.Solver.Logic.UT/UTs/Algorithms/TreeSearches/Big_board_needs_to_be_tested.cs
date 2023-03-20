@@ -55,22 +55,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .Build();
 
             // when
-            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
-            var resultsAsArray = results.ToArray();
+            var results = await game.RunGameAsync<AlgorithmResult[]>();
 
             // then
-            Assert.NotNull(resultsAsArray);
-            Assert.Equal(3, resultsAsArray.Length);
+            Assert.NotNull(results);
+            Assert.Equal(3, results.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].Solution as FindFittestSolution);
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].Solution as FindFittestSolution);
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].Solution as FindFittestSolution);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].Solution as FindFittestSolution);
         }
 
         [Fact]
@@ -110,22 +109,21 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .Build();
 
             // when
-            var results = await game.RunGameAsync<IList<AlgorithmResult>>();
-            var resultsAsArray = results.ToArray();
+            var results = await game.RunGameAsync<AlgorithmResult[]>();
 
             // then
-            Assert.NotNull(resultsAsArray);
-            Assert.Equal(3, resultsAsArray.Length);
+            Assert.NotNull(results);
+            Assert.Equal(3, results.Length);
 
             // finally
             Display("DepthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0].GetSolution<FindFittestSolution>());
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[0].GetSolution<FindFittestSolution>());
 
             Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[1].GetSolution<FindFittestSolution>());
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[1].GetSolution<FindFittestSolution>());
 
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[2].GetSolution<FindFittestSolution>());
+            AlgorithmUTConsoleHelper.ShowMadeChoices(results[2].GetSolution<FindFittestSolution>());
         }
     }
 }

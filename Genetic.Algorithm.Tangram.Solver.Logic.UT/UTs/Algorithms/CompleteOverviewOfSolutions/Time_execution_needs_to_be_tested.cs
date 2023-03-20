@@ -36,7 +36,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.CompleteOverv
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            // reuse async here
             TangramService? fitnessFunction = new TangramService(
                 gameParts.Board,
                 gameParts.Blocks);

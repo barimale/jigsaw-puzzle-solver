@@ -1,7 +1,6 @@
 // TODO: add n times for GA UTs
-// TODO: double check UTs, add missing display
 
-// UTs for wrapper -> useless UTs have to be removed
+// TODO: add UTs for varyratios ga
 
 // refactor naming convention for gamepartsconfigurator
 // modify its builder methods
