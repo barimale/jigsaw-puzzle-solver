@@ -1,15 +1,12 @@
 ﻿using Experimental.UI.Algorithm.Executor.WPF;
-using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Genetic.Algorithm.Tangram.Solver
 {
@@ -70,7 +67,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             ResultsSource = new List<AlgorithmResult>();
         }
 
-        private void GameExecutor_GenerationRan(object? sender, EventArgs e)
+        private void SetStatusAsTitle(object? sender, EventArgs e)
         {
             var ga = sender as AlgorithmResult;
 
@@ -80,23 +77,6 @@ namespace Genetic.Algorithm.Tangram.Solver
             Dispatcher.Invoke(() =>
             {
                 MyTitle = ga.Fitness.ToString();
-
-                var solvedPolygons = ga.GetSolution<TangramChromosome>()
-                        .GetGenes()
-                        .ToList()
-                        .Select(p => ((BlockBase)p.Value).Polygon)
-                        .ToList();
-
-                // TODO use MVVM
-                var copiedList = ResultsSource.ToList();
-                //copiedList.Add(new AlgorithmResult()
-                //{
-                //    Fitness = ga.BestChromosome.Fitness ?? -1d,
-                //    SolutionAsJson = JsonSerializer.Serialize(solvedPolygons.ToDrawerString())
-                //});
-
-                ResultsSource.Clear();
-                ResultsSource = copiedList;
             });
         }
 
@@ -117,11 +97,11 @@ namespace Genetic.Algorithm.Tangram.Solver
                     .CreatePolishMediumBoard(withAllowedLocations: true);
 
                 var algorithm = GameBuilder
-                    .AvalaibleGATunedAlgorithms
-                    .CreateMediumBoardSettings(
+                    .AvalaibleTSTemplatesAlgorithms
+                    .CreateBreadthFirstTreeSearchAlgorithm(
                         gameParts.Board,
-                        gameParts.Blocks,
-                        gameParts.AllowedAngles);
+                        gameParts.Blocks);
+                        //gameParts.AllowedAngles);
 
                 var konfiguracjaGry = new GameBuilder()
                     .WithGamePartsConfigurator(gameParts)
@@ -132,7 +112,7 @@ namespace Genetic.Algorithm.Tangram.Solver
                     algorithmDisplayHelper,
                     konfiguracjaGry);
 
-                gameExecutor.GenerationRan += GameExecutor_GenerationRan;
+                gameExecutor.TerminationReached += SetStatusAsTitle;
             }
         }
 

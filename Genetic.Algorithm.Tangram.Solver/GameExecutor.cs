@@ -9,11 +9,8 @@ namespace Experimental.UI.Algorithm.Executor.WPF
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private Game konfiguracjaGry;
-        private IEnumerable<AlgorithmResult> results;
 
-        public event EventHandler GenerationRan;
-
-        public IEnumerable<AlgorithmResult> Results => results;
+        public event EventHandler TerminationReached;
 
         public string AlgorithmState => "TO BE DONE";
         //konfiguracjaGry?
@@ -30,35 +27,26 @@ namespace Experimental.UI.Algorithm.Executor.WPF
 
             if (konfiguracjaGry.Algorithm == null)
                 throw new Exception();
-
-            // TODO WIP 
-            //konfiguracjaGry
-            //    .Algorithm
-            //    .TerminationReached += this.algorithmDisplayHelper.Algorithm_TerminationReached;
-
-            //konfiguracjaGry
-            //    .Algorithm
-            //    .GenerationRan += this.algorithmDisplayHelper.Algorithm_Ran;
-
-            //konfiguracjaGry
-            //    .Algorithm
-            //    .GenerationRan += this.Algorithm_Ran;
-            results = new List<AlgorithmResult>();
         }
 
         public void Execute()
         {
+            try
+            {
+                var result = konfiguracjaGry.RunGameAsync<AlgorithmResult>().Result;
 
-            //konfiguracjaGry?.Algorithm?.Start();
-            var result = konfiguracjaGry.RunGameAsync<AlgorithmResult>().Result;
-
-            Algorithm_Ran(result, null);
-            this.algorithmDisplayHelper.Algorithm_TerminationReached(result, null);
+                Termination_Reached(result, null);
+                this.algorithmDisplayHelper.Algorithm_TerminationReached(result, null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
-        private void Algorithm_Ran(object? sender, EventArgs e)
+        private void Termination_Reached(object? sender, EventArgs e)
         {
-            GenerationRan.Invoke(sender, e);
+            TerminationReached.Invoke(sender, e);
         }
 
         public void Pause()
