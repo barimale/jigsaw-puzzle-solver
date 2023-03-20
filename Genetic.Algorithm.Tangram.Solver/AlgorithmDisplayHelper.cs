@@ -1,5 +1,6 @@
 ﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 using System;
 using System.IO;
 using System.Linq;
@@ -65,12 +66,15 @@ namespace Experimental.UI.Algorithm.Executor.WPF
 
             try
             {
-                var algorithmResult = sender as GeneticAlgorithm;
+                var algorithmResult = sender as AlgorithmResult;
+
+                if (algorithmResult == null)
+                    return;
 
                 if (algorithmResult != null)
                 {
                     var bestChromosome = algorithmResult
-                        .BestChromosome as TangramChromosome;
+                        .GetSolution<TangramChromosome>();
 
                     ShowChromosome(bestChromosome);
                 }

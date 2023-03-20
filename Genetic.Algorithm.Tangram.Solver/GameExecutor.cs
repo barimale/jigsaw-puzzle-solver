@@ -53,6 +53,7 @@ namespace Experimental.UI.Algorithm.Executor.WPF
             var result = konfiguracjaGry.RunGameAsync<AlgorithmResult>().Result;
 
             Algorithm_Ran(result, null);
+            this.algorithmDisplayHelper.Algorithm_TerminationReached(result, null);
         }
 
         private void Algorithm_Ran(object? sender, EventArgs e)
