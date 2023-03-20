@@ -4,6 +4,7 @@ using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Elements;
 using Tangram.GameParts.Logic.GameParts;
+using TreeSearch.Algorithm.Tangram.Solver.Templates;
 
 namespace Solver.Tangram.Game.Logic
 {
@@ -17,6 +18,9 @@ namespace Solver.Tangram.Game.Logic
 
         public static GATemplatesFactory AvalaibleGATunedAlgorithms
             => new GATemplatesFactory();
+
+        public static TSTemplatesFactory AvalaibleTSTemplatesAlgorithms
+            => new TSTemplatesFactory();
 
         public GameConfiguratorBuilder WithAlgorithm(GeneticAlgorithm ga)
         {

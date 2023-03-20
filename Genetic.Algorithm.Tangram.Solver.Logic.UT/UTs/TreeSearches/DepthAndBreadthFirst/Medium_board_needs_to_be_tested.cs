@@ -5,6 +5,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
+using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBreadthFirst
 {
@@ -26,9 +27,23 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            var breadthFirstAlg = new BreadthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
-            var depthFirstAlg = new DepthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
-            var pilotAlg = new PilotTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+            var breadthFirstAlg = GameConfiguratorBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateBreadthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
+
+            var depthFirstAlg = GameConfiguratorBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
+
+            var pilotAlg = GameConfiguratorBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreatePilotTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
 
             // when
             var pilot = breadthFirstAlg.ExecuteAsync();
@@ -57,11 +72,25 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
             // given
             var gameParts = GameConfiguratorBuilder
                 .AvalaibleGameSets
-                .CreateMediumBoard(withAllowedLocations: true);
+            .CreateMediumBoard(withAllowedLocations: true);
 
-            var breadthFirstAlg = new BreadthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
-            var depthFirstAlg = new DepthFirstTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
-            var pilotAlg = new PilotTreeSearchAlgorithm(gameParts.Board, gameParts.Blocks);
+            var breadthFirstAlg = GameConfiguratorBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateBreadthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
+
+            var depthFirstAlg = GameConfiguratorBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
+
+            var pilotAlg = GameConfiguratorBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreatePilotTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
 
             // when
             var pilot = breadthFirstAlg.ExecuteAsync();

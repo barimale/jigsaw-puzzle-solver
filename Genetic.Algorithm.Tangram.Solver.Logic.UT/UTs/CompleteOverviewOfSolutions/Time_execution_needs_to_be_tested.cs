@@ -37,7 +37,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.CompleteOverviewOfSoluti
                     gameParts.AllowedAngles);
 
             // reuse async here
-            TangramService? fitnessFunction = algorithm.Fitness as TangramService;
+            TangramService? fitnessFunction = new TangramService(
+                gameParts.Board,
+                gameParts.Blocks);
 
             // when
             Stopwatch sw = new Stopwatch();

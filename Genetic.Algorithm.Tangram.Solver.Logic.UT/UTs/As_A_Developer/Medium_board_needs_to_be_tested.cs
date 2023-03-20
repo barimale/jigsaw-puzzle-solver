@@ -33,10 +33,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var ga = new ExecutableGeneticAlgorithm(algorithm);
-
             // when
-            var solution = ga.ExecuteAsync();
+            var solution = algorithm.ExecuteAsync();
 
             var results = await Task.WhenAll(new[] { solution });
 
@@ -63,10 +61,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
                     gameParts.Blocks,
                     gameParts.AllowedAngles);
 
-            var ga = new ExecutableGeneticAlgorithm(algorithm);
-
             // when
-            var solution = ga.ExecuteAsync();
+            var solution = algorithm.ExecuteAsync();
 
             var results = await Task.WhenAll(new[] { solution });
 
