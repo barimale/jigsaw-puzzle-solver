@@ -19,6 +19,9 @@ namespace Solver.Tangram.Game.Logic
         public static GATemplatesFactory AvalaibleGATunedAlgorithms
             => new GATemplatesFactory();
 
+        public static GAVaryRatiosTemplatesFactory AvalaibleGAVaryRatiosTunedAlgorithms
+            => new GAVaryRatiosTemplatesFactory();
+
         public static TSTemplatesFactory AvalaibleTSTemplatesAlgorithms
             => new TSTemplatesFactory();
 

@@ -130,58 +130,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.As_A_Developer
             Assert.NotNull(result);
         }
 
-        //private void Algorithm_Ran(object? sender, EventArgs e)
-        //{
-        //    var algorithmResult = sender as GeneticAlgorithm;
-
-        //    if (algorithmResult == null)
-        //        return;
-
-        //    if (CurrentGeneration > GenerationsNumber)
-        //    {
-        //        konfiguracjaGry.Algorithm.Stop();
-        //        return;
-        //    }
-
-        //    CurrentGeneration = algorithmResult.Population.CurrentGeneration.Number;
-
-        //    konfiguracjaGry
-        //        .Algorithm
-        //        .CrossoverProbability = GetCrossoverProbabilityRatio(konfiguracjaGry
-        //            .Algorithm
-        //            .CrossoverProbability);
-
-        //    konfiguracjaGry
-        //        .Algorithm
-        //        .MutationProbability = GetMutationProbabilityRatio(konfiguracjaGry
-        //            .Algorithm
-        //            .MutationProbability);
-        //}
-
-        //private float GetCrossoverProbabilityRatio(float crossoverProbability)
-        //{
-        //    if (CurrentGeneration < 0 || GenerationsNumber < 0)
-        //        return crossoverProbability;
-
-        //    return GetDynamicRatios().Item2;
-        //}
-
-        //private float GetMutationProbabilityRatio(float mutationProbability)
-        //{
-        //    if (CurrentGeneration < 0 || GenerationsNumber < 0)
-        //        return mutationProbability;
-
-        //    return GetDynamicRatios().Item1;
-        //}
-
-        //private Tuple<float, float> GetDynamicRatios()
-        //{
-        //    float factor = CurrentGeneration / (float)GenerationsNumber;
-
-        //    // mutation, crossover
-        //    var ratios = new Tuple<float, float>(1f - factor, factor);
-
-        //    return ratios;
-        //}
+        
     }
 }
