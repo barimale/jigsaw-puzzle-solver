@@ -1,5 +1,5 @@
 ﻿using Experimental.UI.Algorithm.Executor.WPF;
-using GeneticSharp;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 using System;
@@ -72,16 +72,16 @@ namespace Genetic.Algorithm.Tangram.Solver
 
         private void GameExecutor_GenerationRan(object? sender, EventArgs e)
         {
-            var ga = sender as GeneticAlgorithm;
+            var ga = sender as AlgorithmResult;
 
             if (ga == null)
                 return;
 
             Dispatcher.Invoke(() =>
             {
-                MyTitle = ga.State.ToString();
+                MyTitle = ga.Fitness.ToString();
 
-                var solvedPolygons = ga.BestChromosome
+                var solvedPolygons = ga.GetSolution<TangramChromosome>()
                         .GetGenes()
                         .ToList()
                         .Select(p => ((BlockBase)p.Value).Polygon)
