@@ -92,6 +92,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.TreeSearches.DepthAndBre
                     gameParts.Board,
                     gameParts.Blocks);
 
+            // TODO use WithAlgorithms method and provide builder for Game class
+            // hide anything else if possible 
             var game = new Game(
                 gameParts,
                 new MultiAlgorithm(

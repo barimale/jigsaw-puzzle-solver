@@ -51,7 +51,7 @@ namespace Solver.Tangram.Game.Logic
             var singleGame = gameConfiguratorBuilder
                 .Build();
 
-            var multiAlgorithm = new MultiAlgorithm<IExecutableAlgorithm>(
+            var multiAlgorithm = new MultiAlgorithm(
                     algorithmExecutionMode.Value,
                     algorithms);
 
