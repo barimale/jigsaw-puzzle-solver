@@ -9,3 +9,5 @@ measure if order of allowedLocationsAmounts matters
 // use the IsEnabled field of the board field when allowed locations
 // are obtained -> Genius Junior
 
+// add QualityCallback for treesearch 
+// expose level up and ensure already exposed for GAs
