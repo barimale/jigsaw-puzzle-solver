@@ -48,7 +48,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             AlgorithmUTConsoleHelper.ShowMadeChoices(result.GetSolution<FindFittestSolution>());
         }
 
-        [Fact]
+        [Fact(Timeout=1000*60*60*48)] // 48hours timeout
         public async Task Containing_10_blocks_with_X_and_O_markups_and_5x10_board_with_0_and_1_fields()
         {
             // given
