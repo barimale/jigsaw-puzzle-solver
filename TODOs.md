@@ -1,5 +1,5 @@
 figure it out why just method names are not displayed in test explorer
-
+build new UT project once again ensure tests are executable in test explorer
 	add mtcs with UCB1 from GameAI
 
 	hide as many classes as possible -> so composition once again	
