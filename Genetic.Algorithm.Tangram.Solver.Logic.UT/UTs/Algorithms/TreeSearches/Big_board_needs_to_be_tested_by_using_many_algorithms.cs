@@ -8,11 +8,11 @@ using Solver.Tangram.AlgorithmDefinitions.Generics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 {
-    public class Big_board_needs_to_be_tested : PrintToConsoleUTBase
+    public class Big_board_needs_to_be_tested_by_using_many_algorithms : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
-        public Big_board_needs_to_be_tested(ITestOutputHelper output)
+        public Big_board_needs_to_be_tested_by_using_many_algorithms(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
