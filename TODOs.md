@@ -1,3 +1,4 @@
+figure it out why just method names are not displayed in test explorer
 
 	add mtcs with UCB1 from GameAI
 
