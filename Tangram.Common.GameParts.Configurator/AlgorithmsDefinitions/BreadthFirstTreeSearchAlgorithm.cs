@@ -17,14 +17,11 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             // intentionally left blank
         }
 
-        // TODO change to AlgorithmResult
-        public event EventHandler QualityCallback;
-
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
             var result = await algorithm.BreadthFirstAsync(
                 token: ct,
-                callback: (state, control, quality) => HandleQualityCallback(state)
+                callback: (state, control, quality) => base.HandleQualityCallback(state)
                 );
 
             return new AlgorithmResult()
@@ -33,19 +30,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 Solution = result,
                 IsError = !result.Quality.HasValue
             };
-        }
-
-        private void HandleQualityCallback(
-            ISearchControl<FindFittestSolution, Minimize> state)
-        {
-            if (QualityCallback != null)
-            {
-                QualityCallback.Invoke(state, null);
-            }
-            else
-            {
-                // do nothing
-            }
         }
     }
 }

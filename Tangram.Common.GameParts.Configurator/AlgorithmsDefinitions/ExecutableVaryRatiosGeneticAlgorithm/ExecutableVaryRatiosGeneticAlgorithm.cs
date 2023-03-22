@@ -30,8 +30,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
 
         public double LatestFitness => latestFitness;
 
-        public event EventHandler QualityCallback;
-
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
             try
@@ -54,18 +52,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             }
         }
 
-        private void HandleQualityCallback(GeneticAlgorithm state)
-        {
-            if (QualityCallback != null)
-            {
-                QualityCallback.Invoke(state, null);
-            }
-            else
-            {
-                // do nothing
-            }
-        }
-
         private void Algorithm_GenerationRan(object? sender, EventArgs e)
         {
             try
@@ -75,7 +61,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
                 if (algorithmResult == null)
                     return;
 
-                HandleQualityCallback(algorithmResult);
+                base.HandleQualityCallback(algorithmResult);
 
                 varyRatiosService.NextGeneration();
             }

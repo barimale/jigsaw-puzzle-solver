@@ -17,8 +17,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             // intentionally left blank
         }
 
-        public event EventHandler QualityCallback;
-
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
             // settings
@@ -45,7 +43,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                     ModifyRootElementOfArray(p, allBlocks)))
                 .Select(pp => pp.DepthFirstAsync(
                     token: ct,
-                    callback: (state, control, quality) => HandleQualityCallback(state)));
+                    callback: (state, control, quality) => base.HandleQualityCallback(state)));
 
             var results = await Task.WhenAll(rootedAlgorithms);
 
@@ -76,19 +74,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             array[0] = replaceBy;
 
             return array;
-        }
-
-        private void HandleQualityCallback(
-            ISearchControl<FindFittestSolution, Minimize> state)
-        {
-            if (QualityCallback != null)
-            {
-                QualityCallback.Invoke(state, null);
-            }
-            else
-            {
-                // do nothing
-            }
         }
     }
 }
