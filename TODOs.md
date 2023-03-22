@@ -10,3 +10,8 @@ measure if order of allowedLocationsAmounts matters
 // are obtained -> Genius Junior
 
 // add OnExecutionEstimationReady - for tree searches only
+
+// add HintAdvisor
+- transform already used blocks as already done in Genius Junior
+- use monte carlo scheme for trees
+- do not use GA for advisor
