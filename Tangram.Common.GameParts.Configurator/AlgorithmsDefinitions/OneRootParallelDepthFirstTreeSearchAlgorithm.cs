@@ -6,7 +6,8 @@ using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
-{
+{ <-
+    //TODO for n blocks, where n > 6 measure it
     public class OneRootParallelDepthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
         public OneRootParallelDepthFirstTreeSearchAlgorithm(
