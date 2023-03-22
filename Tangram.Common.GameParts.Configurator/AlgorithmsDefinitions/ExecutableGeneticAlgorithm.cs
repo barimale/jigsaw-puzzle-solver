@@ -1,7 +1,9 @@
-﻿using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
+﻿using Algorithm.Tangram.TreeSearch.Logic;
+using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using GeneticSharp;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
@@ -19,6 +21,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
         }
 
         public double LatestFitness => latestFitness;
+
+        public event EventHandler QualityCallback;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
@@ -42,6 +46,18 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             }
         }
 
+        private void HandleQualityCallback(GeneticAlgorithm state)
+        {
+            if (QualityCallback != null)
+            {
+                QualityCallback.Invoke(state, null);
+            }
+            else
+            {
+                // do nothing
+            }
+        }
+
         private void Algorithm_GenerationRan(object? sender, EventArgs e)
         {
             try
@@ -50,6 +66,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
                 if (algorithmResult == null)
                     return;
+
+                HandleQualityCallback(algorithmResult);
 
                 var bestChromosome = algorithmResult
                     .BestChromosome as TangramChromosome;

@@ -28,35 +28,9 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             this.varyRatiosService.TerminationMaximalAmountOfGenerationsReached += VaryRatiosService_TerminationMaximalAmountOfGenerationsReached;
         }
 
-        private void VaryRatiosService_TerminationMaximalAmountOfGenerationsReached(object? sender, EventArgs e)
-        {
-            // stop the flow
-            algorithm.Stop();
-            
-            // unblock the executable method
-            Algorithm_TerminationReached(algorithm, null);
-        }
-
-        private void VaryRatiosService_OnRatiosChanged(object? sender, EventArgs e)
-        {
-            try
-            {
-                var varyRatioInstance = sender as VaryRatiosService;
-
-                if (varyRatioInstance == null)
-                    return;
-
-                algorithm.CrossoverProbability = varyRatioInstance.CrossoverProbability;
-                algorithm.MutationProbability = varyRatiosService.MutationProbability;
-
-            }
-            catch (Exception)
-            {
-                // maybe invoke termination here
-            }
-        }
-
         public double LatestFitness => latestFitness;
+
+        public event EventHandler QualityCallback;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
@@ -80,6 +54,18 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             }
         }
 
+        private void HandleQualityCallback(GeneticAlgorithm state)
+        {
+            if (QualityCallback != null)
+            {
+                QualityCallback.Invoke(state, null);
+            }
+            else
+            {
+                // do nothing
+            }
+        }
+
         private void Algorithm_GenerationRan(object? sender, EventArgs e)
         {
             try
@@ -88,6 +74,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
 
                 if (algorithmResult == null)
                     return;
+
+                HandleQualityCallback(algorithmResult);
 
                 varyRatiosService.NextGeneration();
             }
@@ -129,6 +117,34 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             finally
             {
                 signal.Release();
+            }
+        }
+
+        private void VaryRatiosService_TerminationMaximalAmountOfGenerationsReached(object? sender, EventArgs e)
+        {
+            // stop the flow
+            algorithm.Stop();
+
+            // unblock the executable method
+            Algorithm_TerminationReached(algorithm, null);
+        }
+
+        private void VaryRatiosService_OnRatiosChanged(object? sender, EventArgs e)
+        {
+            try
+            {
+                var varyRatioInstance = sender as VaryRatiosService;
+
+                if (varyRatioInstance == null)
+                    return;
+
+                algorithm.CrossoverProbability = varyRatioInstance.CrossoverProbability;
+                algorithm.MutationProbability = varyRatiosService.MutationProbability;
+
+            }
+            catch (Exception)
+            {
+                // maybe invoke termination here
             }
         }
     }

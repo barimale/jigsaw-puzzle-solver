@@ -5,6 +5,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
+using TreesearchLib;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches.CheckIfOrderOfBlocksDescreaseTheExecutionTime
 {
@@ -41,6 +42,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches.
                     gameParts.Board,
                     gameParts.Blocks);
 
+            algorithm.QualityCallback += Algorithm_QualityCallback;
+
             var game = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithAlgorithm(algorithm)
@@ -55,6 +58,19 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches.
             // finally
             Display("DepthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(result.GetSolution<FindFittestSolution>());
+        }
+
+        private void Algorithm_QualityCallback(object? sender, EventArgs e)
+        {
+            var c = sender as ISearchControl<FindFittestSolution, Minimize>;
+
+            if(c == null)
+            {
+                return;
+            }
+
+            Display("DepthFirst Algorithm_QualityCallback:");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(c.BestQualityState);
         }
     }
 }

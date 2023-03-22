@@ -7,7 +7,6 @@ using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
-    //TODO for n blocks, where n > 6 measure it first
     public class OneRootParallelDepthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
         public OneRootParallelDepthFirstTreeSearchAlgorithm(
@@ -17,6 +16,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
         {
             // intentionally left blank
         }
+
+        public event EventHandler QualityCallback;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
@@ -42,16 +43,15 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 p => new FindFittestSolution(
                     board,
                     ModifyRootElementOfArray(p, allBlocks)))
-                .Select(pp => pp.DepthFirstAsync(token: ct));
+                .Select(pp => pp.DepthFirstAsync(
+                    token: ct,
+                    callback: (state, control, quality) => HandleQualityCallback(state)));
 
-            // TODO: wait for all results
             var results = await Task.WhenAll(rootedAlgorithms);
 
             var onlyCompletedResults = results
                 .Where(pp => pp.Quality.HasValue && pp.Quality.Value.Value == 0);
 
-            // TODO: provide the option to have all possible solutions
-            // for now: just first result is returned
             var firstSolution = onlyCompletedResults.FirstOrDefault();
 
             return new AlgorithmResult()
@@ -76,6 +76,19 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             array[0] = replaceBy;
 
             return array;
+        }
+
+        private void HandleQualityCallback(
+            ISearchControl<FindFittestSolution, Minimize> state)
+        {
+            if (QualityCallback != null)
+            {
+                QualityCallback.Invoke(state, null);
+            }
+            else
+            {
+                // do nothing
+            }
         }
     }
 }
