@@ -7,21 +7,27 @@
         xmlns:tabs="clr-namespace:Algorithm.Executor.WPF.Tabs"
         mc:Ignorable="d"
         Title="{Binding MyTitle}" Height="450" Width="800">
-    <TabControl>
-        <TabItem Header="General">
-            <Grid>
-                <Canvas Background="#FF0B8FAE" Loaded="Canvas_Loaded" Margin="91,10,137,76">
-                </Canvas>
-                <Button Content="RUN" Height="22" Canvas.Left="-83" Canvas.Top="4" Width="51" HorizontalAlignment="Left" VerticalAlignment="Center" Click="Button_Click" Panel.ZIndex="100" RenderTransformOrigin="0.601,-9.06"/>
-                <Button Content="PAUSE" Height="22" Canvas.Top="30" Width="50" Click="Button_Click_1" HorizontalAlignment="Center" VerticalAlignment="Top" Canvas.Left="-82"/>
-                <Button Content="STOP" Height="22" Canvas.Left="-83" Canvas.Top="58" Width="51" Click="Button_Click_2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            </Grid>
-        </TabItem>
-        <TabItem Header="Game parts" >
-            <tabs:GamePartsDetails />
-        </TabItem>
-        <TabItem Header="Results" >
-            <tabs:Results ResultItems="{Binding ResultsSource}" />
-        </TabItem>
-    </TabControl>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="Start" Click="Button_Click"/>
+                <MenuItem Header="Pasue" Click="Button_Click_1"/>
+                <MenuItem Header="Resume" />
+                <MenuItem Header="Stop" Click="Button_Click_2"/>
+                <Separator />
+                <MenuItem Header="Exit" Click="MenuItem_Click"/>
+            </Menu>
+            <TabControl>
+                <TabItem Header="General">
+                    <Grid>
+                        <Canvas Background="#FF0B8FAE" Loaded="Canvas_Loaded" />
+                    </Grid>
+                </TabItem>
+                <TabItem Header="Game parts" >
+                    <tabs:GameDetails />
+                </TabItem>
+                <TabItem Header="Results" >
+                    <tabs:Results ResultItems="{Binding ResultsSource}" />
+                </TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>

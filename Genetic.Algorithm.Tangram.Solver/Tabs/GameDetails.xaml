@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="Algorithm.Executor.WPF.Tabs.GameDetails"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Algorithm.Executor.WPF.Tabs"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="44"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Margin="10" Grid.Column="1" Grid.ColumnSpan="4" Grid.Row="0">
+            <TextBlock Text="Choose the algorithm:" FontSize="14" />
+            <ComboBox SelectionChanged="ComboBox_SelectionChanged">
+                <ComboBoxItem></ComboBoxItem>
+                <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            </ComboBox>
+            <TextBlock Text="Choose the board:" FontSize="14" />
+            <ComboBox>
+                <ComboBoxItem>ComboBox Item #1</ComboBoxItem>
+                <ComboBoxItem IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+    </Grid>
+</UserControl>
