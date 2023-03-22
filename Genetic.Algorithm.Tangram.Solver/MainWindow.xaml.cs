@@ -16,7 +16,7 @@ namespace Genetic.Algorithm.Tangram.Solver
     public partial class MainWindow : Window
     {
         private AlgorithmDisplayHelper? algorithmDisplayHelper;
-        private static UISingleGameExecutor? gameExecutor;
+        private static UIGameExecutor? gameExecutor;
 
         private Thread thread = new Thread(Execute);
 
@@ -110,7 +110,7 @@ namespace Genetic.Algorithm.Tangram.Solver
                     .WithAlgorithm(algorithm)
                     .Build();
 
-                gameExecutor = new UISingleGameExecutor(
+                gameExecutor = new UIGameExecutor(
                     algorithmDisplayHelper,
                     konfiguracjaGry);
 

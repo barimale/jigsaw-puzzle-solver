@@ -4,7 +4,7 @@ using System;
 
 namespace Experimental.UI.Algorithm.Executor.WPF
 {
-    public class UISingleGameExecutor
+    public class UIGameExecutor
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private Game konfiguracjaGry;
@@ -17,7 +17,7 @@ namespace Experimental.UI.Algorithm.Executor.WPF
         //.State
         //.ToString();
 
-        public UISingleGameExecutor(
+        public UIGameExecutor(
             AlgorithmDisplayHelper algorithmDisplayHelper,
             Game dataInput)
         {
