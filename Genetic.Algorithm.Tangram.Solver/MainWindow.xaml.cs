@@ -94,7 +94,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             {
                 var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishBigBoard(withAllowedLocations: true);
+                    .CreatePolishMediumBoard(withAllowedLocations: true);
 
                 var algorithm = GameBuilder
                     .AvalaibleTSTemplatesAlgorithms
@@ -104,6 +104,7 @@ namespace Genetic.Algorithm.Tangram.Solver
                 //gameParts.AllowedAngles);
 
                 // TODO multialgorithm at wpf needs to be improved
+                // display method needs to be checked
                 var konfiguracjaGry = new GameBuilder()
                     .WithGamePartsConfigurator(gameParts)
                     .WithAlgorithm(algorithm)
