@@ -8,23 +8,23 @@ using Solver.Tangram.AlgorithmDefinitions.Generics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches.CheckIfOrderOfBlocksDescreaseTheExecutionTime
 {
-    public class ParallelSingleRootDepthFirst_for_medium_board_needs_to_be_tested : PrintToConsoleUTBase
+    public class ParallelSingleRootDepthFirst_for_big_board_needs_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
-        public ParallelSingleRootDepthFirst_for_medium_board_needs_to_be_tested(ITestOutputHelper output)
+        public ParallelSingleRootDepthFirst_for_big_board_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
 
         [Fact]
-        public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
+        public async Task Containing_10_blocks_with_X_and_O_markups_and_10x5_board_with_0_and_1_fields()
         {
             // given
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                .CreatePolishBigBoard(withAllowedLocations: true);
 
                 // reorder gameparts
                 var orderedBlocks = gameParts
