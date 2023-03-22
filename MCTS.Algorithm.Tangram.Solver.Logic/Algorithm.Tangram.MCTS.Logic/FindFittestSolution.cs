@@ -2,6 +2,7 @@ using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Algorithm.Tangram.TreeSearch.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
+using GeneticSharp;
 using System.Collections.Immutable;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
@@ -105,7 +106,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
             results.AddRange(innerResult);
 
             return results
-                //.Shuffle(new FastRandomRandomization()) or Reverse first <- some extras
+                .Shuffle(new FastRandomRandomization()) // TODO WIP or Reverse first < -some extras
                 .AsEnumerable();
         }
 
