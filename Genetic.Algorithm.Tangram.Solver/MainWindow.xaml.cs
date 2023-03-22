@@ -94,11 +94,11 @@ namespace Genetic.Algorithm.Tangram.Solver
             {
                 var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishBigBoard(withAllowedLocations: true);
+                    .CreatePolishMediumBoard(withAllowedLocations: true);
 
                 var algorithm = GameBuilder
                     .AvalaibleTSTemplatesAlgorithms
-                    .CreateDepthFirstTreeSearchAlgorithm(
+                    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
                         gameParts.Board,
                         gameParts.Blocks);
                         //gameParts.AllowedAngles);
