@@ -9,6 +9,8 @@ measure if order of allowedLocationsAmounts matters
 // use the IsEnabled field of the board field when allowed locations
 // are obtained -> Genius Junior
 
+// fix logic when allowedLocations is not in use
+
 // add OnExecutionEstimationReady - for tree searches only
 
 // add HintAdvisor
