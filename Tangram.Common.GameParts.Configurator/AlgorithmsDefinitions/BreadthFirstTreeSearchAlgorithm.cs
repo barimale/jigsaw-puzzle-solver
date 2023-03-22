@@ -16,6 +16,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
         {
             // intentionally left blank
         }
+
+        // TODO change to AlgorithmResult
         public event EventHandler QualityCallback;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)

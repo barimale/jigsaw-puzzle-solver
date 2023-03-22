@@ -1,7 +1,6 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 using System;
-using System.Collections.Generic;
 
 namespace Experimental.UI.Algorithm.Executor.WPF
 {
@@ -27,6 +26,16 @@ namespace Experimental.UI.Algorithm.Executor.WPF
 
             if (konfiguracjaGry.Algorithm == null && konfiguracjaGry.Multialgorithm == null)
                 throw new Exception("At least one algorithm has to be set");
+
+            if (konfiguracjaGry.Algorithm != null)
+                konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
+
+            // TODO implement multi also
+        }
+
+        private void Algorithm_QualityCallback(object? sender, EventArgs e)
+        {
+            this.algorithmDisplayHelper.Algorithm_Ran(sender, e);
         }
 
         public void Execute()

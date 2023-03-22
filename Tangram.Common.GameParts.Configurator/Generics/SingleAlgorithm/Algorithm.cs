@@ -5,6 +5,8 @@
     {
         protected T algorithm;
 
+        public virtual event EventHandler QualityCallback;
+
         public Algorithm(T algorithm)
         {
             this.algorithm = algorithm;

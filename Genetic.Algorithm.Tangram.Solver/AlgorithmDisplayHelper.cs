@@ -32,6 +32,38 @@ namespace Experimental.UI.Algorithm.Executor.WPF
             });
         }
 
+        public void Algorithm_Ran(object? sender, EventArgs e)
+        {
+            try
+            {
+                var algorithmResult = sender as AlgorithmResult;
+
+                if (algorithmResult == null)
+                    return;
+
+                switch (algorithmResult.Solution)
+                {
+                    case TangramChromosome _:
+                        var bestChromosome = algorithmResult
+                            .GetSolution<TangramChromosome>();
+                        ShowChromosome(bestChromosome);
+                        break;
+                    case FindFittestSolution _:
+                        var choicesMade = algorithmResult
+                            .GetSolution<FindFittestSolution>();
+                        ShowTreeSearchSolution(choicesMade);
+                        break;
+                    default:
+                        // do nothing
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                // intentionally left blank
+            }
+        }
+
         public void Algorithm_TerminationReached(object? sender, EventArgs e)
         {
             var isTerminated = false;
