@@ -8,11 +8,11 @@ using Solver.Tangram.AlgorithmDefinitions.Generics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches.CheckIfOrderOfBlocksDescreaseTheExecutionTime
 {
-    public class DepthFirst_for_medium_board_needs_to_be_tested : PrintToConsoleUTBase
+    public class ParallelSingleRootDepthFirst_for_medium_board_needs_to_be_tested : PrintToConsoleUTBase
     {
         private AlgorithmUTConsoleHelper AlgorithmUTConsoleHelper;
 
-        public DepthFirst_for_medium_board_needs_to_be_tested(ITestOutputHelper output)
+        public ParallelSingleRootDepthFirst_for_medium_board_needs_to_be_tested(ITestOutputHelper output)
             : base(output)
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
@@ -37,7 +37,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches.
 
             var algorithm = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
+                .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 

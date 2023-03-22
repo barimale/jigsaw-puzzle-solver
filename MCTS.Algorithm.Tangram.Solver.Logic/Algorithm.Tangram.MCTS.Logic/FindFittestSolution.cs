@@ -35,6 +35,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         public ImmutableList<IndexedBlockBase> Solution => choicesMade.ToImmutableList();
         public BoardShapeBase Board => board;
+        public IList<BlockBase> Blocks => blocks.ToImmutableList();
 
         private int CheckFitness(
             bool withPolygonsIntersectionsDiff,
