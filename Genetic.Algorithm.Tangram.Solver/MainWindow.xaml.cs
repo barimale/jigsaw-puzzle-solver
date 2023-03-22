@@ -94,7 +94,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             {
                 var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishMediumBoard(withAllowedLocations: true);
+                    .CreatePolishBigBoard(withAllowedLocations: true);
 
                 var algorithm = GameBuilder
                     .AvalaibleTSTemplatesAlgorithms
