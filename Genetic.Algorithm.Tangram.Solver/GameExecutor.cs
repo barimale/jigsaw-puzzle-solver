@@ -25,8 +25,8 @@ namespace Experimental.UI.Algorithm.Executor.WPF
             this.algorithmDisplayHelper = algorithmDisplayHelper;
             konfiguracjaGry = dataInput;
 
-            if (konfiguracjaGry.Algorithm == null)
-                throw new Exception();
+            if (konfiguracjaGry.Algorithm == null && konfiguracjaGry.Multialgorithm == null)
+                throw new Exception("At least one algorithm has to be set");
         }
 
         public void Execute()

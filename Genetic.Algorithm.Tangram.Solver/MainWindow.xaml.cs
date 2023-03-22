@@ -94,15 +94,16 @@ namespace Genetic.Algorithm.Tangram.Solver
             {
                 var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishMediumBoard(withAllowedLocations: true);
+                    .CreatePolishBigBoard(withAllowedLocations: true);
 
                 var algorithm = GameBuilder
                     .AvalaibleTSTemplatesAlgorithms
-                    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
+                    .CreateDepthFirstTreeSearchAlgorithm(
                         gameParts.Board,
                         gameParts.Blocks);
-                        //gameParts.AllowedAngles);
+                //gameParts.AllowedAngles);
 
+                // TODO multialgorithm at wpf needs to be improved
                 var konfiguracjaGry = new GameBuilder()
                     .WithGamePartsConfigurator(gameParts)
                     .WithAlgorithm(algorithm)
