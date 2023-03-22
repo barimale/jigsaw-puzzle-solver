@@ -1,8 +1,7 @@
 ﻿namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
 {
-    public interface IExecutableAlgorithm
+    public interface IExecutableAlgorithm: IQualityCallback
     {
-        public event EventHandler QualityCallback;
         public Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default);
     }
 }

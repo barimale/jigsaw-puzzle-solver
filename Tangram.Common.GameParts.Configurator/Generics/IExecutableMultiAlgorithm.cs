@@ -1,9 +1,9 @@
-﻿namespace Solver.Tangram.AlgorithmDefinitions.Generics
+﻿using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+
+namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
-    // TODO implement the event handler
-    public interface IExecutableMultiAlgorithm
+    public interface IExecutableMultiAlgorithm: IQualityCallback
     {
-        //public event EventHandler QualityCallback;
         public Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default);
     }
 }

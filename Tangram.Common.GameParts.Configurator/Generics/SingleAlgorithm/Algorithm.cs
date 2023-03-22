@@ -14,7 +14,10 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
         public Algorithm(T algorithm)
         {
             this.algorithm = algorithm;
+            this.Id = Guid.NewGuid().ToString();
         }
+
+        public string Id { private set; get; }
 
         public void HandleQualityCallback(
             ISearchControl<FindFittestSolution, Minimize> state)

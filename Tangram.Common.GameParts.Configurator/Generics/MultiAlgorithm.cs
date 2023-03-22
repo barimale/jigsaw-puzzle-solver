@@ -24,12 +24,17 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
             this.algorithms = algorithms.ToImmutableList();
         }
 
-        public event EventHandler GenerationRan; // of func / action here
-        public event EventHandler TerminationReached; // of func / action here
+        public event EventHandler QualityCallback; // of func / action here
 
         public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)
         {
             var allOfThem = algorithms
+                    .Select(pp =>
+                    {
+                        pp.QualityCallback += QualityCallback;
+
+                        return pp;
+                    })
                     .Select(p => Task
                             .Run(async () => await p.ExecuteAsync(), ct))
                     .ToImmutableArray();

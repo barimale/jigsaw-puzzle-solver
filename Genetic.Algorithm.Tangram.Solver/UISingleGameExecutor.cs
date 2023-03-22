@@ -4,7 +4,7 @@ using System;
 
 namespace Experimental.UI.Algorithm.Executor.WPF
 {
-    public class UIGameManager
+    public class UISingleGameExecutor
     {
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private Game konfiguracjaGry;
@@ -17,7 +17,7 @@ namespace Experimental.UI.Algorithm.Executor.WPF
         //.State
         //.ToString();
 
-        public UIGameManager(
+        public UISingleGameExecutor(
             AlgorithmDisplayHelper algorithmDisplayHelper,
             Game dataInput)
         {
@@ -30,7 +30,8 @@ namespace Experimental.UI.Algorithm.Executor.WPF
             if (konfiguracjaGry.Algorithm != null)
                 konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
 
-            // TODO implement multi also
+            if (konfiguracjaGry.Multialgorithm != null)
+                konfiguracjaGry.Multialgorithm.QualityCallback += Algorithm_QualityCallback;
         }
 
         private void Algorithm_QualityCallback(object? sender, EventArgs e)
