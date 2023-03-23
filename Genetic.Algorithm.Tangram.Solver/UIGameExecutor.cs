@@ -56,7 +56,7 @@ namespace Experimental.UI.Algorithm.Executor.WPF
 
         private void Termination_Reached(object? sender, EventArgs e)
         {
-            TerminationReached.Invoke(sender, e);
+            TerminationReached?.Invoke(sender, e);
         }
 
         public void Pause()
