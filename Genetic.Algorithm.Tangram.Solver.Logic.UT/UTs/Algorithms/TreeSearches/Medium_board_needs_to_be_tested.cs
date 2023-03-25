@@ -48,8 +48,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                     pilotAlg)
                 .Build();
 
-            game.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
-
             // when
             var results = await game.RunGameAsync<AlgorithmResult[]>();
 
@@ -67,23 +65,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 
             Display("Pilot");
             AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[1]);
-        }
-
-        private void Algorithm_OnExecutionEstimationReady(object? sender, EventArgs e)
-        {
-            var result = sender as StatisticDetails;
-
-            if (result == null)
-                return;
-
-            Display("Pilot-AlgorithmId:");
-            Display(result.AlgorithmId);
-
-            Display("Pilot-MeanExecutionTimeOfIterationInSeconds:");
-            Display((result.MeanExecutionTimeOfIterationInMiliseconds / 1000).ToString());
-
-            Display("Pilot-EstimatedExecutionTimeInMiliseconds:");
-            Display((result.EstimatedExecutionTimeInMiliseconds / 1000).ToString());
         }
 
         [Fact]
@@ -120,8 +101,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                         breadthFirstAlg,
                         pilotAlg)
                 .Build();
-
-            game.Algorithm.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
 
             // when
             var results = await game.RunGameAsync<AlgorithmResult[]>();
