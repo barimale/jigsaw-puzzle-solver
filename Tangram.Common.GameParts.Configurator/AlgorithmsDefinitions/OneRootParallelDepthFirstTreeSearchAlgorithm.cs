@@ -47,7 +47,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                     token: ct,
                     callback: (state, control, quality) => {
                         base.HandleQualityCallback(state);
-                        base.CurrentIteration += 1;
+                        base.CurrentIteration = state.VisitedNodes;
                         base.HandleExecutionEstimationCallback(
                             state,
                             pp.Blocks.Skip(ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT).Select(p => p.AllowedLocations.Length)

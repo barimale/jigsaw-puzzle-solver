@@ -8,9 +8,9 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
     public abstract class Algorithm<T> : IExecutableAlgorithm
         where T : class
     {
-        public readonly int DEFAULT_AMOUNT_OF_CYCLES = 10;
+        public readonly long DEFAULT_AMOUNT_OF_CYCLES = 10;
 
-        public int CurrentIteration { protected set; get; }
+        public long CurrentIteration { protected set; get; }
 
         protected T algorithm;
 
@@ -29,7 +29,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
         public StatisticSettings StatisticSettings { get; set; }
         public string Id { private set; get; }
 
-        // TODO: check if it needs to be cumulative or directly the value
         public void HandleExecutionEstimationCallback(
             ISearchControl<FindFittestSolution, Minimize> state,
             int maximalAmountOfIterations)

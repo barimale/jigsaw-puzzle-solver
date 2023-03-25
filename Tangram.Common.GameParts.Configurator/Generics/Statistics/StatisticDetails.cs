@@ -2,8 +2,8 @@
 {
     public class StatisticDetails
     {
-        private int maximalAmountOfIterations;
-        private int currentIteration;
+        private long maximalAmountOfIterations;
+        private long currentIteration;
 
         public StatisticDetails(string algorithmId)
         {
@@ -12,8 +12,8 @@
 
         public StatisticDetails(
             string algorithmId,
-            int maximalAmountOfIterations,
-            int currentIteration)
+            long maximalAmountOfIterations,
+            long currentIteration)
             : this(algorithmId)
         {
             this.maximalAmountOfIterations = maximalAmountOfIterations;
@@ -22,9 +22,9 @@
 
         public string AlgorithmId { private set; get; }
 
-        public int MeanExecutionTimeOfIterationInMiliseconds { get; set; }
+        public long MeanExecutionTimeOfIterationInMiliseconds { get; set; }
 
         // zero when not obtained
-        public int EstimatedExecutionTimeInMiliseconds => (maximalAmountOfIterations - currentIteration) * MeanExecutionTimeOfIterationInMiliseconds;
+        public long EstimatedExecutionTimeInMiliseconds => (long)(maximalAmountOfIterations - currentIteration) * MeanExecutionTimeOfIterationInMiliseconds;
     }
 }

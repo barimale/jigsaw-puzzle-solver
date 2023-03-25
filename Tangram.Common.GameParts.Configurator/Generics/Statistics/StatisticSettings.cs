@@ -2,11 +2,11 @@
 {
     public class StatisticSettings
     {
-        public StatisticSettings(int measurePeriodInCycles)
+        public StatisticSettings(long measurePeriodInCycles)
         {
             MeasurePeriodInCycles = measurePeriodInCycles;
         }
 
-        public int MeasurePeriodInCycles { private set; get; }
+        public long MeasurePeriodInCycles { private set; get; }
     }
 }
