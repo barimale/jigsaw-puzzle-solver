@@ -2,6 +2,7 @@
 using GeneticSharp;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
@@ -52,6 +53,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                     return;
 
                 base.HandleQualityCallback(algorithmResult);
+                base.CurrentIteration += 1;
+                base.HandleExecutionEstimationCallback(algorithmResult);
 
                 var bestChromosome = algorithmResult
                     .BestChromosome as TangramChromosome;

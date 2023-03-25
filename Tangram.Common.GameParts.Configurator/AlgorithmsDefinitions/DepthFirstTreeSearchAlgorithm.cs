@@ -9,20 +9,27 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class DepthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
+        private int maximalAmountOfIterations;
+
         public DepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks)
             : base(new FindFittestSolution(board, blocks))
         {
-            // intentionally left blank
+            this.maximalAmountOfIterations = blocks
+                .Select(p => p.AllowedLocations.Length)
+                .Aggregate(1, (x, y) => x * y);
         }
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
             var result = await algorithm.DepthFirstAsync(
                 token: ct,
-                callback: (state, control, quality) => base.HandleQualityCallback(state)
-                );
+                callback: (state, control, quality) => {
+                    base.HandleQualityCallback(state);
+                    base.CurrentIteration += 1;
+                    base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                });
 
             return new AlgorithmResult()
             {

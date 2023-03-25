@@ -9,12 +9,14 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class OneRootParallelDepthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
+        private const int ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT = 1;
+
         public OneRootParallelDepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks)
             : base(new FindFittestSolution(board, blocks))
         {
-            // intentionally left blank
+           // intentionally left blank
         }
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
@@ -43,7 +45,14 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                     ModifyRootElementOfArray(p, allBlocks)))
                 .Select(pp => pp.DepthFirstAsync(
                     token: ct,
-                    callback: (state, control, quality) => base.HandleQualityCallback(state)));
+                    callback: (state, control, quality) => {
+                        base.HandleQualityCallback(state);
+                        base.CurrentIteration += 1;
+                        base.HandleExecutionEstimationCallback(
+                            state,
+                            pp.Blocks.Skip(ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT).Select(p => p.AllowedLocations.Length)
+                                .Aggregate(1, (x, y) => x * y));
+                    }));
 
             var results = await Task.WhenAll(rootedAlgorithms);
 

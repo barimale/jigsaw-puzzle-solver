@@ -1,6 +1,7 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
@@ -9,20 +10,27 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class BreadthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
+        private int maximalAmountOfIterations;
+
         public BreadthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks)
             : base(new FindFittestSolution(board, blocks))
         {
-            // intentionally left blank
+            this.maximalAmountOfIterations = blocks
+                .Select(p => p.AllowedLocations.Length)
+                .Aggregate(1, (x, y) => x * y);
         }
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
             var result = await algorithm.BreadthFirstAsync(
                 token: ct,
-                callback: (state, control, quality) => base.HandleQualityCallback(state)
-                );
+                callback: (state, control, quality) => {
+                    base.HandleQualityCallback(state);
+                    base.CurrentIteration += 1;
+                    base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                });
 
             return new AlgorithmResult()
             {

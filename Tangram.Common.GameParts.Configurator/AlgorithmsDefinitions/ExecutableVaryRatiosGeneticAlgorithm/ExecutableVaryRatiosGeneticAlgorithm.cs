@@ -62,6 +62,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
                     return;
 
                 base.HandleQualityCallback(algorithmResult);
+                base.CurrentIteration += 1;
+                base.HandleExecutionEstimationCallback(algorithmResult);
 
                 varyRatiosService.NextGeneration();
             }
