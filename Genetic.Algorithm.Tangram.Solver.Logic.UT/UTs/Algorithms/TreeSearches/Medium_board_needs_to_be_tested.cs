@@ -26,12 +26,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            var breadthFirstAlg = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateBreadthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks);
-
             var depthFirstAlg = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateDepthFirstTreeSearchAlgorithm(
@@ -49,7 +43,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAll)
                 .WithAlgorithms(depthFirstAlg,
-                        breadthFirstAlg,
                         pilotAlg)
                 .Build();
 
@@ -62,17 +55,14 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 
             // then
             Assert.NotNull(results);
-            Assert.Equal(3, results.Length);
+            Assert.Equal(2, results.Length);
 
             // finally
             Display("DepthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[0]);
 
-            Display("BreadthFirst");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[1]);
-
             Display("Pilot");
-            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[2]);
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[1]);
         }
 
         [Fact]

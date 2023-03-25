@@ -1,4 +1,5 @@
-﻿using NetTopologySuite.Geometries;
+﻿using Algorithm.Tangram.Common.Extensions;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Union;
 using Tangram.GameParts.Logic.GameParts.Board;
 
@@ -122,22 +123,26 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 resultInverted).Result;
         }
 
-        // TODO: parallel deeper
         private double CalculatePolygonsIntersectDiff(Geometry[] polygons)
         {
-            var intersections_area_factor = 0d;
-
-            for (int i = 0; i < polygons.Length; i++)
+            double intersections_area_factor = polygons
+                .WithIndex()
+                .AsParallel()
+                .Sum(i =>
             {
-                var points_i = polygons[i];
-                for (int j = 0; j < polygons.Length; j++)
-                {
-                    if (i == j) continue;
+                var points_i = polygons[i.index];
 
-                    var points_j = polygons[j];
-                    intersections_area_factor += PolygonsIntersect(points_i, points_j);
-                }
-            }
+                return polygons.WithIndex().AsParallel().Sum(j =>
+                {
+                    if (i.index != j.index)
+                    {
+                        var points_j = polygons[j.index];
+                        return PolygonsIntersect(points_i, points_j);
+                    }
+
+                    return 0d;
+                });
+            });
 
             return intersections_area_factor;
         }
@@ -153,6 +158,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
 
             var mergedPolygon = new CascadedPolygonUnion(evaluatedGeometry)
                 .Union();
+
             var mergedPolygonConvexedHullVolume = mergedPolygon
                 .ConvexHull()
                 .Area;
@@ -168,12 +174,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             Geometry[] evaluatedGeometry,
             BoardShapeBase boardShapeDefinition)
         {
-            var out_of_bounds_distances = 0d;
-
-            evaluatedGeometry.ToList()
-                .ForEach(geometry =>
+            double out_of_bounds_distances = evaluatedGeometry
+                .AsParallel()
+                .Sum(geometry =>
                 {
-                    out_of_bounds_distances += FilterOutOfBounds(
+                    return FilterOutOfBounds(
                         geometry,
                         boardShapeDefinition);
                 });
@@ -208,9 +213,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             }
             else
             {
-                // TODO: correct it as described in ga-tangram
-                //var distance = polygon.Distance(boardShapeDefinition.Polygon);
-
                 return diff.Area;
             }
         }

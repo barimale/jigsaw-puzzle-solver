@@ -2,7 +2,7 @@ using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Algorithm.Tangram.TreeSearch.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
-using GeneticSharp;
+using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
@@ -96,17 +96,17 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                 return results;
             }
 
-            var innerResult = new List<IndexedBlockBase>();
+            var innerResult = new ConcurrentBag<IndexedBlockBase>();
 
-            foreach (var (pp, index) in nextOne.AllowedLocations.WithIndex())
+            nextOne.AllowedLocations.WithIndex().AsParallel().ForAll((p) =>
             {
-                innerResult.Add(new IndexedBlockBase(nextOne, index));
-            }
+                innerResult.Add(new IndexedBlockBase(nextOne, p.index));
+            });
 
-            results.AddRange(innerResult);
+            results.AddRange(innerResult.AsEnumerable());
 
             return results
-                .Shuffle(new FastRandomRandomization()) // TODO WIP or Reverse first < -some extras
+                //.Shuffle(new FastRandomRandomization()) // TODO WIP or Reverse first < -some extras
                 .AsEnumerable();
         }
 

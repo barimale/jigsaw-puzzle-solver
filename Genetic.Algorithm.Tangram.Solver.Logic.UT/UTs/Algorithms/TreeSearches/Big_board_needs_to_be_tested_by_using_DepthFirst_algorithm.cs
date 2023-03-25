@@ -68,7 +68,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 
             var depthFirstAlg = GameBuilder
                  .AvalaibleTSTemplatesAlgorithms
-                 .CreateDepthFirstTreeSearchAlgorithm(
+                 .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
                      gameParts.Board,
                      gameParts.Blocks);
 
