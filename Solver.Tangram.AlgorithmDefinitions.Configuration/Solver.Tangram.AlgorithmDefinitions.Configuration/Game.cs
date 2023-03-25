@@ -8,6 +8,8 @@ namespace Solver.Tangram.Game.Logic
     {
         private readonly GameSet gameSet;
 
+        public event EventHandler OnExecutionEstimationReady;
+
         private Game(GameSet gameSet)
         {
             this.gameSet = gameSet;
@@ -17,12 +19,14 @@ namespace Solver.Tangram.Game.Logic
             : this(gameSet)
         {
             Algorithm = algorithm;
+            Algorithm.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady; ;
         }
 
         public Game(GameSet gameSet, IExecutableMultiAlgorithm multialgorithm)
             : this(gameSet)
         {
             Multialgorithm = multialgorithm;
+            Multialgorithm.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
         }
 
         public GameSet GameSet => gameSet;
@@ -40,6 +44,14 @@ namespace Solver.Tangram.Game.Logic
                 return (await Multialgorithm.ExecuteManyAsync(ct)) as Tout;
 
             throw new SystemException();
+        }
+
+        private void Algorithm_OnExecutionEstimationReady(object? sender, EventArgs e)
+        {
+            if (OnExecutionEstimationReady != null)
+            {
+                OnExecutionEstimationReady.Invoke(sender, e);
+            }
         }
     }
 }

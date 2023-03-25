@@ -5,6 +5,7 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 {
@@ -77,6 +78,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .WithAlgorithm(depthFirstAlg)
                 .Build();
 
+            game.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
+
             // when
             var result = await game.RunGameAsync<AlgorithmResult>();
 
@@ -86,6 +89,24 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             // finally
             Display("DepthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(result.GetSolution<FindFittestSolution>());
+        }
+
+
+        private void Algorithm_OnExecutionEstimationReady(object? sender, EventArgs e)
+        {
+            var result = sender as StatisticDetails;
+
+            if (result == null)
+                return;
+
+            Display("Pilot-AlgorithmId:");
+            Display(result.AlgorithmId);
+
+            Display("Pilot-MeanExecutionTimeOfIterationInSeconds:");
+            Display((result.MeanExecutionTimeOfIterationInMiliseconds / 1000).ToString());
+
+            Display("Pilot-EstimatedExecutionTimeInMiliseconds:");
+            Display((result.EstimatedExecutionTimeInMiliseconds / 1000).ToString());
         }
     }
 }

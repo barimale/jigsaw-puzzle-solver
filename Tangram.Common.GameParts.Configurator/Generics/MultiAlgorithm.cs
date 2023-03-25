@@ -25,6 +25,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
         }
 
         public event EventHandler QualityCallback; // of func / action here
+        public event EventHandler OnExecutionEstimationReady;
 
         public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)
         {
@@ -32,6 +33,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
                     .Select(pp =>
                     {
                         pp.QualityCallback += QualityCallback;
+                        pp.OnExecutionEstimationReady += OnExecutionEstimationReady;
 
                         return pp;
                     })

@@ -2,7 +2,7 @@
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
-    public interface IExecutableMultiAlgorithm: IQualityCallback
+    public interface IExecutableMultiAlgorithm: IQualityCallback, IExecutionEstimationCallback
     {
         public Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default);
     }
