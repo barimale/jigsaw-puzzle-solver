@@ -10,6 +10,9 @@ namespace Algorithm.Executor.WPF.Tabs
         public GameDetails()
         {
             InitializeComponent();
+
+            // TODO: double check it
+            DataContext = this;
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

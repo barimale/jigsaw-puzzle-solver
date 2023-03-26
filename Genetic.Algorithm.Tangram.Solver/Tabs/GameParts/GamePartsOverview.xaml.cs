@@ -10,6 +10,9 @@ namespace Algorithm.Executor.WPF.Tabs
         public GamePartsOverview()
         {
             InitializeComponent();
+
+            // TODO: double check it
+            DataContext = this;
         }
     }
 }

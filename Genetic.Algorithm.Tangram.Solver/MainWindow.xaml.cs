@@ -64,6 +64,7 @@ namespace Genetic.Algorithm.Tangram.Solver
             DataContext = this;
 
             MyTitle = string.Empty;
+
             ResultsSource = new List<AlgorithmResult>();
         }
 

@@ -10,6 +10,9 @@ namespace Algorithm.Executor.WPF.Tabs
         public BlockDetails()
         {
             InitializeComponent();
+
+            // TODO: double check it
+            DataContext = this;
         }
     }
 }
