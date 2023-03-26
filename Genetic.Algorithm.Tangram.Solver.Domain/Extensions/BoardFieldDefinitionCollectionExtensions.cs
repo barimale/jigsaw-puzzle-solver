@@ -8,6 +8,10 @@ namespace Tangram.GameParts.Logic.Extensions
         public static GeometryCollection? ConvertToGeometryCollection(
             this IList<BoardFieldDefinition>? fields)
         {
+            if (fields == null)
+                return null;
+
+            // do not use parallel here
             var geometricies = fields.Select(p =>
             {
                 var polygonWithData = new GeometryFactory()

@@ -5,6 +5,8 @@ namespace Tangram.GameParts.Logic.Extensions
 {
     public static class BlockBaseExtensions
     {
+        // modify it as a service with asyncs
+
         // WIP all combinations with single allowed locations
         // as a set of algorithms to be executed
         public static IList<BlockBase[]> GetNxNWithSingleAllowedLocations (this IEnumerable<BlockBase> blocksWithAllowedLocations)
