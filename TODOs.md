@@ -6,11 +6,15 @@
 
 // fix logic when allowedLocations is not in use
 
+use elasticsearch
 OnExecutionEstimationReady
 with statistics:
 - node etc
 - fitness/quality
 - generation number etc
+
+// fix the oneroot -> examine each ended task
+// if success terminate rest of tasks
 
 // add OnExecutionEstimationReady - for tree searches only
 //  add OnExecutionEstimationReady - for GA info that it is not supported for now
