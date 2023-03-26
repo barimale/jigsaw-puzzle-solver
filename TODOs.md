@@ -2,6 +2,12 @@
 double check blocks
 create UTs for all TODOs
 
+when elastic ready
+provide interfaces 
+ninject
+and reuse library 
+in backend rest api 
+add db + eframework
 // later on add the elasticsearch and use analytics-related methods
 // to estimate execution time for all algorithms
 OnExecutionEstimationReady
@@ -9,8 +15,6 @@ with statistics:
 - node etc
 - fitness/quality
 - generation number etc
-
-for n blocks < 5 use normal async, otherwise parallel
 
 // use the IsEnabled field of the board field when allowed locations
 // are obtained -> Genius Junior
@@ -20,7 +24,6 @@ for n blocks < 5 use normal async, otherwise parallel
 // fix the oneroot -> examine each ended task
 // if success terminate rest of tasks
 // for now - task.whenall
-
 
 // add HintAdvisor
 - transform already used blocks as already done in Genius Junior
