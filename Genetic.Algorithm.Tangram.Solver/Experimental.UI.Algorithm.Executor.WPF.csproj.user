@@ -18,6 +18,12 @@
     <Page Update="MainWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Tabs\GameParts\BlockDetails.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Tabs\GameParts\GamePartsOverview.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Tabs\GameDetails.xaml">
       <SubType>Designer</SubType>
     </Page>

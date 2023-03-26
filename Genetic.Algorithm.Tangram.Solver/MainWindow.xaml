@@ -22,10 +22,13 @@
                         <Canvas Background="#FF0B8FAE" Loaded="Canvas_Loaded" />
                     </Grid>
                 </TabItem>
-                <TabItem Header="Game parts" >
+                <TabItem Header="Game settings WIP" >
                     <tabs:GameDetails />
                 </TabItem>
-                <TabItem Header="Results" >
+            <TabItem Header="Game parts overview" >
+                <tabs:GameDetails />
+            </TabItem>
+            <TabItem Header="Results" >
                     <tabs:Results ResultItems="{Binding ResultsSource}" />
                 </TabItem>
         </TabControl>
