@@ -10,6 +10,8 @@ with statistics:
 - fitness/quality
 - generation number etc
 
+for n blocks < 5 use normal async, otherwise parallel
+
 // use the IsEnabled field of the board field when allowed locations
 // are obtained -> Genius Junior
 

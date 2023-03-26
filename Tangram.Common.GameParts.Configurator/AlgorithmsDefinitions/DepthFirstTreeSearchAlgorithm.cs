@@ -1,6 +1,7 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using System.Collections.Concurrent;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
@@ -21,9 +22,10 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 .Aggregate(1, (x, y) => x * y);
         }
 
+        // provide the parallel maybe?
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
-            var result = await algorithm.DepthFirstAsync(
+            var result = await algorithm.ParallelDepthFirstAsync(
                 token: ct,
                 callback: (state, control, quality) => {
                     base.HandleQualityCallback(state);

@@ -25,6 +25,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
         {
             var result = await algorithm.PilotMethodAsync(
                 token: ct,
+                //maxDegreeOfParallelism: 20,
                 callback: (state, control, quality) => {
                     base.HandleQualityCallback(state);
                     base.CurrentIteration = state.VisitedNodes;

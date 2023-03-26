@@ -24,7 +24,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
-            var result = await algorithm.BreadthFirstAsync(
+            var result = await algorithm.ParallelBreadthFirstAsync(
                 token: ct,
                 callback: (state, control, quality) => {
                     base.HandleQualityCallback(state);

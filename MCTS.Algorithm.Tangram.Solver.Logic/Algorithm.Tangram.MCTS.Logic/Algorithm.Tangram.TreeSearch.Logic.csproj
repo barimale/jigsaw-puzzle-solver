@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="TreesearchLib" Version="1.0.1" />
+    <PackageReference Include="TreesearchLib" Version="1.1.1" />
   </ItemGroup>
 
   <ItemGroup>
