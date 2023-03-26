@@ -7,9 +7,14 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid Margin="30,10">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
+        <ScrollViewer Grid.Row="0">
+            <ContentControl Content="{Binding MyCanvasContent}" />
+        </ScrollViewer>
         <StackPanel Margin="30,10">
             <Label Content="{Binding TabName}"
                    FontSize="18" />
