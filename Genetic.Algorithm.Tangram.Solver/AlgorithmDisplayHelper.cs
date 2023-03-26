@@ -1,6 +1,5 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using GeneticSharp;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using System;
 using System.IO;
