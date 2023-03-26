@@ -1,7 +1,6 @@
 
 double check blocks
-
-make the treelibsearch more async ?
+create UTs for all TODOs
 
 // later on add the elasticsearch and use analytics-related methods
 // to estimate execution time for all algorithms
