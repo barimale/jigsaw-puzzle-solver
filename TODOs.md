@@ -1,6 +1,10 @@
-make the treelibsearch more async
 
-use elasticsearch
+double check blocks
+
+make the treelibsearch more async ?
+
+// later on add the elasticsearch and use analytics-related methods
+// to estimate execution time for all algorithms
 OnExecutionEstimationReady
 with statistics:
 - node etc
@@ -14,12 +18,8 @@ with statistics:
 
 // fix the oneroot -> examine each ended task
 // if success terminate rest of tasks
+// for now - task.whenall
 
-// add OnExecutionEstimationReady - for tree searches only
-//  add OnExecutionEstimationReady - for GA info that it is not supported for now
-
-// later on add the elasticsearch and use analytics-related methods
-// to estimate execution time for all algorithms
 
 // add HintAdvisor
 - transform already used blocks as already done in Genius Junior

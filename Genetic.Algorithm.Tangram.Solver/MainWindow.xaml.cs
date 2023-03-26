@@ -98,7 +98,7 @@ namespace Genetic.Algorithm.Tangram.Solver
 
                 var algorithm = GameBuilder
                     .AvalaibleTSTemplatesAlgorithms
-                    .CreatePilotTreeSearchAlgorithm(
+                    .CreateDepthFirstTreeSearchAlgorithm(
                         gameParts.Board,
                         gameParts.Blocks);
                 //gameParts.AllowedAngles);
