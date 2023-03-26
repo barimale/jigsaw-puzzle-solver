@@ -23,14 +23,37 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
-            var result = await algorithm.PilotMethodAsync(
-                token: ct,
-                //maxDegreeOfParallelism: 20,
-                callback: (state, control, quality) => {
-                    base.HandleQualityCallback(state);
-                    base.CurrentIteration = state.VisitedNodes;
-                    base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
-                });
+            FindFittestSolution? result;
+            switch (algorithm.Blocks.Count)
+            {
+                case int n when n < 3:
+                    result = algorithm.PilotMethod(
+                        token: ct,
+                        callback: (state, control, quality) => {
+                            base.HandleQualityCallback(state);
+                            base.CurrentIteration = state.VisitedNodes;
+                            base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                        });
+                    break;
+                case int n when n < 5:
+                    result = await algorithm.PilotMethodAsync(
+                        token: ct,
+                        callback: (state, control, quality) => {
+                            base.HandleQualityCallback(state);
+                            base.CurrentIteration = state.VisitedNodes;
+                            base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                        });
+                    break;
+                default:
+                    result = await algorithm.ParallelPilotMethodAsync(
+                        token: ct,
+                        callback: (state, control, quality) => {
+                            base.HandleQualityCallback(state);
+                            base.CurrentIteration = state.VisitedNodes;
+                            base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                        });
+                    break;
+            }
 
             return new AlgorithmResult()
             {

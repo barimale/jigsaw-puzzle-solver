@@ -43,17 +43,9 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 p => new FindFittestSolution(
                     board,
                     ModifyRootElementOfArray(p, allBlocks)))
-                .Select(pp => pp.DepthFirstAsync(
-                    token: ct,
-                    callback: (state, control, quality) => {
-                        base.HandleQualityCallback(state);
-                        base.CurrentIteration = state.VisitedNodes;
-                        base.HandleExecutionEstimationCallback(
-                            state,
-                            pp.Blocks.Skip(ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT).Select(p => p.AllowedLocations.Length)
-                                .Aggregate(1, (x, y) => x * y));
-                    }));
+                .Select(async pp => await ExecuteAlgorithmAsync(pp, ct));
 
+            // TODO: use the WhenAny with where clause filtergin by fitness = 0
             var results = await Task.WhenAll(rootedAlgorithms);
 
             var onlyCompletedResults = results
@@ -67,6 +59,55 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 Solution = firstSolution!,
                 IsError = firstSolution == null || !firstSolution.Quality.HasValue
             };
+        }
+
+        private async Task<FindFittestSolution> ExecuteAlgorithmAsync(FindFittestSolution pp, CancellationToken ct)
+        {
+            FindFittestSolution? result;
+            switch (algorithm.Blocks.Count)
+            {
+                case int n when n < 3:
+                    result = algorithm.DepthFirst(
+                        token: ct,
+                         callback: (state, control, quality) =>
+                         {
+                             base.HandleQualityCallback(state);
+                             base.CurrentIteration = state.VisitedNodes;
+                             base.HandleExecutionEstimationCallback(
+                                 state,
+                                 pp.Blocks.Skip(ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT).Select(p => p.AllowedLocations.Length)
+                                     .Aggregate(1, (x, y) => x * y));
+                         });
+                    break;
+                case int n when n < 5:
+                    result = await algorithm.DepthFirstAsync(
+                        token: ct,
+                         callback: (state, control, quality) =>
+                         {
+                             base.HandleQualityCallback(state);
+                             base.CurrentIteration = state.VisitedNodes;
+                             base.HandleExecutionEstimationCallback(
+                                 state,
+                                 pp.Blocks.Skip(ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT).Select(p => p.AllowedLocations.Length)
+                                     .Aggregate(1, (x, y) => x * y));
+                         });
+                    break;
+                default:
+                    result = await algorithm.ParallelDepthFirstAsync(
+                        token: ct,
+                        callback: (state, control, quality) =>
+                        {
+                            base.HandleQualityCallback(state);
+                            base.CurrentIteration = state.VisitedNodes;
+                            base.HandleExecutionEstimationCallback(
+                                state,
+                                pp.Blocks.Skip(ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT).Select(p => p.AllowedLocations.Length)
+                                    .Aggregate(1, (x, y) => x * y));
+                        });
+                    break;
+            }
+
+            return result;
         }
 
         private BlockBase[] ModifyRootElementOfArray(BlockBase replaceBy, BlockBase[] array)
