@@ -35,7 +35,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
         {
             if (OnExecutionEstimationReady != null)
             {
-                if(CurrentIteration % StatisticSettings.MeasurePeriodInCycles == 0)
+                if (CurrentIteration % StatisticSettings.MeasurePeriodInCycles == 0)
                 {
                     OnExecutionEstimationReady.Invoke(
                         new StatisticDetails(

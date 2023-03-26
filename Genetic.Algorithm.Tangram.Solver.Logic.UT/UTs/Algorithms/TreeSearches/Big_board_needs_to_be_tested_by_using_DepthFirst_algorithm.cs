@@ -78,7 +78,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .WithAlgorithm(depthFirstAlg)
                 .Build();
 
-            game.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
+            // Integrate with elasticsearch
+            //game.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
 
             // when
             var result = await game.RunGameAsync<AlgorithmResult>();

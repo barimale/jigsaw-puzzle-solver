@@ -5,7 +5,6 @@ using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
-using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 {
@@ -111,8 +110,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             Assert.Equal(3, resultsAsArray?.Length);
 
             // finally
-            var depthFirst = resultsAsArray[0].GetSolution<FindFittestSolution>();
-
             Display("DepthFirst");
             AlgorithmUTConsoleHelper.ShowMadeChoices(resultsAsArray[0]?.GetSolution<FindFittestSolution>());
 
