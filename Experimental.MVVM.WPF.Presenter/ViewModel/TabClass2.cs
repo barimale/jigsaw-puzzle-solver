@@ -1,6 +1,5 @@
 ﻿using Algorithm.Tangram.Common.Extensions;
 using Solver.Tangram.Game.Logic;
-using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -40,7 +39,7 @@ namespace Demo.ViewModel
                         return new TabItem()
                         {
                             Content = MapBlockToDetails(block.item),
-                            Header = $"Block #{block.index}({colorName})",
+                            Header = $"Block #{block.index + 1}({colorName})",
                         };
                     })
                 .ToList();
