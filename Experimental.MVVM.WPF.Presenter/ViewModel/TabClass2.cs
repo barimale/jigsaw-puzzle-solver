@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.Utilities;
 
 namespace Demo.ViewModel
 {
@@ -35,7 +36,7 @@ namespace Demo.ViewModel
                         var colorName = block.item.Color.IsNamedColor ? block.item.Color.Name : $"ARGB: {block.item.Color.ToArgb()}";
                         return new TabItem()
                         {
-                            Content = MapBlockToDetails(block.item),
+                            Content = MapBlockToDetails(block.item, board.SkippedMarkup),
                             Header = $"Block #{block.index + 1}({colorName})",
                         };
                     })
@@ -53,7 +54,7 @@ namespace Demo.ViewModel
             return container;
         }
 
-        private UIElement MapBlockToDetails(BlockBase block)
+        private UIElement MapBlockToDetails(BlockBase block, string skipMarkup)
         {
             var grid = GetGridDefinition();
 
@@ -115,7 +116,9 @@ namespace Demo.ViewModel
 
                 var meshAContent = new TextBlock();
                 meshAContent.Height = 160;
-                meshAContent.Text = MeshSideToString(block, 0); // TODO: visualize it
+                meshAContent.Text = ExtraRestrictionMarkupsHelper.MeshSideToString<string>(
+                    block.FieldRestrictionMarkups[0],
+                    skipMarkup);
 
                 Grid.SetRow(meshAContent, 4);
                 Grid.SetColumn(meshAContent, 1);
@@ -138,7 +141,9 @@ namespace Demo.ViewModel
 
                 var meshBContent = new TextBlock();
                 meshBContent.Height = 160;
-                meshBContent.Text = MeshSideToString(block, 1); // TODO: visualize it
+                meshBContent.Text = ExtraRestrictionMarkupsHelper.MeshSideToString<string>(
+                    block.FieldRestrictionMarkups[1],
+                    skipMarkup);
 
                 Grid.SetRow(meshBContent, 5);
                 Grid.SetColumn(meshBContent, 1);
@@ -148,29 +153,6 @@ namespace Demo.ViewModel
             }
 
             return grid;
-        }
-
-        // provide it from polishgamebaseblock later on
-        private static string MeshSideToString(BlockBase block, int sideNumber, string markupToClean = "&&&")
-        {
-            var mesh = block.FieldRestrictionMarkups[sideNumber];
-            var columns = mesh.ColumnsCount();
-            var rows = mesh.RowsCount();
-
-            // TODO: maybe use the fieldtransformer here or create new one 
-
-            var builder = new StringBuilder();
-            for(var rowIndex = 0; rowIndex < rows; rowIndex++)
-            {
-                var currentRow = mesh.GetRow(rowIndex);
-                var currentRowAsStrings = currentRow.Select(p => (string)p).ToArray();
-                var currentRowAsString = string.Join(' ', currentRowAsStrings).Replace(markupToClean, "  ");
-                // TODO: replace not field tag by empty
-                builder.Append(currentRowAsString);
-                if (rowIndex < rows -1) builder.AppendLine();
-            }
-
-            return builder.ToString();
         }
 
         private Grid GetGridDefinition()

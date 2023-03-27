@@ -5,6 +5,10 @@ using System.Windows.Controls;
 using System.Windows;
 using Tangram.GameParts.Logic.GameParts.Block;
 using System.Linq;
+using System.Windows.Documents;
+using Tangram.GameParts.Logic.GameParts.Board;
+using NetTopologySuite.Utilities;
+using Tangram.GameParts.Logic.Utilities;
 
 namespace Demo.ViewModel
 {
@@ -47,109 +51,8 @@ namespace Demo.ViewModel
 
             grid.Children.Add(boardDefinitionContent);
 
-            // TODO: continue from here
-            // TODO: put mesh to board as nullable
-            // together with the definition of matches
-
-            //var hasMeshLabel = new TextBlock();
-            //var hasMeshValue = board. .IsExtraRistricted;
-            //hasMeshLabel.Text = $"Has mesh: {hasMeshValue}";
-            //hasMeshLabel.Margin = new Thickness(0, 0, 0, 8);
-
-            //Grid.SetRow(hasMeshLabel, 3);
-            //Grid.SetColumn(hasMeshLabel, 0);
-            //grid.Children.Add(hasMeshLabel);
-
-            //if (hasMeshValue)
-            //{
-            //    // mesh side A
-            //    UIElement meshSideA = new DisplayBlockHelper()
-            //       .MapBlockDefinitionToMeshSideA(
-            //           _gameInstance.GameSet.Board,
-            //           block,
-            //           160);
-
-            //    Grid.SetRow(meshSideA, 4);
-            //    Grid.SetColumn(meshSideA, 0);
-            //    Grid.SetColumnSpan(meshSideA, 1);
-
-            //    grid.Children.Add(meshSideA);
-
-            //    var meshAContent = new TextBlock();
-            //    meshAContent.Height = 160;
-            //    meshAContent.Text = MeshSideToString(block, 0); // TODO: visualize it
-
-            //    Grid.SetRow(meshAContent, 4);
-            //    Grid.SetColumn(meshAContent, 1);
-            //    Grid.SetColumnSpan(meshAContent, 1);
-
-            //    grid.Children.Add(meshAContent);
-
-            //    // mesh side B
-            //    UIElement meshSideB = new DisplayBlockHelper()
-            //       .MapBlockDefinitionToMeshSideB(
-            //           _gameInstance.GameSet.Board,
-            //           block,
-            //           160);
-
-            //    Grid.SetRow(meshSideB, 5);
-            //    Grid.SetColumn(meshSideB, 0);
-            //    Grid.SetColumnSpan(meshSideB, 1);
-
-            //    grid.Children.Add(meshSideB);
-
-            //    var meshBContent = new TextBlock();
-            //    meshBContent.Height = 160;
-            //    meshBContent.Text = MeshSideToString(block, 1); // TODO: visualize it
-
-            //    Grid.SetRow(meshBContent, 5);
-            //    Grid.SetColumn(meshBContent, 1);
-            //    Grid.SetColumnSpan(meshBContent, 1);
-
-            //    grid.Children.Add(meshBContent);
-            //}
-
-            return grid;
-        }
-
-        private UIElement MapBlockToDetails(BlockBase block)
-        {
-            var grid = GetGridDefinition();
-
-            // block definition label
-            var blockDefinitionLabel = new TextBlock();
-            blockDefinitionLabel.Text = "Block definition:";
-            blockDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
-
-            Grid.SetRow(blockDefinitionLabel, 0);
-            Grid.SetColumn(blockDefinitionLabel, 0);
-            grid.Children.Add(blockDefinitionLabel);
-
-            // block definition image
-            UIElement blockDefinition = new DisplayBlockHelper()
-                .MapBlockDefinitionToCanvasWithBoard(
-                    _gameInstance.GameSet.Board,
-                    block,
-                    160);
-
-            Grid.SetRow(blockDefinition, 1);
-            Grid.SetColumn(blockDefinition, 0);
-            Grid.SetColumnSpan(blockDefinition, 2);
-
-            // allowed locations amount or not supported
-            grid.Children.Add(blockDefinition);
-
-            var allowedLocationsLabel = new TextBlock();
-            var allowedLocationValue = block.IsAllowedLocationsEnabled ? block.AllowedLocations.Length.ToString() : "not used";
-            allowedLocationsLabel.Text = $"Allowed locations: {allowedLocationValue}";
-            allowedLocationsLabel.Margin = new Thickness(0, 0, 0, 8);
-
-            Grid.SetRow(allowedLocationsLabel, 2);
-            Grid.SetColumn(allowedLocationsLabel, 0);
-            grid.Children.Add(allowedLocationsLabel);
-
             var hasMeshLabel = new TextBlock();
-            var hasMeshValue = block.IsExtraRistricted;
+            var hasMeshValue = board.IsExtraRistricted;
             hasMeshLabel.Text = $"Has mesh: {hasMeshValue}";
             hasMeshLabel.Margin = new Thickness(0, 0, 0, 8);
 
@@ -159,77 +62,35 @@ namespace Demo.ViewModel
 
             if (hasMeshValue)
             {
-                // mesh side A
-                UIElement meshSideA = new DisplayBlockHelper()
-                   .MapBlockDefinitionToMeshSideA(
-                       _gameInstance.GameSet.Board,
-                       block,
-                       160);
+                var meshContent = new TextBlock();
+                meshContent.Height = 160;
+                meshContent.Text = ExtraRestrictionMarkupsHelper.MeshSideToString<int>(
+                    board.WithExtraRestrictedMarkups,
+                    board.SkippedMarkup); 
 
-                Grid.SetRow(meshSideA, 4);
-                Grid.SetColumn(meshSideA, 0);
-                Grid.SetColumnSpan(meshSideA, 1);
+                Grid.SetRow(meshContent, 4);
+                Grid.SetColumn(meshContent, 0);
+                Grid.SetColumnSpan(meshContent, 1);
 
-                grid.Children.Add(meshSideA);
+                grid.Children.Add(meshContent);
 
-                var meshAContent = new TextBlock();
-                meshAContent.Height = 160;
-                meshAContent.Text = MeshSideToString(block, 0); // TODO: visualize it
+                var allowedMatches = new TextBlock();
+                var allowedMatchesValue = board
+                    .AllowedMatches
+                    .Select(p => $"{p.Item1} - {p.Item2}")
+                    .ToArray();
 
-                Grid.SetRow(meshAContent, 4);
-                Grid.SetColumn(meshAContent, 1);
-                Grid.SetColumnSpan(meshAContent, 1);
+                allowedMatches.Text = $"Allowed matches: {string.Join(", ", allowedMatchesValue)}";
+                allowedMatches.Margin = new Thickness(0, 0, 0, 8);
 
-                grid.Children.Add(meshAContent);
+                Grid.SetRow(allowedMatches, 4);
+                Grid.SetColumn(allowedMatches, 1);
+                Grid.SetColumnSpan(allowedMatches, 2);
 
-                // mesh side B
-                UIElement meshSideB = new DisplayBlockHelper()
-                   .MapBlockDefinitionToMeshSideB(
-                       _gameInstance.GameSet.Board,
-                       block,
-                       160);
-
-                Grid.SetRow(meshSideB, 5);
-                Grid.SetColumn(meshSideB, 0);
-                Grid.SetColumnSpan(meshSideB, 1);
-
-                grid.Children.Add(meshSideB);
-
-                var meshBContent = new TextBlock();
-                meshBContent.Height = 160;
-                meshBContent.Text = MeshSideToString(block, 1); // TODO: visualize it
-
-                Grid.SetRow(meshBContent, 5);
-                Grid.SetColumn(meshBContent, 1);
-                Grid.SetColumnSpan(meshBContent, 1);
-
-                grid.Children.Add(meshBContent);
+                grid.Children.Add(allowedMatches);
             }
 
             return grid;
-        }
-
-        // provide it from polishgamebaseblock later on
-        private static string MeshSideToString(BlockBase block, int sideNumber, string markupToClean = "&&&")
-        {
-            var mesh = block.FieldRestrictionMarkups[sideNumber];
-            var columns = mesh.ColumnsCount();
-            var rows = mesh.RowsCount();
-
-            // TODO: maybe use the fieldtransformer here or create new one 
-
-            var builder = new StringBuilder();
-            for (var rowIndex = 0; rowIndex < rows; rowIndex++)
-            {
-                var currentRow = mesh.GetRow(rowIndex);
-                var currentRowAsStrings = currentRow.Select(p => (string)p).ToArray();
-                var currentRowAsString = string.Join(' ', currentRowAsStrings).Replace(markupToClean, "  ");
-                // TODO: replace not field tag by empty
-                builder.Append(currentRowAsString);
-                if (rowIndex < rows - 1) builder.AppendLine();
-            }
-
-            return builder.ToString();
         }
 
         private Grid GetGridDefinition()
@@ -259,26 +120,22 @@ namespace Demo.ViewModel
             RowDefinition rowDef1 = new RowDefinition()
             {
                 Height = GridLength.Auto
-            };// Block definition label
+            };
             RowDefinition rowDef1b = new RowDefinition()
             {
                 Height = new GridLength(160)
-            }; // Allowed locations, later as checkbox on selected display
+            }; 
             RowDefinition rowDef2 = new RowDefinition()
             {
                 Height = GridLength.Auto
-            };// Allowed locations, later as checkbox on selected display
+            };
             RowDefinition rowDef3 = new RowDefinition()
             {
                 Height = GridLength.Auto
-            };// MEsh Side A
+            };
             RowDefinition rowDef4 = new RowDefinition()
             {
-                Height = new GridLength(160)
-            }; ;// * Mesh side B
-            RowDefinition rowDef5 = new RowDefinition()
-            {
-                Height = new GridLength(160)
+                Height = GridLength.Auto
             };
 
             myGrid.RowDefinitions.Add(rowDef1);
@@ -286,7 +143,6 @@ namespace Demo.ViewModel
             myGrid.RowDefinitions.Add(rowDef2);
             myGrid.RowDefinitions.Add(rowDef3);
             myGrid.RowDefinitions.Add(rowDef4);
-            myGrid.RowDefinitions.Add(rowDef5);
 
             return myGrid;
         }

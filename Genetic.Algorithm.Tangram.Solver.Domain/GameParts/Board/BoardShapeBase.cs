@@ -1,4 +1,5 @@
-﻿using NetTopologySuite.Geometries;
+﻿using Algorithm.Tangram.Common.Extensions;
+using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
 using NetTopologySuite.Operation.Union;
 
@@ -6,6 +7,15 @@ namespace Tangram.GameParts.Logic.GameParts.Board
 {
     public class BoardShapeBase
     {
+        // TODO: refactor it 
+        public List<Tuple<string, int>>? AllowedMatches { set; get; }
+        public string? SkippedMarkup { set; get; }
+        public object[,] WithExtraRestrictedMarkups { set; get; }
+        public bool IsExtraRistricted => AllowedMatches != null
+            && AllowedMatches.Count > 0
+            && WithExtraRestrictedMarkups.RowsCount() > 0
+            && WithExtraRestrictedMarkups.ColumnsCount() > 0;
+
         public IList<BoardFieldDefinition> BoardFieldsDefinition { private set; get; }
         public int WidthUnit { private set; get; }
         public int HeightUnit { private set; get; }

@@ -70,6 +70,13 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
         {
             var boardColumnsCount = 5;
             var boardRowsCount = 4;
+            var mesh = new object[,] {
+                        { 1, 0, 1, 0, 1},
+                        { 0, 1, 0, 1, 0},
+                        { 1, 0, 1, 0, 1},
+                        { 0, 1, 0, 1, 0},
+                    };
+
             var fields = GameSetFactory
                 .GeneratorFactory
                 .RectangularGameFieldsGenerator
@@ -79,19 +86,19 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
                     fieldWidth,
                     boardColumnsCount,
                     boardRowsCount,
-                    new object[,] {
-                        { 1, 0, 1, 0, 1},
-                        { 0, 1, 0, 1, 0},
-                        { 1, 0, 1, 0, 1},
-                        { 0, 1, 0, 1, 0},
-                    }
+                    mesh
                 );
 
             var boardDefinition = new BoardShapeBase(
                 fields,
                 boardColumnsCount,
                 boardRowsCount,
-                ScaleFactor);
+                ScaleFactor)
+            {
+                AllowedMatches = allowedMatches,
+                SkippedMarkup = PolishGameBaseBlock.SkippedMarkup,
+                WithExtraRestrictedMarkups = mesh
+            };
 
             return boardDefinition;
         }
