@@ -11,18 +11,19 @@ namespace Demo.ViewModel
 {
     public class DisplayBlockHelper
     {
-        public UIElement MapBlockDefinitionToCanvasWithBoard(BoardShapeBase board, BlockBase block)
+        public UIElement MapBlockDefinitionToCanvasWithBoard(BoardShapeBase board, BlockBase block, int canvasHeight)
         {
             // clear canvas
             var canvas = new Canvas();
+            canvas.Height = canvasHeight;
             canvas.RenderTransform = new ScaleTransform(30, 30);
 
             // show board
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
-            boardComponent.Fill = Brushes.White;
+            boardComponent.Fill = Brushes.WhiteSmoke;
             boardComponent.Stroke = Brushes.Black;
-            boardComponent.StrokeThickness = 0.05d;
+            boardComponent.StrokeThickness = 0.1d;
 
             board
                 .Polygon
@@ -42,9 +43,10 @@ namespace Demo.ViewModel
                     .Coordinates
                     .Select(pp => new Point(pp.X, pp.Y))
                     .ToList());
+
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
             blockDefinition.Stroke = Brushes.Black;
-            blockDefinition.StrokeThickness = 0.1d;
+            blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
 

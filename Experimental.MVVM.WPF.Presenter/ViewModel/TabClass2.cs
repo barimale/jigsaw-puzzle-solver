@@ -23,9 +23,9 @@ namespace Demo.ViewModel
         public string MyStringContent { get; set; }
         public int[] MyNumberCollection { get; set; }
         public int MySelectedNumber { get; set; }
-        public object MyCanvasContent { get; set; }
+        public UIElement MyCanvasContent { get; set; }
 
-        private object MapBlocksToTabItems()
+        private UIElement MapBlocksToTabItems()
         {
             var board = this._gameInstance.GameSet.Board;
 
@@ -59,16 +59,35 @@ namespace Demo.ViewModel
         {
             var grid = GetGridDefinition();
 
+            // block definition label
+            var blockDefinitionLabel = new TextBlock();
+            blockDefinitionLabel.Text = "Block definition:";
+
+            Grid.SetRow(blockDefinitionLabel, 0);
+            Grid.SetColumn(blockDefinitionLabel, 0);
+            grid.Children.Add(blockDefinitionLabel);
+
+            // block definition image
             UIElement blockDefinition = new DisplayBlockHelper()
                 .MapBlockDefinitionToCanvasWithBoard(
                     _gameInstance.GameSet.Board,
-                    block);
+                    block,
+                    160);
 
-            Grid.SetRow(blockDefinition, 0);
+            Grid.SetRow(blockDefinition, 1);
             Grid.SetColumn(blockDefinition, 0);
-            //Grid.SetColumnSpan(blockDefinition, );
+            Grid.SetColumnSpan(blockDefinition, 2);
 
+            // allowed locations amount or not supported
             grid.Children.Add(blockDefinition);
+
+            var allowedLocationsLabel = new TextBlock();
+            var allowedLocationValue = block.IsAllowedLocationsEnabled ? block.AllowedLocations.Length.ToString() : "not used";
+            allowedLocationsLabel.Text = $"Allowed locations: {allowedLocationValue}";
+
+            Grid.SetRow(allowedLocationsLabel, 2);
+            Grid.SetColumn(allowedLocationsLabel, 0);
+            grid.Children.Add(allowedLocationsLabel);
 
             return grid;
         }
@@ -78,11 +97,11 @@ namespace Demo.ViewModel
             // Create the Grid
             Grid myGrid = new Grid();
 
-            myGrid.Width = 250;
-            myGrid.Height = 100;
+            //myGrid.Width = 250;
+            //myGrid.Height = 100;
             myGrid.HorizontalAlignment = HorizontalAlignment.Left;
             myGrid.VerticalAlignment = VerticalAlignment.Top;
-            myGrid.ShowGridLines = true;
+            myGrid.ShowGridLines = false;
 
             // Define the Columns
             ColumnDefinition colDef1 = new ColumnDefinition();
@@ -91,13 +110,33 @@ namespace Demo.ViewModel
             myGrid.ColumnDefinitions.Add(colDef2);
 
             // Define the Rows
-            RowDefinition rowDef1 = new RowDefinition(); // Block definition
-            RowDefinition rowDef2 = new RowDefinition(); // Allowed locations, later as checkbox on selected display
-            RowDefinition rowDef3 = new RowDefinition(); // HasMesh 
-            RowDefinition rowDef4 = new RowDefinition(); // * Mesh side A
-            RowDefinition rowDef5 = new RowDefinition(); // * Mesh side B
+            RowDefinition rowDef1 = new RowDefinition()
+            {
+                Height = GridLength.Auto
+            };// Block definition label
+            RowDefinition rowDef1b = new RowDefinition()
+            {
+                Height = new GridLength(160)
+            }; // Allowed locations, later as checkbox on selected display
+            RowDefinition rowDef2 = new RowDefinition()
+            {
+                Height = GridLength.Auto
+            };// Allowed locations, later as checkbox on selected display
+            RowDefinition rowDef3 = new RowDefinition()
+            {
+                Height = GridLength.Auto
+            };// HasMesh 
+            RowDefinition rowDef4 = new RowDefinition()
+            {
+                Height = GridLength.Auto
+            };// * Mesh side A
+            RowDefinition rowDef5 = new RowDefinition()
+                            {
+                Height = GridLength.Auto
+            };// * Mesh side B
 
             myGrid.RowDefinitions.Add(rowDef1);
+            myGrid.RowDefinitions.Add(rowDef1b);
             myGrid.RowDefinitions.Add(rowDef2);
             myGrid.RowDefinitions.Add(rowDef3);
             myGrid.RowDefinitions.Add(rowDef4);
