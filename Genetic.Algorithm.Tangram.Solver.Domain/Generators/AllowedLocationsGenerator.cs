@@ -151,7 +151,6 @@ public class AllowedLocationsGenerator
     {
         BlockBase modifiedMadeOfFields = block.Clone(true);
 
-        // EXPERIMENTAL
         if (hasToBeFlipped)
         {
             modifiedMadeOfFields.Reflection();
@@ -167,12 +166,6 @@ public class AllowedLocationsGenerator
                 (int)(modifiedMadeOfFields.Polygon.EnvelopeInternal.Height / fieldHeight),
                 blockSideMarkups
             ).ConvertToGeometryCollection();
-
-        // EXPERIMENTAL
-        //if (hasToBeFlipped)
-        //{
-        //    fieldsToBeTransformed.Reflection();
-        //}
 
         fieldsToBeTransformed.Rotate(angleInDegreesFromAllowedAngles);
         fieldsToBeTransformed.MoveTo(i, j);
