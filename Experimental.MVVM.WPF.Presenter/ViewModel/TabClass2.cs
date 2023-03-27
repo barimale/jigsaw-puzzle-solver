@@ -1,7 +1,6 @@
 ﻿using Algorithm.Tangram.Common.Extensions;
 using Solver.Tangram.Game.Logic;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;

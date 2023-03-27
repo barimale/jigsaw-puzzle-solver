@@ -1,13 +1,7 @@
-﻿using Algorithm.Tangram.Common.Extensions;
-using Solver.Tangram.Game.Logic;
-using System.Text;
+﻿using Solver.Tangram.Game.Logic;
 using System.Windows.Controls;
 using System.Windows;
-using Tangram.GameParts.Logic.GameParts.Block;
 using System.Linq;
-using System.Windows.Documents;
-using Tangram.GameParts.Logic.GameParts.Board;
-using NetTopologySuite.Utilities;
 using Tangram.GameParts.Logic.Utilities;
 
 namespace Demo.ViewModel
