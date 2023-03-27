@@ -35,7 +35,8 @@ with statistics:
 
 hide as many classes as possible -> so composition once again	
 
-figure it out why just method names are not displayed in test explorer
 
 // implement the GPU based permutation calculator
 // by using GPULinq
+
+figure it out why just method names are not displayed in test explorer

@@ -20,10 +20,9 @@ namespace Demo.SampleData
             get => _itemCollection ?? (_itemCollection =
                        new ObservableCollection<TabBase>
                        {
-                           CreateTab1(),
-                           CreateTab2(),
-                           CreateTab3(),
-                           CreateTab4()
+                           CreateSolutionCircuitTab(),
+                           CreateGameElementsTab(),
+                           CreateBoardDetailsTab(),
                        });
             set => _itemCollection = value;
         }

@@ -1,9 +1,0 @@
-﻿<Application x:Class="Genetic.Algorithm.Tangram.Solver.App"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Genetic.Algorithm.Tangram.Solver"
-             StartupUri="MainWindow.xaml">
-    <Application.Resources>
-         
-    </Application.Resources>
-</Application>

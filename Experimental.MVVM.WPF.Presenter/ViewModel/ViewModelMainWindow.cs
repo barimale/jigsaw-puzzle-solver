@@ -37,10 +37,9 @@ namespace Demo.ViewModel
         public ViewModelMainWindow()
         {
             //Adding items to the collection creates a tab
-            ItemCollection.Add(CreateTab1());
-            ItemCollection.Add(CreateTab2());
-            ItemCollection.Add(CreateTab3());
-            ItemCollection.Add(CreateTab4());
+            ItemCollection.Add(CreateSolutionCircuitTab());
+            ItemCollection.Add(CreateGameElementsTab());
+            ItemCollection.Add(CreateBoardDetailsTab());
 
             SelectedTab = ItemCollection.FirstOrDefault();
             ICollectionView view = CollectionViewSource.GetDefaultView(ItemCollection);

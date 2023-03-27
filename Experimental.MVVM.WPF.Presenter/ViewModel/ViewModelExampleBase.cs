@@ -61,6 +61,7 @@ namespace Demo.ViewModel
             _gameInstance = CreateGame();
         }
 
+        // TODO: create set of listboxes and create game dynamically
         private Game CreateGame()
         {
             // TODO: continue from here
@@ -85,7 +86,7 @@ namespace Demo.ViewModel
             return konfiguracjaGry;
         }
 
-        protected TabClass1 CreateTab1()
+        protected TabClass1 CreateSolutionCircuitTab()
         {
             var tab = new TabClass1(ref _gameInstance) {
                 TabName = "Solution circuit",
@@ -94,7 +95,8 @@ namespace Demo.ViewModel
 
             return tab;
         }
-        protected TabClass2 CreateTab2()
+
+        protected TabClass2 CreateGameElementsTab()
         {
             var tab = new TabClass2(ref _gameInstance) {
                 TabName = "Elements",
@@ -104,22 +106,12 @@ namespace Demo.ViewModel
             return tab;
 
         }
-        protected TabClass3 CreateTab3()
+
+        protected TabClass3 CreateBoardDetailsTab()
         {
             var tab = new TabClass3(ref _gameInstance) {
                 TabName = "Board",
                 TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative))
-            };
-
-            return tab;
-        }
-        protected TabClass4 CreateTab4()
-        {
-            var tab = new TabClass4 {
-                TabName = "Tab class 4",
-                MyStringContent = "This tab demonstrates a custom tab header implementation",
-                IsBlinking=true,
-                TabIcon = new BitmapImage(new Uri("/Resources/4.png", UriKind.Relative))
             };
 
             return tab;
@@ -193,11 +185,11 @@ namespace Demo.ViewModel
             Random r = new Random();
             int num = r.Next(1, 100);
             if (num < 33)
-                ItemCollection.Add(CreateTab1());
+                ItemCollection.Add(CreateSolutionCircuitTab());
             else if (num < 66)
-                ItemCollection.Add(CreateTab2());
+                ItemCollection.Add(CreateGameElementsTab());
             else
-                ItemCollection.Add(CreateTab3());
+                ItemCollection.Add(CreateBoardDetailsTab());
         }
     }
 }

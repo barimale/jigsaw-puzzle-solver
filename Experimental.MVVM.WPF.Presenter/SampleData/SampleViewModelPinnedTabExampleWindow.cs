@@ -23,12 +23,11 @@ namespace Demo.SampleData
             {
                 if (_itemCollection != null) return _itemCollection;
                 _itemCollection = new ObservableCollection<TabBase>();
-                TabBase tab1 = CreateTab1();
+                TabBase tab1 = CreateSolutionCircuitTab();
                 tab1.IsPinned = true;
                 _itemCollection.Add(tab1);
-                _itemCollection.Add(CreateTab2());
-                _itemCollection.Add(CreateTab3());
-                _itemCollection.Add(CreateTab4());
+                _itemCollection.Add(CreateGameElementsTab());
+                _itemCollection.Add(CreateBoardDetailsTab());
                 return _itemCollection;
             }
             set => _itemCollection = value;
