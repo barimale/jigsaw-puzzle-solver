@@ -13,10 +13,6 @@ namespace Demo.ViewModel
             this._gameInstance = gameInstance;
         }
 
-        // expose data as properties
-
-        public string MyStringContent { get; set; }
-        public string MyStringContent2 { get; set; }
         public object MyCanvasContent { get; set; } = new Canvas()
         {
             Background = new SolidColorBrush()

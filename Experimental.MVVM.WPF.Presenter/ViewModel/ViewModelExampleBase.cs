@@ -89,18 +89,30 @@ namespace Demo.ViewModel
 
         protected TabClass1 CreateTab1()
         {
-            var tab = new TabClass1(ref _gameInstance) { TabName = "Solution circuit", MyStringContent2 = "DUMMY", MyStringContent = "Try drag the tab from left to right", TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative)) };
+            var tab = new TabClass1(ref _gameInstance) {
+                TabName = "Solution circuit",
+                TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative))
+            };
+
             return tab;
         }
         protected TabClass2 CreateTab2()
         {
-            var tab = new TabClass2(ref _gameInstance) { TabName = "Elements", MyStringContent = "Try drag the tab outside the bonds of the tab control", MyNumberCollection = new[] { 1, 2, 3, 4 }, MySelectedNumber = 1, TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative)) };
+            var tab = new TabClass2(ref _gameInstance) {
+                TabName = "Elements",
+                TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative))
+            };
+
             return tab;
 
         }
         protected TabClass3 CreateTab3()
         {
-            var tab = new TabClass3(ref _gameInstance) { TabName = "Board", MyStringContent = "Try right clicking on the tab header. This tab can not be dragged out to a new window, to demonstrate that you can dynamically choose what tabs can, based on the viewmodel.", MyImageUrl = new Uri("/Resources/Kitten.jpg", UriKind.Relative), TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative)) };
+            var tab = new TabClass3(ref _gameInstance) {
+                TabName = "Board",
+                TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative))
+            };
+
             return tab;
         }
         protected TabClass4 CreateTab4()
@@ -110,7 +122,11 @@ namespace Demo.ViewModel
         }
         protected TabClass1 CreateTabLoremIpsum()
         {
-            var tab = new TabClass1(ref _gameInstance) { TabName = "Tab class 1", MyStringContent2="DUMMY", MyStringContent = Resources.LoremIpsum, TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative)) };
+            var tab = new TabClass1(ref _gameInstance) {
+                TabName = "Tab class 1",
+                TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative))
+            };
+
             return tab;
         }
         /// <summary>

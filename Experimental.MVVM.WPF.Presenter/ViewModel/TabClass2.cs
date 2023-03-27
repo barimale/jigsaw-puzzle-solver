@@ -20,9 +20,6 @@ namespace Demo.ViewModel
             MyCanvasContent = MapBlocksToTabItems();
         }
 
-        public string MyStringContent { get; set; }
-        public int[] MyNumberCollection { get; set; }
-        public int MySelectedNumber { get; set; }
         public UIElement MyCanvasContent { get; set; }
 
         private UIElement MapBlocksToTabItems()

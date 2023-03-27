@@ -11,6 +11,33 @@ namespace Demo.ViewModel
 {
     public class DisplayBlockHelper
     {
+        public UIElement MapBoardToCanvas(BoardShapeBase board, int canvasHeight)
+        {
+            // clear canvas
+            var canvas = new Canvas();
+            canvas.Height = canvasHeight;
+            canvas.RenderTransform = new ScaleTransform(30, 30);
+
+            // show board
+            var boardComponent = new Polygon();
+            boardComponent.Points = new PointCollection();
+            boardComponent.Fill = Brushes.WhiteSmoke;
+            boardComponent.Stroke = Brushes.Black;
+            boardComponent.StrokeThickness = 0.1d;
+
+            board
+                .Polygon
+                .Coordinates
+                .ToList()
+                .ForEach(p => boardComponent
+                    .Points
+                    .Add(new Point(p.X, p.Y)));
+
+            canvas.Children.Add(boardComponent);
+
+            return canvas;
+        }
+
         public UIElement MapBlockDefinitionToCanvasWithBoard(BoardShapeBase board, BlockBase block, int canvasHeight)
         {
             // clear canvas
