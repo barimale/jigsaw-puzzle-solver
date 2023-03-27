@@ -10,13 +10,13 @@ namespace Tangram.GameParts.Elements.Elements.Blocks
         public Purple()
         {
             fieldRestriction1side = new object[,] {
-                { "O", NA, "O" },
-                { "X", "O", "X" }
+                { "X", "O", "X" },
+                { "O", NA, "O" }
             };
 
             fieldRestriction2side = new object[,] {
-                { "X", NA, "X" },
-                { "O", "X", "O" }
+                { "O", "X", "O" },
+                { "X", NA, "X" }
             };
 
             color = Color.Purple;

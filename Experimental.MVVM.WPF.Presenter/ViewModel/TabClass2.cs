@@ -36,10 +36,11 @@ namespace Demo.ViewModel
                 .WithIndex()
                 .Select(block =>
                     {
+                        var colorName = block.item.Color.IsNamedColor ? block.item.Color.Name : $"ARGB: {block.item.Color.ToArgb()}";
                         return new TabItem()
                         {
                             Content = MapBlockToDetails(block.item),
-                            Header = $"Block #{block.index}",
+                            Header = $"Block #{block.index}({colorName})",
                         };
                     })
                 .ToList();
@@ -159,6 +160,8 @@ namespace Demo.ViewModel
             var mesh = block.FieldRestrictionMarkups[sideNumber];
             var columns = mesh.ColumnsCount();
             var rows = mesh.RowsCount();
+
+            // TODO: maybe use the fieldtransformer here or create new one 
 
             var builder = new StringBuilder();
             for(var rowIndex = 0; rowIndex < rows; rowIndex++)

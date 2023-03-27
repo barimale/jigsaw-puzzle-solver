@@ -10,15 +10,15 @@ namespace Tangram.GameParts.Elements.Elements.Blocks
         public LightBlue()
         {
             fieldRestriction1side = new object[,] {
-                { "O", NA, NA},
+                { "O", "X", "O"},
                 { "X", NA, NA},
-                { "O", "X", "O"}
-            };
+                { "O", NA, NA}
+                            };
 
-            fieldRestriction2side = new object[,] {
-                { NA, NA, "X" },
+            fieldRestriction2side = new object[,] { 
+                { "X", "O", "X" },
                 { NA, NA, "O" },
-                { "X", "O", "X" }
+                { NA, NA, "X" }
             };
 
             color = Color.LightBlue;
