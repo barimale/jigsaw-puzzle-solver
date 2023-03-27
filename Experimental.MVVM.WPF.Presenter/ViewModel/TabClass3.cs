@@ -48,6 +48,9 @@ namespace Demo.ViewModel
             grid.Children.Add(boardDefinitionContent);
 
             // TODO: continue from here
+            // TODO: put mesh to board as nullable
+            // together with the definition of matches
+
             //var hasMeshLabel = new TextBlock();
             //var hasMeshValue = board. .IsExtraRistricted;
             //hasMeshLabel.Text = $"Has mesh: {hasMeshValue}";
