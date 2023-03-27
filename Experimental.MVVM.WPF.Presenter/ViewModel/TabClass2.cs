@@ -153,7 +153,8 @@ namespace Demo.ViewModel
             return grid;
         }
 
-        private static string MeshSideToString(BlockBase block, int sideNumber)
+        // provide it from polishgamebaseblock later on
+        private static string MeshSideToString(BlockBase block, int sideNumber, string markupToClean = "&&&")
         {
             var mesh = block.FieldRestrictionMarkups[sideNumber];
             var columns = mesh.ColumnsCount();
@@ -164,7 +165,7 @@ namespace Demo.ViewModel
             {
                 var currentRow = mesh.GetRow(rowIndex);
                 var currentRowAsStrings = currentRow.Select(p => (string)p).ToArray();
-                var currentRowAsString = string.Join(' ', currentRowAsStrings);
+                var currentRowAsString = string.Join(' ', currentRowAsStrings).Replace(markupToClean, "  ");
                 // TODO: replace not field tag by empty
                 builder.Append(currentRowAsString);
                 if (rowIndex < rows -1) builder.AppendLine();
