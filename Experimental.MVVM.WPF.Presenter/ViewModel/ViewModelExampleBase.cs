@@ -3,11 +3,9 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
-using System.Net.Http;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 using ChromeTabs;
-using Demo.Properties;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Solver.Tangram.Game.Logic;
@@ -117,18 +115,16 @@ namespace Demo.ViewModel
         }
         protected TabClass4 CreateTab4()
         {
-            var tab = new TabClass4 { TabName = "Tab class 4", MyStringContent = "This tab demonstrates a custom tab header implementation", IsBlinking=true };
-            return tab;
-        }
-        protected TabClass1 CreateTabLoremIpsum()
-        {
-            var tab = new TabClass1(ref _gameInstance) {
-                TabName = "Tab class 1",
-                TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative))
+            var tab = new TabClass4 {
+                TabName = "Tab class 4",
+                MyStringContent = "This tab demonstrates a custom tab header implementation",
+                IsBlinking=true,
+                TabIcon = new BitmapImage(new Uri("/Resources/4.png", UriKind.Relative))
             };
 
             return tab;
         }
+
         /// <summary>
         /// Reorder the tabs and refresh collection sorting.
         /// </summary>

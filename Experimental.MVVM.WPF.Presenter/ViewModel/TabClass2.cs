@@ -151,7 +151,88 @@ namespace Demo.ViewModel
                 grid.Children.Add(meshBContent);
             }
 
+            if (block.IsAllowedLocationsEnabled)
+            {
+                var allowedLocationsListLabel = new TextBlock();
+                allowedLocationsListLabel.Text = $"Allowed locations list:";
+                allowedLocationsListLabel.Margin = new Thickness(0, 0, 0, 8);
+
+                Grid.SetRow(allowedLocationsListLabel, 6);
+                Grid.SetColumn(allowedLocationsListLabel, 0);
+                grid.Children.Add(allowedLocationsListLabel);
+
+                Grid innerGrid = CreateInnerGrid();
+                block.AllowedLocations.ToList().ForEach(_ =>
+                {
+                    var rowDefinitionLabel = new RowDefinition()
+                    {
+                        Height = GridLength.Auto
+                    };
+
+                    var rowDefinition = new RowDefinition()
+                    {
+                        Height = new GridLength()
+                    };
+
+                    innerGrid.RowDefinitions.Add(rowDefinitionLabel);
+                    innerGrid.RowDefinitions.Add(rowDefinition);
+                });
+
+                block.AllowedLocations.WithIndex().ToList().ForEach(location =>
+                {
+                    // label
+                    var locationDefinitionLabel = new TextBlock();
+                    locationDefinitionLabel.Text = $"#{location.index+1}:";
+                    locationDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
+
+                    Grid.SetRow(locationDefinitionLabel, 2*location.index);
+                    Grid.SetColumn(locationDefinitionLabel, 0);
+                    Grid.SetColumnSpan(locationDefinitionLabel, 2);
+                    innerGrid.Children.Add(locationDefinitionLabel);
+
+                    // create canvas for every location and add to row
+                    UIElement locationDefinition = new DisplayBlockHelper()
+                       .MapAllowedLocationToCanvasWithBoard(
+                           location.item,
+                           _gameInstance.GameSet.Board,
+                           block,
+                           160);
+
+                    Grid.SetRow(locationDefinition, 2*location.index+1);
+                    Grid.SetColumn(locationDefinition, 0);
+                    Grid.SetColumnSpan(locationDefinition, 2);
+                    innerGrid.Children.Add(locationDefinition);
+                });
+
+                Grid.SetRow(innerGrid, 7);
+                Grid.SetColumn(innerGrid, 0);
+                Grid.SetColumnSpan(innerGrid, 2);
+                grid.Children.Add(innerGrid);
+            }
+
+
+
             return grid;
+        }
+
+        private static Grid CreateInnerGrid()
+        {
+            var innerGrid = new Grid();
+            innerGrid.HorizontalAlignment = HorizontalAlignment.Left;
+            innerGrid.VerticalAlignment = VerticalAlignment.Top;
+            innerGrid.ShowGridLines = false;
+
+            ColumnDefinition columnDef1 = new ColumnDefinition()
+            {
+                Width = new GridLength(360)
+            };
+            ColumnDefinition columnDef2 = new ColumnDefinition()
+            {
+                Width = new GridLength(360)
+            };
+            innerGrid.ColumnDefinitions.Add(columnDef1);
+            innerGrid.ColumnDefinitions.Add(columnDef2);
+            return innerGrid;
         }
 
         private Grid GetGridDefinition()
@@ -159,8 +240,6 @@ namespace Demo.ViewModel
             // Create the Grid
             Grid myGrid = new Grid();
 
-            //myGrid.Width = 250;
-            //myGrid.Height = 100;
             myGrid.HorizontalAlignment = HorizontalAlignment.Left;
             myGrid.VerticalAlignment = VerticalAlignment.Top;
             myGrid.ShowGridLines = false;
@@ -178,29 +257,43 @@ namespace Demo.ViewModel
             myGrid.ColumnDefinitions.Add(colDef2);
 
             // Define the Rows
+            // 1
             RowDefinition rowDef1 = new RowDefinition()
             {
                 Height = GridLength.Auto
-            };// Block definition label
+            };
+            // 2
             RowDefinition rowDef1b = new RowDefinition()
             {
                 Height = new GridLength(160)
-            }; // Allowed locations, later as checkbox on selected display
+            };
+            // 3
             RowDefinition rowDef2 = new RowDefinition()
             {
                 Height = GridLength.Auto
-            };// Allowed locations, later as checkbox on selected display
+            };
+            // 4
             RowDefinition rowDef3 = new RowDefinition()
             {
                 Height = GridLength.Auto
-            };// MEsh Side A
+            };
+            // 5
             RowDefinition rowDef4 = new RowDefinition()
             {
                 Height = new GridLength(160)
-            }; ;// * Mesh side B
+            };
+            // 6
             RowDefinition rowDef5 = new RowDefinition()
             {
                 Height = new GridLength(160)
+            };
+            RowDefinition rowDef6a = new RowDefinition()
+            {
+                Height = GridLength.Auto
+            };
+            RowDefinition rowDef6b = new RowDefinition()
+            {
+                Height = new GridLength(1, GridUnitType.Star)
             };
 
             myGrid.RowDefinitions.Add(rowDef1);
@@ -209,6 +302,8 @@ namespace Demo.ViewModel
             myGrid.RowDefinitions.Add(rowDef3);
             myGrid.RowDefinitions.Add(rowDef4);
             myGrid.RowDefinitions.Add(rowDef5);
+            myGrid.RowDefinitions.Add(rowDef6a);
+            myGrid.RowDefinitions.Add(rowDef6b);
 
             return myGrid;
         }

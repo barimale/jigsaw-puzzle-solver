@@ -11,6 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resources\4.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\4.png" />
     <Resource Include="Resources\kitten.jpg" />
   </ItemGroup>
 

@@ -23,7 +23,7 @@ namespace Demo.SampleData
                            CreateTab1(),
                            CreateTab2(),
                            CreateTab3(),
-                           CreateTabLoremIpsum()
+                           CreateTab4()
                        });
             set => _itemCollection = value;
         }

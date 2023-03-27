@@ -17,7 +17,7 @@ namespace Demo.ViewModel
             ItemCollection.Add(vm1);
             ItemCollection.Add(CreateTab2());
             ItemCollection.Add(CreateTab3());
-            ItemCollection.Add(CreateTabLoremIpsum());
+            ItemCollection.Add(CreateTab4());
             SelectedTab = ItemCollection.FirstOrDefault();
             ICollectionView view = CollectionViewSource.GetDefaultView(ItemCollection);
             //This sort description is what keeps the source collection sorted, based on tab number. 

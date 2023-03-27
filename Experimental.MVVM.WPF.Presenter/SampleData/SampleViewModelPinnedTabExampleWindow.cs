@@ -28,7 +28,7 @@ namespace Demo.SampleData
                 _itemCollection.Add(tab1);
                 _itemCollection.Add(CreateTab2());
                 _itemCollection.Add(CreateTab3());
-                _itemCollection.Add(CreateTabLoremIpsum());
+                _itemCollection.Add(CreateTab4());
                 return _itemCollection;
             }
             set => _itemCollection = value;

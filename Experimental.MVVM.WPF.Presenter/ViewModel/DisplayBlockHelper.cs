@@ -80,6 +80,14 @@ namespace Demo.ViewModel
             return canvas;
         }
 
+        public UIElement MapAllowedLocationToCanvasWithBoard(NetTopologySuite.Geometries.Geometry location, BoardShapeBase board, BlockBase block, int canvasHeight)
+        {
+            var cloned = block.Clone(true);
+            cloned.Apply(location);
+
+            return MapBlockDefinitionToCanvasWithBoard(board, cloned, canvasHeight);
+        }
+
         public UIElement? MapBlockDefinitionToMeshSideB(BoardShapeBase board, BlockBase blockOriginal, int canvasHeight)
         {
             var block = blockOriginal.Clone();

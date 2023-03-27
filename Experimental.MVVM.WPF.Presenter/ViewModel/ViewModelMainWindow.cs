@@ -40,7 +40,7 @@ namespace Demo.ViewModel
             ItemCollection.Add(CreateTab1());
             ItemCollection.Add(CreateTab2());
             ItemCollection.Add(CreateTab3());
-            ItemCollection.Add(CreateTabLoremIpsum());
+            ItemCollection.Add(CreateTab4());
 
             SelectedTab = ItemCollection.FirstOrDefault();
             ICollectionView view = CollectionViewSource.GetDefaultView(ItemCollection);
