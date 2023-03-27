@@ -22,7 +22,7 @@ namespace Demo.ViewModel
             boardComponent.Points = new PointCollection();
             boardComponent.Fill = Brushes.White;
             boardComponent.Stroke = Brushes.Black;
-            boardComponent.StrokeThickness = 0.1d;
+            boardComponent.StrokeThickness = 0.05d;
 
             board
                 .Polygon
