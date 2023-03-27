@@ -1,6 +1,7 @@
 ﻿using Algorithm.Tangram.Common.Extensions;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Prepared;
+using System.Collections.Concurrent;
 using Tangram.GameParts.Logic.Extensions;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
@@ -39,9 +40,9 @@ public class AllowedLocationsGenerator
         BoardShapeBase board,
         int[] angles)
     {
-        var modified = new List<BlockBase>();
+        var modified = new ConcurrentBag<BlockBase>();
         // calculate allowed locations of blocks
-        foreach (var block in blocks.ToList())
+        blocks.ToList().AsParallel().ForAll(block =>
         {
             var locations = Generate(
                 block,
@@ -52,9 +53,10 @@ public class AllowedLocationsGenerator
 
             block.SetAllowedLocations(locations);
             modified.Add(block.Clone());
-        }
+        });
 
-        return modified;
+        return modified
+            .ToList();
     }
 
     private Geometry[] Generate(
@@ -149,6 +151,12 @@ public class AllowedLocationsGenerator
     {
         BlockBase modifiedMadeOfFields = block.Clone(true);
 
+        // EXPERIMENTAL
+        if (hasToBeFlipped)
+        {
+            modifiedMadeOfFields.Reflection();
+        }
+
         var blockSideMarkups = modifiedMadeOfFields.FieldRestrictionMarkups[hasToBeFlipped ? 1 : 0];
         var fieldsToBeTransformed = new RectangularGameFieldsGenerator()
             .GenerateFields(
@@ -160,10 +168,11 @@ public class AllowedLocationsGenerator
                 blockSideMarkups
             ).ConvertToGeometryCollection();
 
-        if (hasToBeFlipped)
-        {
-            fieldsToBeTransformed.Reflection();
-        }
+        // EXPERIMENTAL
+        //if (hasToBeFlipped)
+        //{
+        //    fieldsToBeTransformed.Reflection();
+        //}
 
         fieldsToBeTransformed.Rotate(angleInDegreesFromAllowedAngles);
         fieldsToBeTransformed.MoveTo(i, j);
