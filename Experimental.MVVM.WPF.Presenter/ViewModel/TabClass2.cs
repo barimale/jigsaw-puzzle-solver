@@ -46,7 +46,7 @@ namespace Demo.ViewModel
             {
                 Background = new SolidColorBrush()
                 {
-                    Color = Colors.DarkGreen,
+                    Color = Colors.WhiteSmoke,
                 },
                 ItemsSource = tabItems
             };
