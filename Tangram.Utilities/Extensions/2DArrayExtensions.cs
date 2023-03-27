@@ -1,6 +1,4 @@
-﻿using NetTopologySuite.Algorithm;
-
-namespace Algorithm.Tangram.Common.Extensions
+﻿namespace Algorithm.Tangram.Common.Extensions
 {
     // it is dedicated for classic arrays, for which lengths of columns
     // are the same and lengths of rows are the same
