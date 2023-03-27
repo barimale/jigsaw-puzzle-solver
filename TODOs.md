@@ -1,13 +1,16 @@
-
-double check blocks
-create UTs for all TODOs
-
-when elastic ready
 provide interfaces 
+
+
 ninject
+
 and reuse library 
 in backend rest api 
+so when already added to rest api
+complex allowedlocation with history ID only and transformation list in db
 add db + eframework
+
+when elastic ready
+
 // later on add the elasticsearch and use analytics-related methods
 // to estimate execution time for all algorithms
 OnExecutionEstimationReady
