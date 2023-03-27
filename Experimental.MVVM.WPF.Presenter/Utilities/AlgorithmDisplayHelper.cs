@@ -101,7 +101,7 @@ namespace Demo.Utilities
                 {
                     var pathToApplause = System.IO.Path.Join(
                         Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName,
-                        @"Sounds\applause.wav");
+                        @"Resources\Sounds\applause.wav");
 
                     var player = new System.Media.SoundPlayer(pathToApplause);
                     player.Play();
@@ -122,9 +122,9 @@ namespace Demo.Utilities
                 // show board
                 var board = new Polygon();
                 board.Points = new PointCollection();
-                board.Fill = Brushes.White;
-                board.Stroke = Brushes.Black;
-                board.StrokeThickness = 0.1d;
+                board.Fill = Brushes.GhostWhite;
+                board.Stroke = Brushes.DarkGray;
+                board.StrokeThickness = 0.05d;
 
                 c.BoardShapeDefinition
                     .Polygon
@@ -152,8 +152,8 @@ namespace Demo.Utilities
                             .Select(pp => new Point(pp.X, pp.Y))
                             .ToList());
                         shape.Fill = ConvertColor(p.Color);
-                        //shape.Stroke = Brushes.Black;
-                        shape.StrokeThickness = 0;
+                        shape.Stroke = Brushes.Silver;
+                        shape.StrokeThickness = 0.05d;
                         return (UIElement)shape;
                     })
                     .ToList();
@@ -175,9 +175,9 @@ namespace Demo.Utilities
                 // show board
                 var board = new Polygon();
                 board.Points = new PointCollection();
-                board.Fill = Brushes.White;
-                board.Stroke = Brushes.Black;
-                board.StrokeThickness = 0.1d;
+                board.Fill = Brushes.GhostWhite;
+                board.Stroke = Brushes.DarkGray;
+                board.StrokeThickness = 0.05d;
 
                 c.Board
                     .Polygon
@@ -205,8 +205,8 @@ namespace Demo.Utilities
                             .Select(pp => new Point(pp.X, pp.Y))
                             .ToList());
                         shape.Fill = ConvertColor(p.Color);
-                        //shape.Stroke = Brushes.Black;
-                        shape.StrokeThickness = 0;
+                        shape.Stroke = Brushes.Silver;
+                        shape.StrokeThickness = 0.05d;
                         return (UIElement)shape;
                     })
                     .ToList();
@@ -218,7 +218,13 @@ namespace Demo.Utilities
         public static SolidColorBrush ConvertColor(System.Drawing.Color value)
         {
             System.Drawing.Color color = value;
-            Color converted = Color.FromArgb(color.A, color.R, color.G, color.B);
+
+            Color converted = Color.FromArgb(
+                color.A,
+                color.R,
+                color.G,
+                color.B);
+
             return new SolidColorBrush(converted);
         }
     }
