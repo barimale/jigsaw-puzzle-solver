@@ -68,7 +68,7 @@ namespace Demo.ViewModel
             // TODO: continue from here
             var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishBigBoard(withAllowedLocations: true);
+                    .CreatePolishMediumBoard(withAllowedLocations: true);
 
             var algorithm = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
