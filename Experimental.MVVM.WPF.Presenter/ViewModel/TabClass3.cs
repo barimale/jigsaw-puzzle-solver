@@ -74,18 +74,28 @@ namespace Demo.ViewModel
 
                 grid.Children.Add(meshContent);
 
+                var allowedMatchesLabel = new TextBlock();
+                allowedMatchesLabel.Text = $"Allowed matches:";
+                allowedMatchesLabel.Margin = new Thickness(0, 0, 0, 8);
+
+                Grid.SetRow(allowedMatchesLabel, 3);
+                Grid.SetColumn(allowedMatchesLabel, 1);
+                Grid.SetColumnSpan(allowedMatchesLabel, 1);
+
+                grid.Children.Add(allowedMatchesLabel);
+
                 var allowedMatches = new TextBlock();
                 var allowedMatchesValue = board
                     .AllowedMatches
                     .Select(p => $"{p.Item1} - {p.Item2}")
                     .ToArray();
 
-                allowedMatches.Text = $"Allowed matches: {string.Join(", ", allowedMatchesValue)}";
+                allowedMatches.Text = $"{string.Join(", ", allowedMatchesValue)}";
                 allowedMatches.Margin = new Thickness(0, 0, 0, 8);
 
                 Grid.SetRow(allowedMatches, 4);
                 Grid.SetColumn(allowedMatches, 1);
-                Grid.SetColumnSpan(allowedMatches, 2);
+                Grid.SetColumnSpan(allowedMatches, 1);
 
                 grid.Children.Add(allowedMatches);
             }
