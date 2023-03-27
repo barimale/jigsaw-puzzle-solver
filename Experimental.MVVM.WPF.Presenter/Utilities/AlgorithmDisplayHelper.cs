@@ -215,7 +215,7 @@ namespace Demo.Utilities
             });
         }
 
-        private SolidColorBrush ConvertColor(System.Drawing.Color value)
+        public static SolidColorBrush ConvertColor(System.Drawing.Color value)
         {
             System.Drawing.Color color = value;
             Color converted = Color.FromArgb(color.A, color.R, color.G, color.B);
