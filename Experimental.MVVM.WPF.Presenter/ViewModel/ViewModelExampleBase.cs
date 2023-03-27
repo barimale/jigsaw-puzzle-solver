@@ -48,6 +48,7 @@ namespace Demo.ViewModel
             }
         }
 
+        private Game _gameInstance;
 
         public ViewModelExampleBase()
         {
@@ -57,9 +58,12 @@ namespace Demo.ViewModel
             AddTabCommand = new RelayCommand(AddTabCommandAction,()=>CanAddTabs);
             CloseTabCommand = new RelayCommand<TabBase>(CloseTabCommandAction);
             CanAddTabs = true;
+
+            // TODO: one instance for now, later instances in a form of outer tabcontrol.
+            _gameInstance = CreateGame();
         }
 
-        protected TabClass1 CreateTab1()
+        private Game CreateGame()
         {
             // TODO: continue from here
             var gameParts = GameBuilder
@@ -80,18 +84,23 @@ namespace Demo.ViewModel
                 .WithAlgorithm(algorithm)
                 .Build();
 
-            var tab = new TabClass1 { TabName = "Tab class 1", MyStringContent2 = "DUMMY", MyStringContent = "Try drag the tab from left to right", TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative)) };
+            return konfiguracjaGry;
+        }
+
+        protected TabClass1 CreateTab1()
+        {
+            var tab = new TabClass1(ref _gameInstance) { TabName = "Game", MyStringContent2 = "DUMMY", MyStringContent = "Try drag the tab from left to right", TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative)) };
             return tab;
         }
         protected TabClass2 CreateTab2()
         {
-            var tab = new TabClass2 { TabName = "Tab class 2, with a long name", MyStringContent = "Try drag the tab outside the bonds of the tab control", MyNumberCollection = new[] { 1, 2, 3, 4 }, MySelectedNumber = 1, TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative)) };
+            var tab = new TabClass2(ref _gameInstance) { TabName = "Game elements", MyStringContent = "Try drag the tab outside the bonds of the tab control", MyNumberCollection = new[] { 1, 2, 3, 4 }, MySelectedNumber = 1, TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative)) };
             return tab;
 
         }
         protected TabClass3 CreateTab3()
         {
-            var tab = new TabClass3 { TabName = "Tab class 3", MyStringContent = "Try right clicking on the tab header. This tab can not be dragged out to a new window, to demonstrate that you can dynamically choose what tabs can, based on the viewmodel.", MyImageUrl = new Uri("/Resources/Kitten.jpg", UriKind.Relative), TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative)) };
+            var tab = new TabClass3(ref _gameInstance) { TabName = "Data", MyStringContent = "Try right clicking on the tab header. This tab can not be dragged out to a new window, to demonstrate that you can dynamically choose what tabs can, based on the viewmodel.", MyImageUrl = new Uri("/Resources/Kitten.jpg", UriKind.Relative), TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative)) };
             return tab;
         }
         protected TabClass4 CreateTab4()
@@ -101,7 +110,7 @@ namespace Demo.ViewModel
         }
         protected TabClass1 CreateTabLoremIpsum()
         {
-            var tab = new TabClass1 { TabName = "Tab class 1", MyStringContent2="DUMMY", MyStringContent = Resources.LoremIpsum, TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative)) };
+            var tab = new TabClass1(ref _gameInstance) { TabName = "Tab class 1", MyStringContent2="DUMMY", MyStringContent = Resources.LoremIpsum, TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative)) };
             return tab;
         }
         /// <summary>
