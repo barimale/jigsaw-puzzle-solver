@@ -10,15 +10,15 @@ namespace Tangram.GameParts.Elements.Elements.Blocks
         public Yellow()
         {
             fieldRestriction1side = new object[,] {
-                { NA, "X", NA },
+                { "O", "X", "O" },
                 { NA, "O", NA },
-                { "O", "X", "O" }
+                { NA, "X", NA }
             };
 
             fieldRestriction2side = new object[,] {
-                { NA, "O", NA },
+                { "X", "O", "X" },
                 { NA, "X", NA },
-                { "X", "O", "X" }
+                { NA, "O", NA }
             };
 
             color = Color.Yellow;
