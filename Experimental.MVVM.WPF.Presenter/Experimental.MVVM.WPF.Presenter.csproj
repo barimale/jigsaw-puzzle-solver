@@ -20,8 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Genetic.Algorithm.Tangram.Solver.Logic.UT\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj" />
-    <ProjectReference Include="..\ChromeTabs\Experimental.MVVM.Backend.Chrometabs.csproj" />
+    <ProjectReference Include="..\Experimental.MVVM.Backend.Chrometabs\Experimental.MVVM.Backend.Chrometabs.csproj" />
+    <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
+    <ProjectReference Include="..\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.Game.Logic.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts.Configurator\Solver.Tangram.AlgorithmDefinitions.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts\Tangram.GameParts.Elements.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">
