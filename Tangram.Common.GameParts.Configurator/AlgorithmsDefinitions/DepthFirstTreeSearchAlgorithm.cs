@@ -1,7 +1,6 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
-using System.Collections.Concurrent;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
@@ -17,6 +16,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             IList<BlockBase> blocks)
             : base(new FindFittestSolution(board, blocks))
         {
+            // TODO WIP maybe remove it for now?
             this.maximalAmountOfIterations = blocks
                 .Select(p => p.AllowedLocations.Length)
                 .Aggregate(1, (x, y) => x * y);
@@ -48,6 +48,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 default:
                     result = await algorithm.ParallelDepthFirstAsync(
                         token: ct,
+                        maxDegreeOfParallelism: 4096*4, // TODO extract is as nullable param with default -1
                         callback: (state, control, quality) => {
                             base.HandleQualityCallback(state);
                             base.CurrentIteration = state.VisitedNodes;

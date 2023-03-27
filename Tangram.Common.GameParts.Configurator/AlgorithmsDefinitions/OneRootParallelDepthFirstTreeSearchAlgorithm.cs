@@ -7,6 +7,7 @@ using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
+    // TODO: custom WhenAny with where clause
     public class OneRootParallelDepthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
         private const int ROOT_HAS_TO_BE_TREATED_AS_SINGLE_SO_SKIP_IT = 1;
