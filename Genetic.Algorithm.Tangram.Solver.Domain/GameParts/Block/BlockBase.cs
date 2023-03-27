@@ -2,6 +2,8 @@
 using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
+using System.Collections.Immutable;
+using System.Data;
 using System.Drawing;
 
 namespace Tangram.GameParts.Logic.GameParts.Block
