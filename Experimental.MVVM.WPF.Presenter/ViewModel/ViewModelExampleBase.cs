@@ -90,6 +90,7 @@ namespace Demo.ViewModel
         {
             var tab = new TabClass1(ref _gameInstance) {
                 TabName = "Solution circuit",
+                IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative))
             };
 
@@ -100,6 +101,7 @@ namespace Demo.ViewModel
         {
             var tab = new TabClass2(ref _gameInstance) {
                 TabName = "Elements",
+                IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative))
             };
 
@@ -111,6 +113,7 @@ namespace Demo.ViewModel
         {
             var tab = new TabClass3(ref _gameInstance) {
                 TabName = "Board",
+                IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative))
             };
 
