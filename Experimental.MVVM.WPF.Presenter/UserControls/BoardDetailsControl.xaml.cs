@@ -4,11 +4,11 @@ using System.Windows.Controls;
 namespace Demo.UserControls
 {
     /// <summary>
-    /// Interaction logic for UserControl3.xaml
+    /// Interaction logic for BoardDetailsControl.xaml
     /// </summary>
-    public partial class UserControl3 : UserControl
+    public partial class BoardDetailsControl : UserControl
     {
-        public UserControl3()
+        public BoardDetailsControl()
         {
             InitializeComponent();
             this.ID.Text = Guid.NewGuid().ToString();

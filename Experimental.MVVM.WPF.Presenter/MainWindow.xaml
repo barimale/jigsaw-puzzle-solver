@@ -6,7 +6,7 @@
         Height="600"
         Width="700"
         xmlns:local="clr-namespace:Demo"
-        xmlns:vm="clr-namespace:Demo.ViewModel"
+        xmlns:vm="clr-namespace:Demo.ViewModel.SolverTabs"
         xmlns:usercontrols="clr-namespace:Demo.UserControls"
         xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs"
         xmlns:ctConv="clr-namespace:ChromeTabs.Converters;assembly=ChromeTabs"
@@ -15,14 +15,14 @@
         DataContext="{Binding Source={StaticResource Locator},Path=ViewModelMainWindow}">
     <!--These DataTemplates load the correct user control based on the viewmodel-->
     <Window.Resources>
-        <DataTemplate DataType="{x:Type vm:TabClass1}">
-            <usercontrols:UserControl1 />
+        <DataTemplate DataType="{x:Type vm:SolutionCircuit}">
+            <usercontrols:SolutionCircuitControl />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:TabClass2}">
-            <usercontrols:UserControl2 />
+        <DataTemplate DataType="{x:Type vm:ElementsDetails}">
+            <usercontrols:ElementsDetailsControl />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:TabClass3}">
-            <usercontrols:UserControl3 />
+        <DataTemplate DataType="{x:Type vm:BoardDetails}">
+            <usercontrols:BoardDetailsControl />
         </DataTemplate>
     </Window.Resources>
     <Grid>

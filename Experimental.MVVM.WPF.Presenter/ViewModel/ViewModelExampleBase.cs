@@ -6,6 +6,7 @@ using System.Linq;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
 using ChromeTabs;
+using Demo.ViewModel.SolverTabs;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using Solver.Tangram.Game.Logic;
@@ -86,9 +87,9 @@ namespace Demo.ViewModel
             return konfiguracjaGry;
         }
 
-        protected TabClass1 CreateSolutionCircuitTab()
+        protected SolutionCircuit CreateSolutionCircuitTab()
         {
-            var tab = new TabClass1(ref _gameInstance) {
+            var tab = new SolutionCircuit(ref _gameInstance) {
                 TabName = "Solution circuit",
                 IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative))
@@ -97,9 +98,9 @@ namespace Demo.ViewModel
             return tab;
         }
 
-        protected TabClass2 CreateGameElementsTab()
+        protected ElementsDetails CreateGameElementsTab()
         {
-            var tab = new TabClass2(ref _gameInstance) {
+            var tab = new ElementsDetails(ref _gameInstance) {
                 TabName = "Elements",
                 IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative))
@@ -109,9 +110,9 @@ namespace Demo.ViewModel
 
         }
 
-        protected TabClass3 CreateBoardDetailsTab()
+        protected BoardDetails CreateBoardDetailsTab()
         {
-            var tab = new TabClass3(ref _gameInstance) {
+            var tab = new BoardDetails(ref _gameInstance) {
                 TabName = "Board",
                 IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative))

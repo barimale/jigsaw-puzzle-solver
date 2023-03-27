@@ -4,7 +4,7 @@
         xmlns:local="clr-namespace:Demo"
         xmlns:ct="clr-namespace:ChromeTabs;assembly=ChromeTabs"
         xmlns:usercontrols="clr-namespace:Demo.UserControls"
-        xmlns:vm="clr-namespace:Demo.ViewModel"
+        xmlns:vm="clr-namespace:Demo.ViewModel.SolverTabs"
         xmlns:conv="clr-namespace:Demo.Converters"
         Title="PinnedTabExample"
         Height="500"
@@ -14,14 +14,14 @@
     <Window.Resources>
         <conv:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConverter" />
         <conv:BooleanToPinTabTextConverter x:Key="BooleanToPinTabTextConverter" />
-        <DataTemplate DataType="{x:Type vm:TabClass1}">
-            <usercontrols:UserControl1 />
+        <DataTemplate DataType="{x:Type vm:SolutionCircuit}">
+            <usercontrols:SolutionCircuitControl />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:TabClass2}">
-            <usercontrols:UserControl2 />
+        <DataTemplate DataType="{x:Type vm:ElementsDetails}">
+            <usercontrols:ElementsDetailsControl />
         </DataTemplate>
-        <DataTemplate DataType="{x:Type vm:TabClass3}">
-            <usercontrols:UserControl3 />
+        <DataTemplate DataType="{x:Type vm:BoardDetails}">
+            <usercontrols:BoardDetailsControl />
         </DataTemplate>
     </Window.Resources>
     <Grid>

@@ -1,6 +1,7 @@
 ﻿using ChromeTabs;
 using Demo.Utilities;
 using Demo.ViewModel;
+using Demo.ViewModel.SolverTabs;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,7 +29,7 @@ namespace Demo
 
         protected bool TryDragTabToWindow(Point position, TabBase draggedTab)
         {
-            if (draggedTab is TabClass3)
+            if (draggedTab is BoardDetails)
                 return false;//As an example, we don't want TabClass3 to form new windows, so we stop it here.
             if (draggedTab.IsPinned)
                 return false;//We don't want pinned tabs to be draggable either.

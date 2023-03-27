@@ -3,12 +3,13 @@ pinned button as an interface for generating dynamical gamesets
 memory usages from the other example
 style form the second example
 
-
 provide interfaces 
 
 ninject
 
 and reuse library 
+
+REACT + REST API
 in backend rest api 
 so when already added to rest api
 complex allowedlocation with history ID only and transformation list in db

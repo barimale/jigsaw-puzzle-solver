@@ -8,31 +8,31 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
 
-namespace Demo.ViewModel
+namespace Demo.ViewModel.SolverTabs
 {
-    public class TabClass1 : TabBase, IViewModelExecuteAlgorithmCommand
+    public class SolutionCircuit : TabBase, IViewModelExecuteAlgorithmCommand
     {
         private Game _gameInstance;
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private UIGameExecutor _UIGameExecutor;
         private Canvas _canvas;
 
-        public TabClass1(ref Game gameInstance)
+        public SolutionCircuit(ref Game gameInstance)
         {
-            this._gameInstance = gameInstance;
-            this._canvas = CreateCanvas();
+            _gameInstance = gameInstance;
+            _canvas = CreateCanvas();
 
-            this.algorithmDisplayHelper = new AlgorithmDisplayHelper(
-                ref this._canvas,
+            algorithmDisplayHelper = new AlgorithmDisplayHelper(
+                ref _canvas,
                 Dispatcher.CurrentDispatcher);
 
-            this._UIGameExecutor = new UIGameExecutor(
+            _UIGameExecutor = new UIGameExecutor(
                 algorithmDisplayHelper,
                 ref _gameInstance);
 
             ExecuteCommand = new RelayCommand(
                 () => ExecuteAlgorithm(),
-                this._UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
+                _UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
         }
 
         public ICommand ExecuteCommand { get; set; }
@@ -41,7 +41,7 @@ namespace Demo.ViewModel
 
         public void ExecuteAlgorithm()
         {
-            this._UIGameExecutor.ExecuteInBackground();
+            _UIGameExecutor.ExecuteInBackground();
         }
 
         private Canvas CreateCanvas()

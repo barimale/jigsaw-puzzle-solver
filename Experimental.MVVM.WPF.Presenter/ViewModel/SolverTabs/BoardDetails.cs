@@ -4,15 +4,15 @@ using System.Windows;
 using System.Linq;
 using Tangram.GameParts.Logic.Utilities;
 
-namespace Demo.ViewModel
+namespace Demo.ViewModel.SolverTabs
 {
-    public class TabClass3 : TabBase
+    public class BoardDetails : TabBase
     {
         private Game _gameInstance;
 
-        public TabClass3(ref Game gameInstance)
+        public BoardDetails(ref Game gameInstance)
         {
-            this._gameInstance = gameInstance;
+            _gameInstance = gameInstance;
             MyCanvasContent = MapBoardToDetails();
         }
 
@@ -20,7 +20,7 @@ namespace Demo.ViewModel
 
         private UIElement MapBoardToDetails()
         {
-            var board = this._gameInstance.GameSet.Board;
+            var board = _gameInstance.GameSet.Board;
 
             var grid = GetGridDefinition();
 
@@ -60,7 +60,7 @@ namespace Demo.ViewModel
                 meshContent.Height = 160;
                 meshContent.Text = ExtraRestrictionMarkupsHelper.MeshSideToString<int>(
                     board.WithExtraRestrictedMarkups,
-                    board.SkippedMarkup); 
+                    board.SkippedMarkup);
 
                 Grid.SetRow(meshContent, 4);
                 Grid.SetColumn(meshContent, 0);
@@ -128,7 +128,7 @@ namespace Demo.ViewModel
             RowDefinition rowDef1b = new RowDefinition()
             {
                 Height = new GridLength(160)
-            }; 
+            };
             RowDefinition rowDef2 = new RowDefinition()
             {
                 Height = GridLength.Auto

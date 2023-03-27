@@ -7,16 +7,16 @@ using System.Windows.Media;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.Utilities;
 
-namespace Demo.ViewModel
+namespace Demo.ViewModel.SolverTabs
 {
     // game parts: board and blocks
-    public class TabClass2 : TabBase
+    public class ElementsDetails : TabBase
     {
         private Game _gameInstance;
 
-        public TabClass2(ref Game gameInstance)
+        public ElementsDetails(ref Game gameInstance)
         {
-            this._gameInstance = gameInstance;
+            _gameInstance = gameInstance;
             MyCanvasContent = MapBlocksToTabItems();
         }
 
@@ -24,9 +24,9 @@ namespace Demo.ViewModel
 
         private UIElement MapBlocksToTabItems()
         {
-            var board = this._gameInstance.GameSet.Board;
+            var board = _gameInstance.GameSet.Board;
 
-            var tabItems =  this._gameInstance
+            var tabItems = _gameInstance
                 .GameSet
                 .Blocks
                 .WithIndex()
@@ -60,7 +60,7 @@ namespace Demo.ViewModel
             // block definition label
             var blockDefinitionLabel = new TextBlock();
             blockDefinitionLabel.Text = "Block definition:";
-            blockDefinitionLabel.Margin = new Thickness(0,0,0,8);
+            blockDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
 
             Grid.SetRow(blockDefinitionLabel, 0);
             Grid.SetColumn(blockDefinitionLabel, 0);
@@ -182,10 +182,10 @@ namespace Demo.ViewModel
                 {
                     // label
                     var locationDefinitionLabel = new TextBlock();
-                    locationDefinitionLabel.Text = $"#{location.index+1}:";
+                    locationDefinitionLabel.Text = $"#{location.index + 1}:";
                     locationDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
 
-                    Grid.SetRow(locationDefinitionLabel, 2*location.index);
+                    Grid.SetRow(locationDefinitionLabel, 2 * location.index);
                     Grid.SetColumn(locationDefinitionLabel, 0);
                     Grid.SetColumnSpan(locationDefinitionLabel, 2);
                     innerGrid.Children.Add(locationDefinitionLabel);
@@ -198,7 +198,7 @@ namespace Demo.ViewModel
                            block,
                            160);
 
-                    Grid.SetRow(locationDefinition, 2*location.index+1);
+                    Grid.SetRow(locationDefinition, 2 * location.index + 1);
                     Grid.SetColumn(locationDefinition, 0);
                     Grid.SetColumnSpan(locationDefinition, 2);
                     innerGrid.Children.Add(locationDefinition);
