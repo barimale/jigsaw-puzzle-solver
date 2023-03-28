@@ -1,4 +1,3 @@
-pinned button as an interface for generating dynamical gamesets
 
 memory usages from the other example
 style form the second example
