@@ -47,7 +47,7 @@ namespace Demo.ViewModel
             }
         }
 
-        private Game _gameInstance;
+        protected Game _gameInstance;
 
         public ViewModelExampleBase()
         {
@@ -63,7 +63,7 @@ namespace Demo.ViewModel
         }
 
         // TODO: create set of listboxes and create game dynamically
-        private Game CreateGame()
+        protected virtual Game CreateGame()
         {
             // TODO: continue from here
             var gameParts = GameBuilder
@@ -87,9 +87,9 @@ namespace Demo.ViewModel
             return konfiguracjaGry;
         }
 
-        protected SolutionCircuit CreateSolutionCircuitTab()
+        protected SolutionCircuit CreateSolutionCircuitTab(ref Game gameInstance)
         {
-            var tab = new SolutionCircuit(ref _gameInstance) {
+            var tab = new SolutionCircuit(ref gameInstance) {
                 TabName = "Solution circuit",
                 IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/1.png", UriKind.Relative))
@@ -98,9 +98,9 @@ namespace Demo.ViewModel
             return tab;
         }
 
-        protected ElementsDetails CreateGameElementsTab()
+        protected ElementsDetails CreateGameElementsTab(ref Game gameInstance)
         {
-            var tab = new ElementsDetails(ref _gameInstance) {
+            var tab = new ElementsDetails(ref gameInstance) {
                 TabName = "Elements",
                 IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/2.png", UriKind.Relative))
@@ -110,9 +110,9 @@ namespace Demo.ViewModel
 
         }
 
-        protected BoardDetails CreateBoardDetailsTab()
+        protected BoardDetails CreateBoardDetailsTab(ref Game gameInstance)
         {
-            var tab = new BoardDetails(ref _gameInstance) {
+            var tab = new BoardDetails(ref gameInstance) {
                 TabName = "Board",
                 IsPinned = true,
                 TabIcon = new BitmapImage(new Uri("/Resources/3.png", UriKind.Relative))
@@ -189,11 +189,11 @@ namespace Demo.ViewModel
             Random r = new Random();
             int num = r.Next(1, 100);
             if (num < 33)
-                ItemCollection.Add(CreateSolutionCircuitTab());
+                ItemCollection.Add(CreateSolutionCircuitTab(ref _gameInstance));
             else if (num < 66)
-                ItemCollection.Add(CreateGameElementsTab());
+                ItemCollection.Add(CreateGameElementsTab(ref _gameInstance));
             else
-                ItemCollection.Add(CreateBoardDetailsTab());
+                ItemCollection.Add(CreateBoardDetailsTab(ref _gameInstance));
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Windows.Data;
 
 namespace Demo.ViewModel
 {
-    public class ViewModelMainWindow : ViewModelExampleBase, IViewModelMainWindow
+    public class ViewModelUserGameConfigurationTabWindow : ViewModelExampleBase, IViewModelUserGameConfigurationTabWindow
     {
         //this property is to show you can lock the tabs with a binding
         private bool _canMoveTabs;
@@ -34,7 +34,7 @@ namespace Demo.ViewModel
         }
 
 
-        public ViewModelMainWindow()
+        public ViewModelUserGameConfigurationTabWindow()
         {
             //Adding items to the collection creates a tab
             ItemCollection.Add(CreateSolutionCircuitTab(ref base._gameInstance));

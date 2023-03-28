@@ -12,11 +12,11 @@ namespace Demo.ViewModel
 
         public ViewModelPinnedTabExampleWindow()
         {
-            TabBase vm1 = CreateSolutionCircuitTab();
+            TabBase vm1 = CreateSolutionCircuitTab(ref base._gameInstance);
             vm1.IsPinned = true;
             ItemCollection.Add(vm1);
-            ItemCollection.Add(CreateGameElementsTab());
-            ItemCollection.Add(CreateBoardDetailsTab());
+            ItemCollection.Add(CreateGameElementsTab(ref base._gameInstance));
+            ItemCollection.Add(CreateBoardDetailsTab(ref base._gameInstance));
             SelectedTab = ItemCollection.FirstOrDefault();
             ICollectionView view = CollectionViewSource.GetDefaultView(ItemCollection);
             //This sort description is what keeps the source collection sorted, based on tab number. 
@@ -27,6 +27,7 @@ namespace Demo.ViewModel
 
             PinTabCommand = new RelayCommand<TabBase>(PinTabCommandAction);
         }
+
         private void PinTabCommandAction(TabBase tab)
         {
             tab.IsPinned = !tab.IsPinned;

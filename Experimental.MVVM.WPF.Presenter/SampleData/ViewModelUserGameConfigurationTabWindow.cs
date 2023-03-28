@@ -7,9 +7,8 @@ using Solver.Tangram.Game.Logic;
 
 namespace Demo.SampleData
 {
-    class SampleViewModelPinnedTabExampleWindow:ViewModelExampleBase,IViewModelPinnedTabExampleWindow
+    class ViewModelUserGameConfigurationTabWindow : ViewModelExampleBase, IViewModelUserGameConfigurationTabWindow
     {
-
         public RelayCommand<TabBase> PinTabCommand
         {
             get => throw new NotImplementedException();
@@ -39,12 +38,24 @@ namespace Demo.SampleData
             set => throw new NotImplementedException();
         }
 
+        public bool ShowAddButton
+        {
+            get => true;
+            set => throw new NotImplementedException();
+        }
+
+        public bool CanMoveTabs
+        {
+            get => true;
+            set => throw new NotImplementedException();
+        }
+
         // TODO: do this automatically
         protected override Game CreateGame()
         {
             var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishMediumBoard(withAllowedLocations: true);
+                    .CreatePolishBigBoard(withAllowedLocations: true);
 
             // reorder gameparts
             var orderedBlocks = gameParts
@@ -56,12 +67,10 @@ namespace Demo.SampleData
             orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
 
             var algorithm = GameBuilder
-                .AvalaibleGAVaryRatiosTunedAlgorithms
-                .CreateMediumBoardSettings(
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
-                    gameParts.Blocks,
-                    gameParts.AllowedAngles,
-                    10000);
+                    gameParts.Blocks);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
