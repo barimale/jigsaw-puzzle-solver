@@ -56,6 +56,8 @@ namespace Demo.Services
         {
             try
             {
+                // TODO: The DispatcherHelper is initialized in App.xaml.cs
+                // use dispatcher helper backgorund task
                 if (ExecutorState == UIGameExecutorState.READY)
                 {
                     ExecuteInBackgroundTask = Task.Factory.StartNew(async () => await DoExecuteAsync(), ct);

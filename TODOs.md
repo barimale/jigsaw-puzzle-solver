@@ -1,4 +1,6 @@
 
+DispatcherHelper.CheckBeginInvokeOnUI instead of backgroundTask
+
 memory usages from the other example
 style form the second example
 
