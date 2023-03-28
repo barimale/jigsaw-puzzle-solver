@@ -59,7 +59,6 @@ namespace Demo.Services
                 if (ExecutorState == UIGameExecutorState.READY)
                 {
                     ExecuteInBackgroundTask = Task.Factory.StartNew(async () => await DoExecuteAsync(), ct);
-                    //ExecuteInBackgroundTask.Start();
                 }
             }
             catch (OperationCanceledException oce)
@@ -79,6 +78,7 @@ namespace Demo.Services
             {
                 var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
+                HandleAlgorithmRanStatus(this, null);
                 Termination_Reached(result, null);
                 algorithmDisplayHelper.Algorithm_TerminationReached(result, null);
             }
@@ -95,13 +95,13 @@ namespace Demo.Services
                 return UIGameExecutorState.READY;
             }
 
-            if (ExecuteInBackgroundTask != null && ExecuteInBackgroundTask.Status != TaskStatus.Running)
+            if (ExecuteInBackgroundTask != null && ExecuteInBackgroundTask.Status == TaskStatus.RanToCompletion)
             {
-                return UIGameExecutorState.READY;
+                return UIGameExecutorState.ACTIVATED;
             }
             else
             {
-                return UIGameExecutorState.ACTIVATED;
+                return UIGameExecutorState.UNKNOWN;
             }
         }
 
