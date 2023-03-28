@@ -62,23 +62,18 @@ namespace Demo.ViewModel
             _gameInstance = CreateGame();
         }
 
-        // TODO: create set of listboxes and create game dynamically
         protected virtual Game CreateGame()
         {
-            // TODO: continue from here
             var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishBigBoard(withAllowedLocations: true);
+                    .CreatePolishMediumBoard(withAllowedLocations: true);
 
             var algorithm = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
-            //gameParts.AllowedAngles);
 
-            // TODO multialgorithm at wpf needs to be improved
-            // display method needs to be checked
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithAlgorithm(algorithm)

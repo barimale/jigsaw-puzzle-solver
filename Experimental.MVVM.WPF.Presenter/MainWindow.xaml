@@ -28,7 +28,6 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <!--The tab control with with tab tearing support.-->
         <ct:ChromeTabControl x:Name="MyChromeTabControl"
@@ -39,7 +38,7 @@
                              Background="AliceBlue"
                              ItemsSource="{Binding ItemCollection}"
                              SelectedItem="{Binding SelectedTab}"
-                             SelectedTabBrush="WhiteSmoke"
+                             SelectedTabBrush="Silver"
                              CanMoveTabs="{Binding CanMoveTabs}"
                              DragWindowWithOneTab="True"
                              IsAddButtonVisible="{Binding ShowAddButton}"
@@ -120,47 +119,6 @@
                 </DataTemplate>
             </ct:ChromeTabControl.ItemTemplate>
         </ct:ChromeTabControl>
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal"
-                    VerticalAlignment="Center"
-                    HorizontalAlignment="Right">
-            <Button x:Name="button"
-                    Content="Add Tab"
-                    Margin="5"
-                    Command="{Binding AddTabCommand}"
-                    HorizontalAlignment="Left"
-                    Width="75" />
-            <CheckBox Content="Can add tabs"
-                      Margin="5"
-                      IsChecked="{Binding CanAddTabs,Mode=TwoWay}"
-                      VerticalAlignment="Center" />
-            <CheckBox Content="Show add button"
-                      Margin="5"
-                      IsChecked="{Binding ShowAddButton}"
-                      VerticalAlignment="Center" />
-            <CheckBox Content="Movable tabs"
-                      Margin="5"
-                      IsChecked="{Binding CanMoveTabs}"
-                      VerticalAlignment="Center" />
-        </StackPanel>
-        <StackPanel Grid.Row="1"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Left">
-            <Button x:Name="BnOpenPinnedTabExample"
-                    Content="Pinned tab example"
-                    HorizontalAlignment="Left"
-                    Margin="5"
-                    
-                    Grid.Row="1"
-                    Click="BnOpenPinnedTabExample_Click" />
-            <Button x:Name="BnOpenCustomStyleExample"
-                    Content="Custom style example"
-                    HorizontalAlignment="Left"
-                    Margin="5"
-                   
-                    Grid.Row="1"
-                    Click="BnOpenCustomStyleExample_Click" />
-        </StackPanel>
 
     </Grid>
 </local:WindowBase>

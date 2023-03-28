@@ -22,7 +22,7 @@ namespace Demo.ViewModel.SolverTabs.Services
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
             boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
+            boardComponent.Stroke = Brushes.Silver;
             boardComponent.StrokeThickness = 0.1d;
 
             board
@@ -72,7 +72,7 @@ namespace Demo.ViewModel.SolverTabs.Services
                     .ToList());
 
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
-            blockDefinition.Stroke = Brushes.Black;
+            blockDefinition.Stroke = Brushes.Silver;
             blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
@@ -101,7 +101,7 @@ namespace Demo.ViewModel.SolverTabs.Services
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
             boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
+            boardComponent.Stroke = Brushes.Silver;
             boardComponent.StrokeThickness = 0.1d;
 
             board
@@ -127,7 +127,7 @@ namespace Demo.ViewModel.SolverTabs.Services
                     .ToList());
 
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
-            blockDefinition.Stroke = Brushes.Black;
+            blockDefinition.Stroke = Brushes.Silver;
             blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
@@ -146,7 +146,7 @@ namespace Demo.ViewModel.SolverTabs.Services
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
             boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
+            boardComponent.Stroke = Brushes.Silver;
             boardComponent.StrokeThickness = 0.1d;
 
             board
@@ -169,7 +169,7 @@ namespace Demo.ViewModel.SolverTabs.Services
                     .ToList());
 
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
-            blockDefinition.Stroke = Brushes.Black;
+            blockDefinition.Stroke = Brushes.Silver;
             blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
