@@ -3,6 +3,7 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Linq;
 using Tangram.GameParts.Logic.Utilities;
+using System.Windows.Documents;
 
 namespace Demo.ViewModel.SolverTabs
 {
@@ -26,7 +27,7 @@ namespace Demo.ViewModel.SolverTabs
 
             // board definition label
             var boardDefinitionLabel = new TextBlock();
-            boardDefinitionLabel.Text = "Board definition:";
+            boardDefinitionLabel.Inlines.Add(new Run("Board definition:") { FontWeight = FontWeights.SemiBold });
             boardDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
 
             Grid.SetRow(boardDefinitionLabel, 0);
@@ -47,7 +48,8 @@ namespace Demo.ViewModel.SolverTabs
 
             var hasMeshLabel = new TextBlock();
             var hasMeshValue = board.IsExtraRistricted;
-            hasMeshLabel.Text = $"Has mesh: {hasMeshValue}";
+            hasMeshLabel.Inlines.Add(new Run("Has mesh: ") { FontWeight = FontWeights.SemiBold });
+            hasMeshLabel.Inlines.Add(new Run($"{hasMeshValue}") { FontWeight = FontWeights.Regular });
             hasMeshLabel.Margin = new Thickness(0, 0, 0, 8);
 
             Grid.SetRow(hasMeshLabel, 3);
@@ -69,7 +71,7 @@ namespace Demo.ViewModel.SolverTabs
                 grid.Children.Add(meshContent);
 
                 var allowedMatchesLabel = new TextBlock();
-                allowedMatchesLabel.Text = $"Allowed matches:";
+                allowedMatchesLabel.Inlines.Add(new Run("Allowed matches:") { FontWeight = FontWeights.SemiBold });
                 allowedMatchesLabel.Margin = new Thickness(0, 0, 0, 8);
 
                 Grid.SetRow(allowedMatchesLabel, 3);

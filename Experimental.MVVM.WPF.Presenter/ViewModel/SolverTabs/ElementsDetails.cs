@@ -3,6 +3,7 @@ using Solver.Tangram.Game.Logic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.Utilities;
@@ -59,7 +60,7 @@ namespace Demo.ViewModel.SolverTabs
 
             // block definition label
             var blockDefinitionLabel = new TextBlock();
-            blockDefinitionLabel.Text = "Block definition:";
+            blockDefinitionLabel.Inlines.Add(new Run("Block definition:") { FontWeight = FontWeights.SemiBold });
             blockDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
 
             Grid.SetRow(blockDefinitionLabel, 0);
@@ -82,7 +83,9 @@ namespace Demo.ViewModel.SolverTabs
 
             var allowedLocationsLabel = new TextBlock();
             var allowedLocationValue = block.IsAllowedLocationsEnabled ? block.AllowedLocations.Length.ToString() : "not used";
-            allowedLocationsLabel.Text = $"Allowed locations: {allowedLocationValue}";
+            allowedLocationsLabel.Inlines.Add(new Run("Allowed locations: ") { FontWeight = FontWeights.SemiBold });
+            allowedLocationsLabel.Inlines.Add(new Run($"{allowedLocationValue}") { FontWeight = FontWeights.Regular });
+
             allowedLocationsLabel.Margin = new Thickness(0, 0, 0, 8);
 
             Grid.SetRow(allowedLocationsLabel, 2);
@@ -91,7 +94,8 @@ namespace Demo.ViewModel.SolverTabs
 
             var hasMeshLabel = new TextBlock();
             var hasMeshValue = block.IsExtraRistricted;
-            hasMeshLabel.Text = $"Has mesh: {hasMeshValue}";
+            hasMeshLabel.Inlines.Add(new Run("Has mesh: ") { FontWeight = FontWeights.SemiBold });
+            hasMeshLabel.Inlines.Add(new Run($"{hasMeshValue}") { FontWeight = FontWeights.Regular });
             hasMeshLabel.Margin = new Thickness(0, 0, 0, 8);
 
             Grid.SetRow(hasMeshLabel, 3);
@@ -100,6 +104,15 @@ namespace Demo.ViewModel.SolverTabs
 
             if (hasMeshValue)
             {
+                var meshSideALabel = new TextBlock();
+                meshSideALabel.Inlines.Add(new Run("Mesh: ") { FontWeight = FontWeights.SemiBold });
+                meshSideALabel.Inlines.Add(new Run("Side A") { FontWeight = FontWeights.Regular });
+                meshSideALabel.Margin = new Thickness(0, 0, 0, 8);
+
+                Grid.SetRow(meshSideALabel, 3);
+                Grid.SetColumn(meshSideALabel, 1);
+                grid.Children.Add(meshSideALabel);
+
                 // mesh side A
                 UIElement meshSideA = new DisplayBlockHelper()
                    .MapBlockDefinitionToMeshSideA(
@@ -125,6 +138,15 @@ namespace Demo.ViewModel.SolverTabs
 
                 grid.Children.Add(meshAContent);
 
+                var meshSideBLabel = new TextBlock();
+                meshSideBLabel.Inlines.Add(new Run("Mesh: ") { FontWeight = FontWeights.SemiBold });
+                meshSideBLabel.Inlines.Add(new Run("Side B") { FontWeight = FontWeights.Regular });
+                meshSideBLabel.Margin = new Thickness(0, 0, 0, 8);
+
+                Grid.SetRow(meshSideBLabel, 5);
+                Grid.SetColumn(meshSideBLabel, 1);
+                grid.Children.Add(meshSideBLabel);
+
                 // mesh side B
                 UIElement meshSideB = new DisplayBlockHelper()
                    .MapBlockDefinitionToMeshSideB(
@@ -132,7 +154,7 @@ namespace Demo.ViewModel.SolverTabs
                        block,
                        160);
 
-                Grid.SetRow(meshSideB, 5);
+                Grid.SetRow(meshSideB, 6);
                 Grid.SetColumn(meshSideB, 0);
                 Grid.SetColumnSpan(meshSideB, 1);
 
@@ -144,7 +166,7 @@ namespace Demo.ViewModel.SolverTabs
                     block.FieldRestrictionMarkups[1],
                     skipMarkup);
 
-                Grid.SetRow(meshBContent, 5);
+                Grid.SetRow(meshBContent, 6);
                 Grid.SetColumn(meshBContent, 1);
                 Grid.SetColumnSpan(meshBContent, 1);
 
@@ -154,10 +176,10 @@ namespace Demo.ViewModel.SolverTabs
             if (block.IsAllowedLocationsEnabled)
             {
                 var allowedLocationsListLabel = new TextBlock();
-                allowedLocationsListLabel.Text = $"Allowed locations list:";
+                allowedLocationsListLabel.Inlines.Add(new Run("Allowed locations:") { FontWeight = FontWeights.SemiBold });
                 allowedLocationsListLabel.Margin = new Thickness(0, 0, 0, 8);
 
-                Grid.SetRow(allowedLocationsListLabel, 6);
+                Grid.SetRow(allowedLocationsListLabel, 7);
                 Grid.SetColumn(allowedLocationsListLabel, 0);
                 grid.Children.Add(allowedLocationsListLabel);
 
@@ -182,7 +204,8 @@ namespace Demo.ViewModel.SolverTabs
                 {
                     // label
                     var locationDefinitionLabel = new TextBlock();
-                    locationDefinitionLabel.Text = $"#{location.index + 1}:";
+                    locationDefinitionLabel.Inlines.Add(new Run("#") { FontWeight = FontWeights.SemiBold });
+                    locationDefinitionLabel.Inlines.Add(new Run($"{location.index + 1}") { FontWeight = FontWeights.SemiBold });
                     locationDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
 
                     Grid.SetRow(locationDefinitionLabel, 2 * location.index);
@@ -204,13 +227,11 @@ namespace Demo.ViewModel.SolverTabs
                     innerGrid.Children.Add(locationDefinition);
                 });
 
-                Grid.SetRow(innerGrid, 7);
+                Grid.SetRow(innerGrid, 8);
                 Grid.SetColumn(innerGrid, 0);
                 Grid.SetColumnSpan(innerGrid, 2);
                 grid.Children.Add(innerGrid);
             }
-
-
 
             return grid;
         }
@@ -285,12 +306,19 @@ namespace Demo.ViewModel.SolverTabs
             // 6
             RowDefinition rowDef5 = new RowDefinition()
             {
+                Height = GridLength.Auto
+            };
+            //7
+            RowDefinition rowDef5b = new RowDefinition()
+            {
                 Height = new GridLength(160)
             };
+            //8
             RowDefinition rowDef6a = new RowDefinition()
             {
                 Height = GridLength.Auto
             };
+            //9
             RowDefinition rowDef6b = new RowDefinition()
             {
                 Height = new GridLength(1, GridUnitType.Star)
@@ -302,6 +330,7 @@ namespace Demo.ViewModel.SolverTabs
             myGrid.RowDefinitions.Add(rowDef3);
             myGrid.RowDefinitions.Add(rowDef4);
             myGrid.RowDefinitions.Add(rowDef5);
+            myGrid.RowDefinitions.Add(rowDef5b);
             myGrid.RowDefinitions.Add(rowDef6a);
             myGrid.RowDefinitions.Add(rowDef6b);
 

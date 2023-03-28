@@ -58,7 +58,6 @@ namespace Demo.ViewModel
             CloseTabCommand = new RelayCommand<TabBase>(CloseTabCommandAction);
             CanAddTabs = true;
 
-            // TODO: one instance for now, later instances in a form of outer tabcontrol.?
             _gameInstance = CreateGame();
         }
 
@@ -67,6 +66,15 @@ namespace Demo.ViewModel
             var gameParts = GameBuilder
                     .AvalaibleGameSets
                     .CreatePolishMediumBoard(withAllowedLocations: true);
+
+                // reorder gameparts
+                var orderedBlocks = gameParts
+                    .Blocks
+                    .OrderByDescending(p => p.AllowedLocations.Length)
+                    .ToList();
+
+                gameParts.Blocks.Clear();
+                orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
 
             var algorithm = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms

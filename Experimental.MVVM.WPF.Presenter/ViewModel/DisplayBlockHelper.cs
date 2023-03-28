@@ -21,9 +21,9 @@ namespace Demo.ViewModel
             // show board
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
-            boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
-            boardComponent.StrokeThickness = 0.1d;
+            boardComponent.Fill = Brushes.LightGray;
+            boardComponent.Stroke = Brushes.DarkGray;
+            boardComponent.StrokeThickness = 0.08d;
 
             board
                 .Polygon
@@ -48,9 +48,9 @@ namespace Demo.ViewModel
             // show board
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
-            boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
-            boardComponent.StrokeThickness = 0.1d;
+            boardComponent.Fill = Brushes.LightGray;
+            boardComponent.Stroke = Brushes.DarkGray;
+            boardComponent.StrokeThickness = 0.08d;
 
             board
                 .Polygon
@@ -72,7 +72,7 @@ namespace Demo.ViewModel
                     .ToList());
 
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
-            blockDefinition.Stroke = Brushes.Black;
+            blockDefinition.Stroke = Brushes.Silver;
             blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
@@ -100,9 +100,9 @@ namespace Demo.ViewModel
             // show board
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
-            boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
-            boardComponent.StrokeThickness = 0.1d;
+            boardComponent.Fill = Brushes.LightGray;
+            boardComponent.Stroke = Brushes.DarkGray;
+            boardComponent.StrokeThickness = 0.08d;
 
             board
                 .Polygon
@@ -127,7 +127,7 @@ namespace Demo.ViewModel
                     .ToList());
 
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
-            blockDefinition.Stroke = Brushes.Black;
+            blockDefinition.Stroke = Brushes.Silver;
             blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
@@ -145,9 +145,9 @@ namespace Demo.ViewModel
             // show board
             var boardComponent = new Polygon();
             boardComponent.Points = new PointCollection();
-            boardComponent.Fill = Brushes.WhiteSmoke;
-            boardComponent.Stroke = Brushes.Black;
-            boardComponent.StrokeThickness = 0.1d;
+            boardComponent.Fill = Brushes.LightGray;
+            boardComponent.Stroke = Brushes.DarkGray;
+            boardComponent.StrokeThickness = 0.08d;
 
             board
                 .Polygon
@@ -169,7 +169,7 @@ namespace Demo.ViewModel
                     .ToList());
 
             blockDefinition.Fill = AlgorithmDisplayHelper.ConvertColor(block.Color);
-            blockDefinition.Stroke = Brushes.Black;
+            blockDefinition.Stroke = Brushes.Silver;
             blockDefinition.StrokeThickness = 0.05d;
 
             canvas.Children.Add(blockDefinition);
