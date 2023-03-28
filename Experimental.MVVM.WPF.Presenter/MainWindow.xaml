@@ -5,6 +5,7 @@
         Title="Solver"
         Height="600"
         Width="700"
+        Icon="executable.ico"
         xmlns:local="clr-namespace:Demo"
         xmlns:vm="clr-namespace:Demo.ViewModel.SolverTabs"
         xmlns:usercontrols="clr-namespace:Demo.UserControls"
