@@ -83,7 +83,7 @@ namespace Demo.ViewModel.SolverTabs
 
             var allowedLocationsLabel = new TextBlock();
             var allowedLocationValue = block.IsAllowedLocationsEnabled ? block.AllowedLocations.Length.ToString() : "not used";
-            allowedLocationsLabel.Inlines.Add(new Run("Allowed locations: ") { FontWeight = FontWeights.SemiBold });
+            allowedLocationsLabel.Inlines.Add(new Run("Allowed locations count: ") { FontWeight = FontWeights.SemiBold });
             allowedLocationsLabel.Inlines.Add(new Run($"{allowedLocationValue}") { FontWeight = FontWeights.Regular });
 
             allowedLocationsLabel.Margin = new Thickness(0, 0, 0, 8);
