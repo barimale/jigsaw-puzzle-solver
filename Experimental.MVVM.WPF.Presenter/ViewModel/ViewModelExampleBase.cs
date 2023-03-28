@@ -58,7 +58,7 @@ namespace Demo.ViewModel
             CloseTabCommand = new RelayCommand<TabBase>(CloseTabCommandAction);
             CanAddTabs = true;
 
-            // TODO: one instance for now, later instances in a form of outer tabcontrol.
+            // TODO: one instance for now, later instances in a form of outer tabcontrol.?
             _gameInstance = CreateGame();
         }
 
