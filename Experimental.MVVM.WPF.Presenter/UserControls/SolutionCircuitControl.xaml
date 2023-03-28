@@ -38,6 +38,9 @@
             <TextBlock Text="Unique control ID: " />
             <TextBlock x:Name="ID"
                        FontSize="12" />
+            <TextBlock Text="UIGameExecutorStatus: " />
+            <TextBlock Text="{Binding UIGameExecutorStatus}"
+                       FontSize="12" />
         </StackPanel>
     </Grid>
 </UserControl>

@@ -13,6 +13,7 @@ namespace Demo.Services
         private Game konfiguracjaGry;
 
         public event EventHandler TerminationReached;
+        public event EventHandler AlgorithmRanStatus;
 
         private Task ExecuteInBackgroundTask;
         public UIGameExecutorState ExecutorState => ObtainExecutorState();
@@ -28,10 +29,22 @@ namespace Demo.Services
                 throw new Exception("At least one algorithm has to be set");
 
             if (konfiguracjaGry.Algorithm != null)
+            {
                 konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
+                konfiguracjaGry.Algorithm.QualityCallback += HandleAlgorithmRanStatus; ;
+            }
 
             if (konfiguracjaGry.Multialgorithm != null)
-                konfiguracjaGry.Multialgorithm.QualityCallback += Algorithm_QualityCallback;
+            {
+                konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
+                konfiguracjaGry.Algorithm.QualityCallback += HandleAlgorithmRanStatus;
+            }
+        }
+
+        private void HandleAlgorithmRanStatus(object sender, EventArgs e)
+        {
+            ObtainExecutorState();
+            AlgorithmRanStatus?.Invoke(this.ExecutorState.ToString(), e);
         }
 
         private void Algorithm_QualityCallback(object sender, EventArgs e)

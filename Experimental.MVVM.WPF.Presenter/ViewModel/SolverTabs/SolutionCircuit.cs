@@ -30,14 +30,35 @@ namespace Demo.ViewModel.SolverTabs
                 algorithmDisplayHelper,
                 ref _gameInstance);
 
+            _UIGameExecutor.AlgorithmRanStatus += _UIGameExecutor_AlgorithmRanStatus;
+
             ExecuteCommand = new RelayCommand(
                 () => ExecuteAlgorithm(),
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
         }
 
+        private void _UIGameExecutor_AlgorithmRanStatus(object sender, System.EventArgs e)
+        {
+            var status = sender as string;
+            UIGameExecutorStatus = status;
+        }
+
         public ICommand ExecuteCommand { get; set; }
 
         public UIElement MyCanvasContent => _canvas;
+
+        private string _UIGameExecutorStatus;
+        public string UIGameExecutorStatus
+        {
+            get => _UIGameExecutorStatus;
+            set
+            {
+                if (_UIGameExecutorStatus != value)
+                {
+                    Set(() => UIGameExecutorStatus, ref _UIGameExecutorStatus, value);
+                }
+            }
+        }
 
         public void ExecuteAlgorithm()
         {
