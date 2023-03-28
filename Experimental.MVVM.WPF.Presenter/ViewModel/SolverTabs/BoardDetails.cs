@@ -24,6 +24,7 @@ namespace Demo.ViewModel.SolverTabs
             var board = _gameInstance.GameSet.Board;
 
             var grid = GetGridDefinition();
+            grid.Margin = new Thickness(6, 6, 6, 6);
 
             // board definition label
             var boardDefinitionLabel = new TextBlock();

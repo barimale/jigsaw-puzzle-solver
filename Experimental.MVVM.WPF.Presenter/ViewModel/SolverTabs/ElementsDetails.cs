@@ -57,6 +57,7 @@ namespace Demo.ViewModel.SolverTabs
         private UIElement MapBlockToDetails(BlockBase block, string skipMarkup)
         {
             var grid = GetGridDefinition();
+            grid.Margin = new Thickness(8, 8, 8, 8);
 
             // block definition label
             var blockDefinitionLabel = new TextBlock();
