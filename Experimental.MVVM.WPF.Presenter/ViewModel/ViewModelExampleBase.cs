@@ -65,7 +65,7 @@ namespace Demo.ViewModel
         {
             var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishMediumBoard(withAllowedLocations: true);
+                    .CreatePolishBigBoard(withAllowedLocations: true);
 
                 // reorder gameparts
                 var orderedBlocks = gameParts
@@ -77,10 +77,11 @@ namespace Demo.ViewModel
                 orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
 
             var algorithm = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
+                .AvalaibleGATunedAlgorithms
+                .CreateBigBoardSettings(
                     gameParts.Board,
-                    gameParts.Blocks);
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)

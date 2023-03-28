@@ -52,6 +52,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 if (algorithmResult == null)
                     return;
 
+                // TODO maybe put three lines at the bottom
                 base.HandleQualityCallback(algorithmResult);
                 base.CurrentIteration += 1;
                 base.HandleExecutionEstimationCallback(algorithmResult);
