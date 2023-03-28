@@ -1,3 +1,6 @@
+                // TODO: The DispatcherHelper is initialized in App.xaml.cs
+                // use dispatcher helper backgorund task
+                UIGameExecutor
 
 DispatcherHelper.CheckBeginInvokeOnUI instead of backgroundTask
 
