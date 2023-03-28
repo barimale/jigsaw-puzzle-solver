@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using GalaSoft.MvvmLight.Threading;
+using System.Windows;
 
 namespace Demo
 {
@@ -7,5 +8,9 @@ namespace Demo
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            DispatcherHelper.Initialize();
+        }
     }
 }

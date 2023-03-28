@@ -41,6 +41,13 @@ namespace Demo.Services
             }
         }
 
+        private void HandleAlgorithmTerminationStatus(object sender, EventArgs e)
+        {
+            ExecuteInBackgroundTask.Dispose();
+            ExecuteInBackgroundTask = null;
+            HandleAlgorithmRanStatus(sender, e);
+        }
+
         private void HandleAlgorithmRanStatus(object sender, EventArgs e)
         {
             ObtainExecutorState();
@@ -58,7 +65,7 @@ namespace Demo.Services
             {
                 if (ExecutorState == UIGameExecutorState.READY)
                 {
-                    ExecuteInBackgroundTask = Task.Factory.StartNew(async () => await DoExecuteAsync(), ct);
+                    ExecuteInBackgroundTask = Task.Factory.StartNew(() => DoExecuteAsync(), ct);
                 }
             }
             catch (OperationCanceledException oce)
@@ -78,7 +85,7 @@ namespace Demo.Services
             {
                 var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
-                HandleAlgorithmRanStatus(this, null);
+                HandleAlgorithmTerminationStatus(this, null);
                 Termination_Reached(result, null);
                 algorithmDisplayHelper.Algorithm_TerminationReached(result, null);
             }
