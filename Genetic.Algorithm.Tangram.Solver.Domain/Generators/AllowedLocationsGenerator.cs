@@ -39,11 +39,10 @@ public class AllowedLocationsGenerator
     {
         // reorder gameparts
         var orderedBlocks = blocks
-            .OrderBy(p => p.AllowedLocations.Length)
-            .ToArray();
-
-        return MoveLastToFirstPosition(orderedBlocks)
+            .OrderByDescending(p => p.AllowedLocations.Length)
             .ToList();
+
+        return orderedBlocks;
     }
 
     public IList<BlockBase> Preconfigure(
