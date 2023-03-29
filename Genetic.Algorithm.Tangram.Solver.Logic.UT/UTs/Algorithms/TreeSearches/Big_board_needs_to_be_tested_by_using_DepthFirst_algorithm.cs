@@ -57,16 +57,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .AvalaibleGameSets
                 .CreatePolishBigBoard(withAllowedLocations: true);
 
-                // TODO WIP refactor as a wrapper for GameBuilder
-                // reorder gameparts
-                var orderedBlocks = gameParts
-                    .Blocks
-                    .OrderByDescending(p => p.AllowedLocations.Length)
-                    .ToList();
-
-                gameParts.Blocks.Clear();
-                orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
-
             var depthFirstAlg = GameBuilder
                  .AvalaibleTSTemplatesAlgorithms
                  .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(

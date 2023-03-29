@@ -46,15 +46,6 @@ namespace Demo.SampleData
                     .AvalaibleGameSets
                     .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            // reorder gameparts
-            var orderedBlocks = gameParts
-                .Blocks
-                .OrderByDescending(p => p.AllowedLocations.Length)
-                .ToList();
-
-            gameParts.Blocks.Clear();
-            orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
-
             var algorithm = GameBuilder
                 .AvalaibleGAVaryRatiosTunedAlgorithms
                 .CreateMediumBoardSettings(

@@ -57,15 +57,6 @@ namespace Demo.SampleData
                     .AvalaibleGameSets
                     .CreatePolishBigBoard(withAllowedLocations: true);
 
-            // reorder gameparts
-            var orderedBlocks = gameParts
-                .Blocks
-                .OrderByDescending(p => p.AllowedLocations.Length)
-                .ToList();
-
-            gameParts.Blocks.Clear();
-            orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
-
             var algorithm = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateDepthFirstTreeSearchAlgorithm(

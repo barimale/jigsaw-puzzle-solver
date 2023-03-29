@@ -1,4 +1,5 @@
 ﻿using Algorithm.Tangram.Common.Extensions;
+using NCalc;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Prepared;
 using System.Collections.Concurrent;
@@ -35,6 +36,17 @@ public class AllowedLocationsGenerator
 
     private bool WithMarkups => allowedMatches != null && allowedMatches.Count > 0;
 
+    public IList<BlockBase> ReorderWithSwap(IList<BlockBase> blocks)
+    {
+        // reorder gameparts
+        var orderedBlocks = blocks
+            .OrderBy(p => p.AllowedLocations.Length)
+            .ToArray();
+
+        return MoveLastToFirstPosition(orderedBlocks)
+            .ToList();
+    }
+
     public IList<BlockBase> Preconfigure(
         IList<BlockBase> blocks,
         BoardShapeBase board,
@@ -57,6 +69,25 @@ public class AllowedLocationsGenerator
 
         return modified
             .ToList();
+    }
+
+    private BlockBase[] MoveLastToFirstPosition(BlockBase[] input)
+    {
+        if (input.Length < 2)
+            return input;
+
+        var toBeFirst = input[input.Length - 1];
+
+        var restToBeCopied = input
+            .ToList()
+            .Take(input.Length - 1)
+            .ToArray();
+
+        var result = new List<BlockBase>();
+        result.Add(toBeFirst);
+        result.AddRange(restToBeCopied);
+
+        return result.ToArray();
     }
 
     private Geometry[] Generate(

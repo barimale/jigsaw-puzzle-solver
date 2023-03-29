@@ -57,11 +57,13 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
 
                 var preconfiguredBlocks = modificator.Preconfigure(
                         Blocks.ToList(),
-                    Board(),
-                    Angles);
+                        Board(),
+                        Angles);
+
+                var orderedBlocksWithSwap = modificator.ReorderWithSwap(preconfiguredBlocks);
 
                 return new GameSet(
-                    preconfiguredBlocks,
+                    orderedBlocksWithSwap,
                     Board(),
                     Angles);
             }

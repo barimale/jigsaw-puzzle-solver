@@ -65,23 +65,14 @@ namespace Demo.ViewModel
         {
             var gameParts = GameBuilder
                     .AvalaibleGameSets
-                    .CreatePolishBigBoard(withAllowedLocations: true);
-
-                // reorder gameparts
-                var orderedBlocks = gameParts
-                    .Blocks
-                    .OrderByDescending(p => p.AllowedLocations.Length)
-                    .ToList();
-
-                gameParts.Blocks.Clear();
-                orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
+                    .CreatePolishMediumBoard(withAllowedLocations: true);
 
             var algorithm = GameBuilder
-                .AvalaibleGATunedAlgorithms
-                .CreateBigBoardSettings(
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
-                    gameParts.Blocks,
-                    gameParts.AllowedAngles);
+                    gameParts.Blocks);
+                    //gameParts.AllowedAngles);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)

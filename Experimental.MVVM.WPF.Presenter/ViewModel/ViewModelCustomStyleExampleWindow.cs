@@ -20,35 +20,5 @@ namespace Demo.ViewModel
             //You can also use the sort description to manually sort the tabs, based on your own criterias.
             view.SortDescriptions.Add(new SortDescription("TabNumber", ListSortDirection.Ascending));
         }
-
-        // TODO: Custom dynamic
-        private Game CreateGame()
-        {
-            var gameParts = GameBuilder
-                    .AvalaibleGameSets
-                    .CreatePolishBigBoard(withAllowedLocations: true);
-
-            // reorder gameparts
-            var orderedBlocks = gameParts
-                .Blocks
-                .OrderByDescending(p => p.AllowedLocations.Length)
-                .ToList();
-
-            gameParts.Blocks.Clear();
-            orderedBlocks.ForEach(pp => gameParts.Blocks.Add(pp));
-
-            var algorithm = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks);
-
-            var konfiguracjaGry = new GameBuilder()
-                .WithGamePartsConfigurator(gameParts)
-                .WithAlgorithm(algorithm)
-                .Build();
-
-            return konfiguracjaGry;
-        }
     }
 }
