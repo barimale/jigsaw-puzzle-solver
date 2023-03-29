@@ -1,5 +1,4 @@
 ﻿using Algorithm.Tangram.Common.Extensions;
-using NCalc;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Prepared;
 using System.Collections.Concurrent;
