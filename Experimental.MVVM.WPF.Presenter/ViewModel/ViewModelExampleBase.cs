@@ -64,8 +64,8 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             var gameParts = GameBuilder
-                    .AvalaibleGameSets
-                    .CreatePolishMediumBoard(withAllowedLocations: true);
+                .AvalaibleGameSets
+                .CreatePolishBigBoard(withAllowedLocations: true);
 
             var algorithm = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
