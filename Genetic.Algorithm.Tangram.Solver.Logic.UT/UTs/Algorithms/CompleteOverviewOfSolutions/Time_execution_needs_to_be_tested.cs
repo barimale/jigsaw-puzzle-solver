@@ -60,9 +60,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.CompleteOverv
             {
                 return Task
                 .Factory
-                .StartNew(async () =>
+                .StartNew(() =>
                 {
-                    await fitnessFunction
+                    fitnessFunction
                         .EvaluateAsync(p)
                         .ContinueWith(result =>
                         {

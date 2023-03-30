@@ -46,19 +46,18 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                     ModifyRootElementOfArray(p, allBlocks)))
                 .Select(async pp => await ExecuteAlgorithmAsync(pp, ct));
 
-            // TODO: use the WhenAny with where clause filtergin by fitness = 0
-            var results = await Task.WhenAll(rootedAlgorithms);
+            var results = rootedAlgorithms
+                .ToAsyncEnumerable()
+                .WhereAwait(async x => await MeetsCriteria(x, 0));
 
-            var onlyCompletedResults = results
-                .Where(pp => pp.Quality.HasValue && pp.Quality.Value.Value == 0);
-
-            var firstSolution = onlyCompletedResults.FirstOrDefault();
+            var firstSolvedAlgorithm = results.FirstOrDefaultAsync();
+            var solution = firstSolvedAlgorithm.Result.Result;
 
             return new AlgorithmResult()
             {
-                Fitness = firstSolution != null && firstSolution.Quality.HasValue ? firstSolution.Quality.Value.ToString() : string.Empty,
-                Solution = firstSolution!,
-                IsError = firstSolution == null || !firstSolution.Quality.HasValue
+                Fitness = solution != null && solution.Quality.HasValue ? solution.Quality.Value.ToString() : string.Empty,
+                Solution = solution!,
+                IsError = solution == null || !solution.Quality.HasValue
             };
         }
 
@@ -125,6 +124,17 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             array[0] = replaceBy;
 
             return array;
+        }
+
+        private async ValueTask<bool> MeetsCriteria(
+            Task<FindFittestSolution> actualValue,
+            int expectedReturnedValue)
+        {
+            if (actualValue.Result.Quality.HasValue 
+                && actualValue.Result.Quality.Value.Value == expectedReturnedValue)
+                return true;
+
+            return false;
         }
     }
 }
