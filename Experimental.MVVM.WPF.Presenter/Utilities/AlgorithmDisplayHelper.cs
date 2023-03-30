@@ -37,7 +37,7 @@ namespace Demo.Utilities
         {
             this.LatestFitness = double.MinValue;
             this.isSolved = false;
-            //Canvas.Children.Clear();
+            Canvas.Children.Clear();
         }
 
         public void Algorithm_Ran(object sender, SourceEventArgs e)

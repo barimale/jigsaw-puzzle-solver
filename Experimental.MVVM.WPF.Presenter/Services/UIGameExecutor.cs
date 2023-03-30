@@ -62,17 +62,26 @@ namespace Demo.Services
                 });
         }
 
-        private string GetSourceName(AlgorithmResult result)
+        private string? GetSourceName(AlgorithmResult result)
         {
+            var unknown = "unknown";
+
             try
             {
-                var name = result.Solution.GetType().Name.ToString();
+                if (result == null)
+                    return unknown;
+
+                var name = result
+                    .Solution
+                    .GetType()
+                    .Name
+                    .ToString();
 
                 return name;
             }
             catch (Exception)
             {
-                return "unknown";
+                return unknown;
             }
         }
 
