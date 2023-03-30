@@ -1,5 +1,6 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using GeneticSharp;
+using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 using TreesearchLib;
 
@@ -14,7 +15,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
 
         protected T algorithm;
 
-        public event EventHandler QualityCallback;
+        public event EventHandler<SourceEventArgs> QualityCallback;
         public event EventHandler OnExecutionEstimationReady;
 
         private int cumulativeExecutionTimeInMiliseconds;

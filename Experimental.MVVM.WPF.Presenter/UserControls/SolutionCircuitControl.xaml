@@ -35,12 +35,16 @@
         <StackPanel Grid.Row="3"
                     Margin="0,20,0,0"
                     Orientation="Horizontal">
-            <TextBlock Text="Unique control ID: " />
-            <TextBlock x:Name="ID"
-                       FontSize="12" />
-            <TextBlock Text="UIGameExecutorStatus: " />
-            <TextBlock Text="{Binding UIGameExecutorStatus}"
-                       FontSize="12" />
+            <StackPanel HorizontalAlignment="Left">
+                <TextBlock Text="Result source name: " />
+                <TextBlock Text="{Binding AlgorithmResultSource}"
+                           FontSize="12" />
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Right">
+                <TextBlock Text="UIGameExecutorStatus: " />
+                <TextBlock Text="{Binding UIGameExecutorStatus}"
+                           FontSize="12" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </UserControl>

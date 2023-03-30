@@ -1,4 +1,5 @@
-﻿using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+﻿using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
+using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics
@@ -24,7 +25,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
             this.algorithms = algorithms.ToImmutableList();
         }
 
-        public event EventHandler QualityCallback; // of func / action here
+        public event EventHandler<SourceEventArgs> QualityCallback; // of func / action here
         public event EventHandler OnExecutionEstimationReady;
 
         public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)

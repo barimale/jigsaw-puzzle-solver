@@ -9,6 +9,7 @@ using ChromeTabs;
 using Demo.ViewModel.SolverTabs;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 
 namespace Demo.ViewModel
@@ -65,18 +66,29 @@ namespace Demo.ViewModel
         {
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            var algorithm = GameBuilder
+            var oneRootTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
-                    //gameParts.AllowedAngles);
+            //gameParts.AllowedAngles);
+
+            var ga = GameBuilder
+                .AvalaibleGATunedAlgorithms
+                .CreateMediumBoardSettings(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
-                .WithAlgorithm(algorithm)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAny)
+                .WithAlgorithms(
+                    oneRootTS,
+                    ga)
                 .Build();
 
             return konfiguracjaGry;

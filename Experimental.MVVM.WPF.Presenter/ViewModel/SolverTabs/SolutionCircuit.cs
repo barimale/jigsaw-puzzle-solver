@@ -1,6 +1,7 @@
 ﻿using Demo.Services;
 using Demo.Utilities;
 using GalaSoft.MvvmLight.CommandWpf;
+using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,15 +38,29 @@ namespace Demo.ViewModel.SolverTabs
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
         }
 
-        private void _UIGameExecutor_AlgorithmRanStatus(object sender, System.EventArgs e)
+        private void _UIGameExecutor_AlgorithmRanStatus(object sender, SourceEventArgs e)
         {
             var status = sender as string;
             UIGameExecutorStatus = status;
+            AlgorithmResultSource = e != null ? e.SourceName : string.Empty;
         }
 
         public ICommand ExecuteCommand { get; set; }
 
         public UIElement MyCanvasContent => _canvas;
+
+        private string _algorithmResultSource;
+        public string AlgorithmResultSource
+        {
+            get => _algorithmResultSource;
+            set
+            {
+                if (_algorithmResultSource != value)
+                {
+                    Set(() => AlgorithmResultSource, ref _algorithmResultSource, value);
+                }
+            }
+        }
 
         private string _UIGameExecutorStatus;
         public string UIGameExecutorStatus

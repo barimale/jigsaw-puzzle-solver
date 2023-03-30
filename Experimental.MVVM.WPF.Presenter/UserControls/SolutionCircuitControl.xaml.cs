@@ -11,7 +11,7 @@ namespace Demo.UserControls
         public SolutionCircuitControl()
         {
             InitializeComponent();
-            this.ID.Text = Guid.NewGuid().ToString();
+            //this.ID.Text = Guid.NewGuid().ToString();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Demo.Utilities;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
 using System;
 using System.Threading;
@@ -12,8 +13,8 @@ namespace Demo.Services
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private Game konfiguracjaGry;
 
-        public event EventHandler TerminationReached;
-        public event EventHandler AlgorithmRanStatus;
+        public event EventHandler<SourceEventArgs> TerminationReached;
+        public event EventHandler<SourceEventArgs> AlgorithmRanStatus;
 
         private Task ExecuteInBackgroundTask;
         public UIGameExecutorState ExecutorState => ObtainExecutorState();
@@ -36,24 +37,46 @@ namespace Demo.Services
 
             if (konfiguracjaGry.Multialgorithm != null)
             {
-                konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
-                konfiguracjaGry.Algorithm.QualityCallback += HandleAlgorithmRanStatus;
+                konfiguracjaGry.Multialgorithm.QualityCallback += Algorithm_QualityCallback;
+                konfiguracjaGry.Multialgorithm.QualityCallback += HandleAlgorithmRanStatus;
             }
         }
 
-        private void HandleAlgorithmTerminationStatus(object sender, EventArgs e)
+        private void HandleAlgorithmTerminationStatus(object sender, SourceEventArgs e)
         {
             ExecuteInBackgroundTask = null;
             HandleAlgorithmRanStatus(sender, e);
         }
 
-        private void HandleAlgorithmRanStatus(object sender, EventArgs e)
+        private void HandleAlgorithmRanStatus(object sender, SourceEventArgs e)
         {
             ObtainExecutorState();
-            AlgorithmRanStatus?.Invoke(this.ExecutorState.ToString(), e);
+            var result = sender as AlgorithmResult;
+            var sourceName = GetSourceName(result);
+
+            AlgorithmRanStatus?.Invoke(
+                this.ExecutorState.ToString(),
+                new SourceEventArgs()
+                {
+                    SourceName = sourceName
+                });
         }
 
-        private void Algorithm_QualityCallback(object sender, EventArgs e)
+        private string GetSourceName(AlgorithmResult result)
+        {
+            try
+            {
+                var name = result.Solution.GetType().Name.ToString();
+
+                return name;
+            }
+            catch (Exception)
+            {
+                return "unknown";
+            }
+        }
+
+        private void Algorithm_QualityCallback(object sender, SourceEventArgs e)
         {
             algorithmDisplayHelper.Algorithm_Ran(sender, e);
         }
@@ -64,6 +87,7 @@ namespace Demo.Services
             {
                 if (ExecutorState == UIGameExecutorState.READY)
                 {
+                    algorithmDisplayHelper.Reset();
                     ExecuteInBackgroundTask = Task.Factory.StartNew(() => DoExecuteAsync(), ct);
                 }
             }
@@ -113,7 +137,7 @@ namespace Demo.Services
             }
         }
 
-        private void Termination_Reached(object sender, EventArgs e)
+        private void Termination_Reached(object sender, SourceEventArgs e)
         {
             TerminationReached?.Invoke(sender, e);
         }

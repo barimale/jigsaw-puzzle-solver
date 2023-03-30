@@ -1,6 +1,7 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using System;
 using System.IO;
 using System.Linq;
@@ -20,6 +21,7 @@ namespace Demo.Utilities
         private Dispatcher Dispatcher;
 
         public double LatestFitness { private set; get; } = double.MinValue;
+        private bool isSolved = false;
 
         public AlgorithmDisplayHelper(ref Canvas canvas, Dispatcher dispatcher)
         {
@@ -31,8 +33,21 @@ namespace Demo.Utilities
             });
         }
 
-        public void Algorithm_Ran(object sender, EventArgs e)
+        public void Reset()
         {
+            this.LatestFitness = double.MinValue;
+            this.isSolved = false;
+            //Canvas.Children.Clear();
+        }
+
+        public void Algorithm_Ran(object sender, SourceEventArgs e)
+        {
+            // TODO WIP 
+            // Do not show more results if at least one algorithm is terminated.
+            // later on display as many canvases as algorithms
+            if (isSolved)
+                return;
+
             try
             {
                 var algorithmResult = sender as AlgorithmResult;
@@ -63,7 +78,7 @@ namespace Demo.Utilities
             }
         }
 
-        public void Algorithm_TerminationReached(object sender, EventArgs e)
+        public void Algorithm_TerminationReached(object sender, SourceEventArgs e)
         {
             var isTerminated = false;
 
@@ -99,14 +114,20 @@ namespace Demo.Utilities
             {
                 if (!isTerminated)
                 {
-                    var pathToApplause = System.IO.Path.Join(
-                        Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName,
-                        @"Resources\Sounds\applause.wav");
-
-                    var player = new System.Media.SoundPlayer(pathToApplause);
-                    player.Play();
+                    PlayApplause();
+                    isSolved = true;
                 }
             }
+        }
+
+        private static void PlayApplause()
+        {
+            var pathToApplause = System.IO.Path.Join(
+                                    Directory.GetParent(Assembly.GetExecutingAssembly().Location).FullName,
+                                    @"Resources\Sounds\applause.wav");
+
+            var player = new System.Media.SoundPlayer(pathToApplause);
+            player.Play();
         }
 
         private void ShowChromosome(TangramChromosome c)
