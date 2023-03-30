@@ -16,7 +16,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             IList<BlockBase> blocks)
             : base(new FindFittestSolution(board, blocks))
         {
-            // TODO WIP maybe remove it for now?
             this.maximalAmountOfIterations = blocks
                 .Select(p => p.AllowedLocations.Length)
                 .Aggregate(1, (x, y) => x * y);
@@ -48,8 +47,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 default:
                     result = await algorithm.ParallelDepthFirstAsync(
                         token: ct,
-                        // TODO do the tuning when at least one solution is ready
-                        maxDegreeOfParallelism: 8192, // TODO extract is as nullable param with default -1
+                        //maxDegreeOfParallelism: 8192, // TODO WIP EXPERIMENTAL
                         callback: (state, control, quality) => {
                             base.HandleQualityCallback(state);
                             base.CurrentIteration = state.VisitedNodes;

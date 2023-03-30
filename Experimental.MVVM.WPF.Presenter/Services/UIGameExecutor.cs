@@ -31,7 +31,7 @@ namespace Demo.Services
             if (konfiguracjaGry.Algorithm != null)
             {
                 konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
-                konfiguracjaGry.Algorithm.QualityCallback += HandleAlgorithmRanStatus; ;
+                konfiguracjaGry.Algorithm.QualityCallback += HandleAlgorithmRanStatus;
             }
 
             if (konfiguracjaGry.Multialgorithm != null)
@@ -43,7 +43,6 @@ namespace Demo.Services
 
         private void HandleAlgorithmTerminationStatus(object sender, EventArgs e)
         {
-            ExecuteInBackgroundTask.Dispose();
             ExecuteInBackgroundTask = null;
             HandleAlgorithmRanStatus(sender, e);
         }
@@ -102,7 +101,9 @@ namespace Demo.Services
                 return UIGameExecutorState.READY;
             }
 
-            if (ExecuteInBackgroundTask != null && ExecuteInBackgroundTask.Status == TaskStatus.RanToCompletion)
+            if (ExecuteInBackgroundTask != null && (
+                ExecuteInBackgroundTask.Status == TaskStatus.RanToCompletion
+                || ExecuteInBackgroundTask.Status == TaskStatus.Running))
             {
                 return UIGameExecutorState.ACTIVATED;
             }
