@@ -42,7 +42,11 @@ namespace Demo.ViewModel.SolverTabs
         {
             var status = sender as string;
             UIGameExecutorStatus = status;
-            AlgorithmResultSource = e != null ? e.SourceName : string.Empty;
+            // TODO detect why this is pass to the event
+            if(e != null && e.SourceName != "unknown")
+            {
+                AlgorithmResultSource = e.SourceName;
+            }
         }
 
         public ICommand ExecuteCommand { get; set; }
