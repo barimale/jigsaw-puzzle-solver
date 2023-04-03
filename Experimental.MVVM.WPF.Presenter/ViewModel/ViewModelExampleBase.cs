@@ -73,6 +73,12 @@ namespace Demo.ViewModel
                 .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
+
+            var depthTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
             //gameParts.AllowedAngles);
 
             var ga = GameBuilder
@@ -88,6 +94,7 @@ namespace Demo.ViewModel
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .WithAlgorithms(
                     oneRootTS,
+                    depthTS,
                     ga)
                 .Build();
 
