@@ -5,5 +5,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
     public interface IExecutableMultiAlgorithm: IQualityCallback, IExecutionEstimationCallback
     {
         public Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default);
+        public Dictionary<string, IExecutableAlgorithm> Algorithms { get; }
     }
 }

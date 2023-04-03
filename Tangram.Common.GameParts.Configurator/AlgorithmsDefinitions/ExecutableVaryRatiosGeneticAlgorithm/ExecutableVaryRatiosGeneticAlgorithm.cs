@@ -8,6 +8,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
 {
     public class ExecutableVaryRatiosGeneticAlgorithm : Algorithm<GeneticAlgorithm>, IExecutableAlgorithm
     {
+        private const string NAME = "ExecutableVaryRatiosGeneticAlgorithm";
+
         private SemaphoreSlim signal = new SemaphoreSlim(0, 1);
 
         private AlgorithmResult result;
@@ -28,6 +30,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             this.varyRatiosService.TerminationMaximalAmountOfGenerationsReached += VaryRatiosService_TerminationMaximalAmountOfGenerationsReached;
         }
 
+        public string Name => NAME;
         public double LatestFitness => latestFitness;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)

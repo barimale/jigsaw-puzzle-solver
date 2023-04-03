@@ -2,12 +2,13 @@
 using GeneticSharp;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
-using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class ExecutableGeneticAlgorithm : Algorithm<GeneticAlgorithm>, IExecutableAlgorithm
     {
+        private const string NAME = "ExecutableGeneticAlgorithm";
+
         private SemaphoreSlim signal = new SemaphoreSlim(0, 1);
         private AlgorithmResult result;
         private double latestFitness;
@@ -19,6 +20,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             result = new AlgorithmResult();
         }
 
+        public string Name => NAME;
         public double LatestFitness => latestFitness;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)

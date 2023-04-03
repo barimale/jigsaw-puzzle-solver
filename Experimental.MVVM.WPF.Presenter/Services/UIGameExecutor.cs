@@ -1,4 +1,5 @@
 ﻿using Demo.Utilities;
+using Experimental.MVVM.WPF.Solver.Presenter.Utilities;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
@@ -10,6 +11,8 @@ namespace Demo.Services
 {
     public class UIGameExecutor
     {
+        private DisplayerMultiton _displayerMultiton;
+
         private AlgorithmDisplayHelper algorithmDisplayHelper;
         private Game konfiguracjaGry;
 
@@ -28,6 +31,13 @@ namespace Demo.Services
 
             if (konfiguracjaGry.Algorithm == null && konfiguracjaGry.Multialgorithm == null)
                 throw new Exception("At least one algorithm has to be set");
+
+            // CONTINUE FROM HERE
+            //this._displayerMultiton = new DisplayerMultiton();
+            //konfiguracjaGry.Multialgorithm.Algorithms.ForEach(p =>
+            //{
+            //    p.
+            //})
 
             if (konfiguracjaGry.Algorithm != null)
             {

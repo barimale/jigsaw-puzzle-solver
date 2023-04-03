@@ -6,15 +6,18 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
     public class MultiAlgorithm: IExecutableMultiAlgorithm
     {
-        private readonly ImmutableList<IExecutableAlgorithm> algorithms;
+        private readonly Dictionary<string, IExecutableAlgorithm> algorithms = new Dictionary<string, IExecutableAlgorithm>();
         private readonly ExecutionMode executionMode;
 
         public MultiAlgorithm(
             ExecutionMode executionMode,
             IList<IExecutableAlgorithm> algorithms)
         {
-            this.algorithms = algorithms.ToImmutableList();
             this.executionMode = executionMode;
+            algorithms.ToList().ForEach(p =>
+            {
+                this.algorithms.TryAdd(Guid.NewGuid().ToString(), p);
+            });
         }
 
         public MultiAlgorithm(
@@ -22,8 +25,13 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
             params IExecutableAlgorithm[] algorithms)
         {
             this.executionMode = executionMode;
-            this.algorithms = algorithms.ToImmutableList();
+            algorithms.ToList().ForEach(p =>
+            {
+                this.algorithms.TryAdd(Guid.NewGuid().ToString(), p);
+            });
         }
+
+        public Dictionary<string, IExecutableAlgorithm> Algorithms => algorithms;
 
         public event EventHandler<SourceEventArgs> QualityCallback; // of func / action here
         public event EventHandler OnExecutionEstimationReady;
@@ -31,6 +39,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
         public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)
         {
             var allOfThem = algorithms
+                    .Values
                     .Select(pp =>
                     {
                         pp.QualityCallback += QualityCallback;

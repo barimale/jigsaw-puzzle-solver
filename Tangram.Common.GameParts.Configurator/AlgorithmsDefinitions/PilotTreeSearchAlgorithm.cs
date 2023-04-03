@@ -9,6 +9,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class PilotTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
+        private const string NAME = "PilotTreeSearchAlgorithm";
         private int maximalAmountOfIterations;
 
         public PilotTreeSearchAlgorithm(
@@ -20,6 +21,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 .Select(p => p.AllowedLocations.Length)
                 .Aggregate(1, (x, y) => x * y);
         }
+
+        public string Name => NAME;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {

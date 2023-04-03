@@ -3,5 +3,6 @@
     public interface IExecutableAlgorithm: IQualityCallback, IExecutionEstimationCallback
     {
         public Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default);
+        public string Name { get; }
     }
 }

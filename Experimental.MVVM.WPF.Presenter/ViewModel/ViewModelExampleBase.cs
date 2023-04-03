@@ -66,7 +66,7 @@ namespace Demo.ViewModel
         {
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
             var oneRootTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
@@ -83,7 +83,7 @@ namespace Demo.ViewModel
 
             var ga = GameBuilder
                 .AvalaibleGATunedAlgorithms
-                .CreateBigBoardSettings(
+                .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles);

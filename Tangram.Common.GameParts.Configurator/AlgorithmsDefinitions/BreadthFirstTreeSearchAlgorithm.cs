@@ -1,7 +1,6 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
-using Solver.Tangram.AlgorithmDefinitions.Generics.Statistics;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
 using TreesearchLib;
@@ -10,6 +9,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
     public class BreadthFirstTreeSearchAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
     {
+        private const string NAME = "BreadthFirstTreeSearchAlgorithm";
+
         private int maximalAmountOfIterations;
 
         public BreadthFirstTreeSearchAlgorithm(
@@ -21,6 +22,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 .Select(p => p.AllowedLocations.Length)
                 .Aggregate(1, (x, y) => x * y);
         }
+
+        public string Name => NAME;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {

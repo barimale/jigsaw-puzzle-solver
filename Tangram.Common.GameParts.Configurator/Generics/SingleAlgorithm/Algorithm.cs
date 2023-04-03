@@ -10,10 +10,12 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
         where T : class
     {
         public readonly long DEFAULT_AMOUNT_OF_CYCLES = 10;
-
+        
         public long CurrentIteration { protected set; get; }
 
         protected T algorithm;
+
+        public virtual string Name => string.Empty;
 
         public event EventHandler<SourceEventArgs> QualityCallback;
         public event EventHandler OnExecutionEstimationReady;
