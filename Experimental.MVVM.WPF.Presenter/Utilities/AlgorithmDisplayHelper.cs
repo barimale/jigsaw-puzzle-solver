@@ -42,9 +42,6 @@ namespace Demo.Utilities
 
         public void Algorithm_Ran(object sender, SourceEventArgs e)
         {
-            // TODO WIP 
-            // Do not show more results if at least one algorithm is terminated.
-            // later on display as many canvases as algorithms
             if (isSolved)
                 return;
 
