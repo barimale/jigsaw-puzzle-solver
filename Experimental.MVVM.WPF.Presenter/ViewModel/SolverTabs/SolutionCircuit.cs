@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.CommandWpf;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
-using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
