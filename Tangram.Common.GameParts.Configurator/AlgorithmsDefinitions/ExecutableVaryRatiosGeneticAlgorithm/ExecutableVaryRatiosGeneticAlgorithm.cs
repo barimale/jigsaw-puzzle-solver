@@ -30,7 +30,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
             this.varyRatiosService.TerminationMaximalAmountOfGenerationsReached += VaryRatiosService_TerminationMaximalAmountOfGenerationsReached;
         }
 
-        public string Name => NAME;
+        public override string Name => NAME;
         public double LatestFitness => latestFitness;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)

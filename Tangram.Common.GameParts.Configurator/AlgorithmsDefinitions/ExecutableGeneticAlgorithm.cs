@@ -20,7 +20,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             result = new AlgorithmResult();
         }
 
-        public string Name => NAME;
+        public override string Name => NAME;
         public double LatestFitness => latestFitness;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)

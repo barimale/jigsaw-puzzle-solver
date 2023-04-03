@@ -143,9 +143,15 @@ namespace Demo.Services
                 HandleAlgorithmTerminationStatus(this, null);
                 Termination_Reached(result, null);
                 algorithmDisplayHelpers
-                    .Values
+                    .Keys
                     .ToList()
-                    .ForEach(p => p.Algorithm_TerminationReached(result, null));
+                    .ForEach(p => algorithmDisplayHelpers[p].Algorithm_TerminationReached(
+                        result,
+                        new SourceEventArgs() // It needs to be corrected
+                        {
+                            SourceName = p,
+                            SourceId = p
+                        }));
             }
             catch (Exception ex)
             {

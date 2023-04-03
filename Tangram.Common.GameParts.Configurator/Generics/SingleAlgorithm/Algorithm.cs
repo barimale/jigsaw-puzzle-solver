@@ -93,7 +93,11 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
                         Solution = state.BestQualityState,
                         IsError = false
                     },
-                    null);
+                    new SourceEventArgs()
+                    {
+                        SourceId = this.Id,
+                        SourceName = Name
+                    });
             }
             else
             {
@@ -113,7 +117,11 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
                         Solution = state.BestChromosome,
                         IsError = false
                     },
-                    null);
+                    new SourceEventArgs()
+                    {
+                        SourceId = this.Id,
+                        SourceName = this.Name
+                    });
             }
             else
             {

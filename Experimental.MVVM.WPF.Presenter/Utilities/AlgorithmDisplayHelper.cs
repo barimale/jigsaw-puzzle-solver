@@ -34,6 +34,18 @@ namespace Demo.Utilities
             });
         }
 
+        private string Guid => GetTag();
+
+        private string? GetTag()
+        {
+            var result = Dispatcher.Invoke(() =>
+            {
+                return Convert.ToString(Canvas.Tag);
+            });
+
+            return result;
+        }
+
         public void Reset()
         {
             this.LatestFitness = double.MinValue;
@@ -43,6 +55,11 @@ namespace Demo.Utilities
 
         public void Algorithm_Ran(object sender, SourceEventArgs e)
         {
+            if(e.SourceId != Guid)
+            {
+                return;
+            }
+
             if (isSolved)
                 return;
 
@@ -78,6 +95,11 @@ namespace Demo.Utilities
 
         public void Algorithm_TerminationReached(object sender, SourceEventArgs e)
         {
+            if (e == null || e.SourceId != Guid)
+            {
+                return;
+            }
+
             var isTerminated = false;
 
             try

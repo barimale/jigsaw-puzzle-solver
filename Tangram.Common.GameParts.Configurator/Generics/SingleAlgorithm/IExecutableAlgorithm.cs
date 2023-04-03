@@ -4,5 +4,6 @@
     {
         public Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default);
         public string Name { get; }
+        public string Id { get; }
     }
 }

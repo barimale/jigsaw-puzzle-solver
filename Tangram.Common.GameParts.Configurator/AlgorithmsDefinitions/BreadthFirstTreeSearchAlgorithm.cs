@@ -23,7 +23,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 .Aggregate(1, (x, y) => x * y);
         }
 
-        public string Name => NAME;
+        public override string Name => NAME;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {

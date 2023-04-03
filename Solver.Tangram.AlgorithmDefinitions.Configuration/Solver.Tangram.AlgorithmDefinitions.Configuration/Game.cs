@@ -47,6 +47,19 @@ namespace Solver.Tangram.Game.Logic
             throw new SystemException();
         }
 
+        public string GetAlgorithmNameBy(string id)
+        {
+            if (this.HasManyAlgorithms)
+            {
+                this.Multialgorithm.Algorithms.TryGetValue(id, out var algorithm);
+                return algorithm != null ? algorithm.Name : string.Empty;
+            }
+            else
+            {
+                return this.Algorithm.Name;
+            }
+        }
+
         private void Algorithm_OnExecutionEstimationReady(object? sender, EventArgs e)
         {
             if (OnExecutionEstimationReady != null)

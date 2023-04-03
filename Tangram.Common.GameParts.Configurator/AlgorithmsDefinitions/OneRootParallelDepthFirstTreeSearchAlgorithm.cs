@@ -20,7 +20,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
            // intentionally left blank
         }
 
-        public string Name => NAME;
+        public override string Name => NAME;
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {

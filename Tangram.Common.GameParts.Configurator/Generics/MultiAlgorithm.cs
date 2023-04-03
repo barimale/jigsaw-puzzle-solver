@@ -1,6 +1,7 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
+using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {
@@ -16,7 +17,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
             this.executionMode = executionMode;
             algorithms.ToList().ForEach(p =>
             {
-                this.algorithms.TryAdd(Guid.NewGuid().ToString(), p);
+                this.algorithms.TryAdd(p.Id, p);
             });
         }
 
@@ -39,13 +40,13 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
         public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)
         {
             var allOfThem = algorithms
-                    .Values
+                    .Keys
                     .Select(pp =>
                     {
-                        pp.QualityCallback += QualityCallback;
-                        pp.OnExecutionEstimationReady += OnExecutionEstimationReady;
+                        algorithms[pp].QualityCallback += QualityCallback;
+                        algorithms[pp].OnExecutionEstimationReady += OnExecutionEstimationReady;
 
-                        return pp;
+                        return algorithms[pp];
                     })
                     .Select(p => Task
                             .Run(async () => await p.ExecuteAsync(), ct))

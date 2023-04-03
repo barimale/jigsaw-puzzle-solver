@@ -32,7 +32,7 @@ namespace Demo.ViewModel.SolverTabs
                 }
             }else
             {
-                var algorithmKey = Guid.NewGuid().ToString();
+                var algorithmKey = _gameInstance.Algorithm.Id;
                 var canvas = CreateCanvas(algorithmKey);
                 _canvases.TryAdd(algorithmKey, canvas);
             }
@@ -68,11 +68,18 @@ namespace Demo.ViewModel.SolverTabs
         private UIElement ToTabControl()
         {
             var tabControl = new TabControl();
-            foreach(var canvas in _canvases)
+            tabControl.Margin = new Thickness(10, 10, 10, 10);
+            foreach (var canvas in _canvases)
             {
                 var tab = new TabItem();
-                tab.Content = canvas.Value;
+                var scrooller = new ScrollViewer();
+                scrooller.Content = canvas.Value;
+                tab.Content = scrooller;
                 tab.Tag = canvas.Key;
+                tab.Header = _gameInstance.GetAlgorithmNameBy(canvas.Key);
+                tab.ToolTip = _gameInstance.GetAlgorithmNameBy(canvas.Key);
+                // TODO datatemplate here max width
+                // do the header color green on termination reached
                 tabControl.Items.Add(tab);
             }
 
