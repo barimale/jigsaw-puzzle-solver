@@ -4,16 +4,20 @@ using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Threading;
 
 namespace Demo.Services
 {
     public class UIGameExecutor
     {
-        private DisplayerMultiton _displayerMultiton;
+        //private DisplayerMultiton _displayerMultiton;
 
-        private AlgorithmDisplayHelper algorithmDisplayHelper;
+        private Dictionary<string, AlgorithmDisplayHelper> algorithmDisplayHelpers = new Dictionary<string, AlgorithmDisplayHelper>();
         private Game konfiguracjaGry;
 
         public event EventHandler<SourceEventArgs> TerminationReached;
@@ -23,10 +27,19 @@ namespace Demo.Services
         public UIGameExecutorState ExecutorState => ObtainExecutorState();
 
         public UIGameExecutor(
-            AlgorithmDisplayHelper algorithmDisplayHelper,
-            ref Game dataInput)
+            ref Game dataInput,
+            Dispatcher dispatcher,
+            Dictionary<string, Canvas> keyedCanvases)
         {
-            this.algorithmDisplayHelper = algorithmDisplayHelper;
+            foreach(var canvas in keyedCanvases)
+            {
+                algorithmDisplayHelpers.TryAdd(
+                    canvas.Key,
+                    new AlgorithmDisplayHelper(
+                        canvas.Value,
+                        dispatcher));
+            }
+
             konfiguracjaGry = dataInput;
 
             if (konfiguracjaGry.Algorithm == null && konfiguracjaGry.Multialgorithm == null)
@@ -34,10 +47,10 @@ namespace Demo.Services
 
             // CONTINUE FROM HERE
             //this._displayerMultiton = new DisplayerMultiton();
-            //konfiguracjaGry.Multialgorithm.Algorithms.ForEach(p =>
+            //konfiguracjaGry.Multialgorithm.Algorithms.Keys.ToList().ForEach(p =>
             //{
-            //    p.
-            //})
+            //    this._displayerMultiton[p] = algorithmDisplayHelpers[p];
+            //});
 
             if (konfiguracjaGry.Algorithm != null)
             {
@@ -97,7 +110,7 @@ namespace Demo.Services
 
         private void Algorithm_QualityCallback(object sender, SourceEventArgs e)
         {
-            algorithmDisplayHelper.Algorithm_Ran(sender, e);
+            algorithmDisplayHelpers[e.SourceId].Algorithm_Ran(sender, e);
         }
 
         public void ExecuteInBackground(CancellationToken ct = default(CancellationToken))
@@ -106,7 +119,7 @@ namespace Demo.Services
             {
                 if (ExecutorState == UIGameExecutorState.READY)
                 {
-                    algorithmDisplayHelper.Reset();
+                    algorithmDisplayHelpers.Values.ToList().ForEach(p => p.Reset());
                     ExecuteInBackgroundTask = Task.Factory.StartNew(() => DoExecuteAsync(), ct);
                 }
             }
@@ -129,7 +142,10 @@ namespace Demo.Services
 
                 HandleAlgorithmTerminationStatus(this, null);
                 Termination_Reached(result, null);
-                algorithmDisplayHelper.Algorithm_TerminationReached(result, null);
+                algorithmDisplayHelpers
+                    .Values
+                    .ToList()
+                    .ForEach(p => p.Algorithm_TerminationReached(result, null));
             }
             catch (Exception ex)
             {

@@ -1,8 +1,9 @@
 ﻿using Demo.Services;
-using Demo.Utilities;
 using GalaSoft.MvvmLight.CommandWpf;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -14,22 +15,33 @@ namespace Demo.ViewModel.SolverTabs
     public class SolutionCircuit : TabBase, IViewModelExecuteAlgorithmCommand
     {
         private Game _gameInstance;
-        private AlgorithmDisplayHelper algorithmDisplayHelper;
         private UIGameExecutor _UIGameExecutor;
-        private Canvas _canvas;
+        private Dictionary<string, Canvas> _canvases = new Dictionary<string, Canvas>();
 
         public SolutionCircuit(ref Game gameInstance)
         {
             _gameInstance = gameInstance;
-            _canvas = CreateCanvas();
 
-            algorithmDisplayHelper = new AlgorithmDisplayHelper(
-                ref _canvas,
-                Dispatcher.CurrentDispatcher);
+            // canvases
+            if(_gameInstance.HasManyAlgorithms)
+            {
+                foreach(var algorithm in _gameInstance.Multialgorithm.Algorithms)
+                {
+                    var canvas = CreateCanvas(algorithm.Key);
+                    _canvases.TryAdd(algorithm.Key, canvas);
+                }
+            }else
+            {
+                var algorithmKey = Guid.NewGuid().ToString();
+                var canvas = CreateCanvas(algorithmKey);
+                _canvases.TryAdd(algorithmKey, canvas);
+            }
 
+            // helpers based on canvases
             _UIGameExecutor = new UIGameExecutor(
-                algorithmDisplayHelper,
-                ref _gameInstance);
+                ref _gameInstance,
+                Dispatcher.CurrentDispatcher,
+                _canvases);
 
             _UIGameExecutor.AlgorithmRanStatus += _UIGameExecutor_AlgorithmRanStatus;
 
@@ -51,7 +63,21 @@ namespace Demo.ViewModel.SolverTabs
 
         public ICommand ExecuteCommand { get; set; }
 
-        public UIElement MyCanvasContent => _canvas;
+        public UIElement MyCanvasContent => ToTabControl(); // _canvas;
+
+        private UIElement ToTabControl()
+        {
+            var tabControl = new TabControl();
+            foreach(var canvas in _canvases)
+            {
+                var tab = new TabItem();
+                tab.Content = canvas.Value;
+                tab.Tag = canvas.Key;
+                tabControl.Items.Add(tab);
+            }
+
+            return tabControl;
+        }
 
         private string _algorithmResultSource;
         public string AlgorithmResultSource
@@ -84,7 +110,7 @@ namespace Demo.ViewModel.SolverTabs
             _UIGameExecutor.ExecuteInBackground();
         }
 
-        private Canvas CreateCanvas()
+        private Canvas CreateCanvas(string id)
         {
             return new Canvas()
             {
@@ -93,7 +119,8 @@ namespace Demo.ViewModel.SolverTabs
                     Color = Colors.WhiteSmoke
                 },
                 Height = 300,
-                Width = 600
+                Width = 600,
+                Tag = id
             };
         }
     }

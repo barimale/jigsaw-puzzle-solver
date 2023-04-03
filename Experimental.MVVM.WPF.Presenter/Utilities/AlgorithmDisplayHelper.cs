@@ -23,7 +23,8 @@ namespace Demo.Utilities
         public double LatestFitness { private set; get; } = double.MinValue;
         private bool isSolved = false;
 
-        public AlgorithmDisplayHelper(ref Canvas canvas, Dispatcher dispatcher)
+        // maybe ref here
+        public AlgorithmDisplayHelper(Canvas canvas, Dispatcher dispatcher)
         {
             Canvas = canvas;
             Dispatcher = dispatcher;

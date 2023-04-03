@@ -30,6 +30,7 @@ namespace Solver.Tangram.Game.Logic
         }
 
         public GameSet GameSet => gameSet;
+        public bool HasManyAlgorithms => Multialgorithm != null && Algorithm == null;
 
         public IExecutableAlgorithm? Algorithm { get; private set; }
         public IExecutableMultiAlgorithm? Multialgorithm { get; private set; }
