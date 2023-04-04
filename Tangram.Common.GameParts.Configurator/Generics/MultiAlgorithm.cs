@@ -39,6 +39,9 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
 
         public async Task<AlgorithmResult[]> ExecuteManyAsync(CancellationToken ct = default)
         {
+
+            ct.ThrowIfCancellationRequested();
+
             var allOfThem = algorithms
                     .Keys
                     .Select(pp =>
@@ -49,7 +52,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics
                         return algorithms[pp];
                     })
                     .Select(p => Task
-                            .Run(async () => await p.ExecuteAsync(), ct))
+                            .Run(async () => await p.ExecuteAsync(ct), ct))
                     .ToImmutableArray();
 
             switch (executionMode)

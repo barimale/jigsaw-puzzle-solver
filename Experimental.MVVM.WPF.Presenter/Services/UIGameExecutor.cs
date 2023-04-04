@@ -115,17 +115,20 @@ namespace Demo.Services
 
         public void ExecuteInBackground(CancellationToken ct = default(CancellationToken))
         {
+            ct.ThrowIfCancellationRequested();
+
             try
             {
                 if (ExecutorState == UIGameExecutorState.READY)
                 {
                     algorithmDisplayHelpers.Values.ToList().ForEach(p => p.Reset());
-                    ExecuteInBackgroundTask = Task.Factory.StartNew(() => DoExecuteAsync(), ct);
+                    ExecuteInBackgroundTask = Task.Factory.StartNew(() => DoExecuteAsync(ct), ct);
                 }
             }
             catch (OperationCanceledException oce)
             {
                 ExecuteInBackgroundTask.Dispose();
+                ObtainExecutorState();
                 throw oce;
             }
             catch(Exception ex)
@@ -134,11 +137,13 @@ namespace Demo.Services
             }
         }
 
-        private async Task DoExecuteAsync()
+        private async Task DoExecuteAsync(CancellationToken ct = default(CancellationToken))
         {
             try
             {
-                var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
+                ct.ThrowIfCancellationRequested();
+
+                var result = await konfiguracjaGry.RunGameAsync<AlgorithmResult>(ct);
 
                 HandleAlgorithmTerminationStatus(this, null);
                 Termination_Reached(result, null);
@@ -152,6 +157,10 @@ namespace Demo.Services
                             SourceName = p,
                             SourceId = p
                         }));
+            }
+            catch (OperationCanceledException oce)
+            {
+                Console.WriteLine(oce.Message);
             }
             catch (Exception ex)
             {

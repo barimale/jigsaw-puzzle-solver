@@ -38,6 +38,8 @@ namespace Solver.Tangram.Game.Logic
         public async Task<Tout> RunGameAsync<Tout>(CancellationToken ct = default)
             where Tout : class
         {
+            ct.ThrowIfCancellationRequested();
+
             if (Algorithm != null)
                 return (await Algorithm.ExecuteAsync(ct)) as Tout;
 

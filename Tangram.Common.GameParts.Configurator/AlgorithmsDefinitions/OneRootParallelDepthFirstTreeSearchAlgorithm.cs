@@ -24,43 +24,69 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
-            // settings
-            var board = algorithm.Board;
-            var allBlocks = algorithm.Blocks.ToArray();
+            ct.ThrowIfCancellationRequested();
 
-            // roots - first block with n allowed locations
-            var rootBlock = allBlocks[0];
-
-            // transformed to n roots with 1 allowed location
-            var rootBlocks = rootBlock.AllowedLocations.Select(p =>
+            try
             {
-                var cloned = rootBlock.Clone();
-                cloned.SetAllowedLocations(new NetTopologySuite.Geometries.Geometry[1] { p });
+                // settings
+                var board = algorithm.Board;
+                var allBlocks = algorithm.Blocks.ToArray();
 
-                return cloned;
-            }).ToArray();
+                // roots - first block with n allowed locations
+                var rootBlock = allBlocks[0];
 
-            // based on above n algorithms are started in parallel 
-            // having just 1 root element
-            var rootedAlgorithms = rootBlocks.Select(
-                p => new FindFittestSolution(
-                    board,
-                    ModifyRootElementOfArray(p, allBlocks)))
-                .Select(async pp => await ExecuteAlgorithmAsync(pp, ct));
+                // transformed to n roots with 1 allowed location
+                var rootBlocks = rootBlock.AllowedLocations.Select(p =>
+                {
+                    var cloned = rootBlock.Clone();
+                    cloned.SetAllowedLocations(new NetTopologySuite.Geometries.Geometry[1] { p });
 
-            var results = rootedAlgorithms
-                .ToAsyncEnumerable()
-                .WhereAwait(async x => await MeetsCriteria(x, 0));
+                    return cloned;
+                }).ToArray();
 
-            var firstSolvedAlgorithm = results.FirstOrDefaultAsync();
-            var solution = firstSolvedAlgorithm.Result.Result;
+                // based on above n algorithms are started in parallel 
+                // having just 1 root element
+                var rootedAlgorithms = rootBlocks.Select(
+                    p => new FindFittestSolution(
+                        board,
+                        ModifyRootElementOfArray(p, allBlocks)))
+                    .Select(async pp => await ExecuteAlgorithmAsync(pp, ct));
 
-            return new AlgorithmResult()
+                var results = rootedAlgorithms
+                    .ToAsyncEnumerable()
+                    .WhereAwaitWithCancellation(async (x, ct) => await MeetsCriteria(x, 0));
+
+                var firstSolvedAlgorithm = results.FirstOrDefaultAsync();
+                var solution = firstSolvedAlgorithm.Result.Result;
+
+                return new AlgorithmResult()
+                {
+                    Fitness = solution != null && solution.Quality.HasValue ? solution.Quality.Value.ToString() : string.Empty,
+                    Solution = solution!,
+                    IsError = solution == null || !solution.Quality.HasValue
+                };
+
+            }
+            catch (OperationCanceledException oce)
             {
-                Fitness = solution != null && solution.Quality.HasValue ? solution.Quality.Value.ToString() : string.Empty,
-                Solution = solution!,
-                IsError = solution == null || !solution.Quality.HasValue
-            };
+                return new AlgorithmResult()
+                {
+                    Fitness = string.Empty,
+                    Solution = null,
+                    IsError = true,
+                    ErrorMessage = oce.Message
+                };
+            }
+            catch (Exception ex)
+            {
+                return new AlgorithmResult()
+                {
+                    Fitness = string.Empty,
+                    Solution = null,
+                    IsError = true,
+                    ErrorMessage = ex.Message
+                };
+            }
         }
 
         private async Task<FindFittestSolution> ExecuteAlgorithmAsync(FindFittestSolution pp, CancellationToken ct)

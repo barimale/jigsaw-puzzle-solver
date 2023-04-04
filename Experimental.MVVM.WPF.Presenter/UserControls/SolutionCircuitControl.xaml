@@ -16,35 +16,76 @@
         </Grid.RowDefinitions>
         <Label Content="{Binding TabName}"
                FontSize="18" Grid.Row="0"/>
-
-        <Button Grid.Row="1" x:Name="button"
+        <StackPanel Grid.Row="1" IsHitTestVisible="True">
+            <Grid IsHitTestVisible="True">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Button Grid.Column="0" Grid.Row="0" x:Name="buttonExecute"
                 Background="White"
-                    Margin="2"
+                    Margin="5"
                     Command="{Binding ExecuteCommand}"
+                    IsEnabled="{Binding IsExecutable}"
                     HorizontalAlignment="Left"
                     Width="85" >
-            <StackPanel
+                    <StackPanel
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                    </Grid.RowDefinitions>
-                    <iconPacks:PackIconModern 
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <iconPacks:PackIconModern 
                         Width="15"
                         Height="15"
-                        Grid.Column="0"
+                        Grid.Row="0"
                         Kind="ControlPlay" />
-                    <TextBlock Grid.Column="1">
+                            <TextBlock Grid.Row="1">
                         Execute
-                    </TextBlock>
-                </Grid>
-            </StackPanel>
-        </Button>
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Button>
+                <Button Grid.Column="1" Grid.Row="0" x:Name="buttonCancell"
+                Background="White"
+                    Margin="5"
+                    Command="{Binding CancellCommand}"
+                    IsEnabled="{Binding IsCancellable}"
+                    HorizontalAlignment="Left"
+                    Width="85" >
+                    <StackPanel
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <iconPacks:PackIconModern 
+                        Width="15"
+                        Height="15"
+                        Grid.Row="0"
+                        Kind="ControlStop" />
+                            <TextBlock Grid.Row="1">
+                                Stop
+                            </TextBlock>
+                        </Grid>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </StackPanel>
 
         <ScrollViewer Grid.Row="2">
             <Viewbox Stretch="Uniform"

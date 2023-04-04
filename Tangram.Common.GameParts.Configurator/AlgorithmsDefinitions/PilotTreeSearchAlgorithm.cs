@@ -26,6 +26,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
+            ct.ThrowIfCancellationRequested();
+
             FindFittestSolution? result;
             switch (algorithm.Blocks.Count)
             {

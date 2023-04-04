@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight.CommandWpf;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.Game.Logic;
 using System.Collections.Generic;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -15,14 +16,16 @@ namespace Demo.ViewModel.SolverTabs
     {
         private Game _gameInstance;
         private UIGameExecutor _UIGameExecutor;
+        private CancellationTokenSource _cts;
         private Dictionary<string, Canvas> _canvases = new Dictionary<string, Canvas>();
 
         public SolutionCircuit(ref Game gameInstance)
         {
             _gameInstance = gameInstance;
+            _cts = new CancellationTokenSource();
 
             // canvases
-            if(_gameInstance.HasManyAlgorithms)
+            if (_gameInstance.HasManyAlgorithms)
             {
                 foreach(var algorithm in _gameInstance.Multialgorithm.Algorithms)
                 {
@@ -47,7 +50,13 @@ namespace Demo.ViewModel.SolverTabs
             ExecuteCommand = new RelayCommand(
                 () => ExecuteAlgorithm(),
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
+            CancellCommand = new RelayCommand(
+                () => CancellAlgorithm(),
+                _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED);
         }
+
+        public bool IsExecutable => _UIGameExecutor.ExecutorState == UIGameExecutorState.READY;
+        public bool IsCancellable => _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED;
 
         private void _UIGameExecutor_AlgorithmRanStatus(object sender, SourceEventArgs e)
         {
@@ -61,6 +70,10 @@ namespace Demo.ViewModel.SolverTabs
         }
 
         public ICommand ExecuteCommand { get; set; }
+
+        public ICommand BreakContinueCommand { get; set; }
+
+        public ICommand CancellCommand { get; set; }
 
         public UIElement MyCanvasContent => ToTabControl(); // _canvas;
 
@@ -114,7 +127,13 @@ namespace Demo.ViewModel.SolverTabs
 
         public void ExecuteAlgorithm()
         {
-            _UIGameExecutor.ExecuteInBackground();
+            _cts.TryReset();
+            _UIGameExecutor.ExecuteInBackground(_cts.Token);
+        }
+
+        public void CancellAlgorithm()
+        {
+            _cts.Cancel();
         }
 
         private Canvas CreateCanvas(string id)

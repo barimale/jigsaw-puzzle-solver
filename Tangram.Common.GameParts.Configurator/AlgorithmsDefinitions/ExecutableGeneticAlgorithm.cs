@@ -25,6 +25,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
+            ct.ThrowIfCancellationRequested();
+
             try
             {
                 algorithm.GenerationRan += Algorithm_GenerationRan;

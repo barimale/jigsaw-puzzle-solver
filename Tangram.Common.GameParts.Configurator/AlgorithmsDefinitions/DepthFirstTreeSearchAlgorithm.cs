@@ -27,45 +27,61 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public override async Task<AlgorithmResult> ExecuteAsync(CancellationToken ct = default)
         {
-            FindFittestSolution? result;
-            switch (algorithm.Blocks.Count)
-            {
-                case int n when n < 3:
-                    result = algorithm.DepthFirst(
-                        token: ct,
-                        callback: (state, control, quality) => {
-                            base.HandleQualityCallback(state);
-                            base.CurrentIteration = state.VisitedNodes;
-                            base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
-                        });
-                    break;
-                case int n when n < 5:
-                    result = await algorithm.DepthFirstAsync(
-                        token: ct,
-                        callback: (state, control, quality) => {
-                            base.HandleQualityCallback(state);
-                            base.CurrentIteration = state.VisitedNodes;
-                            base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
-                        });
-                    break;
-                default:
-                    result = await algorithm.ParallelDepthFirstAsync(
-                        token: ct,
-                        //maxDegreeOfParallelism: 8192, // TODO WIP EXPERIMENTAL
-                        callback: (state, control, quality) => {
-                            base.HandleQualityCallback(state);
-                            base.CurrentIteration = state.VisitedNodes;
-                            base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
-                        });
-                    break;
-            }
+            ct.ThrowIfCancellationRequested();
 
-            return new AlgorithmResult()
+            try
             {
-                Fitness = result.Quality.HasValue ? result.Quality.Value.ToString() : string.Empty,
-                Solution = result,
-                IsError = !result.Quality.HasValue
-            };
+                FindFittestSolution? result;
+                switch (algorithm.Blocks.Count)
+                {
+                    case int n when n < 3:
+                        result = algorithm.DepthFirst(
+                            token: ct,
+                            callback: (state, control, quality) => {
+                                base.HandleQualityCallback(state);
+                                base.CurrentIteration = state.VisitedNodes;
+                                base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                            });
+                        break;
+                    case int n when n < 5:
+                        result = await algorithm.DepthFirstAsync(
+                            token: ct,
+                            callback: (state, control, quality) => {
+                                base.HandleQualityCallback(state);
+                                base.CurrentIteration = state.VisitedNodes;
+                                base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                            });
+                        break;
+                    default:
+                        result = await algorithm.ParallelDepthFirstAsync(
+                            token: ct,
+                            //maxDegreeOfParallelism: 8192, // TODO WIP EXPERIMENTAL
+                            callback: (state, control, quality) => {
+                                base.HandleQualityCallback(state);
+                                base.CurrentIteration = state.VisitedNodes;
+                                base.HandleExecutionEstimationCallback(state, maximalAmountOfIterations);
+                            });
+                        break;
+                }
+
+                return new AlgorithmResult()
+                {
+                    Fitness = result.Quality.HasValue ? result.Quality.Value.ToString() : string.Empty,
+                    Solution = result,
+                    IsError = !result.Quality.HasValue
+                };
+
+            }
+            catch (OperationCanceledException oce)
+            {
+                return new AlgorithmResult()
+                {
+                    Fitness = string.Empty,
+                    Solution = null,
+                    IsError = true,
+                    ErrorMessage = oce.Message
+                };
+            }
         }
     }
 }
