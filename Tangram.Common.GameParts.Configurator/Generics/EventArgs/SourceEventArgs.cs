@@ -4,5 +4,6 @@
     {
         public string? SourceName { get; set; }
         public string? SourceId { get; set; }
+        public bool? IsCancelled { get; set; }
     }
 }

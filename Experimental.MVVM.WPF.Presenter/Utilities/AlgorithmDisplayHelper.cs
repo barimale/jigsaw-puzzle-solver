@@ -132,7 +132,8 @@ namespace Demo.Utilities
             }
             finally
             {
-                if (!isTerminated)
+                if (!isTerminated &&
+                    e != null && e.IsCancelled.HasValue && !e.IsCancelled.Value)
                 {
                     PlayApplause();
                     isSolved = true;
