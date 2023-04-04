@@ -55,18 +55,38 @@ namespace Demo.ViewModel.SolverTabs
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED);
         }
 
-        public bool IsExecutable => _UIGameExecutor.ExecutorState == UIGameExecutorState.READY;
-        public bool IsCancellable => _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED;
+        private bool _isExecutable;
+        public bool IsExecutable
+        {
+            get => _isExecutable;
+            set
+            {
+                if (_isExecutable != value)
+                {
+                    Set(() => IsExecutable, ref _isExecutable, value);
+                }
+            }
+        }
+
+        private bool _isCancellable;
+        public bool IsCancellable
+        {
+            get => _isCancellable;
+            set
+            {
+                if (_isCancellable != value)
+                {
+                    Set(() => IsCancellable, ref _isCancellable, value);
+                }
+            }
+        }
 
         private void _UIGameExecutor_AlgorithmRanStatus(object sender, SourceEventArgs e)
         {
             var status = sender as string;
             UIGameExecutorStatus = status;
-            // TODO detect why this is pass to the event
-            if(e != null && e.SourceName != "unknown")
-            {
-                AlgorithmResultSource = e.SourceName;
-            }
+            IsExecutable = _UIGameExecutor.ExecutorState == UIGameExecutorState.READY;
+            IsCancellable = _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED;
         }
 
         public ICommand ExecuteCommand { get; set; }
@@ -97,19 +117,6 @@ namespace Demo.ViewModel.SolverTabs
             }
 
             return tabControl;
-        }
-
-        private string _algorithmResultSource;
-        public string AlgorithmResultSource
-        {
-            get => _algorithmResultSource;
-            set
-            {
-                if (_algorithmResultSource != value)
-                {
-                    Set(() => AlgorithmResultSource, ref _algorithmResultSource, value);
-                }
-            }
         }
 
         private string _UIGameExecutorStatus;
