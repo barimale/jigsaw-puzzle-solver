@@ -23,14 +23,13 @@ namespace Demo.Utilities
         public double LatestFitness { private set; get; } = double.MinValue;
         private bool isSolved = false;
 
-        // maybe ref here
         public AlgorithmDisplayHelper(Canvas canvas, Dispatcher dispatcher)
         {
             Canvas = canvas;
             Dispatcher = dispatcher;
             Dispatcher.Invoke(() =>
             {
-                Canvas.RenderTransform = new ScaleTransform(30, 30);
+                Canvas.RenderTransform = new ScaleTransform(50, 50);
             });
         }
 
@@ -101,7 +100,6 @@ namespace Demo.Utilities
             }
 
             var isTerminated = false;
-
             try
             {
                 var algorithmResult = sender as AlgorithmResult;

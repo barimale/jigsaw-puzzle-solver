@@ -24,7 +24,7 @@ namespace Demo
 
         public WindowBase()
         {
-
+            // intentionally left blank
         }
 
         protected bool TryDragTabToWindow(Point position, TabBase draggedTab)
