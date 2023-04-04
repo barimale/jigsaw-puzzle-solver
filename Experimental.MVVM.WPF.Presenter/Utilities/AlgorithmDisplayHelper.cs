@@ -23,13 +23,15 @@ namespace Demo.Utilities
         public double LatestFitness { private set; get; } = double.MinValue;
         private bool isSolved = false;
 
-        public AlgorithmDisplayHelper(Canvas canvas, Dispatcher dispatcher)
+        public AlgorithmDisplayHelper(
+            Canvas canvas,
+            Dispatcher dispatcher)
         {
             Canvas = canvas;
             Dispatcher = dispatcher;
             Dispatcher.Invoke(() =>
             {
-                Canvas.RenderTransform = new ScaleTransform(50, 50);
+                Canvas.RenderTransform = new ScaleTransform(45, 45);
             });
         }
 
