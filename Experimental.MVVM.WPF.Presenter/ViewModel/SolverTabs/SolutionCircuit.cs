@@ -47,12 +47,17 @@ namespace Demo.ViewModel.SolverTabs
 
             _UIGameExecutor.AlgorithmRanStatus += _UIGameExecutor_AlgorithmRanStatus;
 
+            // commands
             ExecuteCommand = new RelayCommand(
                 () => ExecuteAlgorithm(),
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
             CancellCommand = new RelayCommand(
                 () => CancellAlgorithm(),
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED);
+
+            // initial state
+            IsExecutable = true;
+            IsCancellable = false;
         }
 
         private bool _isExecutable;
