@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
@@ -18,11 +19,32 @@
 
         <Button Grid.Row="1" x:Name="button"
                 Background="White"
-                    Content="EXECUTE"
-                    Margin="5"
+                    Margin="2"
                     Command="{Binding ExecuteCommand}"
                     HorizontalAlignment="Left"
-                    Width="75" />
+                    Width="85" >
+            <StackPanel
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <iconPacks:PackIconModern 
+                        Width="15"
+                        Height="15"
+                        Grid.Column="0"
+                        Kind="ControlPlay" />
+                    <TextBlock Grid.Column="1">
+                        Execute
+                    </TextBlock>
+                </Grid>
+            </StackPanel>
+        </Button>
 
         <ScrollViewer Grid.Row="2">
             <Viewbox Stretch="Uniform"
@@ -35,16 +57,18 @@
         <StackPanel Grid.Row="3"
                     Margin="0,20,0,0"
                     Orientation="Horizontal">
-            <StackPanel HorizontalAlignment="Left">
-                <TextBlock Text="Result source name: " />
-                <TextBlock Text="{Binding AlgorithmResultSource}"
-                           FontSize="12" />
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Right">
-                <TextBlock Text="UIGameExecutorStatus: " />
-                <TextBlock Text="{Binding UIGameExecutorStatus}"
-                           FontSize="12" />
-            </StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            </Grid>
+            <TextBlock Text="UIGameExecutorStatus: " Grid.Row="0" Grid.Column="0"/>
+            <TextBlock Text="{Binding UIGameExecutorStatus}"
+                           FontSize="12" Grid.Row="0" Grid.Column="0"/>
         </StackPanel>
     </Grid>
 </UserControl>

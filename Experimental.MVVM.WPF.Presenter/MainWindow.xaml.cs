@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Windows;
-using System.Windows.Input;
-using System.Windows.Interop;
+﻿using System.Windows;
 using ChromeTabs;
-using Demo.Utilities;
 using Demo.ViewModel;
-using static System.Windows.PresentationSource;
 
 namespace Demo
 {
@@ -58,16 +49,6 @@ namespace Demo
                 }
             }
             return false;
-        }
-
-        private void BnOpenPinnedTabExample_Click(object sender, RoutedEventArgs e)
-        {
-            new PinnedTabExampleWindow().Show();
-        }
-
-        private void BnOpenCustomStyleExample_Click(object sender, RoutedEventArgs e)
-        {
-            new CustomStyleExampleWindow().Show();
         }
     }
 }

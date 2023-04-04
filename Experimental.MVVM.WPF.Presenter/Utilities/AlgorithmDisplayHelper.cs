@@ -31,7 +31,7 @@ namespace Demo.Utilities
             Dispatcher = dispatcher;
             Dispatcher.Invoke(() =>
             {
-                Canvas.RenderTransform = new ScaleTransform(45, 45);
+                Canvas.RenderTransform = new ScaleTransform(35, 35);
             });
         }
 

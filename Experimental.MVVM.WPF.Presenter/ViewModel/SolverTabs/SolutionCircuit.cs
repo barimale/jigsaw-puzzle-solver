@@ -76,6 +76,7 @@ namespace Demo.ViewModel.SolverTabs
                 tab.Content = scrooller;
                 tab.Tag = canvas.Key;
                 tab.Header = _gameInstance.GetAlgorithmNameBy(canvas.Key);
+                tab.FontSize = 10;
                 tab.ToolTip = _gameInstance.GetAlgorithmNameBy(canvas.Key);
                 // TODO datatemplate here max width
                 // do the header color green on termination reached
@@ -124,6 +125,7 @@ namespace Demo.ViewModel.SolverTabs
                 {
                     Color = Colors.WhiteSmoke
                 },
+                Margin = new Thickness(6, 6, 6, 6),
                 Height = 300,
                 Width = 600,
                 Tag = id
