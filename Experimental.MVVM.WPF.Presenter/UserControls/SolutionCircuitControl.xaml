@@ -107,9 +107,9 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
             </Grid>
-            <TextBlock Text="UIGameExecutorStatus: " Grid.Row="0" Grid.Column="0"/>
-            <TextBlock Text="{Binding UIGameExecutorStatus}"
-                           FontSize="12" Grid.Row="0" Grid.Column="0"/>
+            <TextBlock Text="Status: " Grid.Row="0" Grid.Column="0"/>
+            <TextBlock Text="{Binding UIGameExecutorStatus}" FontWeight="SemiBold"
+                           FontSize="14" Grid.Row="0" Grid.Column="0"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -158,11 +158,19 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             Task<FindFittestSolution> actualValue,
             int expectedReturnedValue)
         {
-            if (actualValue.Result.Quality.HasValue 
-                && actualValue.Result.Quality.Value.Value == expectedReturnedValue)
-                return true;
+            try
+            {
+                if (actualValue.Result.Quality.HasValue
+                    && actualValue.Result.Quality.Value.Value == expectedReturnedValue)
+                    return true;
 
-            return false;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
     }
 }

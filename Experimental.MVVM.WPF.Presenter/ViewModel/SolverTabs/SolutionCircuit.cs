@@ -139,7 +139,11 @@ namespace Demo.ViewModel.SolverTabs
 
         public void ExecuteAlgorithm()
         {
-            _cts.TryReset();
+            if(!_cts.IsCancellationRequested)
+            {
+                _cts = new CancellationTokenSource();
+            }
+
             _UIGameExecutor.ExecuteInBackground(_cts.Token);
         }
 
