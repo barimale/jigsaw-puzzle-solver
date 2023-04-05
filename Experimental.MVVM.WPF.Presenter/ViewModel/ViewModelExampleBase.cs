@@ -64,6 +64,9 @@ namespace Demo.ViewModel
 
         protected virtual Game CreateGame()
         {
+            // to use the default value pass -1
+            int maxDegreeOfParallelism = 2048;
+
             var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreatePolishBigBoard(withAllowedLocations: true);
@@ -72,13 +75,15 @@ namespace Demo.ViewModel
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
-                    gameParts.Blocks);
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var depthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
-                    gameParts.Blocks);
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
             //gameParts.AllowedAngles);
 
             var ga = GameBuilder
@@ -86,7 +91,8 @@ namespace Demo.ViewModel
                 .CreateBigBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
-                    gameParts.AllowedAngles);
+                    gameParts.AllowedAngles,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)

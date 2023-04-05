@@ -10,7 +10,8 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
         public ExecutableGeneticAlgorithm CreateBigBoardSettings(
             BoardShapeBase board,
             IList<BlockBase> blocks,
-            int[] allowedAngles)
+            int[] allowedAngles,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new ExecutableGeneticAlgorithm(
@@ -18,14 +19,16 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                         .CreateNew(
                         board,
                         blocks,
-                        allowedAngles)
+                        allowedAngles),
+                    maxDegreeOfParallelism
                     );
         }
 
         public ExecutableGeneticAlgorithm CreateMediumBoardSettings(
             BoardShapeBase board,
             IList<BlockBase> blocks,
-            int[] allowedAngles)
+            int[] allowedAngles,
+            int? maxDegreeOfParallelism = null)
         {
             return 
                 new ExecutableGeneticAlgorithm(
@@ -33,14 +36,16 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                         .CreateNew(
                         board,
                         blocks,
-                        allowedAngles)
+                        allowedAngles),
+                    maxDegreeOfParallelism
                     );
         }
 
         public ExecutableGeneticAlgorithm CreateSimpleBoardSettings(
             BoardShapeBase board,
             IList<BlockBase> blocks,
-            int[] allowedAngles)
+            int[] allowedAngles,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new ExecutableGeneticAlgorithm(
@@ -48,8 +53,9 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                         .CreateNew(
                         board,
                         blocks,
-                        allowedAngles)
-                );
+                        allowedAngles),
+                    maxDegreeOfParallelism
+                    );
         }
     }
 }

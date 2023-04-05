@@ -81,8 +81,7 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
 
             var termination = new FitnessThresholdTermination(-0.01f);
 
-            var solverBuilder = SolverFactory.CreateNew();
-            var solver = solverBuilder
+            var solver = SolverFactory.GASolverBuilder
                 .WithPopulation(initialPopulation)
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)

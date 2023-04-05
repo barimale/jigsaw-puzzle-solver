@@ -124,6 +124,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 default:
                     result = await algorithm.ParallelDepthFirstAsync(
                         token: ct,
+                        maxDegreeOfParallelism: maxDegreeOfParallelism.HasValue ? maxDegreeOfParallelism.Value : -1,
                         callback: (state, control, quality) =>
                         {
                             base.HandleQualityCallback(state);

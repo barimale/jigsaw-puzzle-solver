@@ -17,7 +17,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Solver
         private float? mutationProbability;
 
         public SolverBuilder WithParallelTaskExecutor(
-            int minThreads = 200,
+            int minThreads = 10,
             int maxThreads = 200
             )
         {

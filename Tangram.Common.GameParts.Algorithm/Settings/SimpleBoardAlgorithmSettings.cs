@@ -74,8 +74,7 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
             var operatorStrategy = new DefaultOperatorsStrategy(); // DefaultOperatorsStrategy()
             var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100); // new FitnessThresholdTermination(1.2f)
 
-            var solverBuilder = SolverFactory.CreateNew();
-            var solver = solverBuilder
+            var solver = SolverFactory.GASolverBuilder
                 .WithPopulation(initialPopulation)
                 .WithReinsertion(reinsertion)
                 .WithSelection(selection)

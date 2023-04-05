@@ -43,6 +43,15 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
 
             try
             {
+                if (base.maxDegreeOfParallelism.HasValue)
+                {
+                    algorithm.TaskExecutor = new ParallelTaskExecutor()
+                    {
+                        MinThreads = 10,
+                        MaxThreads = base.maxDegreeOfParallelism.Value
+                    };
+                }
+
                 algorithm.GenerationRan += Algorithm_GenerationRan;
                 algorithm.TerminationReached += Algorithm_TerminationReached;
                 algorithm.Start();

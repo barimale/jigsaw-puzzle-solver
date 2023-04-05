@@ -4,9 +4,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic
 {
     public static class SolverFactory
     {
-        public static SolverBuilder CreateNew()
-        {
-            return new SolverBuilder();
-        }
+        public static SolverBuilder GASolverBuilder => new SolverBuilder();
     }
 }
