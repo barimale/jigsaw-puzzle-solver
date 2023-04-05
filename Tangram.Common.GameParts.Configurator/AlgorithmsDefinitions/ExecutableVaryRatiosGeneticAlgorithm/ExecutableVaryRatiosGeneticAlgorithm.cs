@@ -19,11 +19,15 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions.ExecutableVa
 
         public ExecutableVaryRatiosGeneticAlgorithm(
             GeneticAlgorithm ga,
-            int maximalGenerationAmount)
+            int maximalGenerationAmount,
+            int? maxDegreeOfParallelism = null)
             : base(ga)
         {
             latestFitness = double.MinValue;
             result = new AlgorithmResult();
+
+            // TODO use it later on 
+            base.maxDegreeOfParallelism = maxDegreeOfParallelism;
 
             this.varyRatiosService = new VaryRatiosService(maximalGenerationAmount);
             this.varyRatiosService.OnRatiosChanged += VaryRatiosService_OnRatiosChanged;

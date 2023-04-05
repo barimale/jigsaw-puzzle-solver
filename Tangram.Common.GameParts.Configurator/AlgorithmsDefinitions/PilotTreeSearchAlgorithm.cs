@@ -14,12 +14,15 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public PilotTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
             : base(new FindFittestSolution(board, blocks))
         {
             this.maximalAmountOfIterations = blocks
                 .Select(p => p.AllowedLocations.Length)
                 .Aggregate(1, (x, y) => x * y);
+
+            base.maxDegreeOfParallelism = maxDegreeOfParallelism;
         }
 
         public override string Name => NAME;
@@ -52,6 +55,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 default:
                     result = await algorithm.ParallelPilotMethodAsync(
                         token: ct,
+                        maxDegreeOfParallelism: maxDegreeOfParallelism.HasValue ? maxDegreeOfParallelism.Value : -1,
                         callback: (state, control, quality) => {
                             base.HandleQualityCallback(state);
                             base.CurrentIteration = state.VisitedNodes;

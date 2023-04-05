@@ -14,10 +14,11 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public OneRootParallelDepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
             : base(new FindFittestSolution(board, blocks))
         {
-           // intentionally left blank
+            base.maxDegreeOfParallelism = maxDegreeOfParallelism;
         }
 
         public override string Name => NAME;

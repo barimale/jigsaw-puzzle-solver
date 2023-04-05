@@ -15,12 +15,14 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         public DepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
             : base(new FindFittestSolution(board, blocks))
         {
             this.maximalAmountOfIterations = blocks
                 .Select(p => p.AllowedLocations.Length)
                 .Aggregate(1, (x, y) => x * y);
+            base.maxDegreeOfParallelism = maxDegreeOfParallelism;
         }
 
         public override string Name => NAME;

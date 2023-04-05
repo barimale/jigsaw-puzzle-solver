@@ -9,45 +9,53 @@ namespace TreeSearch.Algorithm.Tangram.Solver.Templates
         // TODO: allowed angels need to be use also in case allowedLocation are calculated
         public BreadthFirstTreeSearchAlgorithm CreateBreadthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new BreadthFirstTreeSearchAlgorithm(
                     board,
-                    blocks
+                    blocks,
+                    maxDegreeOfParallelism
                 );
         }
 
         public DepthFirstTreeSearchAlgorithm CreateDepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new DepthFirstTreeSearchAlgorithm(
                     board,
-                    blocks
+                    blocks,
+                    maxDegreeOfParallelism
                 );
         }
 
         public OneRootParallelDepthFirstTreeSearchAlgorithm CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new OneRootParallelDepthFirstTreeSearchAlgorithm(
                     board,
-                    blocks
+                    blocks,
+                    maxDegreeOfParallelism
                 );
         }
 
         public PilotTreeSearchAlgorithm CreatePilotTreeSearchAlgorithm(
             BoardShapeBase board,
-            IList<BlockBase> blocks)
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new PilotTreeSearchAlgorithm(
                     board,
-                    blocks
+                    blocks,
+                    maxDegreeOfParallelism
                 );
         }
     }

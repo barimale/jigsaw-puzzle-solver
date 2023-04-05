@@ -13,11 +13,15 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
         private AlgorithmResult result;
         private double latestFitness;
 
-        public ExecutableGeneticAlgorithm(GeneticAlgorithm ga)
+        public ExecutableGeneticAlgorithm(
+            GeneticAlgorithm ga,
+            int? maxDegreeOfParallelism = null)
             : base(ga)
         {
             latestFitness = double.MinValue;
             result = new AlgorithmResult();
+            // TODO use it later on 
+            base.maxDegreeOfParallelism = maxDegreeOfParallelism;
         }
 
         public override string Name => NAME;

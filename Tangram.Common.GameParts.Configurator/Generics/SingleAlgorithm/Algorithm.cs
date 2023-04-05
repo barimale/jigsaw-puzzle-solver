@@ -21,6 +21,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
         public event EventHandler OnExecutionEstimationReady;
 
         private int cumulativeExecutionTimeInMiliseconds;
+        protected int? maxDegreeOfParallelism = null;
 
         public Algorithm(T algorithm)
         {

@@ -11,7 +11,8 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
             BoardShapeBase board,
             IList<BlockBase> blocks,
             int[] allowedAngles,
-            int maximalGenerationAmount)
+            int maximalGenerationAmount,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new ExecutableVaryRatiosGeneticAlgorithm(
@@ -20,14 +21,17 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                         board,
                         blocks,
                         allowedAngles),
-                    maximalGenerationAmount);
+                    maximalGenerationAmount,
+                    maxDegreeOfParallelism
+                );
         }
 
         public ExecutableVaryRatiosGeneticAlgorithm CreateMediumBoardSettings(
             BoardShapeBase board,
             IList<BlockBase> blocks,
             int[] allowedAngles,
-            int maximalGenerationAmount)
+            int maximalGenerationAmount,
+            int? maxDegreeOfParallelism = null)
         {
             return 
                 new ExecutableVaryRatiosGeneticAlgorithm(
@@ -36,7 +40,8 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                         board,
                         blocks,
                         allowedAngles),
-                        maximalGenerationAmount
+                        maximalGenerationAmount,
+                        maxDegreeOfParallelism
                     );
         }
 
@@ -44,7 +49,8 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
             BoardShapeBase board,
             IList<BlockBase> blocks,
             int[] allowedAngles,
-            int maximalGenerationAmount)
+            int maximalGenerationAmount,
+            int? maxDegreeOfParallelism = null)
         {
             return
                 new ExecutableVaryRatiosGeneticAlgorithm(
@@ -53,7 +59,8 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                         board,
                         blocks,
                         allowedAngles),
-                        maximalGenerationAmount
+                        maximalGenerationAmount,
+                        maxDegreeOfParallelism
                     );
         }
     }
