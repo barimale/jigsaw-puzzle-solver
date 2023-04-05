@@ -139,7 +139,7 @@ namespace Demo.ViewModel.SolverTabs
 
         public void ExecuteAlgorithm()
         {
-            if(!_cts.IsCancellationRequested)
+            if(_cts.IsCancellationRequested)
             {
                 _cts = new CancellationTokenSource();
             }
