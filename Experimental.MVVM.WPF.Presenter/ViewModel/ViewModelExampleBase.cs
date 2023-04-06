@@ -65,7 +65,7 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             // to use the default value pass -1
-            int maxDegreeOfParallelism = 2048;
+            int maxDegreeOfParallelism = 2048 * 4;
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
