@@ -79,7 +79,7 @@
                         Grid.Row="0"
                         Kind="ControlStop" />
                             <TextBlock Grid.Row="1">
-                                Stop
+                                Stop all
                             </TextBlock>
                         </Grid>
                     </StackPanel>
