@@ -69,7 +69,7 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
             //var oneRootTS = GameBuilder
             //    .AvalaibleTSTemplatesAlgorithms
@@ -80,7 +80,7 @@ namespace Demo.ViewModel
 
             var depthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
+                .CreateBinaryDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);

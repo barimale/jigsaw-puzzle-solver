@@ -1,7 +1,6 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
-using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics
 {

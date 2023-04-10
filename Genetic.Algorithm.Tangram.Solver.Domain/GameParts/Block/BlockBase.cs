@@ -2,9 +2,9 @@
 using NetTopologySuite.Algorithm;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Geometries.Utilities;
-using System.Collections.Immutable;
 using System.Data;
 using System.Drawing;
+using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Tangram.GameParts.Logic.GameParts.Block
 {
@@ -55,13 +55,31 @@ namespace Tangram.GameParts.Logic.GameParts.Block
             AllowedLocations = locations;
         }
 
-        // TODO: continue from here
-        public int[] ToBinary()
+        public int[] ToBinary(IList<BoardFieldDefinition> boardFieldsDefinition)
         {
-            var asByte = Polygon.AsText();
-            //Board.
-            //Polygon
-            return new int[1];
+            var result = boardFieldsDefinition
+                .OrderBy(p => p.X)
+                .ThenBy(pp => pp.Y)
+                .Select(field =>
+                    {
+                        var result = Polygon.Contains(
+                            new GeometryFactory()
+                                .CreateGeometry(
+                                    new GeometryFactory()
+                                    .CreatePolygon(field.ToCoordinates())));
+
+                        if (result == true)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    })
+                .ToArray();
+
+            return result;
         }
 
         public BlockBase Clone(bool moveToZero = true)

@@ -1,5 +1,4 @@
-add conversion to binary for square-based board only 
-and implement binary or tree search
+draw binary next to the allowed location
 
 add results log to be sure app is not suspended
 memory usages from the other example

@@ -9,9 +9,6 @@ using TreesearchLib;
 
 namespace Algorithm.Tangram.TreeSearch.Logic
 {
-    // TODO use the field generator of the board
-    // field by field check if block contains the field -> 1 or 0 
-    // as a result: 10000010110001
     public class FindBinaryFittestSolution : IMutableState<FindBinaryFittestSolution, IndexedBinaryBlockBase, Minimize>
     {
         // settings
@@ -22,15 +19,12 @@ namespace Algorithm.Tangram.TreeSearch.Logic
         // game parts
         private readonly BoardShapeBase board;
         private readonly IList<BlockBase> blocks;
-        private readonly int boardFieldAmount;
 
         public FindBinaryFittestSolution(
             BoardShapeBase board,
             IList<BlockBase> blocks)
         {
             this.board = board;
-            this.boardFieldAmount = board.BoardFieldsDefinition.Count;
-
             this.blocks = new List<BlockBase>(blocks);
             size = this.blocks.Count;
 
@@ -44,11 +38,8 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         private int CheckBinarySum()
         {
-            // check if all items from board are equal to 1 then true
-            // otherwise false
-
             var binaries = choicesMade
-                .Select(p => p.TransformedBlock.ToBinary())
+                .Select(p => p.BinaryBlockOnTheBoard)
                 .ToList();
 
             var sums =
@@ -57,7 +48,8 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                 group valueIndex by valueIndex.Index into indexGroups
                 select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
 
-            var diff = Math.Abs(this.boardFieldAmount - sums.Sum());
+            var diffSum = sums.Select(p => Math.Abs(p - 1)).ToArray();
+            var diff = 1 * Math.Abs(diffSum.Sum());
 
             return diff;
         }
@@ -102,7 +94,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                 .WithIndex()
                 .AsParallel()
                 .ForAll((p) => {
-                    innerResult.Add(new IndexedBinaryBlockBase(nextOne, p.index));
+                    innerResult.Add(new IndexedBinaryBlockBase(Board.BoardFieldsDefinition, nextOne, p.index));
                 });
 
             results.AddRange(innerResult.AsEnumerable());

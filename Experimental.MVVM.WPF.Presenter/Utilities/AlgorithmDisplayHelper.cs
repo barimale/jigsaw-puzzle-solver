@@ -83,6 +83,11 @@ namespace Demo.Utilities
                             .GetSolution<FindFittestSolution>();
                         ShowTreeSearchSolution(choicesMade);
                         break;
+                    case FindBinaryFittestSolution _:
+                        var binaryChoicesMade = algorithmResult
+                            .GetSolution<FindBinaryFittestSolution>();
+                        ShowTreeSearchSolution(binaryChoicesMade);
+                        break;
                     default:
                         // do nothing
                         break;
@@ -205,6 +210,59 @@ namespace Demo.Utilities
         }
 
         private void ShowTreeSearchSolution(FindFittestSolution c)
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (c == null)
+                    return;
+
+                // clear canvas
+                Canvas.Children.Clear();
+
+                // show board
+                var board = new Polygon();
+                board.Points = new PointCollection();
+                board.Fill = Brushes.GhostWhite;
+                board.Stroke = Brushes.DarkGray;
+                board.StrokeThickness = 0.05d;
+
+                c.Board
+                    .Polygon
+                    .Coordinates
+                    .ToList()
+                    .ForEach(p => board
+                        .Points
+                        .Add(new Point(p.X, p.Y)));
+
+                Canvas.Children.Add(board);
+
+                // show blocks
+                var solution = c.Solution
+                        .ToList()
+                        .Select(p => p.TransformedBlock!)
+                        .ToList();
+
+                var shapes = solution
+                    .Select(p =>
+                    {
+                        var shape = new Polygon();
+                        shape.Points = new PointCollection(p
+                            .Polygon
+                            .Coordinates
+                            .Select(pp => new Point(pp.X, pp.Y))
+                            .ToList());
+                        shape.Fill = ConvertColor(p.Color);
+                        shape.Stroke = Brushes.Silver;
+                        shape.StrokeThickness = 0.05d;
+                        return (UIElement)shape;
+                    })
+                    .ToList();
+
+                shapes.ForEach(p => Canvas.Children.Add(p));
+            });
+        }
+
+        private void ShowTreeSearchSolution(FindBinaryFittestSolution c)
         {
             Dispatcher.Invoke(() =>
             {
