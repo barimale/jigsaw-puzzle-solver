@@ -80,7 +80,7 @@ namespace Demo.ViewModel
 
             var depthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
-                .CreateBinaryDepthFirstTreeSearchAlgorithm(
+                .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);

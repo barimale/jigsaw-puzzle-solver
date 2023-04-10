@@ -9,6 +9,9 @@ using TreesearchLib;
 
 namespace Algorithm.Tangram.TreeSearch.Logic
 {
+    // TODO use the field generator of the board
+    // field by field check if block contains the field -> 1 or 0 
+    // as a result: 10000010110001
     public class FindBinaryFittestSolution : IMutableState<FindBinaryFittestSolution, IndexedBinaryBlockBase, Minimize>
     {
         // settings
@@ -39,10 +42,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
         public BoardShapeBase Board => board;
         public IList<BlockBase> Blocks => blocks.ToImmutableList();
 
-        private int CheckFitness(
-            bool withPolygonsIntersectionsDiff,
-            bool withOutOfBoundsDiff,
-            bool withVolumeDiff)
+        private int CheckBinarySum()
         {
             // check if all items from board are equal to 1 then true
             // otherwise false
@@ -57,16 +57,16 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                 group valueIndex by valueIndex.Index into indexGroups
                 select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
 
-            var diff = Math.Abs(this.boardFieldAmount - sums.Sum()); 
+            var diff = Math.Abs(this.boardFieldAmount - sums.Sum());
 
             return diff;
         }
 
         public bool IsTerminal => choicesMade.Count == size;
 
-        public Minimize Bound => new Minimize(CheckFitness(true, false, false));
+        public Minimize Bound => new Minimize(CheckBinarySum());
 
-        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, true, true)) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize(CheckBinarySum()) : null;
 
         public void Apply(IndexedBinaryBlockBase choice)
         {
@@ -98,10 +98,12 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
             var innerResult = new ConcurrentBag<IndexedBinaryBlockBase>();
 
-            nextOne.AllowedLocations.WithIndex().AsParallel().ForAll((p) =>
-            {
-                innerResult.Add(new IndexedBinaryBlockBase(nextOne, p.index));
-            });
+            nextOne.AllowedLocations
+                .WithIndex()
+                .AsParallel()
+                .ForAll((p) => {
+                    innerResult.Add(new IndexedBinaryBlockBase(nextOne, p.index));
+                });
 
             results.AddRange(innerResult.AsEnumerable());
 
