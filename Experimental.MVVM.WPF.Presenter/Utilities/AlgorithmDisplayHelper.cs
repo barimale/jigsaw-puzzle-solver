@@ -126,6 +126,11 @@ namespace Demo.Utilities
                             .GetSolution<FindFittestSolution>();
                         ShowTreeSearchSolution(choicesMade);
                         break;
+                    case FindBinaryFittestSolution _:
+                        var binaryChoicesMade = algorithmResult
+                            .GetSolution<FindBinaryFittestSolution>();
+                        ShowTreeSearchSolution(binaryChoicesMade);
+                        break;
                     default:
                         // do nothing
                         break;

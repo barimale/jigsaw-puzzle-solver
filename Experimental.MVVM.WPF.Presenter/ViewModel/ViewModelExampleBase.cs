@@ -65,20 +65,21 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             // to use the default value pass -1
-            int maxDegreeOfParallelism = 2048 * 4;
+            int maxDegreeOfParallelism = 2048 * 2;
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                .CreatePolishBigBoard(withAllowedLocations: true);
 
-            //var oneRootTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var oneRootTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            var depthTS = GameBuilder
+            // for square-based only
+            var binDepthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateBinaryDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
@@ -86,23 +87,30 @@ namespace Demo.ViewModel
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
             //gameParts.AllowedAngles);
 
-            //var ga = GameBuilder
-            //    .AvalaibleGATunedAlgorithms
-            //    .CreateBigBoardSettings(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        gameParts.AllowedAngles,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var depthTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+
+            var ga = GameBuilder
+                .AvalaibleGATunedAlgorithms
+                .CreateBigBoardSettings(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .WithAlgorithms(
-                    //oneRootTS,
-                    depthTS)
-                    //ga
-                    //)
+                    binDepthTS,
+                    oneRootTS,
+                    depthTS,
+                    ga)
                 .Build();
 
             return konfiguracjaGry;
