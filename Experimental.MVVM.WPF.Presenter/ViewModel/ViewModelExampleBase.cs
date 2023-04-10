@@ -71,37 +71,38 @@ namespace Demo.ViewModel
                 .AvalaibleGameSets
                 .CreatePolishBigBoard(withAllowedLocations: true);
 
-            var oneRootTS = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+            //var oneRootTS = GameBuilder
+            //    .AvalaibleTSTemplatesAlgorithms
+            //    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
+            //        gameParts.Board,
+            //        gameParts.Blocks,
+            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var depthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
+                .CreateBinaryDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
             //gameParts.AllowedAngles);
 
-            var ga = GameBuilder
-                .AvalaibleGATunedAlgorithms
-                .CreateBigBoardSettings(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    gameParts.AllowedAngles,
-                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+            //var ga = GameBuilder
+            //    .AvalaibleGATunedAlgorithms
+            //    .CreateBigBoardSettings(
+            //        gameParts.Board,
+            //        gameParts.Blocks,
+            //        gameParts.AllowedAngles,
+            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .WithAlgorithms(
-                    oneRootTS,
-                    depthTS,
-                    ga)
+                    //oneRootTS,
+                    depthTS)
+                    //ga
+                    //)
                 .Build();
 
             return konfiguracjaGry;

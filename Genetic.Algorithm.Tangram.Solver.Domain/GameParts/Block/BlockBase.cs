@@ -58,6 +58,7 @@ namespace Tangram.GameParts.Logic.GameParts.Block
         // TODO: continue from here
         public int[] ToBinary()
         {
+            var asByte = Polygon.AsText();
             //Board.
             //Polygon
             return new int[1];

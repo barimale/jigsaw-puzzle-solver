@@ -33,6 +33,19 @@ namespace TreeSearch.Algorithm.Tangram.Solver.Templates
                 );
         }
 
+        public BinaryDepthFirstTreeSearchAlgorithm CreateBinaryDepthFirstTreeSearchAlgorithm(
+            BoardShapeBase board,
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
+        {
+            return
+                new BinaryDepthFirstTreeSearchAlgorithm(
+                    board,
+                    blocks,
+                    maxDegreeOfParallelism
+                );
+        }
+
         public OneRootParallelDepthFirstTreeSearchAlgorithm CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks,

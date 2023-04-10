@@ -59,6 +59,33 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
             }
         }
 
+        public void HandleExecutionEstimationCallback(
+            ISearchControl<FindBinaryFittestSolution, Minimize> state,
+            int maximalAmountOfIterations)
+        {
+            if (OnExecutionEstimationReady != null)
+            {
+                if (CurrentIteration % StatisticSettings.MeasurePeriodInCycles == 0)
+                {
+                    OnExecutionEstimationReady.Invoke(
+                        new StatisticDetails(
+                            this.Id,
+                            maximalAmountOfIterations,
+                            this.CurrentIteration)
+                        {
+                            MeanExecutionTimeOfIterationInMiliseconds = cumulativeExecutionTimeInMiliseconds / StatisticSettings.MeasurePeriodInCycles
+                        },
+                        null);
+
+                    cumulativeExecutionTimeInMiliseconds = 0;
+                }
+                else
+                {
+                    cumulativeExecutionTimeInMiliseconds += state.Elapsed.Milliseconds;
+                }
+            }
+        }
+
         // TODO: check if it needs to be cumulative or directly the value
         public void HandleExecutionEstimationCallback(
             GeneticAlgorithm state)
@@ -84,6 +111,30 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm
 
         public void HandleQualityCallback(
             ISearchControl<FindFittestSolution, Minimize> state)
+        {
+            if (QualityCallback != null)
+            {
+                QualityCallback.Invoke(
+                    new AlgorithmResult()
+                    {
+                        Fitness = state.BestQuality.Value.Value.ToString(),
+                        Solution = state.BestQualityState,
+                        IsError = false
+                    },
+                    new SourceEventArgs()
+                    {
+                        SourceId = this.Id,
+                        SourceName = Name
+                    });
+            }
+            else
+            {
+                // do nothing
+            }
+        }
+
+        public void HandleQualityCallback(
+            ISearchControl<FindBinaryFittestSolution, Minimize> state)
         {
             if (QualityCallback != null)
             {
