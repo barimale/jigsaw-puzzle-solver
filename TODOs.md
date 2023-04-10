@@ -1,5 +1,7 @@
+add conversion to binary for square-based board only 
+and implement binary or tree search
 
-
+add results log to be sure app is not suspended
 memory usages from the other example
 style form the second example
 

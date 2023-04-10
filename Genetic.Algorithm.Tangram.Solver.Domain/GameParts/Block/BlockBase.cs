@@ -55,6 +55,14 @@ namespace Tangram.GameParts.Logic.GameParts.Block
             AllowedLocations = locations;
         }
 
+        // TODO: continue from here
+        public int[] ToBinary()
+        {
+            //Board.
+            //Polygon
+            return new int[1];
+        }
+
         public BlockBase Clone(bool moveToZero = true)
         {
             var cloned = new BlockBase(
