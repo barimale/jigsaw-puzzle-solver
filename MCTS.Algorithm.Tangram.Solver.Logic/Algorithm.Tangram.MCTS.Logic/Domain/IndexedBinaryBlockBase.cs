@@ -17,6 +17,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic.Domain
             var clonedBlockDefinition = BlockDefinition.Clone();
             clonedBlockDefinition.Apply(clonedBlockDefinition.AllowedLocations[Index]);
             TransformedBlock = clonedBlockDefinition;
+            //TODO move it to the allowedLocation class when ready
             BinaryBlockOnTheBoard = TransformedBlock.ToBinary(BoardFieldsDefinition);
         }
 
