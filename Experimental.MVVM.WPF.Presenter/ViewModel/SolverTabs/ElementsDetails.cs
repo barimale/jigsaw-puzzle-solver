@@ -77,7 +77,7 @@ namespace Demo.ViewModel.SolverTabs
 
             Grid.SetRow(blockDefinition, 1);
             Grid.SetColumn(blockDefinition, 0);
-            Grid.SetColumnSpan(blockDefinition, 2);
+            Grid.SetColumnSpan(blockDefinition, 2); // TODO: double check it
 
             // allowed locations amount or not supported
             grid.Children.Add(blockDefinition);
@@ -211,8 +211,16 @@ namespace Demo.ViewModel.SolverTabs
 
                     Grid.SetRow(locationDefinitionLabel, 2 * location.index);
                     Grid.SetColumn(locationDefinitionLabel, 0);
-                    Grid.SetColumnSpan(locationDefinitionLabel, 2);
                     innerGrid.Children.Add(locationDefinitionLabel);
+
+                    // binary label
+                    var binaryLocationDefinitionLabel = new TextBlock();
+                    binaryLocationDefinitionLabel.Inlines.Add(new Run($"Binary representative of the location {location.index + 1}:") { FontWeight = FontWeights.SemiBold });
+                    binaryLocationDefinitionLabel.Margin = new Thickness(0, 0, 0, 8);
+
+                    Grid.SetRow(binaryLocationDefinitionLabel, 2 * location.index);
+                    Grid.SetColumn(binaryLocationDefinitionLabel, 1);
+                    innerGrid.Children.Add(binaryLocationDefinitionLabel);
 
                     // create canvas for every location and add to row
                     UIElement locationDefinition = new DisplayBlockHelper()
@@ -224,8 +232,19 @@ namespace Demo.ViewModel.SolverTabs
 
                     Grid.SetRow(locationDefinition, 2 * location.index + 1);
                     Grid.SetColumn(locationDefinition, 0);
-                    Grid.SetColumnSpan(locationDefinition, 2);
                     innerGrid.Children.Add(locationDefinition);
+
+                    // allowed location binary definition
+                    UIElement blockDefinitionBinary = new DisplayBlockHelper()
+                        .MapBlockDefinitionToBinaryText(
+                            _gameInstance.GameSet.Board,
+                            block,
+                            location.item,
+                            160);
+
+                    Grid.SetRow(blockDefinitionBinary, 2 * location.index + 1);
+                    Grid.SetColumn(blockDefinitionBinary, 1);
+                    innerGrid.Children.Add(blockDefinitionBinary);
                 });
 
                 Grid.SetRow(innerGrid, 8);

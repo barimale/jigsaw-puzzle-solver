@@ -58,17 +58,21 @@ namespace Tangram.GameParts.Logic.GameParts.Block
         public int[] ToBinary(IList<BoardFieldDefinition> boardFieldsDefinition)
         {
             var result = boardFieldsDefinition
-                .OrderBy(p => p.X)
-                .ThenBy(pp => pp.Y)
+                .OrderBy(p => p.Y)
+                .ThenBy(pp => pp.X)
                 .Select(field =>
                     {
-                        var result = Polygon.Contains(
-                            new GeometryFactory()
+                        var fieldGeometry = new GeometryFactory()
                                 .CreateGeometry(
                                     new GeometryFactory()
-                                    .CreatePolygon(field.ToCoordinates())));
+                                    .CreatePolygon(field.ToCoordinates()));
 
-                        if (result == true)
+                        var fieldGeometryWeb = ToWebsiteString(fieldGeometry);
+                        var polygonWeb = ToWebsiteString(Polygon);
+
+                        var result = fieldGeometry.CoveredBy(Polygon);
+
+                        if (result)
                         {
                             return 1;
                         }
@@ -164,6 +168,23 @@ namespace Tangram.GameParts.Logic.GameParts.Block
         public override string ToString()
         {
             var toString = Polygon
+                .Coordinates
+                .Select(p =>
+                    "(" +
+                    Math.Round(p.X, 2)
+                        .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                    "," +
+                    Math.Round(p.Y, 2)
+                        .ToString(System.Globalization.CultureInfo.InvariantCulture) +
+                    ")").ToArray();
+            var toStringAsArray = string.Join(',', toString);
+
+            return toStringAsArray;
+        }
+
+        private string ToWebsiteString(Geometry polygon)
+        {
+            var toString = polygon
                 .Coordinates
                 .Select(p =>
                     "(" +

@@ -1,5 +1,9 @@
-﻿using Demo.Utilities;
+﻿using Algorithm.Tangram.Common.Extensions;
+using Demo.Utilities;
+using System;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks.Dataflow;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -37,6 +41,47 @@ namespace Demo.ViewModel
 
             return canvas;
         }
+
+        public UIElement MapBlockDefinitionToBinaryText(
+            BoardShapeBase board,
+            BlockBase block,
+            NetTopologySuite.Geometries.Geometry locationToBeapplied,
+            int containerHeight)
+        {
+            var stackPanel = new StackPanel();
+
+            var boardWidth = board.Width;
+            var boardHeight = board.Height;
+
+            var clonedBlockDefinition = block.Clone();
+            clonedBlockDefinition.Apply(locationToBeapplied);
+            var binaryText = clonedBlockDefinition.ToBinary(board.BoardFieldsDefinition);
+            var binaryTextBuilder = new StringBuilder();
+                
+            for(int i = 0;i < boardHeight; i++)
+            {
+                var oneRow = binaryText
+                    .Skip(i * boardWidth)
+                    .Take(boardWidth)
+                    .Select(p => p.ToString())
+                    .ToList();
+
+                var oneRowAsString = string.Join(' ', oneRow);
+                binaryTextBuilder.Append(oneRowAsString);
+                if(i < boardHeight -1)
+                {
+                    binaryTextBuilder.AppendLine();
+                }
+            }
+
+            var textComponent = new TextBlock();
+            textComponent.Height = containerHeight;
+            textComponent.Text = binaryTextBuilder.ToString();
+            stackPanel.Children.Add(textComponent);
+
+            return stackPanel;
+        }
+
 
         public UIElement MapBlockDefinitionToCanvasWithBoard(BoardShapeBase board, BlockBase block, int canvasHeight)
         {
