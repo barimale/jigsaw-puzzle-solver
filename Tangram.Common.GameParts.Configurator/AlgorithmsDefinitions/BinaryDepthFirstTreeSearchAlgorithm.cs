@@ -38,7 +38,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 {
                     case int n when n < 3:
                         result = algorithm.DepthFirst(
-                            token: ct,
                             callback: (state, control, quality) => {
                                 base.HandleQualityCallback(state);
                                 base.CurrentIteration = state.VisitedNodes;

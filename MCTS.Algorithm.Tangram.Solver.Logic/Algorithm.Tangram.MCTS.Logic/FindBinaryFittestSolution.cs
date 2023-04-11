@@ -1,5 +1,7 @@
 using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
+using Algorithm.Tangram.TreeSearch.Logic.Extensions;
+using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
@@ -19,12 +21,15 @@ namespace Algorithm.Tangram.TreeSearch.Logic
         // game parts
         private readonly BoardShapeBase board;
         private readonly IList<BlockBase> blocks;
+        private readonly FitnessService fitnessService;
 
         public FindBinaryFittestSolution(
             BoardShapeBase board,
             IList<BlockBase> blocks)
         {
+            this.ID = Guid.NewGuid().ToString();
             this.board = board;
+            fitnessService = new FitnessService(this.board);
             this.blocks = new List<BlockBase>(blocks);
             size = this.blocks.Count;
 
@@ -32,6 +37,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
             remaining = new HashSet<BlockBase>(this.blocks);
         }
 
+        public string ID { private set; get; }
         public ImmutableList<IndexedBinaryBlockBase> Solution => choicesMade.ToImmutableList();
         public BoardShapeBase Board => board;
         public IList<BlockBase> Blocks => blocks.ToImmutableList();
@@ -54,11 +60,35 @@ namespace Algorithm.Tangram.TreeSearch.Logic
             return diff;
         }
 
+        private int CheckFitness(
+            bool withPolygonsIntersectionsDiff,
+            bool withOutOfBoundsDiff,
+            bool withVolumeDiff)
+        {
+            var evaluatedGeometry = choicesMade
+                .Select(p => p.TransformedBlock)
+                .ToList()
+                .Select(pp => pp.Polygon)
+                .ToArray();
+
+            var diff = fitnessService.Evaluate(
+                evaluatedGeometry,
+                board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff,
+                false);
+
+            var diffAsInt = diff.ConvertToInt32();
+
+            return diffAsInt;
+        }
+
         public bool IsTerminal => choicesMade.Count == size;
 
         public Minimize Bound => new Minimize(CheckBinarySum());
 
-        public Minimize? Quality => IsTerminal ? new Minimize(CheckBinarySum()) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, true, true)) : null;
 
         public void Apply(IndexedBinaryBlockBase choice)
         {
@@ -90,12 +120,14 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
             var innerResult = new ConcurrentBag<IndexedBinaryBlockBase>();
 
-            nextOne.AllowedLocations
-                .WithIndex()
-                .AsParallel()
-                .ForAll((p) => {
-                    innerResult.Add(new IndexedBinaryBlockBase(Board.BoardFieldsDefinition, nextOne, p.index));
-                });
+            nextOne.AllowedLocations.WithIndex().AsParallel().ForAll((p) =>
+            {
+                innerResult.Add(
+                    new IndexedBinaryBlockBase(
+                        Board.BoardFieldsDefinition,
+                        nextOne,
+                        p.index));
+            });
 
             results.AddRange(innerResult.AsEnumerable());
 
@@ -112,7 +144,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         public override string ToString()
         {
-            return $"FindFittestSolution [{string.Join(", ", choicesMade)}]";
+            return $"FindBinaryFittestSolution [{string.Join(", ", choicesMade)}]";
         }
     }
 }

@@ -17,18 +17,16 @@ namespace Algorithm.Tangram.TreeSearch.Logic.Domain
             var clonedBlockDefinition = BlockDefinition.Clone();
             clonedBlockDefinition.Apply(clonedBlockDefinition.AllowedLocations[Index]);
             TransformedBlock = clonedBlockDefinition;
-            //TODO move it to the allowedLocation class when ready
-            BinaryBlockOnTheBoard = TransformedBlock.ToBinary(BoardFieldsDefinition);
         }
 
-    public IList<BoardFieldDefinition> BoardFieldsDefinition { private set; get; }
+        public IList<BoardFieldDefinition> BoardFieldsDefinition { private set; get; }
 
-
-    public BlockBase BlockDefinition { get; private set; }
+        public BlockBase BlockDefinition { get; private set; }
 
         public int Index { get; private set; }
 
         public BlockBase? TransformedBlock { get; set; }
-        public int[] BinaryBlockOnTheBoard { get; set; }
+
+        public int[] BinaryBlockOnTheBoard => TransformedBlock.ToBinary(BoardFieldsDefinition);
     }
 }

@@ -66,11 +66,11 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             // to use the default value pass -1
-            int maxDegreeOfParallelism = 2048 * 2;
+            int maxDegreeOfParallelism = -1; // 2048 * 2;
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
             //var oneRootTS = GameBuilder
             //    .AvalaibleTSTemplatesAlgorithms
@@ -82,7 +82,7 @@ namespace Demo.ViewModel
             // for square-based only
             var binDepthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
-                .CreateBinaryDepthFirstTreeSearchAlgorithm(
+                .CreateDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
