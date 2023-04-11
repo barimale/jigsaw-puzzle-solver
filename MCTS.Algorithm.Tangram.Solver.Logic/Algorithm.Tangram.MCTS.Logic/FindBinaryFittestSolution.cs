@@ -44,20 +44,34 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         private int CheckBinarySum()
         {
-            var binaries = choicesMade
-                .Select(p => p.BinaryBlockOnTheBoard)
-                .ToList();
+            return CheckBinarySumAsync().Result;
+        }
 
-            var sums =
-                from array in binaries
-                from valueIndex in array.Select((value, index) => new { Value = value, Index = index })
-                group valueIndex by valueIndex.Index into indexGroups
-                select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
+        private async Task<int> CheckBinarySumAsync()
+        {
+            Task<int> diffSum = Task
+                    .Factory
+                    .StartNew(() =>
+                    {
+                        var binaries = choicesMade
+                            .Select(p => p.BinaryBlockOnTheBoard)
+                            .ToList();
 
-            var diffSum = sums.Select(p => Math.Abs(p - 1)).ToArray();
-            var diff = 1 * Math.Abs(diffSum.Sum());
+                        var sums =
+                            from array in binaries
+                            from valueIndex in array.Select((value, index) => new { Value = value, Index = index })
+                            group valueIndex by valueIndex.Index into indexGroups
+                            select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
 
-            return diff;
+                        var diffSum = sums.Select(p => Math.Abs(p - 1)).ToArray();
+                        var diff = 1 * Math.Abs(diffSum.Sum());
+
+                        return diff;
+                    });
+
+            var result = await Task.WhenAll(diffSum);
+
+            return result.Sum();
         }
 
         private int CheckFitness(
