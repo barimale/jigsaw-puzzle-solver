@@ -1,4 +1,25 @@
-refactor a little bit
+refactor, ninject etc
+
+add tree drawer 
+add bool for collecting all solutions
+implement hinter
+
+figure it out why tree search ends prematuraly for binary
+for binary add flag IsRectangular, or for square-field-base board 
+
+fix bool-based issues
+add database
+add logging
+implement machine learning
+
+https://dotnet.microsoft.com/en-us/apps/machinelearning-ai/ml-dotnet/model-builder
+
+maybe replace machine learning with the elasticsearch as machine learning is also there
+
+then: make the wpf ui prettier or
+reuse the forntend from the christmas gifter
+
+in any time implement the recursive backtracking
 
 add results log to be sure app is not suspended
 memory usages from the other example
