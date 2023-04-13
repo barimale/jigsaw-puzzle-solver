@@ -72,12 +72,12 @@ namespace Demo.ViewModel
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            //var oneRootTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var oneRootTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             // for square-based only
             var binDepthTS = GameBuilder
@@ -88,12 +88,12 @@ namespace Demo.ViewModel
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
             //gameParts.AllowedAngles);
 
-            //var depthTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var depthTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             //var ga = GameBuilder
             //    .AvalaibleGATunedAlgorithms
@@ -103,21 +103,20 @@ namespace Demo.ViewModel
             //        gameParts.AllowedAngles,
             //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            //var konfiguracjaGry = new GameBuilder()
-            //    .WithGamePartsConfigurator(gameParts)
-            //    .WithManyAlgorithms()
-            //    .WithExecutionMode(ExecutionMode.WhenAny)
-            //    .WithAlgorithms(
-            //        binDepthTS,
-            //        oneRootTS,
-            //        depthTS,
-            //        ga)
-            //    .Build();
-
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
-                .WithAlgorithm(binDepthTS)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAll)
+                .WithAlgorithms(
+                    binDepthTS,
+                    oneRootTS,
+                    depthTS)
                 .Build();
+
+            //var konfiguracjaGry = new GameBuilder()
+            //    .WithGamePartsConfigurator(gameParts)
+            //    .WithAlgorithm(binDepthTS)
+            //    .Build();
 
             return konfiguracjaGry;
         }

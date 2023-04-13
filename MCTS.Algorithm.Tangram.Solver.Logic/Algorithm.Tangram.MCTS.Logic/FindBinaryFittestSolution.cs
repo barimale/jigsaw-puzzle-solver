@@ -1,9 +1,7 @@
 using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
-using Algorithm.Tangram.TreeSearch.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
-using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
@@ -14,24 +12,22 @@ namespace Algorithm.Tangram.TreeSearch.Logic
     public class FindBinaryFittestSolution : IMutableState<FindBinaryFittestSolution, IndexedBinaryBlockBase, Minimize>
     {
         // settings
-        private int size;
+        private int size => this.blocks.Count;
         private Stack<IndexedBinaryBlockBase> choicesMade;
         public HashSet<BlockBase> remaining;
 
         // game parts
         private readonly BoardShapeBase board;
         private readonly IList<BlockBase> blocks;
-        private readonly FitnessService fitnessService;
 
         public FindBinaryFittestSolution(
             BoardShapeBase board,
             IList<BlockBase> blocks)
         {
             this.ID = Guid.NewGuid().ToString();
+
             this.board = board;
-            fitnessService = new FitnessService(this.board);
             this.blocks = new List<BlockBase>(blocks);
-            size = this.blocks.Count;
 
             choicesMade = new Stack<IndexedBinaryBlockBase>();
             remaining = new HashSet<BlockBase>(this.blocks);
@@ -44,65 +40,30 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         private int CheckBinarySum()
         {
-            return CheckBinarySumAsync().Result;
-        }
+            var binaries = choicesMade
+                             .Select(p => p.BinaryBlockOnTheBoard)
+                             .ToList();
 
-        private async Task<int> CheckBinarySumAsync()
-        {
-            Task<int> diffSum = Task
-                    .Factory
-                    .StartNew(() =>
-                    {
-                        var binaries = choicesMade
-                            .Select(p => p.BinaryBlockOnTheBoard)
-                            .ToList();
+            var sums =
+                from array in binaries
+                from valueIndex in array.Select((value, index) => new { Value = value, Index = index })
+                group valueIndex by valueIndex.Index into indexGroups
+                select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
 
-                        var sums =
-                            from array in binaries
-                            from valueIndex in array.Select((value, index) => new { Value = value, Index = index })
-                            group valueIndex by valueIndex.Index into indexGroups
-                            select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
-
-                        var diffSum = sums.Select(p => Math.Abs(p - 1)).ToArray();
-                        var diff = 1 * Math.Abs(diffSum.Sum());
-
-                        return diff;
-                    });
-
-            var result = await Task.WhenAll(diffSum);
-
-            return result.Sum();
-        }
-
-        private int CheckFitness(
-            bool withPolygonsIntersectionsDiff,
-            bool withOutOfBoundsDiff,
-            bool withVolumeDiff)
-        {
-            var evaluatedGeometry = choicesMade
-                .Select(p => p.TransformedBlock)
-                .ToList()
-                .Select(pp => pp.Polygon)
+            var diffSum = sums
+                .Select(p => Math.Abs(p - 1))
                 .ToArray();
 
-            var diff = fitnessService.Evaluate(
-                evaluatedGeometry,
-                board,
-                withPolygonsIntersectionsDiff,
-                withOutOfBoundsDiff,
-                withVolumeDiff,
-                false);
+            var diff = 1 * diffSum.Sum();
 
-            var diffAsInt = diff.ConvertToInt32();
-
-            return diffAsInt;
+            return diff;
         }
 
         public bool IsTerminal => choicesMade.Count == size;
 
         public Minimize Bound => new Minimize(CheckBinarySum());
 
-        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, true, true)) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize(CheckBinarySum()) : null;
 
         public void Apply(IndexedBinaryBlockBase choice)
         {
@@ -114,10 +75,11 @@ namespace Algorithm.Tangram.TreeSearch.Logic
         {
             var clone = new FindBinaryFittestSolution(
                 board,
-                blocks);
-
-            clone.choicesMade = new Stack<IndexedBinaryBlockBase>(choicesMade);
-            clone.remaining = new HashSet<BlockBase>(remaining);
+                blocks)
+            {
+                choicesMade = new Stack<IndexedBinaryBlockBase>(this.choicesMade),
+                remaining = new HashSet<BlockBase>(this.remaining)
+            };
 
             return clone;
         }
@@ -132,18 +94,16 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                 return results;
             }
 
-            var innerResult = new ConcurrentBag<IndexedBinaryBlockBase>();
-
-            nextOne.AllowedLocations.WithIndex().AsParallel().ForAll((p) =>
-            {
-                innerResult.Add(
-                    new IndexedBinaryBlockBase(
-                        Board.BoardFieldsDefinition,
-                        nextOne,
-                        p.index));
-            });
-
-            results.AddRange(innerResult.AsEnumerable());
+            results = nextOne.AllowedLocations
+                .WithIndex()
+                .Select((p) =>
+                    {
+                        return  new IndexedBinaryBlockBase(
+                                    Board.BoardFieldsDefinition,
+                                    nextOne,
+                                    p.index);
+                    })
+                .ToList();
 
             return results
                 .Shuffle(new FastRandomRandomization())

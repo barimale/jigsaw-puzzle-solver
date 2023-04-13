@@ -3,30 +3,21 @@ using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Algorithm.Tangram.TreeSearch.Logic.Domain
 {
-    public class IndexedBinaryBlockBase
+    public class IndexedBinaryBlockBase: IndexedBlockBase
     {
+        private readonly IList<BoardFieldDefinition> boardFieldsDefinition;
+        private readonly int[] binaryBlockOnTheBoard;
+
         public IndexedBinaryBlockBase(
             IList<BoardFieldDefinition> boardFieldsDefinition,
             BlockBase blockDefinition,
             int index)
+            : base(blockDefinition, index)
         {
-            BoardFieldsDefinition = boardFieldsDefinition;
-            BlockDefinition = blockDefinition;
-            Index = index;
-
-            var clonedBlockDefinition = BlockDefinition.Clone();
-            clonedBlockDefinition.Apply(clonedBlockDefinition.AllowedLocations[Index]);
-            TransformedBlock = clonedBlockDefinition;
+            this.boardFieldsDefinition = boardFieldsDefinition;
+            binaryBlockOnTheBoard = TransformedBlock.ToBinary(this.boardFieldsDefinition);
         }
 
-        public IList<BoardFieldDefinition> BoardFieldsDefinition { private set; get; }
-
-        public BlockBase BlockDefinition { get; private set; }
-
-        public int Index { get; private set; }
-
-        public BlockBase? TransformedBlock { get; set; }
-
-        public int[] BinaryBlockOnTheBoard => TransformedBlock.ToBinary(BoardFieldsDefinition);
+        public int[] BinaryBlockOnTheBoard => binaryBlockOnTheBoard;
     }
 }
