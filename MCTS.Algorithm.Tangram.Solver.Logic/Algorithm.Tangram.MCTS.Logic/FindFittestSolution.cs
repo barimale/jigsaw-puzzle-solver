@@ -66,7 +66,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         public Minimize Bound => new Minimize(CheckFitness(true, false, false));
 
-        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, true, true)) : null;
+        public Minimize? Quality => IsTerminal ? new Minimize(CheckFitness(true, false, false)) : null;
 
         public void Apply(IndexedBlockBase choice)
         {

@@ -21,9 +21,16 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             // given
             var binaries = new List<int[]>()
             {
-                new int[] { 1, 0, 0, 1 , 0, 0},
-                new int[] { 0, 1, 1, 0 , 0, 0},
-                new int[] { 0, 0, 0, 0 , 1, 1}
+                new int[] { 1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0},
+                new int[] { 0, 1, 1, 0 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0},
+                new int[] { 0, 0, 0, 0 , 1, 1, 1, 0, 0, 1, 0, 0 , 1, 0, 0, 1, 0, 0 },
+                new int[] { 1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0},
+                new int[] { 0, 1, 1, 0 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0},
+                new int[] { 0, 0, 0, 0 , 1, 1, 1, 0, 0, 1, 0, 0 , 1, 0, 0, 1, 0, 0 },
+                new int[] { 1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0},
+                new int[] { 0, 1, 1, 0 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0},
+                new int[] { 0, 0, 0, 0 , 1, 1, 1, 0, 0, 1, 0, 0 , 1, 0, 0, 1, 0, 0 },
+                new int[] { 1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0,1, 0, 0, 1 , 0, 0}
             };
 
             // when
@@ -40,7 +47,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             var diff = 1 * diffSum.Sum();
 
             // then
-            Assert.Equal(0, diff);
+            Assert.NotEqual(0, diff);
         }
     }
 }
