@@ -107,13 +107,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
         }
 
         public int EvaluateBinary(
-            IEnumerable<int[]> binaries)
+            IEnumerable<int[]> binaries,
+            int boardFieldAmount)
         {
-            return EvaluateBinaryAsync(binaries).Result;
+            return EvaluateBinaryAsync(binaries, boardFieldAmount).Result;
         }
 
         public async Task<int> EvaluateBinaryAsync(
-            IEnumerable<int[]> binaries)
+            IEnumerable<int[]> binaries,
+            int boardFieldAmount)
         {
             var tasks = new List<Task<int>>();
 
@@ -121,18 +123,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                .Factory
                .StartNew(() =>
                {
-                   return DoEvaluateBinary(binaries);
+                   return DoEvaluateBinary(binaries, boardFieldAmount);
                });
 
-            Task<int> wait500ms = Task
-                .Factory
-                .StartNew(() =>
-            {
-                Task.Delay(500);
-                return 0;
-            });
-
-            tasks.Add(wait500ms);
             tasks.Add(evaluateBinaries);
 
             var results = await Task.WhenAll(tasks);
@@ -140,7 +133,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             return results.Sum();
         }
 
-        public int DoEvaluateBinary(IEnumerable<int[]> binaries)
+        public int DoEvaluateBinary(IEnumerable<int[]> binaries, int boardFieldAmount)
         {
             try
             {
@@ -151,7 +144,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
 
                 var diffSum = sums
-                    .Select(p => Math.Abs(p - 1))
+                    //.Select(p => Math.Abs(p - 1))
+                    .Select(p => p - 1)
+                    .Where(pp => pp > 0)
                     .ToArray();
 
                 var diff = 1 * diffSum.Sum();

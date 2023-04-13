@@ -113,8 +113,8 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         public void UndoLast()
         {
-            var popped = choicesMade.Pop();
-            remaining.Add(popped.BlockDefinition);
+            var popped = this.choicesMade.Pop();
+            this.remaining.Add(popped.BlockDefinition);
         }
 
         public override string ToString()

@@ -1,5 +1,6 @@
 using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
+using Algorithm.Tangram.TreeSearch.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Immutable;
@@ -42,13 +43,39 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         private int CheckBinarySum()
         {
+            var boardFieldAmount = this.board.BoardFieldsDefinition.Count;
+
             var binaries = choicesMade
                              .Select(p => p.BinaryBlockOnTheBoard)
                              .ToList();
 
-            var diff = fitnessService.EvaluateBinary(binaries);
+            var diff = fitnessService.EvaluateBinary(binaries, blocks.Count);
 
             return diff;
+        }
+
+        private int CheckFitness(
+            bool withPolygonsIntersectionsDiff,
+            bool withOutOfBoundsDiff,
+            bool withVolumeDiff)
+        {
+            var evaluatedGeometry = choicesMade
+                .Select(p => p.TransformedBlock)
+                .ToList()
+                .Select(pp => pp.Polygon)
+                .ToImmutableList();
+
+            var diff = fitnessService.Evaluate(
+                evaluatedGeometry.ToArray(),
+                board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff,
+                false);
+
+            var diffAsInt = diff.ConvertToInt32();
+
+            return diffAsInt;
         }
 
         public bool IsTerminal => choicesMade.Count == size;
@@ -105,8 +132,8 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
         public void UndoLast()
         {
-            var popped = choicesMade.Pop();
-            remaining.Add(popped.BlockDefinition);
+            var popped = this.choicesMade.Pop();
+            this.remaining.Add(popped.BlockDefinition);
         }
 
         public override string ToString()

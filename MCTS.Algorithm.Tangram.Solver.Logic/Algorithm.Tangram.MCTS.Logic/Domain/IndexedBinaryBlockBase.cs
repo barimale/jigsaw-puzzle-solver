@@ -15,10 +15,6 @@ namespace Algorithm.Tangram.TreeSearch.Logic.Domain
             : base(blockDefinition, index)
         {
             this.boardFieldsDefinition = boardFieldsDefinition;
-            if(TransformedBlock == null)
-            {
-                var i = 0;
-            }
             binaryBlockOnTheBoard = TransformedBlock.ToBinary(this.boardFieldsDefinition);
         }
 

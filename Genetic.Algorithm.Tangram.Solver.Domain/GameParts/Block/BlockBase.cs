@@ -67,6 +67,7 @@ namespace Tangram.GameParts.Logic.GameParts.Block
                                     new GeometryFactory()
                                     .CreatePolygon(field.ToCoordinates()));
 
+                        fieldGeometry.CleanCoordinateDigits();
                         //var fieldGeometryWeb = ToWebsiteString(fieldGeometry);
                         //var polygonWeb = ToWebsiteString(Polygon);
 
