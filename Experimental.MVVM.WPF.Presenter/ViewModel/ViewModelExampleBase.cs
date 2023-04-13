@@ -103,20 +103,20 @@ namespace Demo.ViewModel
             //        gameParts.AllowedAngles,
             //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            var konfiguracjaGry = new GameBuilder()
-                .WithGamePartsConfigurator(gameParts)
-                .WithManyAlgorithms()
-                .WithExecutionMode(ExecutionMode.WhenAll)
-                .WithAlgorithms(
-                    binDepthTS,
-                    oneRootTS,
-                    depthTS)
-                .Build();
-
             //var konfiguracjaGry = new GameBuilder()
             //    .WithGamePartsConfigurator(gameParts)
-            //    .WithAlgorithm(binDepthTS)
+            //    .WithManyAlgorithms()
+            //    .WithExecutionMode(ExecutionMode.WhenAll)
+            //    .WithAlgorithms(
+            //        binDepthTS)
+            //        //oneRootTS,
+            //        //depthTS)
             //    .Build();
+
+            var konfiguracjaGry = new GameBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithAlgorithm(binDepthTS)
+                .Build();
 
             return konfiguracjaGry;
         }

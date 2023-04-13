@@ -2,7 +2,6 @@ using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Algorithm.Tangram.TreeSearch.Logic.Extensions;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
-using GeneticSharp;
 using System.Collections.Concurrent;
 using System.Collections.Immutable;
 using Tangram.GameParts.Logic.GameParts.Block;
@@ -79,10 +78,11 @@ namespace Algorithm.Tangram.TreeSearch.Logic
         {
             var clone = new FindFittestSolution(
                 board,
-                blocks);
-
-            clone.choicesMade = new Stack<IndexedBlockBase>(choicesMade);
-            clone.remaining = new HashSet<BlockBase>(remaining);
+                blocks)
+            {
+                choicesMade = new Stack<IndexedBlockBase>(choicesMade),
+                remaining = new HashSet<BlockBase>(remaining)
+            };
 
             return clone;
         }
@@ -107,7 +107,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
             results.AddRange(innerResult.AsEnumerable());
 
             return results
-                .Shuffle(new FastRandomRandomization())
+                //.Shuffle(new FastRandomRandomization())
                 .AsEnumerable();
         }
 

@@ -55,6 +55,7 @@ namespace Demo.ViewModel
 
             var clonedBlockDefinition = block.Clone();
             clonedBlockDefinition.Apply(locationToBeapplied);
+
             var binaryText = clonedBlockDefinition.ToBinary(board.BoardFieldsDefinition);
             var binaryTextBuilder = new StringBuilder();
                 

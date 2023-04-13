@@ -110,5 +110,30 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers
                     block.Color.ToString() + " coords: " + block.ToString());
             }
         }
+
+        public void ShowMadeChoices(FindBinaryFittestSolution? solution)
+        {
+            if (solution == null)
+                return;
+
+            var fitnessValue = solution.Quality.HasValue ? solution.Quality.Value.ToString() : "unknown";
+            Display("Solution fitness: " + fitnessValue);
+
+            var board = solution.Board.ToString();
+            Display("Board:");
+            Display(board);
+
+            var blocks = solution
+                .Solution
+                .Select(p => p.TransformedBlock)
+                .ToList();
+
+            Display("Blocks:");
+            foreach (var block in blocks)
+            {
+                Display(
+                    block.Color.ToString() + " coords: " + block.ToString());
+            }
+        }
     }
 }

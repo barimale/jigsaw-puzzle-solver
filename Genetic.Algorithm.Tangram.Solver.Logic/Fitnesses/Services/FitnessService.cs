@@ -106,6 +106,67 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 resultInverted).Result;
         }
 
+        public int EvaluateBinary(
+            IEnumerable<int[]> binaries)
+        {
+            return EvaluateBinaryAsync(binaries).Result;
+        }
+
+        public async Task<int> EvaluateBinaryAsync(
+            IEnumerable<int[]> binaries)
+        {
+            var tasks = new List<Task<int>>();
+
+            Task<int> evaluateBinaries = Task
+               .Factory
+               .StartNew(() =>
+               {
+                   return DoEvaluateBinary(binaries);
+               });
+
+            Task<int> wait500ms = Task
+                .Factory
+                .StartNew(() =>
+            {
+                Task.Delay(500);
+                return 0;
+            });
+
+            tasks.Add(wait500ms);
+            tasks.Add(evaluateBinaries);
+
+            var results = await Task.WhenAll(tasks);
+
+            return results.Sum();
+        }
+
+        public int DoEvaluateBinary(IEnumerable<int[]> binaries)
+        {
+            try
+            {
+                var sums =
+                from array in binaries
+                from valueIndex in array.Select((value, index) => new { Value = value, Index = index })
+                group valueIndex by valueIndex.Index into indexGroups
+                select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
+
+                var diffSum = sums
+                    .Select(p => Math.Abs(p - 1))
+                    .ToArray();
+
+                var diff = 1 * diffSum.Sum();
+
+                return diff;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            // TODO: correct it
+            return -1;
+        }
+
         public double Evaluate(
             IEnumerable<Geometry> evaluatedGeometry,
             BoardShapeBase board,

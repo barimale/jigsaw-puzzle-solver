@@ -1,5 +1,6 @@
 using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
+using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Immutable;
 using Tangram.GameParts.Logic.GameParts.Block;
@@ -18,6 +19,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
         // game parts
         private readonly BoardShapeBase board;
         private readonly IList<BlockBase> blocks;
+        private readonly FitnessService fitnessService;
 
         public FindBinaryFittestSolution(
             BoardShapeBase board,
@@ -27,6 +29,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
 
             this.board = board;
             this.blocks = new List<BlockBase>(blocks);
+            fitnessService = new FitnessService(this.board);
 
             choicesMade = new Stack<IndexedBinaryBlockBase>();
             remaining = new HashSet<BlockBase>(this.blocks);
@@ -43,17 +46,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                              .Select(p => p.BinaryBlockOnTheBoard)
                              .ToList();
 
-            var sums =
-                from array in binaries
-                from valueIndex in array.Select((value, index) => new { Value = value, Index = index })
-                group valueIndex by valueIndex.Index into indexGroups
-                select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
-
-            var diffSum = sums
-                .Select(p => Math.Abs(p - 1))
-                .ToArray();
-
-            var diff = 1 * diffSum.Sum();
+            var diff = fitnessService.EvaluateBinary(binaries);
 
             return diff;
         }
@@ -103,6 +96,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                                     p.index);
                     })
                 .ToList();
+
 
             return results
                 .Shuffle(new FastRandomRandomization())
