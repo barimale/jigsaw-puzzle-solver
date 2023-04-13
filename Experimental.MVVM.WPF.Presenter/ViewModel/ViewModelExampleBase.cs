@@ -70,7 +70,7 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                .CreatePolishBigBoard(withAllowedLocations: true);
 
             var oneRootTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
