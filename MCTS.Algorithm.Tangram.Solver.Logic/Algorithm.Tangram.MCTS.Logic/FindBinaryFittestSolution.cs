@@ -1,6 +1,5 @@
 using Algorithm.Tangram.Common.Extensions;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
-using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services;
 using GeneticSharp;
 using System.Collections.Immutable;
 using Tangram.GameParts.Logic.GameParts.Block;
