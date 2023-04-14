@@ -70,22 +70,22 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                .CreatePolishBigBoard(withAllowedLocations: true);
 
-            var oneRootTS = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+            //var oneRootTS = GameBuilder
+            //    .AvalaibleTSTemplatesAlgorithms
+            //    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
+            //        gameParts.Board,
+            //        gameParts.Blocks,
+            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            // for square-based only
-            var binDepthTS = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateBinaryDepthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+            //// for square-based only
+            //var binDepthTS = GameBuilder
+            //    .AvalaibleTSTemplatesAlgorithms
+            //    .CreateBinaryDepthFirstTreeSearchAlgorithm(
+            //        gameParts.Board,
+            //        gameParts.Blocks,
+            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var binOneRootDepthTS = GameBuilder
                .AvalaibleTSTemplatesAlgorithms
@@ -95,12 +95,12 @@ namespace Demo.ViewModel
                    maxDegreeOfParallelism: maxDegreeOfParallelism);
             //gameParts.AllowedAngles);
 
-            var depthTS = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+            //var depthTS = GameBuilder
+            //    .AvalaibleTSTemplatesAlgorithms
+            //    .CreateDepthFirstTreeSearchAlgorithm(
+            //        gameParts.Board,
+            //        gameParts.Blocks,
+            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             //var ga = GameBuilder
             //    .AvalaibleGATunedAlgorithms
@@ -110,21 +110,21 @@ namespace Demo.ViewModel
             //        gameParts.AllowedAngles,
             //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            var konfiguracjaGry = new GameBuilder()
-                .WithGamePartsConfigurator(gameParts)
-                .WithManyAlgorithms()
-                .WithExecutionMode(ExecutionMode.WhenAny)
-                .WithAlgorithms(
-                    binOneRootDepthTS,
-                    binDepthTS,
-                    oneRootTS,
-                    depthTS)
-                .Build();
-
             //var konfiguracjaGry = new GameBuilder()
             //    .WithGamePartsConfigurator(gameParts)
-            //    .WithAlgorithm(binDepthTS)
+            //    .WithManyAlgorithms()
+            //    .WithExecutionMode(ExecutionMode.WhenAny)
+            //    .WithAlgorithms(
+            //        binOneRootDepthTS,
+            //        binDepthTS,
+            //        oneRootTS,
+            //        depthTS)
             //    .Build();
+
+            var konfiguracjaGry = new GameBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithAlgorithm(binOneRootDepthTS)
+                .Build();
 
             return konfiguracjaGry;
         }
