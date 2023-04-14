@@ -59,6 +59,20 @@ namespace TreeSearch.Algorithm.Tangram.Solver.Templates
                 );
         }
 
+        // TODO extract to separate factory dedicated for square-based board only
+        public BinaryOneRootParallelDepthFirstTreeSearchAlgorithm CreateBinaryOneRootParallelDepthFirstTreeSearchAlgorithm(
+            BoardShapeBase board,
+            IList<BlockBase> blocks,
+            int? maxDegreeOfParallelism = null)
+        {
+            return
+                new BinaryOneRootParallelDepthFirstTreeSearchAlgorithm(
+                    board,
+                    blocks,
+                    maxDegreeOfParallelism
+                );
+        }
+
         public PilotTreeSearchAlgorithm CreatePilotTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks,
