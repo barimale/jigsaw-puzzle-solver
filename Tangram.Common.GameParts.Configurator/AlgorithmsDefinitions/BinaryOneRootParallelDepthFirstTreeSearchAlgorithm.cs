@@ -158,7 +158,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 
         // TODO double check
         private async ValueTask<bool> MeetsCriteria(
-            Task<FindFittestSolution> actualValue,
+            Task<FindBinaryFittestSolution> actualValue,
             int expectedReturnedValue)
         {
             try
