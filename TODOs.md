@@ -1,10 +1,9 @@
 refactor, ninject etc
 
 add tree drawer 
-add bool for collecting all solutions
+add bool for collecting all solutions instead of the first found one
 implement hinter
 
-figure it out why tree search ends prematuraly for binary
 for binary add flag IsRectangular, or for square-field-base board 
 
 fix bool-based issues
@@ -19,15 +18,13 @@ maybe replace machine learning with the elasticsearch as machine learning is als
 then: make the wpf ui prettier or
 reuse the forntend from the christmas gifter
 
-in any time implement the recursive backtracking
+in any time implement the recursive backtracking with heurestic angle
+(Recursive Backtracking github heurestic angle)
 
 add results log to be sure app is not suspended
 memory usages from the other example
-style form the second example
 
 provide interfaces 
-
-Recursive Backtracking github heurestic angle 
 
 ninject
 
