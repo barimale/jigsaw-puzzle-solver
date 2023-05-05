@@ -9,8 +9,6 @@ using ChromeTabs;
 using Demo.ViewModel.SolverTabs;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using NetTopologySuite.GeometriesGraph;
-using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 
 namespace Demo.ViewModel
