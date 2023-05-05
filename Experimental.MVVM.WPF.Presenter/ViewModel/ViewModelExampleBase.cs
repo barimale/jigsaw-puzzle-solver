@@ -66,26 +66,26 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             // to use the default value pass -1
-            int maxDegreeOfParallelism = 2048 * 2; // -1
+            int maxDegreeOfParallelism = -1; // 2048 * 2; // -1
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
                 .CreatePolishBigBoard(withAllowedLocations: true);
 
-            //var oneRootTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var oneRootTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             //// for square-based only
-            //var binDepthTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateBinaryDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var binDepthTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateBinaryDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var binOneRootDepthTS = GameBuilder
                .AvalaibleTSTemplatesAlgorithms
@@ -95,36 +95,37 @@ namespace Demo.ViewModel
                    maxDegreeOfParallelism: maxDegreeOfParallelism);
             //gameParts.AllowedAngles);
 
-            //var depthTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var depthTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            //var ga = GameBuilder
-            //    .AvalaibleGATunedAlgorithms
-            //    .CreateBigBoardSettings(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        gameParts.AllowedAngles,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
-
-            //var konfiguracjaGry = new GameBuilder()
-            //    .WithGamePartsConfigurator(gameParts)
-            //    .WithManyAlgorithms()
-            //    .WithExecutionMode(ExecutionMode.WhenAny)
-            //    .WithAlgorithms(
-            //        binOneRootDepthTS,
-            //        binDepthTS,
-            //        oneRootTS,
-            //        depthTS)
-            //    .Build();
+            var ga = GameBuilder
+                .AvalaibleGATunedAlgorithms
+                .CreateBigBoardSettings(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
-                .WithAlgorithm(binOneRootDepthTS)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAny)
+                .WithAlgorithms(
+                    binOneRootDepthTS,
+                    binDepthTS,
+                    oneRootTS,
+                    ga,
+                    depthTS)
                 .Build();
+
+            //var konfiguracjaGry = new GameBuilder()
+            //    .WithGamePartsConfigurator(gameParts)
+            //    .WithAlgorithm(binOneRootDepthTS)
+            //    .Build();
 
             return konfiguracjaGry;
         }
