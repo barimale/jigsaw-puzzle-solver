@@ -66,4 +66,7 @@ hide as many classes as possible -> so composition once again
 // implement the GPU based permutation calculator
 // by using GPULinq
 
+
 figure it out why just method names are not displayed in test explorer
+
+reimplement UI with react typescript
