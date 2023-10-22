@@ -1,4 +1,5 @@
 refactor, ninject etc
+implement binary based Genetic Algorithm
 
 add tree drawer 
 add bool for collecting all solutions instead of the first found one
