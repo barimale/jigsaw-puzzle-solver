@@ -1,0 +1,27 @@
+{
+  "assemblies": [ "bin/Debug/net6.0/Algorithm.ConstraintsPairing.dll" ],
+  "fileNameConverters": [ "PascalCaseToKebabCase" ],
+  "propertyNameConverters": [ "PascalCaseToCamelCaseConverter" ],
+  "enumValueNameConverters": [ "UnderscoreCaseToPascalCaseConverter" ],
+  "typeScriptFileExtension": "ts",
+  "tabLength": 2,
+  "explicitPublicAccessor": true,
+  "defaultValuesForTypes": {
+    "number": "-1",
+    "Date | null": "null",
+    "string": "\"\""
+  },
+  "customTypeMappings": {
+    "System.DateTime": "string",
+    "Some.Custom.Type": "number"
+  },
+  "typeUnionsForTypes": {
+    "string": [ "null", "undefined" ],
+    "Date": [ "string" ]
+  },
+  "buildProject": false,
+  "useDefaultExport": true,
+  "singleQuotes": true,
+  "outputPath": "../../Christmas-Secret-Gifter/src/store/model",
+  "fileHeading": "/* eslint-disable no-unused-vars */\n\n/**\n  * This is a TypeGen auto-generated file.\n  * Any changes made to this file can be lost when this file is regenerated.\n  * */\n\n"
+}

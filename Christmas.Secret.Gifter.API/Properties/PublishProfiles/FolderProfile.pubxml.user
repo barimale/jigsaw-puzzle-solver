@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <_PublishTargetUrl>R:\Azure\administrator\Albergue.Administrator\bin\Release\net5.0\publish\</_PublishTargetUrl>
+    <History>True|2021-05-06T21:58:32.7085583Z;True|2021-05-06T23:05:50.4296513+02:00;True|2021-05-06T23:01:07.2261963+02:00;True|2021-05-06T22:37:38.8335369+02:00;True|2021-05-04T16:39:46.2493984+02:00;True|2021-05-04T16:39:01.9803060+02:00;</History>
+  </PropertyGroup>
+</Project>
