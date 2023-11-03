@@ -41,6 +41,7 @@ namespace Christmas.Secret.Gifter.API
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IParticipantService, ParticipantService>();
             services.AddScoped<IAlgorithmDetailsService, AlgorithmDetailsService>();
+            services.AddScoped<IGamePartsDetailsService, GamePartsDetailsService>();
 
             services.AddSQLLiteDatabase();
             services.AddCors();
