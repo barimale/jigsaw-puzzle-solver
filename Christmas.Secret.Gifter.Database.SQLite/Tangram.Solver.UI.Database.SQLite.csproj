@@ -32,7 +32,7 @@
 </ItemGroup>
 
 <ItemGroup>
-  <ProjectReference Include="..\Christmas.Secret.Gifter.Domain\Christmas.Secret.Gifter.Domain.csproj" />
+  <ProjectReference Include="..\Christmas.Secret.Gifter.Domain\Tangram.Solver.UI.Domain.csproj" />
 </ItemGroup>
 
 </Project>

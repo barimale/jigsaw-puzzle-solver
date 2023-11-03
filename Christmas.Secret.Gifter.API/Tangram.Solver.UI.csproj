@@ -19,8 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Algorithm.ConstraintsPairing\Algorithm.ConstraintsPairing.csproj" />
-    <ProjectReference Include="..\Christmas.Secret.Gifter.Database.SQLite\Christmas.Secret.Gifter.Database.SQLite.csproj" />
+    <ProjectReference Include="..\Christmas.Secret.Gifter.Database.SQLite\Tangram.Solver.UI.Database.SQLite.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.GA.Solver.Templates.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts\Tangram.GameParts.Elements.csproj" />
     <ProjectReference Include="..\TreeSearch.Algorithm.Tangram.Solver.Templates\TreeSearch.Algorithm.Tangram.Solver.Templates\TreeSearch.Algorithm.Tangram.Solver.Templates.csproj" />

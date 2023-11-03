@@ -14,7 +14,6 @@ namespace Christmas.Secret.Gifter.API.HostedServices
     public class LocalesHostedService : IHostedService
     {
         private readonly ILocalesGenerator _localesGenerator;
-        private readonly IImageExtractor _extractor;
         private readonly ILogger<LocalesHostedService> _logger;
         private readonly PubSub.Hub _hub;
         private readonly IHubContext<LocalesStatusHub, ILocalesStatusHub> _broadcastLocalesStatus;
@@ -32,7 +31,6 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         {
             _broadcastLocalesStatus = broadcastLocalesStatus;
             _logger = logger;
-            _extractor = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<IImageExtractor>();
             _localesGenerator = serviceProvider.CreateScope().ServiceProvider.GetRequiredService<ILocalesGenerator>();
         }
 
@@ -76,13 +74,8 @@ namespace Christmas.Secret.Gifter.API.HostedServices
                     Task.Run(async () =>
                     {
                         await _localesGenerator.GenerateAsync();
-                    }),
-                    Task.Run(async () =>
-                    {
-                        await _extractor.SaveLocallyAsync();
                     })
                 );
-
 
                 _logger.LogInformation(
                     "Locales creation is finished. ");
