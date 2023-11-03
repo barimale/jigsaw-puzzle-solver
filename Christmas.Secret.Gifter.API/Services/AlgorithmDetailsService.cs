@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Christmas.Secret.Gifter.API.Services.Abstractions;
+using Christmas.Secret.Gifter.Domain;
+using System;
+using System.Linq;
 
 namespace Christmas.Secret.Gifter.API.Services
 {
@@ -33,9 +36,15 @@ namespace Christmas.Secret.Gifter.API.Services
         //    new GAVaryRatiosTemplatesFactory()
         //};
 
-        public List<string> GetAll()
+        public List<AlgorithmDetails> GetAll()
         {
-            return AllAlgorithms;
+            return AllAlgorithms.Select(p => 
+            new AlgorithmDetails()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = StringHelper.ToSpaceSeparatedString(p),
+                Code = p
+            }).ToList();
         }
     }
 }

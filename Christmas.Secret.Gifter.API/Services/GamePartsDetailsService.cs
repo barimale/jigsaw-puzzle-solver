@@ -1,6 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using Christmas.Secret.Gifter.API.Services.Abstractions;
+using Christmas.Secret.Gifter.Domain;
+using System.Linq;
+using System;
 
 namespace Christmas.Secret.Gifter.API.Services
 {
@@ -28,9 +31,15 @@ namespace Christmas.Secret.Gifter.API.Services
         //    new GameSetFactory(),
         //};
 
-        public List<string> GetAll()
+        public List<GamePartsDetails> GetAll()
         {
-            return AllGameParts;
+            return AllGameParts.Select(p =>
+               new GamePartsDetails()
+               {
+                   Id = Guid.NewGuid().ToString(),
+                   Name = StringHelper.ToSpaceSeparatedString(p),
+                   Code = p
+               }).ToList();
         }
     }
 }

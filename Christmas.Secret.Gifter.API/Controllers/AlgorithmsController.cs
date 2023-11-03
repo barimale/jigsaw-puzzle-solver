@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -26,8 +27,9 @@ namespace Christmas.Secret.Gifter.API.Controllers
             _algService = algService;
         }
 
+        // TODO change GiftEvent to AlgorithmDetails, use this StringHelper
         [HttpGet()]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GiftEvent))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AlgorithmDetails>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> GetAll(CancellationToken cancellationToken)
         {
