@@ -33,13 +33,12 @@ namespace Christmas.Secret.Gifter.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // TODO: rename and reimplement
             //services.AddSingleton<ILocalesStatusHub, LocalesStatusHub>();
 
-            services.AddScoped<IImageExtractor, ImageExtractor>();
             services.AddScoped<ILocalesGenerator, LocalesGenerator>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
             services.AddScoped<IEventService, EventService>();
-            services.AddScoped<IParticipantService, ParticipantService>();
             services.AddScoped<IAlgorithmDetailsService, AlgorithmDetailsService>();
             services.AddScoped<IGamePartsDetailsService, GamePartsDetailsService>();
 

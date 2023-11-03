@@ -70,7 +70,7 @@ namespace Christmas.Secret.Gifter.API.Controllers
                 }
 
                 // save data to db
-                var result = await _eventService.ExecuteAsync(existed, cancellationToken);
+                var result = true;
 
                 return Ok(result);
             }
