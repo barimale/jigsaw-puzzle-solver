@@ -44,6 +44,9 @@ namespace Christmas.Secret.Gifter.API
             services.AddSQLLiteDatabase();
             services.AddCors();
 
+            var val = "ThisIsAStringToTest";
+            val = string.Concat(val.Select(x => Char.IsUpper(x) ? " " + x : x.ToString())).TrimStart(' ');
+
             services.AddDbContext<GifterDbContext>(options =>
                 options
                     .UseSqlite(Configuration.GetConnectionString("GifterDbContext"),
