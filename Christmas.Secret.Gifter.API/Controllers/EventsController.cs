@@ -4,6 +4,7 @@ using Christmas.Secret.Gifter.Domain;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading;
@@ -54,6 +55,38 @@ namespace Christmas.Secret.Gifter.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(AlgorithmResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Execute(string eventId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                var existed = await _eventService.GetByIdAsync(eventId, cancellationToken);
+
+                if (existed == null)
+                {
+                    return NotFound();
+                }
+
+                var result = await _eventService.ExecuteAsync(existed, cancellationToken);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.Message);
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+
+        [HttpPost("{eventId}/register")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GameSettings))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult> Register(
+            string eventId,
+            [FromBody(EmptyBodyBehavior = EmptyBodyBehavior.Allow)] GameSettings input,
+            CancellationToken cancellationToken)
         {
             try
             {
