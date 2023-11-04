@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="NetTopologySuite" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Tangram.GameParts.Logic.csproj" />
+    <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Logic\Genetic.Algorithm.Tangram.Solver.Logic.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts.Configurator\Solver.Tangram.AlgorithmDefinitions.csproj" />
+    <ProjectReference Include="..\Tangram.Utilities\Tangram.Algorithms.Common.csproj" />
+  </ItemGroup>
+
+</Project>

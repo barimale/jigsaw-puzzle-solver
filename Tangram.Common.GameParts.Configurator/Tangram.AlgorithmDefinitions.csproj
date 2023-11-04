@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <PackageReference Include="GeneticSharp" Version="3.1.4" />
+	  <PackageReference Include="GeneticSharp.Extensions" Version="3.1.4" />
+	  <PackageReference Include="NetTopologySuite" Version="2.5.0" />
+	  <PackageReference Include="System.Linq.Async" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Genetic.Algorithm.Tangram.Solver.Domain\Tangram.GameParts.Logic.csproj" />
+    <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
+    <ProjectReference Include="..\Tangram.Common.GameParts\Tangram.GameParts.Elements.csproj" />
+    <ProjectReference Include="..\Tangram.Utilities\Algorithm.Tangram.Common.csproj" />
+  </ItemGroup>
+
+</Project>
