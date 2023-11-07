@@ -6,7 +6,7 @@ namespace Christmas.Secret.Gifter.Domain
     public class GameSettings
     {
         public string Id { get; set; } = null!;
-        public IEnumerable<AlgorithmDetails > AlgorithmDetails { get; set; } = new List<AlgorithmDetails>();
-        public GamePartsDetails GamePartsDetails { get; set; }
+        public string AlgorithmDetailsId { get; set; } = null!;
+        public string GamePartsDetailsId { get; set; } = null!;
     }
 }

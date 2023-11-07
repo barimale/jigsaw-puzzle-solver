@@ -6,7 +6,7 @@ namespace Christmas.Secret.Gifter.Domain
     public class GamePartsDetails
     {
         public string Id { get; set; } = null!;
-        public string Name { get; set; } = string.Empty;
-        public string Code { get; set; } = string.Empty;
+        public string Name { get; set; } = null!;
+        public string Code { get; set; } = null!;
     }
 }
