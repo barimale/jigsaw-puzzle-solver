@@ -26,6 +26,8 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         private readonly IAlgorithmDetailsService _algService;
         private readonly IGamePartsDetailsService _gamePartsService;
 
+        private Game konfiguracjaGry;
+
         public AlgorithmWorkerHostedService()
         {
             _hub = PubSub.Hub.Default; // from controller via PubSub
@@ -70,6 +72,14 @@ namespace Christmas.Secret.Gifter.API.HostedServices
 
                 await _context.Clients.All.OnStartAsync(item.Id);
 
+                if (konfiguracjaGry != null)
+                {
+                    _logger.LogInformation("KonfiguracjaGry already exists.");
+
+                    konfiguracjaGry = null;
+                    GC.Collect();
+                }
+
                 var selectedGameSetId = item.GamePartsDetailsId;
                 var selectedGameSet = _gamePartsService.GetBy(selectedGameSetId);
                 var gameParts = DefineGameParts(selectedGameSet);
@@ -88,7 +98,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices
                     throw new ArgumentException();
                 }
 
-                var konfiguracjaGry = new GameBuilder()
+                konfiguracjaGry = new GameBuilder()
                     .WithGamePartsConfigurator(gameParts)
                     .WithAlgorithm(algorithm)
                     .Build();
@@ -96,17 +106,10 @@ namespace Christmas.Secret.Gifter.API.HostedServices
                 konfiguracjaGry.Algorithm.QualityCallback += Algorithm_QualityCallback;
 
 
-                await Task.WhenAll(
-                    Task.Run(async () =>
-                    {
-                        // TODO start engine
-                        await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
-                        // OnNew send signalR from here
-                    })
-                );
+                await konfiguracjaGry.RunGameAsync<AlgorithmResult>();
 
                 _logger.LogInformation(
-                    "Locales creation is finished. ");
+                    "KonfiguracjaGry creation is succesfully finished. ");
             }
             catch (Exception ex)
             {

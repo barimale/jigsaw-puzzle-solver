@@ -132,7 +132,7 @@ namespace Christmas.Secret.Gifter.API
                 p.AllowAnyOrigin();
                 p.AllowAnyHeader();
                 p.AllowAnyMethod();
-                //p.WithOrigins("http://localhost:3008").AllowCredentials();
+                p.WithOrigins("http://localhost:3010").AllowCredentials();
             });
 
             app.UseAuthentication();
@@ -146,7 +146,6 @@ namespace Christmas.Secret.Gifter.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-                // TODO rename 
                 endpoints.MapHub<LocalesStatusHub>("/progressHub");
             });
         }

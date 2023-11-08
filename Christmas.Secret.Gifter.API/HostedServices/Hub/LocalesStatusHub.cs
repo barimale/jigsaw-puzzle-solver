@@ -32,9 +32,9 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
             return Clients?.All?.OnFinishAsync(id);
         }
 
-        public Task OnProgressAsync(string finess)
+        public Task OnProgressAsync(string fitness)
         {
-            return Clients?.All?.OnProgressAsync(finess);
+            return Clients?.All?.OnProgressAsync(fitness);
         }
     }
 }

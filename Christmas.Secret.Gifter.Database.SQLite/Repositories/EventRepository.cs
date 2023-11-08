@@ -110,7 +110,6 @@ namespace Christmas.Secret.Gifter.Database.SQLite.Repositories
                 var found = await _context
                     .Events
                     .Include(p => p.Participants)
-                    .Include(pp => pp.GameSettings)
                     .AsQueryable()
                     .FirstOrDefaultAsync(p => p.Id == id, cancellationToken);
 
