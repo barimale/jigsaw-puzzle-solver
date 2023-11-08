@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using SignalRSwaggerGen.Attributes;
 using System;
 using System.Threading.Tasks;
 
 namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 {
     //[Authorize]
+    [SignalRHub]
     public class LocalesStatusHub : Microsoft.AspNetCore.SignalR.Hub<ILocalesStatusHub>
     {
         public override Task OnConnectedAsync()
