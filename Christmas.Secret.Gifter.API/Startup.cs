@@ -132,7 +132,7 @@ namespace Christmas.Secret.Gifter.API
                 p.AllowAnyOrigin();
                 p.AllowAnyHeader();
                 p.AllowAnyMethod();
-                p.WithOrigins("http://localhost:3010").AllowCredentials();
+                //p.WithOrigins("http://localhost:3010").AllowCredentials();
             });
 
             app.UseAuthentication();
