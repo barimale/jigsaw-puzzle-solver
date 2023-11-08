@@ -146,7 +146,7 @@ namespace Christmas.Secret.Gifter.API
             {
                 endpoints.MapControllers();
                 // TODO rename 
-                endpoints.MapHub<LocalesStatusHub>("/localesHub");
+                endpoints.MapHub<LocalesStatusHub>("/progressHub");
             });
         }
     }

@@ -29,7 +29,6 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         public AlgorithmWorkerHostedService()
         {
             _hub = PubSub.Hub.Default; // from controller via PubSub
-            _externalHub = new Microsoft.AspNetCore.SignalR.Hub(); // to react ui client via SignalR
         }
 
         public AlgorithmWorkerHostedService(
@@ -115,7 +114,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices
             }
             finally
             {
-                await _context.Clients.All.OnFinishAsync(id);
+                await _context.Clients.All.OnFinishAsync(item.Id);
             }
         }
 
@@ -236,6 +235,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices
             AlgorithmResult result = sender as AlgorithmResult;
             var fitness = result.Fitness;
             // TODO publish via singalR to clients
+            _context.Clients.All.OnProgressAsync(fitness);
         }
 
         public Task StopAsync(CancellationToken stoppingToken)

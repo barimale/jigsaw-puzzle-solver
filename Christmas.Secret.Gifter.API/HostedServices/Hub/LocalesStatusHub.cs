@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 {
-    [Authorize]
+    //[Authorize]
     public class LocalesStatusHub : Microsoft.AspNetCore.SignalR.Hub<ILocalesStatusHub>
     {
         public override Task OnConnectedAsync()
@@ -29,6 +29,11 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
         public Task OnFinishAsync(string id)
         {
             return Clients?.All?.OnFinishAsync(id);
+        }
+
+        public Task OnProgressAsync(string finess)
+        {
+            return Clients?.All?.OnProgressAsync(finess);
         }
     }
 }

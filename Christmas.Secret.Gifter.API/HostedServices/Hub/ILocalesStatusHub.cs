@@ -7,5 +7,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
         // TODO extend it
         Task OnStartAsync(string id);
         Task OnFinishAsync(string id);
+        Task OnProgressAsync(string finess);
+
     }
 }
