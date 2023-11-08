@@ -2,7 +2,6 @@
 using Christmas.Secret.Gifter.API.Services;
 using Christmas.Secret.Gifter.API.Services.Abstractions;
 using Christmas.Secret.Gifter.Domain;
-using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,13 +21,15 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         private readonly ILocalesGenerator _localesGenerator;
         private readonly ILogger<AlgorithmWorkerHostedService> _logger;
         private readonly PubSub.Hub _hub;
+        private readonly Microsoft.AspNetCore.SignalR.Hub _externalHub;
         private readonly IHubContext<LocalesStatusHub, ILocalesStatusHub> _context;
         private readonly IAlgorithmDetailsService _algService;
         private readonly IGamePartsDetailsService _gamePartsService;
 
         public AlgorithmWorkerHostedService()
         {
-            _hub = PubSub.Hub.Default;
+            _hub = PubSub.Hub.Default; // from controller via PubSub
+            _externalHub = new Microsoft.AspNetCore.SignalR.Hub(); // to react ui client via SignalR
         }
 
         public AlgorithmWorkerHostedService(
@@ -53,7 +54,6 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         {
             _logger.LogInformation("Locales Hosted Service running.");
 
-            //WIP check it later
             _hub.Subscribe<GameSettings>(async (item) =>
             {
                 await DoWorkAsync(item);
@@ -64,15 +64,12 @@ namespace Christmas.Secret.Gifter.API.HostedServices
 
         private async Task DoWorkAsync(GameSettings item)
         {
-            // TODO double check
-            var id = Guid.NewGuid().ToString();
-
             try
             {
                 _logger.LogInformation(
                     "Locales creation in progress. ");
 
-                await _context.Clients.All.OnStartAsync(id);
+                await _context.Clients.All.OnStartAsync(item.Id);
 
                 var selectedGameSetId = item.GamePartsDetailsId;
                 var selectedGameSet = _gamePartsService.GetBy(selectedGameSetId);
@@ -238,6 +235,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         {
             AlgorithmResult result = sender as AlgorithmResult;
             var fitness = result.Fitness;
+            // TODO publish via singalR to clients
         }
 
         public Task StopAsync(CancellationToken stoppingToken)

@@ -27,7 +27,6 @@ namespace Christmas.Secret.Gifter.API.Controllers
             _algService = algService;
         }
 
-        // TODO change GiftEvent to AlgorithmDetails, use this StringHelper
         [HttpGet()]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<AlgorithmDetails>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

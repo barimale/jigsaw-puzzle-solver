@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using System;
 using PubSub;
@@ -20,7 +19,7 @@ namespace Christmas.Secret.Gifter.API.Controllers
     {
         private readonly IEventService _eventService;
         private readonly ILogger<EventsController> _logger;
-        private readonly PubSub.Hub _hub;
+        private readonly Hub _hub; // to hosted service via PubSub
 
         public EventsController(
             ILogger<EventsController> logger,
