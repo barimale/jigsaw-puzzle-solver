@@ -10,14 +10,28 @@ namespace Christmas.Secret.Gifter.API.Services
     public class AlgorithmDetailsService : IAlgorithmDetailsService
     {
         private readonly ILogger<AlgorithmDetailsService> _logger;
+        private readonly List<AlgorithmDetails> AllAlgorithms;
 
-        public AlgorithmDetailsService(ILogger<AlgorithmDetailsService> logger)
+        private AlgorithmDetailsService()
         {
-            _logger = logger;
-            //_logger.LogInformation("AlgorithmDetailsService initialized.");
+            AllAlgorithms = AllAlgorithmsCodes
+                .Select(p =>
+                    new AlgorithmDetails()
+                    {
+                        Id = Guid.NewGuid().ToString(),
+                        Name = StringHelper.ToSpaceSeparatedString(p),
+                        Code = p
+                    })
+                .ToList();
         }
 
-        private List<string> AllAlgorithms = new List<string>()
+        public AlgorithmDetailsService(ILogger<AlgorithmDetailsService> logger)
+            : this()
+        {
+            _logger = logger;
+        }
+
+        private List<string> AllAlgorithmsCodes = new List<string>()
         {
             "BreadthFirstTreeSearchAlgorithm",
             "DepthFirstTreeSearchAlgorithm",
@@ -38,13 +52,12 @@ namespace Christmas.Secret.Gifter.API.Services
 
         public List<AlgorithmDetails> GetAll()
         {
-            return AllAlgorithms.Select(p => 
-            new AlgorithmDetails()
-            {
-                Id = Guid.NewGuid().ToString(),
-                Name = StringHelper.ToSpaceSeparatedString(p),
-                Code = p
-            }).ToList();
+            return AllAlgorithms;
+        }
+
+        public AlgorithmDetails GetBy(string id)
+        {
+            return GetAll().AsQueryable().FirstOrDefault(p => p.Id == id);
         }
     }
 }

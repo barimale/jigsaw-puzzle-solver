@@ -19,7 +19,7 @@ namespace Solver.Tangram.Game.Logic
             : this(gameSet)
         {
             Algorithm = algorithm;
-            Algorithm.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady; ;
+            Algorithm.OnExecutionEstimationReady += Algorithm_OnExecutionEstimationReady;
         }
 
         public Game(GameSet gameSet, IExecutableMultiAlgorithm multialgorithm)

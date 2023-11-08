@@ -10,14 +10,25 @@ namespace Christmas.Secret.Gifter.API.Services
     public class GamePartsDetailsService : IGamePartsDetailsService
     {
         private readonly ILogger<GamePartsDetailsService> _logger;
-
-        public GamePartsDetailsService(ILogger<GamePartsDetailsService> logger)
+        private readonly List<GamePartsDetails> AllGameParts;
+        private GamePartsDetailsService()
         {
-            _logger = logger;
-            //_logger.LogInformation("AlgorithmDetailsService initialized.");
+            AllGameParts = AllGamePartsNames.Select(p =>
+           new GamePartsDetails()
+           {
+               Id = Guid.NewGuid().ToString(),
+               Name = StringHelper.ToSpaceSeparatedString(p),
+               Code = p
+           }).ToList();
         }
 
-        private List<string> AllGameParts = new List<string>()
+        public GamePartsDetailsService(ILogger<GamePartsDetailsService> logger)
+            : this()
+        {
+            _logger = logger;
+        }
+
+        private List<string> AllGamePartsNames = new List<string>()
         {
             "CreateBigBoard",
             "CreatePolishBigBoard",
@@ -26,20 +37,14 @@ namespace Christmas.Secret.Gifter.API.Services
             "CreateSimpleBoard"
         };
 
-        //private List<object> AllFactories = new List<object>()
-        //{
-        //    new GameSetFactory(),
-        //};
+        public GamePartsDetails GetBy(string id)
+        {
+            return AllGameParts.FirstOrDefault(p => p.Id == id);
+        }
 
         public List<GamePartsDetails> GetAll()
         {
-            return AllGameParts.Select(p =>
-               new GamePartsDetails()
-               {
-                   Id = Guid.NewGuid().ToString(),
-                   Name = StringHelper.ToSpaceSeparatedString(p),
-                   Code = p
-               }).ToList();
+            return AllGameParts;
         }
     }
 }

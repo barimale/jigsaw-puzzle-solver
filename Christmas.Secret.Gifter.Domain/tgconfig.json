@@ -1,5 +1,5 @@
 {
-  "assemblies": [ "bin/Debug/net6.0/Christmas.Secret.Gifter.Domain.dll" ],
+  "assemblies": [ "bin/Debug/net6.0/Tangram.Solver.UI.Domain.dll" ],
   "fileNameConverters": [ "PascalCaseToKebabCase" ],
   "propertyNameConverters": [ "PascalCaseToCamelCaseConverter" ],
   "enumValueNameConverters": [ "UnderscoreCaseToPascalCaseConverter" ],

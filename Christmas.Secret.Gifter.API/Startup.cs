@@ -39,8 +39,8 @@ namespace Christmas.Secret.Gifter.API
             services.AddScoped<ILocalesGenerator, LocalesGenerator>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
             services.AddScoped<IEventService, EventService>();
-            services.AddScoped<IAlgorithmDetailsService, AlgorithmDetailsService>();
-            services.AddScoped<IGamePartsDetailsService, GamePartsDetailsService>();
+            services.AddSingleton<IAlgorithmDetailsService, AlgorithmDetailsService>();
+            services.AddSingleton<IGamePartsDetailsService, GamePartsDetailsService>();
 
             services.AddSQLLiteDatabase();
             services.AddCors();
@@ -102,7 +102,7 @@ namespace Christmas.Secret.Gifter.API
                 });
             });
 
-            services.AddHostedService<LocalesHostedService>();
+            services.AddHostedService<AlgorithmWorkerHostedService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, GifterDbContext dbContext)
@@ -145,6 +145,7 @@ namespace Christmas.Secret.Gifter.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                // TODO rename 
                 endpoints.MapHub<LocalesStatusHub>("/localesHub");
             });
         }

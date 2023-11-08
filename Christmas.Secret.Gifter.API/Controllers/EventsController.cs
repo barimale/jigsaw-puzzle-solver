@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using System;
+using PubSub;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -18,6 +20,7 @@ namespace Christmas.Secret.Gifter.API.Controllers
     {
         private readonly IEventService _eventService;
         private readonly ILogger<EventsController> _logger;
+        private readonly PubSub.Hub _hub;
 
         public EventsController(
             ILogger<EventsController> logger,
@@ -25,6 +28,7 @@ namespace Christmas.Secret.Gifter.API.Controllers
         {
             _logger = logger;
             _eventService = eventService;
+            _hub = PubSub.Hub.Default;
         }
 
         [HttpPost("create")]
@@ -39,6 +43,7 @@ namespace Christmas.Secret.Gifter.API.Controllers
                 var newEvent = new GiftEvent();
 
                 var created = await _eventService.AddAsync(newEvent, cancellationToken);
+                _hub.Publish(created);
 
                 return Ok(created);
             }
@@ -62,7 +67,10 @@ namespace Christmas.Secret.Gifter.API.Controllers
             {
                 cancellationToken.ThrowIfCancellationRequested();
 
+                // TODO save both ids
                 var existed = await _eventService.GetByIdAsync(eventId, cancellationToken);
+                
+                _hub.Publish(input);
 
                 if (existed == null)
                 {
