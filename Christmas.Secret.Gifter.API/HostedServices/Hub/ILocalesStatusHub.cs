@@ -1,6 +1,5 @@
-﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
+﻿using Christmas.Secret.Gifter.Domain;
 using System.Threading.Tasks;
-using Tangram.Solver.UI.Utilities;
 
 namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 {

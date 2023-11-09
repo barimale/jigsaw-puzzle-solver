@@ -1,9 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Christmas.Secret.Gifter.Domain;
+using Microsoft.AspNetCore.Authorization;
 using SignalRSwaggerGen.Attributes;
-using Solver.Tangram.AlgorithmDefinitions.Generics;
 using System;
 using System.Threading.Tasks;
-using Tangram.Solver.UI.Utilities;
 
 namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 {
@@ -42,7 +41,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 
         public Task OnNewResultFoundAsync(PolygonPairsResult input)
         {
-            return Clients?.All?.OnNewResultFoundAsync(input);
+            return Clients?.Others.OnNewResultFoundAsync(input);
         }
     }
 }
