@@ -1,4 +1,5 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
+using Christmas.Secret.Gifter.Domain;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
@@ -9,23 +10,6 @@ using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.Solver.UI.Utilities
 {
-    public class PolygonPair
-    {
-        public string X;
-        public string Y;
-    }
-
-    public class Polygon
-    {
-        public List<PolygonPair> polygonPairs;
-        public string color;
-    }
-
-    public class PolygonPairsResult
-    {
-        public List<Polygon> blocks = new List<Polygon>();
-    }
-
     public class AlgorithmDisplayHelper
     {
         public string LatestFitness { private set; get; } = string.Empty;
@@ -34,7 +18,6 @@ namespace Tangram.Solver.UI.Utilities
         {
             // intentionally left blank
         }
-
 
         public PolygonPairsResult? MapToPolygonPairsResult(object sender, SourceEventArgs e)
         {

@@ -1,4 +1,5 @@
-﻿using SignalRSwaggerGen.Attributes;
+﻿using Microsoft.AspNetCore.Authorization;
+using SignalRSwaggerGen.Attributes;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using System;
 using System.Threading.Tasks;
@@ -6,7 +7,7 @@ using Tangram.Solver.UI.Utilities;
 
 namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 {
-    //[Authorize]
+    [AllowAnonymous]
     [SignalRHub]
     public class LocalesStatusHub : Microsoft.AspNetCore.SignalR.Hub<ILocalesStatusHub>
     {
