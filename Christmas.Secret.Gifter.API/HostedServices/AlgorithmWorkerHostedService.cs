@@ -239,6 +239,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices
             var fitness = result.Fitness;
             // TODO publish via singalR to clients
             _context.Clients.All.OnProgressAsync(fitness);
+            _context.Clients.All.OnNewResultFoundAsync(result);
         }
 
         public Task StopAsync(CancellationToken stoppingToken)

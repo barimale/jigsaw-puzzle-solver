@@ -1,4 +1,5 @@
 ﻿using SignalRSwaggerGen.Attributes;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 using System;
 using System.Threading.Tasks;
 
@@ -35,6 +36,11 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
         public Task OnProgressAsync(string fitness)
         {
             return Clients?.All?.OnProgressAsync(fitness);
+        }
+
+        public Task OnNewResultFoundAsync(AlgorithmResult input)
+        {
+            return Clients?.All?.OnNewResultFoundAsync(input);
         }
     }
 }
