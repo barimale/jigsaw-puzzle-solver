@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Christmas.Secret.Gifter.Database.SQLite\Tangram.Solver.UI.Database.SQLite.csproj" />
+    <ProjectReference Include="..\Experimental.MVVM.WPF.Presenter\Experimental.MVVM.WPF.Presenter.csproj" />
     <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
     <ProjectReference Include="..\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.Game.Logic.csproj" />
     <ProjectReference Include="..\Tangram.Common.GameParts.Algorithm\Genetic.Algorithm.Tangram.GA.Solver.Templates.csproj" />

@@ -2,6 +2,7 @@
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using System;
 using System.Threading.Tasks;
+using Tangram.Solver.UI.Utilities;
 
 namespace Christmas.Secret.Gifter.API.HostedServices.Hub
 {
@@ -38,7 +39,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
             return Clients?.All?.OnProgressAsync(fitness);
         }
 
-        public Task OnNewResultFoundAsync(AlgorithmResult input)
+        public Task OnNewResultFoundAsync(PolygonPairsResult input)
         {
             return Clients?.All?.OnNewResultFoundAsync(input);
         }

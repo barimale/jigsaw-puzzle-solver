@@ -99,7 +99,7 @@ namespace Demo.Utilities
             }
         }
 
-        public void Algorithm_TerminationReached(object sender, SourceEventArgs e)
+        public static void Algorithm_TerminationReached(object sender, SourceEventArgs e)
         {
             if (e == null || e.SourceId != Guid)
             {

@@ -13,6 +13,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Tangram.GameParts.Logic.GameParts;
+using Tangram.Solver.UI.Utilities;
 
 namespace Christmas.Secret.Gifter.API.HostedServices
 {
@@ -237,9 +238,11 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         {
             AlgorithmResult result = sender as AlgorithmResult;
             var fitness = result.Fitness;
-            // TODO publish via singalR to clients
             _context.Clients.All.OnProgressAsync(fitness);
-            _context.Clients.All.OnNewResultFoundAsync(result);
+
+            var helper = new AlgorithmDisplayHelper();
+            var mappedSolution = helper.MapToPolygonPairsResult(sender, e);
+            _context.Clients.All.OnNewResultFoundAsync(mappedSolution);
         }
 
         public Task StopAsync(CancellationToken stoppingToken)
