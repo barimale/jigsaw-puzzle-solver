@@ -31,6 +31,8 @@ namespace Christmas.Secret.Gifter.API
 
         public IConfiguration Configuration { get; }
 
+        private string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
         public void ConfigureServices(IServiceCollection services)
         {
             // TODO: rename and reimplement
@@ -43,7 +45,19 @@ namespace Christmas.Secret.Gifter.API
             services.AddSingleton<IGamePartsDetailsService, GamePartsDetailsService>();
 
             services.AddSQLLiteDatabase();
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(MyAllowSpecificOrigins,
+                    builder =>
+                    {
+                        builder.WithOrigins("*",
+                            "https://administrator-albergue-porto.web.app",
+                            "https://shop-albergue-porto.web.app",
+                            "http://localhost:3010")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
 
             services.AddDbContext<GifterDbContext>(options =>
                 options
@@ -127,13 +141,14 @@ namespace Christmas.Secret.Gifter.API
             app.UseRouting();
             app.UseHsts();
 
-            app.UseCors(p =>
-            {
-                p.AllowAnyOrigin();
-                p.AllowAnyHeader();
-                p.AllowAnyMethod();
-                //p.WithOrigins("http://localhost:3010").AllowCredentials();
-            });
+            //app.UseCors(p =>
+            //{
+            //    p.AllowAnyOrigin();
+            //    p.AllowAnyHeader();
+            //    p.AllowAnyMethod();
+            //    //p.WithOrigins("http://localhost:3010").AllowCredentials();
+            //});
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();
             app.UseAuthorization();
