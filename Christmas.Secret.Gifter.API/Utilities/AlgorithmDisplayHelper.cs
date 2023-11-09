@@ -1,14 +1,10 @@
 ﻿using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
-using NetTopologySuite.Geometries;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Tangram.Solver.UI.Utilities
@@ -32,59 +28,13 @@ namespace Tangram.Solver.UI.Utilities
 
     public class AlgorithmDisplayHelper
     {
-        public double LatestFitness { private set; get; } = double.MinValue;
-        private bool isSolved = false;
+        public string LatestFitness { private set; get; } = string.Empty;
 
         public AlgorithmDisplayHelper()
         {
             // intentionally left blank
         }
 
-        public void Reset()
-        {
-            LatestFitness = double.MinValue;
-            isSolved = false;
-        }
-
-        public void Algorithm_Ran(object sender, SourceEventArgs e)
-        {
-            if (isSolved)
-                return;
-
-            try
-            {
-                var algorithmResult = sender as AlgorithmResult;
-
-                if (algorithmResult == null)
-                    return;
-
-                switch (algorithmResult.Solution)
-                {
-                    case TangramChromosome _:
-                        var bestChromosome = algorithmResult
-                            .GetSolution<TangramChromosome>();
-                        ShowChromosome(bestChromosome);
-                        break;
-                    case FindFittestSolution _:
-                        var choicesMade = algorithmResult
-                            .GetSolution<FindFittestSolution>();
-                        ShowTreeSearchSolution(choicesMade);
-                        break;
-                    case FindBinaryFittestSolution _:
-                        var binaryChoicesMade = algorithmResult
-                            .GetSolution<FindBinaryFittestSolution>();
-                        ShowTreeSearchSolution(binaryChoicesMade);
-                        break;
-                    default:
-                        // do nothing
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                // intentionally left blank
-            }
-        }
 
         public PolygonPairsResult? MapToPolygonPairsResult(object sender, SourceEventArgs e)
         {
@@ -94,6 +44,8 @@ namespace Tangram.Solver.UI.Utilities
 
                 if (algorithmResult == null)
                     return null;
+
+                LatestFitness = algorithmResult.Fitness;
 
                 switch (algorithmResult.Solution)
                 {

@@ -236,13 +236,11 @@ namespace Christmas.Secret.Gifter.API.HostedServices
 
         private void Algorithm_QualityCallback(object sender, Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs.SourceEventArgs e)
         {
-            AlgorithmResult result = sender as AlgorithmResult;
-            var fitness = result.Fitness;
-            _context.Clients.All.OnProgressAsync(fitness);
-
             var helper = new AlgorithmDisplayHelper();
             var mappedSolution = helper.MapToPolygonPairsResult(sender, e);
             _context.Clients.All.OnNewResultFoundAsync(mappedSolution);
+
+            _context.Clients.All.OnProgressAsync(helper.LatestFitness.ToString());
         }
 
         public Task StopAsync(CancellationToken stoppingToken)
