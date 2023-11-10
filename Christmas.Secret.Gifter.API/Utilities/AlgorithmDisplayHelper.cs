@@ -95,8 +95,8 @@ namespace Tangram.Solver.UI.Utilities
                         .Coordinates
                         .Select(pp => new PolygonPair()
                         {
-                            X = pp.X.ToString(),
-                            Y = pp.Y.ToString()
+                            x = pp.X,
+                            y = pp.Y
                         })
                         .ToList();
                     var color = p.Color;

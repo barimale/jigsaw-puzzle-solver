@@ -39,7 +39,7 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
             return Clients?.All?.OnProgressAsync(fitness);
         }
 
-        public Task OnNewResultFoundAsync(PolygonPairsResult input)
+        public Task OnNewResultFoundAsync(string input)
         {
             return Clients?.All.OnNewResultFoundAsync(input);
         }

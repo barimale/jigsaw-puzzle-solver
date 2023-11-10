@@ -8,6 +8,6 @@ namespace Christmas.Secret.Gifter.API.HostedServices.Hub
         Task OnStartAsync(string id);
         Task OnFinishAsync(string id);
         Task OnProgressAsync(string finess);
-        Task OnNewResultFoundAsync(PolygonPairsResult input);
+        Task OnNewResultFoundAsync(string input);
     }
 }

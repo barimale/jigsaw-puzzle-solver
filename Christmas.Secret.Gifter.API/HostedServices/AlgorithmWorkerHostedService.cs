@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Solver.Tangram.Game.Logic;
@@ -238,7 +239,8 @@ namespace Christmas.Secret.Gifter.API.HostedServices
         {
             var helper = new AlgorithmDisplayHelper();
             var mappedSolution = helper.MapToPolygonPairsResult(sender, e);
-            _context.Clients.All.OnNewResultFoundAsync(mappedSolution);
+            var mappedSolutionAsString = JsonConvert.SerializeObject(mappedSolution);
+            _context.Clients.All.OnNewResultFoundAsync(mappedSolutionAsString);
 
             _context.Clients.All.OnProgressAsync(helper.LatestFitness.ToString());
         }
