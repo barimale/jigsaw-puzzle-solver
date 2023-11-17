@@ -57,11 +57,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Experimental.MVVM.WPF.Prese
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "react-ui", "react-ui", "{0019EF9E-DCE1-4F10-AF8A-1D7F473D7C70}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.Solver.UI", "Christmas.Secret.Gifter.API\Tangram.Solver.UI.csproj", "{939587B9-99BB-4392-9AF8-A405C48965CE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.Solver.UI", "Tangram.Solver.UI.API\Tangram.Solver.UI.csproj", "{939587B9-99BB-4392-9AF8-A405C48965CE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.Solver.UI.Database.SQLite", "Christmas.Secret.Gifter.Database.SQLite\Tangram.Solver.UI.Database.SQLite.csproj", "{BF381525-E230-4D90-A296-D367E29DE463}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.Solver.UI.Database.SQLite", "Tangram.Solver.UI.Database.SQLite\Tangram.Solver.UI.Database.SQLite.csproj", "{BF381525-E230-4D90-A296-D367E29DE463}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.Solver.UI.Domain", "Christmas.Secret.Gifter.Domain\Tangram.Solver.UI.Domain.csproj", "{DCDB68CE-DCD7-491C-B016-566CDC132B78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.Solver.UI.Domain", "Tangram.Solver.UI.Domain\Tangram.Solver.UI.Domain.csproj", "{DCDB68CE-DCD7-491C-B016-566CDC132B78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
