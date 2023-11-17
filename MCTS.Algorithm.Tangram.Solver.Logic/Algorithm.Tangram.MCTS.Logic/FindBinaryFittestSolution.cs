@@ -49,7 +49,7 @@ namespace Algorithm.Tangram.TreeSearch.Logic
                              .Select(p => p.BinaryBlockOnTheBoard)
                              .ToList();
 
-            var diff = fitnessService.EvaluateBinary(binaries, blocks.Count);
+            var diff = fitnessService.EvaluateBinary(binaries);
 
             return diff;
         }

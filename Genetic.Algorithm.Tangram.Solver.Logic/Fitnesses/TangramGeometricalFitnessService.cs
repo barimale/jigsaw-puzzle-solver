@@ -7,14 +7,14 @@ using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses
 {
-    public class TangramService : IFitness
+    public class TangramGeometricalFitnessService : IFitness
     {
         private FitnessService fitnessService = new FitnessService();
 
         private BoardShapeBase boardShapeDefinition;
         private IList<BlockBase> blocks;
 
-        public TangramService(
+        public TangramGeometricalFitnessService(
             BoardShapeBase boardShapeDefinition,
             IList<BlockBase> blocks)
         {

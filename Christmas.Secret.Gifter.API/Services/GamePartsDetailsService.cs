@@ -32,6 +32,7 @@ namespace Christmas.Secret.Gifter.API.Services
         {
             "CreateBigBoard",
             "CreatePolishBigBoard",
+            "CreateBinaryBigBoardSettings",
             "CreateMediumBoard",
             "CreatePolishMediumBoard",
             "CreateSimpleBoard"

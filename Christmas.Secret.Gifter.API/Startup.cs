@@ -35,10 +35,6 @@ namespace Christmas.Secret.Gifter.API
 
         public void ConfigureServices(IServiceCollection services)
         {
-            // TODO: rename and reimplement
-            //services.AddSingleton<ILocalesStatusHub, LocalesStatusHub>();
-
-            services.AddScoped<ILocalesGenerator, LocalesGenerator>();
             services.AddScoped<IAuthorizeService, AuthorizeService>();
             services.AddScoped<IEventService, EventService>();
             services.AddSingleton<IAlgorithmDetailsService, AlgorithmDetailsService>();
@@ -51,8 +47,6 @@ namespace Christmas.Secret.Gifter.API
                     builder =>
                     {
                         builder.WithOrigins("*",
-                            "https://administrator-albergue-porto.web.app",
-                            "https://shop-albergue-porto.web.app",
                             "http://localhost:3010")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
@@ -73,7 +67,6 @@ namespace Christmas.Secret.Gifter.API
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                //options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(config =>
             {
                 config.RequireHttpsMetadata = false;
@@ -126,9 +119,9 @@ namespace Christmas.Secret.Gifter.API
             {
                 dbContext.Database.Migrate();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                Console.WriteLine("On Migrate error");
+                Console.WriteLine("On Migrate error: " + ex.Message);
             }
 
             if (env.IsDevelopment())
@@ -141,13 +134,6 @@ namespace Christmas.Secret.Gifter.API
             app.UseRouting();
             app.UseHsts();
 
-            //app.UseCors(p =>
-            //{
-            //    p.AllowAnyOrigin();
-            //    p.AllowAnyHeader();
-            //    p.AllowAnyMethod();
-            //    //p.WithOrigins("http://localhost:3010").AllowCredentials();
-            //});
             app.UseCors(MyAllowSpecificOrigins);
 
             app.UseAuthentication();

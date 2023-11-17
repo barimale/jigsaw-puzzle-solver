@@ -8,6 +8,10 @@ The GENIUS Junior
 # Example solution - binary depth-first solver
 ![PolishBigBoardWithBinaryTreeSolver.png](./results/PolishBigBoardWithBinaryTreeSolver.png)
 
+# Prereqs
+```
+dotnet tool install --global dotnet-typegen --version 4.5.0
+```
 # Some usefull information
 ## Online polygons creator
 ```

@@ -24,6 +24,23 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates
                     );
         }
 
+        public ExecutableGeneticAlgorithm CreateBinaryBigBoardSettings(
+            BoardShapeBase board,
+            IList<BlockBase> blocks,
+            int[] allowedAngles,
+            int? maxDegreeOfParallelism = null)
+        {
+            return
+                new ExecutableGeneticAlgorithm(
+                    new BinaryBigBoardAlgorithmSettings()
+                        .CreateNew(
+                        board,
+                        blocks,
+                        allowedAngles),
+                    maxDegreeOfParallelism
+                    );
+        }
+
         public ExecutableGeneticAlgorithm CreateMediumBoardSettings(
             BoardShapeBase board,
             IList<BlockBase> blocks,

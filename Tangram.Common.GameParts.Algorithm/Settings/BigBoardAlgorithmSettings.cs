@@ -31,7 +31,7 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
             var generationChromosomesNumber = 500; //6000 500 300
             var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
-            var fitness = new TangramService(board, blocks);
+            var fitness = new TangramGeometricalFitnessService(board, blocks); // TODO provide flag binary
 
             // initial population
             IPopulation initialPopulation;

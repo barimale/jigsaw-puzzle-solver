@@ -107,15 +107,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
         }
 
         public int EvaluateBinary(
-            IEnumerable<int[]> binaries,
-            int boardFieldAmount)
+            IEnumerable<int[]> binaries)
         {
-            return EvaluateBinaryAsync(binaries, boardFieldAmount).Result;
+            return EvaluateBinaryAsync(binaries).Result;
         }
 
         public async Task<int> EvaluateBinaryAsync(
-            IEnumerable<int[]> binaries,
-            int boardFieldAmount)
+            IEnumerable<int[]> binaries)
         {
             var tasks = new List<Task<int>>();
 
@@ -123,7 +121,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                .Factory
                .StartNew(() =>
                {
-                   return DoEvaluateBinary(binaries, boardFieldAmount);
+                   return DoEvaluateBinary(binaries);
                });
 
             tasks.Add(evaluateBinaries);
@@ -133,7 +131,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
             return results.Sum();
         }
 
-        public int DoEvaluateBinary(IEnumerable<int[]> binaries, int boardFieldAmount)
+        public int DoEvaluateBinary(IEnumerable<int[]> binaries)
         {
             try
             {

@@ -1,7 +1,6 @@
 ﻿using GeneticSharp;
-using Genetic.Algorithm.Tangram.Solver.Logic.OperatorStrategies;
-using Genetic.Algorithm.Tangram.Solver.Logic.Mutations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Crossovers;
+using Genetic.Algorithm.Tangram.Solver.Logic.Mutations;
 using Genetic.Algorithm.Tangram.Solver.Logic.Populations.Generators;
 using Genetic.Algorithm.Tangram.Solver.Logic.Chromosome;
 using Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses;
@@ -13,8 +12,10 @@ using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
 {
-    internal class MediumBoardAlgorithmSettings : IAlgorithmSettings
+    // TODO: 
+    internal class BinaryBigBoardAlgorithmSettings : IAlgorithmSettings
     {
+        // TODO: expose the parameter to enable/disable list of initial chromosomes
         public GeneticAlgorithm CreateNew(
             BoardShapeBase board,
             IList<BlockBase> blocks,
@@ -28,10 +29,10 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
                 .Count > 0;
 
             // solver
-            var generationChromosomesNumber = 300;
-            var mutationProbability = 0.2f; // quick for 0.0f and 300 chromosomes / 1 generation
+            var generationChromosomesNumber = 500; //6000 500 300
+            var mutationProbability = 0.2f;
             var crossoverProbability = 1.0f - mutationProbability;
-            var fitness = new TangramGeometricalFitnessService(board, blocks);
+            var fitness = new TangramBinaryFitnessService(board, blocks);
 
             // initial population
             IPopulation initialPopulation;
@@ -43,7 +44,7 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
                         blocks,
                         board,
                         allowedAngles,
-                        100d);
+                        2d);
 
                 initialPopulation = new PreloadedPopulation(
                     generationChromosomesNumber / 2,
@@ -68,12 +69,18 @@ namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
                     chromosome);
             }
 
-            var selection = new RouletteWheelSelection(); // new EliteSelection(generationChromosomesNumber);//RouletteWheelSelection
+            var selection = new RouletteWheelSelection(); // EliteSelection(Convert.ToInt32(generationChromosomesNumber*0.1)); // RouletteWheelSelection (generationChromosomesNumber);
             var crossover = new TangramCrossover();
             var mutation = new TangramMutation();
             var reinsertion = new ElitistReinsertion();
-            var operatorStrategy = new VaryRatioOperatorsStrategy(); // DefaultOperatorsStrategy(); //TplOperatorsStrategy
-            var termination = new FitnessThresholdTermination(-0.01f); // new FitnessStagnationTermination(100);
+            var operatorStrategy = new DefaultOperatorsStrategy(); // VaryRatioOperatorsStrategy 
+            //var terminations = new TerminationBase[]{
+            //    new FitnessThresholdTermination(-0.01f),
+            //    new FitnessStagnationTermination(10000)
+            //};
+            //var thresholdOrStagnationTermination = new OrTermination(terminations);
+
+            var termination = new FitnessThresholdTermination(-0.1f);
 
             var solver = SolverFactory.GASolverBuilder
                 .WithPopulation(initialPopulation)
