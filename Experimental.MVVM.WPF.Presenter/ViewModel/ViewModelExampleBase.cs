@@ -122,7 +122,7 @@ namespace Demo.ViewModel
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
-                .WithAlgorithm(ga)
+                .WithAlgorithm(binDepthTS)
                 .Build();
 
             return konfiguracjaGry;

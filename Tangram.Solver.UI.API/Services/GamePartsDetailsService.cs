@@ -33,7 +33,6 @@ namespace Tangram.Solver.UI.Services
         {
             "CreateBigBoard",
             "CreatePolishBigBoard",
-            "CreateBinaryBigBoardSettings",
             "CreateMediumBoard",
             "CreatePolishMediumBoard",
             "CreateSimpleBoard"

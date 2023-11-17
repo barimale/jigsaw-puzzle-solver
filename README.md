@@ -60,7 +60,3 @@ To have the Genius games implemented please use the isEnabled flag already added
  or do the separation of funcionalities and release many single games with the same engine
  and advisor mode.
  - deploy to Azure
-
-
-## Improvements
-- see TODOs for more details.

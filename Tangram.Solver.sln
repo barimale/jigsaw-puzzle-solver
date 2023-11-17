@@ -10,7 +10,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".solution-items", ".solution-items", "{52BC3AEC-5C10-4976-A7FF-5902D13CC443}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
-		TODOs.md = TODOs.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tangram.GameParts.Elements", "Tangram.Common.GameParts\Tangram.GameParts.Elements.csproj", "{ABCAA61C-B0E6-4684-9423-23552B8B1739}"
