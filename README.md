@@ -12,6 +12,7 @@ The GENIUS Junior
 ```
 # Example solution - binary depth-first solver
 ![PolishBigBoardWithBinaryTreeSolver.png](./results/PolishBigBoardWithBinaryTreeSolver.png)
+![Solution2.png](./results/Solution2.png)
 
 # Some usefull information
 ## Online polygons creator
