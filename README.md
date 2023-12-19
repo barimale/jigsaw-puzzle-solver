@@ -1,3 +1,8 @@
+# Prereqs
+```
+dotnet tool install --global dotnet-typegen --version 4.5.0
+```
+
 # Overall description
 It is an automatic solver for games like listed below:
 ```
@@ -8,10 +13,6 @@ The GENIUS Junior
 # Example solution - binary depth-first solver
 ![PolishBigBoardWithBinaryTreeSolver.png](./results/PolishBigBoardWithBinaryTreeSolver.png)
 
-# Prereqs
-```
-dotnet tool install --global dotnet-typegen --version 4.5.0
-```
 # Some usefull information
 ## Online polygons creator
 ```
@@ -42,11 +43,11 @@ There is a generic game set implemented and one real game bought in Poland(pleas
 To have the Genius games implemented please use the isEnabled flag already added to the Board class.
 
 # Conclusions
-## Ideas
+## Science Ideas
 - Reimplement the nettopologysuitenet in a form of GPGPU.
 - use all devices from the laptop for permutation-type calculations(mainly GPU),
 
-## Products
+## Business Ideas
 - GENIUS like,
 - universal platform with games like GENIUS, shapes based on matches,
 - platform for defining Your own game based on avalaible game templates: image recgonition etc, for example:
