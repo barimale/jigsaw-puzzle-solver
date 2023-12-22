@@ -1,5 +1,7 @@
 # Overall description
-It is an automatic solver for games like listed below:
+Tree-search-based and genetic-based algorithms having some science-article-based and custom improvements, with
+agnostic execution wrapper, provided together with geometric and binary vericators. Suitable for solving tangrams
+as well as other games like listed below:
 ```
 The GENIUS Star
 The GENIUS Square
