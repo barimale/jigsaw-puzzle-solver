@@ -31,7 +31,7 @@ https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/M
 ```
 
 ## Forked repos
-Experimental prefixed projects are forked.
+'Experimental' prefixed projects are forked.
 The algorithm is there explicitly defined in 
 hard-coded way.
 
