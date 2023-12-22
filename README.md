@@ -1,8 +1,3 @@
-# Prereqs
-```
-dotnet tool install --global dotnet-typegen --version 4.5.0
-```
-
 # Overall description
 It is an automatic solver for games like listed below:
 ```
