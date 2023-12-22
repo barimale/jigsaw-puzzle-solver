@@ -37,7 +37,7 @@ hard-coded way.
 
 # Detailed desctiption
 The WPF presenter is a demo only, which is helpfull for check correctness of the algorithm in a visual way.
-There are some minor bugs in code which have to be solved like not null reference exceptions 
+There are some minor bugs in code which have to be solved like null reference exceptions 
 caused by incorrect input data etc, but it is all about quick fixes.
 
 Besided that the solver is fully functional having two groups of algorithms: tree search based
