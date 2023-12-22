@@ -30,6 +30,11 @@ https://github.com/leprekon91/tangram-ga/blob/master/tangram-ga/tangram.py
 https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/Mutations/UniformMutation.cs
 ```
 
+## Forked repos
+Experimental prefixed projects are forked.
+The algorithm is there explicitly defined in 
+hard-coded way.
+
 # Detailed desctiption
 The WPF presenter is a demo only, which is helpfull for check correctness of the algorithm in a visual way.
 There are some minor bugs in code which have to be solved like not null reference exceptions 
