@@ -53,9 +53,7 @@ To have the Genius games implemented please use the isEnabled flag already added
 - use all devices from the laptop for permutation-type calculations(mainly GPU),
 
 ## Business Ideas
-- GENIUS like,
-- universal platform with games like GENIUS, shapes based on matches,
-- platform for defining Your own game based on avalaible game templates: image recgonition etc, for example:
+- create platform for defining Your own game based on avalaible game templates: image recgonition etc, for example:
 	-- how many torches You need and how many moves Youe have to do to have n triangles and m rectangles 
 	-- board with x and y size and blocks 
 	-- as above with mesh
