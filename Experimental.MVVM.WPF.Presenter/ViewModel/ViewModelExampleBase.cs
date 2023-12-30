@@ -56,7 +56,7 @@ namespace Demo.ViewModel
             ReorderTabsCommand = new RelayCommand<TabReorder>(ReorderTabsCommandAction);
             AddTabCommand = new RelayCommand(AddTabCommandAction,()=>CanAddTabs);
             CloseTabCommand = new RelayCommand<TabBase>(CloseTabCommandAction);
-            CanAddTabs = true;
+            CanAddTabs = false;
 
             _gameInstance = CreateGame();
         }
@@ -68,7 +68,7 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePolishMediumBoard(withAllowedLocations: true);
 
             //var oneRootTS = GameBuilder
             //    .AvalaibleTSTemplatesAlgorithms
@@ -102,7 +102,7 @@ namespace Demo.ViewModel
 
             var ga = GameBuilder
                 .AvalaibleGATunedAlgorithms
-                .CreateBinaryBigBoardSettings(
+                .CreateMediumBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles,
@@ -122,7 +122,8 @@ namespace Demo.ViewModel
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
-                .WithAlgorithm(binDepthTS)
+                .WithManyAlgorithms()
+                .WithAlgorithms(binDepthTS, ga)
                 .Build();
 
             return konfiguracjaGry;
