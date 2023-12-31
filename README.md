@@ -22,7 +22,7 @@ https://www.mathsisfun.com/geometry/polygons-interactive.html
 https://diegogiacomelli.com.br/function-optimization-with-geneticsharp/
 ```
 
-## Github pages
+## Github
 ```
 https://github.com/leprekon91/tangram-ga/blob/master/tangram-ga/tangram.py
 https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/Mutations/UniformMutation.cs
@@ -30,7 +30,7 @@ https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/M
 
 ## Forked repos
 'Experimental' prefixed projects are forked.
-The algorithm is there explicitly defined in 
+The algorithm is there invoked in a 
 hard-coded way.
 
 # Detailed description
