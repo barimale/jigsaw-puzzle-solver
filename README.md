@@ -37,31 +37,15 @@ https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/M
 The algorithm is there invoked in a 
 hard-coded way.
 
-# Detailed description
+# TODOs
 The WPF presenter is a demo only, which is helpfull for check correctness of the algorithm in a visual way.
 There are some minor bugs in code which have to be solved like null reference exceptions 
 caused by incorrect input data etc, but it is all about quick fixes.
 
-Besided that the solver is fully functional having two groups of algorithms: tree search based
+Besides that the solver is fully functional, having two groups of algorithms: tree search based
 with variations and genetic based with variations.
 
 There is a generic game set implemented and one real game bought in Poland(please see PolishBigBoard).
 
 To have the Genius games implemented please use the isEnabled flag already added to the Board class.
 
-# Conclusions
-## Science Ideas
-- Reimplement the nettopologysuitenet in a form of GPGPU.
-- use all devices from the laptop for permutation-type calculations(mainly GPU),
-
-## Business Ideas
-- create platform for defining Your own game based on avalaible game templates: image recgonition etc, for example:
-	-- how many torches You need and how many moves Youe have to do to have n triangles and m rectangles 
-	-- board with x and y size and blocks 
-	-- as above with mesh
-	-- as above and 3D version
-- as a user You need to login, order game and wait for the solution even couple of days,
- then You are free to play, share with friends, and You are free to use game money to
- use the advisor mode(undo already used item or which item has to be next etc.)
- or do the separation of funcionalities and release many single games with the same engine
- and advisor mode.
