@@ -9,6 +9,7 @@ using ChromeTabs;
 using Demo.ViewModel.SolverTabs;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.Game.Logic;
 
 namespace Demo.ViewModel
@@ -70,35 +71,13 @@ namespace Demo.ViewModel
                 .AvalaibleGameSets
                 .CreatePolishMediumBoard(withAllowedLocations: true);
 
-            //var oneRootTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateOneRootParallelDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
-
-            //// for square-based only
+            // algorithms
             var binDepthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
                 .CreateBinaryDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
-
-            //var binOneRootDepthTS = GameBuilder
-            //   .AvalaibleTSTemplatesAlgorithms
-            //   .CreateBinaryOneRootParallelDepthFirstTreeSearchAlgorithm(
-            //       gameParts.Board,
-            //       gameParts.Blocks,
-            //       maxDegreeOfParallelism: maxDegreeOfParallelism);
-            ////gameParts.AllowedAngles);
-
-            //var depthTS = GameBuilder
-            //    .AvalaibleTSTemplatesAlgorithms
-            //    .CreateDepthFirstTreeSearchAlgorithm(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var ga = GameBuilder
                 .AvalaibleGATunedAlgorithms
@@ -108,22 +87,11 @@ namespace Demo.ViewModel
                     gameParts.AllowedAngles,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            //var konfiguracjaGry = new GameBuilder()
-            //    .WithGamePartsConfigurator(gameParts)
-            //    .WithManyAlgorithms()
-            //    .WithExecutionMode(ExecutionMode.WhenAll)
-            //    .WithAlgorithms(
-            //        binOneRootDepthTS,
-            //        binDepthTS,
-            //        oneRootTS,
-            //        ga,
-            //        depthTS)
-            //    .Build();
-
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
                 .WithAlgorithms(binDepthTS, ga)
+                .WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 
             return konfiguracjaGry;

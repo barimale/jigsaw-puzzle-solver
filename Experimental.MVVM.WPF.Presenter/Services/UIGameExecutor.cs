@@ -15,8 +15,6 @@ namespace Demo.Services
 {
     public class UIGameExecutor
     {
-        //private DisplayerMultiton _displayerMultiton;
-
         private Dictionary<string, AlgorithmDisplayHelper> algorithmDisplayHelpers = new Dictionary<string, AlgorithmDisplayHelper>();
         private Game konfiguracjaGry;
 
@@ -44,13 +42,6 @@ namespace Demo.Services
 
             if (konfiguracjaGry.Algorithm == null && konfiguracjaGry.Multialgorithm == null)
                 throw new Exception("At least one algorithm has to be set");
-
-            // CONTINUE FROM HERE
-            //this._displayerMultiton = new DisplayerMultiton();
-            //konfiguracjaGry.Multialgorithm.Algorithms.Keys.ToList().ForEach(p =>
-            //{
-            //    this._displayerMultiton[p] = algorithmDisplayHelpers[p];
-            //});
 
             if (konfiguracjaGry.Algorithm != null)
             {
@@ -119,7 +110,7 @@ namespace Demo.Services
 
             try
             {
-                if (ExecutorState == UIGameExecutorState.READY)
+                if (ExecutorState == UIGameExecutorState.COMPLETED)
                 {
                     algorithmDisplayHelpers.Values.ToList().ForEach(p => p.Reset());
                     ExecuteInBackgroundTask = Task.Factory.StartNew(() => DoExecuteAsync(ct), ct);
@@ -172,7 +163,7 @@ namespace Demo.Services
         {
             if (ExecuteInBackgroundTask == null)
             {
-                return UIGameExecutorState.READY;
+                return UIGameExecutorState.COMPLETED;
             }
 
             if (ExecuteInBackgroundTask != null && (

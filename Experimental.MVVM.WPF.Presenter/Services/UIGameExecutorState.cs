@@ -2,7 +2,7 @@
 {
     public enum UIGameExecutorState
     {
-        READY = 0,
+        COMPLETED = 0,
         ACTIVATED,
         CANCELLED,
         UNKNOWN

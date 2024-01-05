@@ -50,7 +50,7 @@ namespace Demo.ViewModel.SolverTabs
             // commands
             ExecuteCommand = new RelayCommand(
                 () => ExecuteAlgorithm(),
-                _UIGameExecutor.ExecutorState == UIGameExecutorState.READY);
+                _UIGameExecutor.ExecutorState == UIGameExecutorState.COMPLETED);
             CancellCommand = new RelayCommand(
                 () => CancellAlgorithm(),
                 _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED);
@@ -90,7 +90,7 @@ namespace Demo.ViewModel.SolverTabs
         {
             var status = sender as string;
             UIGameExecutorStatus = status;
-            IsExecutable = _UIGameExecutor.ExecutorState == UIGameExecutorState.READY;
+            IsExecutable = _UIGameExecutor.ExecutorState == UIGameExecutorState.COMPLETED;
             IsCancellable = _UIGameExecutor.ExecutorState == UIGameExecutorState.ACTIVATED;
         }
 
@@ -116,8 +116,6 @@ namespace Demo.ViewModel.SolverTabs
                 tab.Header = _gameInstance.GetAlgorithmNameBy(canvas.Key);
                 tab.FontSize = 10;
                 tab.ToolTip = _gameInstance.GetAlgorithmNameBy(canvas.Key);
-                // TODO datatemplate here max width
-                // do the header color green on termination reached
                 tabControl.Items.Add(tab);
             }
 

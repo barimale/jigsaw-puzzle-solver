@@ -48,7 +48,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".configuration", ".configur
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TreeSearch.Algorithm.Tangram.Solver.Templates", "TreeSearch.Algorithm.Tangram.Solver.Templates\TreeSearch.Algorithm.Tangram.Solver.Templates\TreeSearch.Algorithm.Tangram.Solver.Templates.csproj", "{DC9B12CA-77B7-4690-AFBC-9C54749C4A0E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wpf-ui-presenters", "wpf-ui-presenters", "{C3C0FD75-70AB-41C6-9EC0-E8A58590BC2F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "wpf-ui-presenter", "wpf-ui-presenter", "{C3C0FD75-70AB-41C6-9EC0-E8A58590BC2F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Experimental.MVVM.Backend.Chrometabs", "Experimental.MVVM.Backend.Chrometabs\Experimental.MVVM.Backend.Chrometabs.csproj", "{40E67A95-854B-473C-89BD-20A41A5C2311}"
 EndProject
