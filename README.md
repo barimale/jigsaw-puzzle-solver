@@ -1,6 +1,6 @@
 # Startup project name
 ```
-Experimental.MVVM.WPF.Presenter
+Experimental.MVVM.WPF.Presenter.csproj
 ```
 # Overall description
 Tree-search-based and genetic-based algorithms having some science-article-based and custom improvements, with
