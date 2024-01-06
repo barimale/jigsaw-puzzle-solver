@@ -6,7 +6,7 @@ using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.Generators;
 using Xunit.Abstractions;
 
-namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine.AllowedLocationsGeneratorClass
+namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine.WhenyAnyWithWhereClause
 {
     public class Customization_of_task_whenAny_method_needs_to_be_done : PrintToConsoleUTBase
     {
@@ -36,7 +36,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine
 
             // then
             Assert.Equal(results.CountAsync().Result, 1);
-            }
+        }
 
         private async Task<int> WaitFor(int inMilliseconds, int resultValue)
         {

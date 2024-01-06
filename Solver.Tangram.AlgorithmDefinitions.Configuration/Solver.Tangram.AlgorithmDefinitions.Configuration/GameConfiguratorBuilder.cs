@@ -25,13 +25,6 @@ namespace Solver.Tangram.Game.Logic
         public static TSTemplatesFactory AvalaibleTSTemplatesAlgorithms
             => new TSTemplatesFactory();
 
-        public GameBuilder WithAlgorithm(GeneticAlgorithm ga)
-        {
-            algorithm = new ExecutableGeneticAlgorithm(ga);
-
-            return this;
-        }
-
         public GameBuilder WithAlgorithm(IExecutableAlgorithm algorithm)
         {
             this.algorithm = algorithm;
