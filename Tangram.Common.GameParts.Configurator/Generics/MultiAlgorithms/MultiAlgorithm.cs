@@ -2,9 +2,9 @@
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
 
-namespace Solver.Tangram.AlgorithmDefinitions.Generics
+namespace Solver.Tangram.AlgorithmDefinitions.Generics.MultiAlgorithms
 {
-    public class MultiAlgorithm: IExecutableMultiAlgorithm
+    public class MultiAlgorithm : IExecutableMultiAlgorithm
     {
         private readonly Dictionary<string, IExecutableAlgorithm> algorithms = new Dictionary<string, IExecutableAlgorithm>();
         private readonly ExecutionMode executionMode;

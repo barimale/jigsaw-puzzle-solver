@@ -1,4 +1,4 @@
-﻿using Solver.Tangram.AlgorithmDefinitions.Generics;
+﻿using Solver.Tangram.AlgorithmDefinitions.Generics.MultiAlgorithms;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Logic.GameParts;
 
