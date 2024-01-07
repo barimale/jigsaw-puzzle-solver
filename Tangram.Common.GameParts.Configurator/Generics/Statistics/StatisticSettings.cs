@@ -1,5 +1,6 @@
 ﻿namespace Solver.Tangram.AlgorithmDefinitions.Generics.Statistics
 {
+    // WIP
     public class StatisticSettings
     {
         public StatisticSettings(long measurePeriodInCycles)

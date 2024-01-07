@@ -1,5 +1,6 @@
 ﻿namespace Solver.Tangram.AlgorithmDefinitions.Generics.Statistics
 {
+    // WIP
     public class StatisticDetails
     {
         private long maximalAmountOfIterations;
