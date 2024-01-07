@@ -108,6 +108,24 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             Assert.NotNull(konfiguracjaGry);
         }
 
+        // it is usefull for maxDegreeOfParallelism
+        [Fact
+            (Skip = "As amount of RAM is device-specific, the test is skipped.")
+        ]
+        public void Check_amount_of_RAM()
+        {
+            // given
+            var gcMemoryInfo = GC.GetGCMemoryInfo();
+
+            // when
+            long installedMemory = gcMemoryInfo.TotalAvailableMemoryBytes;
+            var physicalMemoryInGigaBytes = (double)installedMemory / 1048576.0 / 1024.0;
+            var physicalMemoryInGigaBytesAsInt = Convert.ToInt32(physicalMemoryInGigaBytes);
+
+            // then
+            Assert.Equal(16, physicalMemoryInGigaBytesAsInt);
+        }
+
         private static List<Assembly>? MyFunc(string controlClassName)
         {
             string result = "";
