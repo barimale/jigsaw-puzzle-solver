@@ -1,9 +1,4 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
-using Tangram.GameParts.Elements;
-using Tangram.GameParts.Elements.Elements.Blocks;
-using Tangram.GameParts.Logic.GameParts.Block;
-using Tangram.GameParts.Logic.GameParts.Board;
-using Tangram.GameParts.Logic.Generators;
 using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine.WhenyAnyWithWhereClause
