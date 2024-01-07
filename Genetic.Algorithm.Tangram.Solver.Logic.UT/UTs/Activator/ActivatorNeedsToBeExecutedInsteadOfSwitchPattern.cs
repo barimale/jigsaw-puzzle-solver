@@ -5,8 +5,7 @@ using Tangram.GameParts.Logic.GameParts;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
 {
-    // WIP
-    public class ActivatorNeedsToBeExecuted
+    public class ActivatorNeedsToBeExecutedInsteadOfSwitchPattern
     {
         [Fact]
         public GameSet? Example_CreateBigBoard()
@@ -16,7 +15,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             var methodName = "CreateBigBoard";
 
             // when
-            var filtered = MyFunc(controlClassName);
+            var filtered = FilterAssembliesBy(controlClassName);
 
             var assembly = filtered.FirstOrDefault();
             if(assembly == null)
@@ -51,7 +50,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             var gameParts = Example_CreateBigBoard();
 
             // when
-            var filtered = MyFunc(controlClassName);
+            var filtered = FilterAssembliesBy(controlClassName);
 
             var assembly = filtered.FirstOrDefault();
             if (assembly == null)
@@ -62,13 +61,13 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             Type t = assembly.GetType(controlClassName);
             var inst = System.Activator.CreateInstance(t);
 
-            var property = t.GetMethod(methodName);
-            if (property == null)
+            var method = t.GetMethod(methodName);
+            if (method == null)
             {
                 return null;
             }
 
-            IExecutableAlgorithm binDepthTS = (IExecutableAlgorithm)property.Invoke(inst, new object[] {
+            IExecutableAlgorithm binDepthTS = (IExecutableAlgorithm)method.Invoke(inst, new object[] {
                 gameParts.Board,
                 gameParts.Blocks,
                 maxDegreeOfParallelism
@@ -108,7 +107,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             Assert.NotNull(konfiguracjaGry);
         }
 
-        // it is usefull for maxDegreeOfParallelism
+        // comment Skip... if necessary
         [Fact
             (Skip = "As amount of RAM is device-specific, the test is skipped.")
         ]
@@ -126,28 +125,27 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             Assert.Equal(16, physicalMemoryInGigaBytesAsInt);
         }
 
-        private static List<Assembly>? MyFunc(string controlClassName)
+        private static List<Assembly?>? FilterAssembliesBy(string controlClassName)
         {
-            string result = "";
-            // get a list of all assemblies in this application domain
             Assembly[] assemblies = AppDomain.CurrentDomain.GetAssemblies();
-            // the trouble is that we don't know which assembly the class is defined in,
-            // because we are using the "Web Site" model in Visual Studio that compiles
-            // them on the fly into assemblies with random names
-            // -> however, we do know that the assembly will be named App_Web_*
 
             var filtered = assemblies
                 .Select(p =>
                 {
-                    Type t = p.GetType(controlClassName);
-                    if (t != null) return p;
-                    return null;
+                    try
+                    {
+                        Type t = p.GetType(controlClassName);
+                        if (t != null) return p;
+
+                        return null;
+                    }
+                    catch (Exception)
+                    {
+                        return null;
+                    }  
                 })
                 .Where(p => p!= null)
                 .ToList();
-
-            var a = assemblies.Count();
-            var b = filtered.Count;
 
             return filtered;
         }
