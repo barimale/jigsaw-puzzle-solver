@@ -43,9 +43,9 @@ There are some minor bugs in code which have to be solved like null reference ex
 caused by incorrect input data etc, but it is all about quick fixes.
 
 Besides that the solver is fully functional, having two groups of algorithms: tree search based
-with variations and genetic based with variations.
+with customizations and genetic based with customizations.
 
-There is a generic game set implemented and one real game bought in Poland(please see PolishBigBoard).
+There is a generic game set implemented and the one reflected real game bought in Poland(please see PolishBigBoard).
 
 To have the Genius games implemented please use the isEnabled flag already added to the Board class.
 
