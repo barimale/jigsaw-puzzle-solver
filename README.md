@@ -7,6 +7,7 @@ Tree-search-based and genetic-based algorithms having some science-article-based
 agnostic execution wrapper, provided together with geometric and binary verifiers. Suitable for solving tangrams
 as well as other games like listed below:
 ```
+IQ xoxo
 The GENIUS Star
 The GENIUS Square
 The GENIUS Junior
