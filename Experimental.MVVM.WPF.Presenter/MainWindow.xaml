@@ -44,7 +44,6 @@
                              DragWindowWithOneTab="True"
                              IsAddButtonVisible="{Binding ShowAddButton}"
                              AddTabCommand="{Binding AddTabCommand}"
-                             CloseTabCommand="{Binding CloseTabCommand}"
                              ReorderTabsCommand="{Binding ReorderTabsCommand}"
                              TabTearTriggerDistance="10"
                              TabDraggedOutsideBonds="TabControl_TabDraggedOutsideBonds">
