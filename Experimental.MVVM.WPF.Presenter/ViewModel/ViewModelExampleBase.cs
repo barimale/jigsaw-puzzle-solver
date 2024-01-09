@@ -69,7 +69,7 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                .CreatePolishBigBoard(withAllowedLocations: true);
 
             // algorithms
             var binDepthTS = GameBuilder
@@ -81,7 +81,7 @@ namespace Demo.ViewModel
 
             var ga = GameBuilder
                 .AvalaibleGATunedAlgorithms
-                .CreateMediumBoardSettings(
+                .CreateBigBoardSettings(
                     gameParts.Board,
                     gameParts.Blocks,
                     gameParts.AllowedAngles,

@@ -73,6 +73,16 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
                 };
 
             }
+            catch(TaskCanceledException tce)
+            {
+                return new AlgorithmResult()
+                {
+                    Fitness = string.Empty,
+                    Solution = null,
+                    IsError = true,
+                    ErrorMessage = tce.Message
+                };
+            }
             catch (OperationCanceledException oce)
             {
                 return new AlgorithmResult()

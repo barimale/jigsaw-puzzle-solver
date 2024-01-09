@@ -1,5 +1,6 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics.MultiAlgorithms;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
+using System.Runtime.CompilerServices;
 using Tangram.GameParts.Logic.GameParts;
 
 namespace Solver.Tangram.Game.Logic
@@ -40,12 +41,19 @@ namespace Solver.Tangram.Game.Logic
         {
             ct.ThrowIfCancellationRequested();
 
-            if (Algorithm != null)
-                return (await Algorithm.ExecuteAsync(ct)) as Tout;
+            try
+            {
+                if (Algorithm != null)
+                    return (await Algorithm.ExecuteAsync(ct)) as Tout;
 
-            if (Multialgorithm != null)
-                return (await Multialgorithm.ExecuteManyAsync(ct)) as Tout;
-
+                if (Multialgorithm != null)
+                    return (await Multialgorithm.ExecuteManyAsync(ct)) as Tout;
+            }
+            catch (TaskCanceledException)
+            {
+                throw;
+            }
+          
             throw new SystemException();
         }
 

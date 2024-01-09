@@ -137,7 +137,7 @@ namespace Demo.ViewModel.SolverTabs
 
         public void ExecuteAlgorithm()
         {
-            if(_cts.IsCancellationRequested)
+            if(_cts == null || _cts.IsCancellationRequested)
             {
                 _cts = new CancellationTokenSource();
             }
@@ -147,7 +147,7 @@ namespace Demo.ViewModel.SolverTabs
 
         public void CancellAlgorithm()
         {
-            _cts.Cancel();
+            _cts.Cancel(true);
         }
 
         private Canvas CreateCanvas(string id)
