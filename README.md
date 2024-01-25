@@ -35,8 +35,6 @@ https://github.com/giacomelli/GeneticSharp/blob/master/src/GeneticSharp.Domain/M
 
 ## Forked repos
 'Experimental' prefixed projects are forked.
-The algorithm is there invoked in a 
-hard-coded way.
 
 # TODOs
 The WPF presenter is a demo only, which is helpfull for check correctness of the algorithm in a visual way.
