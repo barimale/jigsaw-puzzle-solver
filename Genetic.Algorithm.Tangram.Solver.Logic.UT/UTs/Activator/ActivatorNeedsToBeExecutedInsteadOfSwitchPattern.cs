@@ -1,12 +1,22 @@
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
+using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Solver.Tangram.Game.Logic;
+using System.Data.SqlTypes;
 using System.Reflection;
 using Tangram.GameParts.Logic.GameParts;
+using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
 {
-    public class ActivatorNeedsToBeExecutedInsteadOfSwitchPattern
+    public class ActivatorNeedsToBeExecutedInsteadOfSwitchPattern: PrintToConsoleUTBase
     {
+        public ActivatorNeedsToBeExecutedInsteadOfSwitchPattern(ITestOutputHelper output)
+            : base(output)
+        {
+            // intentionally left blank
+        }
+
         [Fact]
         public GameSet? Example_CreateBigBoard()
         {
