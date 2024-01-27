@@ -15,8 +15,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             // intentionally left blank
         }
 
-        [Fact]
-        public GameSet? Example_CreateBigBoard()
+        [Theory]
+        [InlineData(true)]
+        [InlineData(false)]
+        public GameSet? Example_CreateBigBoard(bool withAllowedLocations)
         {
             // given
             var controlClassName = "Tangram.GameParts.Elements.GameSetFactory";
@@ -40,7 +42,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
                 return null;
             }
 
-            GameSet gameParts = (GameSet)property.Invoke(inst, new object[] { true });
+            GameSet gameParts = (GameSet)property.Invoke(inst, new object[] { withAllowedLocations });
 
             // then
             Assert.NotNull(gameParts);
@@ -55,7 +57,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             var controlClassName = "TreeSearch.Algorithm.Tangram.Solver.Templates.TSTemplatesFactory";
             var methodName = "CreateDepthFirstTreeSearchAlgorithm";
             int maxDegreeOfParallelism = 2048 * 6; // -1
-            var gameParts = Example_CreateBigBoard();
+            var gameParts = Example_CreateBigBoard(true);
 
             // when
             var filtered = FilterAssembliesBy(controlClassName);
@@ -97,7 +99,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
                 // 1. required input data
                 //var controlClassName = "Tangram.GameParts.Elements.GameSetFactory";
                 //var methodName = "CreateBigBoard";
-                var gameParts = Example_CreateBigBoard();
+                var gameParts = Example_CreateBigBoard(true);
 
                 // 2. required input data
                 //var controlClassName = "TreeSearch.Algorithm.Tangram.Solver.Templates.TSTemplatesFactory";
