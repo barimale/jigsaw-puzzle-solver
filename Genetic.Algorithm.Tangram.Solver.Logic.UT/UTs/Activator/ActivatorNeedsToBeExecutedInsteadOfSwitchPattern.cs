@@ -57,7 +57,8 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             var controlClassName = "TreeSearch.Algorithm.Tangram.Solver.Templates.TSTemplatesFactory";
             var methodName = "CreateDepthFirstTreeSearchAlgorithm";
             int maxDegreeOfParallelism = 2048 * 6; // -1
-            var gameParts = Example_CreateBigBoard(true);
+            var withAllowedLocations = true;
+            var gameParts = Example_CreateBigBoard(withAllowedLocations);
 
             // when
             var filtered = FilterAssembliesBy(controlClassName);
@@ -99,6 +100,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
                 // 1. required input data
                 //var controlClassName = "Tangram.GameParts.Elements.GameSetFactory";
                 //var methodName = "CreateBigBoard";
+                //var withAllowedLocations = true;
                 var gameParts = Example_CreateBigBoard(true);
 
                 // 2. required input data
@@ -117,7 +119,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
             Assert.NotNull(konfiguracjaGry);
         }
 
-        // comment Skip... if necessary
+        // comment Skip to do the test
         [Fact
             (Skip = "As amount of RAM is device-specific, the test is skipped.")
         ]
