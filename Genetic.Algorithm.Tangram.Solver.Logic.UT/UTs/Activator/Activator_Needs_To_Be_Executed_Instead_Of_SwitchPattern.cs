@@ -7,9 +7,9 @@ using Xunit.Abstractions;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
 {
-    public class ActivatorNeedsToBeExecutedInsteadOfSwitchPattern: PrintToConsoleUTBase
+    public class Activator_Needs_To_Be_Executed_Instead_Of_SwitchPattern : PrintToConsoleUTBase
     {
-        public ActivatorNeedsToBeExecutedInsteadOfSwitchPattern(ITestOutputHelper output)
+        public Activator_Needs_To_Be_Executed_Instead_Of_SwitchPattern(ITestOutputHelper output)
             : base(output)
         {
             // intentionally left blank
