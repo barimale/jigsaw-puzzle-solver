@@ -26,6 +26,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
 
             // when
             var filtered = FilterAssembliesBy(controlClassName);
+            if (filtered == null)
+            {
+                return null;
+            }
 
             var assembly = filtered.FirstOrDefault();
             if(assembly == null)
@@ -62,6 +66,10 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
 
             // when
             var filtered = FilterAssembliesBy(controlClassName);
+            if (filtered == null)
+            {
+                return null;
+            }
 
             var assembly = filtered.FirstOrDefault();
             if (assembly == null)
@@ -110,6 +118,9 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Activator
                 var binDepthTS = Example_binDepthTS();
 
             // when 
+            Assert.NotNull(gameParts);
+            Assert.NotNull(binDepthTS);
+
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithAlgorithm(binDepthTS)
