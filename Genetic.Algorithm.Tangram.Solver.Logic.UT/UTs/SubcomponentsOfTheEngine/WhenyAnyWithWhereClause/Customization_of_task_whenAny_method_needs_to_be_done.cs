@@ -20,7 +20,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine
             var tasks = new List<Task<int>>()
             {
                 WaitFor(2000, 1),
-                WaitFor(10000, 2)
+                WaitFor(4000, 2)
             };
 
             // when
