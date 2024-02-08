@@ -41,29 +41,21 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
 
         public GameSet CreateNew(bool withAllowedLocations = false)
         {
-            if (withAllowedLocations)
-            {
-                var modificator = new AllowedLocationsGenerator(
+            var modificator = new AllowedLocationsGenerator(
                         null,
                         fieldHeight,
                         fieldWidth
                     );
 
-                var preconfiguredBlocks = modificator.Preconfigure(
-                        Blocks.ToList(),
-                        Board(),
-                        Angles);
-
-                var orderedBlocksWithSwap = modificator.ReorderWithSwap(preconfiguredBlocks);
-
-                return new GameSet(
-                    orderedBlocksWithSwap,
+            var preconfiguredBlocks = modificator.Preconfigure(
+                    Blocks.ToList(),
                     Board(),
                     Angles);
-            }
+
+            var orderedBlocksWithSwap = modificator.ReorderWithSwap(preconfiguredBlocks);
 
             return new GameSet(
-                Blocks,
+                orderedBlocksWithSwap,
                 Board(),
                 Angles);
         }
