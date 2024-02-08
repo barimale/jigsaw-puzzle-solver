@@ -1,5 +1,6 @@
 ﻿using Tangram.GameParts.Elements.Elements.Boards.PolishGame;
 using Tangram.GameParts.Elements.Elements.Boards.PureGame;
+using Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro;
 using Tangram.GameParts.Logic;
 using Tangram.GameParts.Logic.GameParts;
 
@@ -18,6 +19,12 @@ namespace Tangram.GameParts.Elements
         public GameSet CreatePolishBigBoard(bool withAllowedLocations = false)
         {
             return new PolishBigBoardData()
+                .CreateNew(withAllowedLocations);
+        }
+        
+        public GameSet CreatePuzzleProBoardData(bool withAllowedLocations = false)
+        {
+            return new PuzzleProBoardData()
                 .CreateNew(withAllowedLocations);
         }
 

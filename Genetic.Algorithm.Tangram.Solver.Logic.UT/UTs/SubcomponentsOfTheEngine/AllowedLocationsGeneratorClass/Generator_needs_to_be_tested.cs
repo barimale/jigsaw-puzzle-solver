@@ -1,6 +1,6 @@
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Tangram.GameParts.Elements;
-using Tangram.GameParts.Elements.Elements.Blocks;
+using Tangram.GameParts.Elements.Elements.Blocks.PolishGame;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.Generators;

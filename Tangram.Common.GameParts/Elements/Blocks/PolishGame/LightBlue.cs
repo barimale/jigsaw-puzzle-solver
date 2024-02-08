@@ -3,42 +3,44 @@ using System.Drawing;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 using Tangram.GameParts.Logic.GameParts.Block;
 
-namespace Tangram.GameParts.Elements.Elements.Blocks
+namespace Tangram.GameParts.Elements.Elements.Blocks.PolishGame
 {
-    public sealed class LightGreen : PolishGameBaseBlock
+    public sealed class LightBlue : PolishGameBaseBlock
     {
-        public LightGreen()
+        public LightBlue()
         {
             fieldRestriction1side = new object[,] {
-                { "X", "O", "X", "O" },
-                { "O", NA, NA, NA}
-            };
+                { "O", "X", "O"},
+                { "X", NA, NA},
+                { "O", NA, NA}
+                            };
 
             fieldRestriction2side = new object[,] {
-                { "X", "O", "X", "O" },
-                { NA, NA, NA, "X" }
+                { "X", "O", "X" },
+                { NA, NA, "O" },
+                { NA, NA, "X" }
             };
 
-            color = Color.LightGreen;
+            color = Color.LightBlue;
 
             polygon = new GeometryFactory()
                     .CreatePolygon(new Coordinate[] {
                         new Coordinate(0,0),// first the same as last
-                        new Coordinate(0,2),
-                        new Coordinate(1,2),
+                        new Coordinate(0,3),
+                        new Coordinate(1,3),
                         new Coordinate(1,1),
-                        new Coordinate(4,1),
-                        new Coordinate(4,0),
+                        new Coordinate(3,1),
+                        new Coordinate(3,0),
                         new Coordinate(0,0)// last the same as first
                     });
         }
 
         public static BlockBase Create(bool withFieldRestrictions = false)
         {
-            var bloczekDoNarysowania = new LightGreen()
+            var bloczekDoNarysowania = new LightBlue()
                 .CreateNew(withFieldRestrictions).ToString();
 
-            return new LightGreen()
+            return new LightBlue()
                 .CreateNew(withFieldRestrictions);
         }
     }

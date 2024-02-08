@@ -2,32 +2,33 @@
 using Tangram.GameParts.Logic.GameParts;
 using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.GameParts.Block;
-using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
-using Tangram.GameParts.Elements.Elements.Blocks.PolishGame;
+using Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro;
 
-namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
+namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
 {
     /// <summary>
     /// Modify settings directly in the class.
     /// </summary>
-    internal class PolishMediumBoardData : IGameSet
+    internal class PuzzleProBoardData : IGameSet
     {
         private int ScaleFactor = 1;
         private double fieldHeight = 1d;
         private double fieldWidth = 1d;
 
-        private List<Tuple<string, int>> allowedMatches = new List<Tuple<string, int>>()
-        {
-            Tuple.Create("O", 1),
-            Tuple.Create("X", 0)
-        };
-
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
-            Purple.Create(withFieldRestrictions: true),
-            DarkBlue.Create(withFieldRestrictions: true),
-            LightBlue.Create(withFieldRestrictions: true),
-            Blue.Create(withFieldRestrictions: true),
+            Coralgreen.Create(withFieldRestrictions: false),
+            Blue.Create(withFieldRestrictions: false),
+            Pink.Create(withFieldRestrictions: false),
+            Green.Create(withFieldRestrictions: false),
+            Orange.Create(withFieldRestrictions: false),
+            Yellow.Create(withFieldRestrictions: false),
+            Darkblue.Create(withFieldRestrictions: false),
+            Darkred.Create(withFieldRestrictions: false),
+            Lightblue.Create(withFieldRestrictions: false),
+            Lightgreen.Create(withFieldRestrictions: false),
+            Lightred.Create(withFieldRestrictions: false),
+            Purple.Create(withFieldRestrictions: false)
         };
 
         private int[] Angles = new int[]
@@ -43,10 +44,9 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
             if (withAllowedLocations)
             {
                 var modificator = new AllowedLocationsGenerator(
-                        allowedMatches,
+                        null,
                         fieldHeight,
-                        fieldWidth,
-                        new List<object>() { PolishGameBaseBlock.SkippedMarkup }
+                        fieldWidth
                     );
 
                 var preconfiguredBlocks = modificator.Preconfigure(
@@ -68,16 +68,10 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
                 Angles);
         }
 
-        public BoardShapeBase Board()
+        private BoardShapeBase Board()
         {
-            var boardColumnsCount = 5;
-            var boardRowsCount = 4;
-            var mesh = new object[,] {
-                        { 1, 0, 1, 0, 1},
-                        { 0, 1, 0, 1, 0},
-                        { 1, 0, 1, 0, 1},
-                        { 0, 1, 0, 1, 0},
-                    };
+            var boardColumnsCount = 11;
+            var boardRowsCount = 5;
 
             var fields = GameSetFactory
                 .GeneratorFactory
@@ -87,20 +81,13 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
                     fieldHeight,
                     fieldWidth,
                     boardColumnsCount,
-                    boardRowsCount,
-                    mesh
-                );
+                    boardRowsCount                );
 
             var boardDefinition = new BoardShapeBase(
                 fields,
                 boardColumnsCount,
                 boardRowsCount,
-                ScaleFactor)
-            {
-                AllowedMatches = allowedMatches,
-                SkippedMarkup = PolishGameBaseBlock.SkippedMarkup,
-                WithExtraRestrictedMarkups = mesh
-            };
+                ScaleFactor);
 
             return boardDefinition;
         }
