@@ -32,9 +32,9 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
             Yellow.Create(withFieldRestrictions: true),
             Darkblue.Create(withFieldRestrictions: true),
             Darkred.Create(withFieldRestrictions: true),
-            Lightblue.Create(withFieldRestrictions: true),
             Lightgreen.Create(withFieldRestrictions: true),
             Lightred.Create(withFieldRestrictions: true),
+            Lightblue.Create(withFieldRestrictions: true),
             Purple.Create(withFieldRestrictions: true)
         };
 

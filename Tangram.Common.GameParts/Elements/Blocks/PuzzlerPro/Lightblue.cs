@@ -14,23 +14,22 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
                 { "X", NA }
             };
 
-            fieldRestriction1side = new object[,] {
+            fieldRestriction2side = new object[,] {
                 { "X", "X" },
                 { NA, "X" }
             };
 
-            color = Color.Blue;
+            color = Color.AliceBlue;
 
             polygon = new GeometryFactory()
                     .CreatePolygon(new Coordinate[] {
-                        new Coordinate(0.00,1.00),
                         new Coordinate(0.00,0.00),
                         new Coordinate(1.00,0.00),
                         new Coordinate(1.00,1.00),
                         new Coordinate(2.00,1.00),
                         new Coordinate(2.00,2.00),
                         new Coordinate(0.00,2.00),
-                        new Coordinate(0.00,1.00)
+                        new Coordinate(0.00,0.00)
                     });
         }
 

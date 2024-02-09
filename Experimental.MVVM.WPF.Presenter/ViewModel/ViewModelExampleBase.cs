@@ -69,7 +69,7 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreatePuzzleProBoardData(withAllowedLocations: true);
 
             // algorithms
             var binDepthTS = GameBuilder
@@ -79,18 +79,18 @@ namespace Demo.ViewModel
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            var ga = GameBuilder
-                .AvalaibleGATunedAlgorithms
-                .CreateBigBoardSettings(
-                    gameParts.Board,
-                    gameParts.Blocks,
-                    gameParts.AllowedAngles,
-                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+            //var ga = GameBuilder
+            //    .AvalaibleGATunedAlgorithms
+            //    .CreateBigBoardSettings(
+            //        gameParts.Board,
+            //        gameParts.Blocks,
+            //        gameParts.AllowedAngles,
+            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
-                .WithAlgorithms(binDepthTS, ga)
+                .WithAlgorithms(binDepthTS)
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 
