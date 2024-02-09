@@ -30,10 +30,10 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
         public static BlockBase Create(bool withFieldRestrictions = false)
         {
             var bloczekDoNarysowania = new Lightgreen()
-                .CreateNew().ToString();
+                .CreateNew(withFieldRestrictions).ToString();
 
             return new Lightgreen()
-                .CreateNew();
+                .CreateNew(withFieldRestrictions);
         }
     }
 }
