@@ -3,6 +3,7 @@ using Tangram.GameParts.Logic.GameParts;
 using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro;
+using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
 {
@@ -15,20 +16,26 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
         private double fieldHeight = 1d;
         private double fieldWidth = 1d;
 
+        private List<Tuple<string, int>> allowedMatches = new List<Tuple<string, int>>()
+        {
+            Tuple.Create("O", 1),
+            Tuple.Create("X", 0)
+        };
+
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
-            Coralgreen.Create(withFieldRestrictions: false),
-            Blue.Create(withFieldRestrictions: false),
-            Pink.Create(withFieldRestrictions: false),
-            Green.Create(withFieldRestrictions: false),
-            Orange.Create(withFieldRestrictions: false),
-            Yellow.Create(withFieldRestrictions: false),
-            Darkblue.Create(withFieldRestrictions: false),
-            Darkred.Create(withFieldRestrictions: false),
-            Lightblue.Create(withFieldRestrictions: false),
-            Lightgreen.Create(withFieldRestrictions: false),
-            Lightred.Create(withFieldRestrictions: false),
-            Purple.Create(withFieldRestrictions: false)
+            Coralgreen.Create(withFieldRestrictions: true),
+            Blue.Create(withFieldRestrictions: true),
+            Pink.Create(withFieldRestrictions: true),
+            Green.Create(withFieldRestrictions: true),
+            Orange.Create(withFieldRestrictions: true),
+            Yellow.Create(withFieldRestrictions: true),
+            Darkblue.Create(withFieldRestrictions: true),
+            Darkred.Create(withFieldRestrictions: true),
+            Lightblue.Create(withFieldRestrictions: true),
+            Lightgreen.Create(withFieldRestrictions: true),
+            Lightred.Create(withFieldRestrictions: true),
+            Purple.Create(withFieldRestrictions: true)
         };
 
         private int[] Angles = new int[]
@@ -41,21 +48,30 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
 
         public GameSet CreateNew(bool withAllowedLocations = false)
         {
-            var modificator = new AllowedLocationsGenerator(
-                        null,
+            if (withAllowedLocations)
+            {
+                var modificator = new AllowedLocationsGenerator(
+                        allowedMatches,
                         fieldHeight,
-                        fieldWidth
+                        fieldWidth,
+                        new List<object>() { PolishGameBaseBlock.SkippedMarkup }
                     );
 
-            var preconfiguredBlocks = modificator.Preconfigure(
-                    Blocks.ToList(),
+                var preconfiguredBlocks = modificator.Preconfigure(
+                        Blocks.ToList(),
+                        Board(),
+                        Angles);
+
+                var orderedBlocksWithSwap = modificator.ReorderWithSwap(preconfiguredBlocks);
+
+                return new GameSet(
+                    orderedBlocksWithSwap,
                     Board(),
                     Angles);
-
-            var orderedBlocksWithSwap = modificator.ReorderWithSwap(preconfiguredBlocks);
+            }
 
             return new GameSet(
-                orderedBlocksWithSwap,
+                Blocks,
                 Board(),
                 Angles);
         }
@@ -64,6 +80,13 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
         {
             var boardColumnsCount = 11;
             var boardRowsCount = 5;
+            var mesh = new object[,] {
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }
+                    };
 
             var fields = GameSetFactory
                 .GeneratorFactory
@@ -73,13 +96,20 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
                     fieldHeight,
                     fieldWidth,
                     boardColumnsCount,
-                    boardRowsCount                );
+                    boardRowsCount,
+                    mesh
+                );
 
             var boardDefinition = new BoardShapeBase(
                 fields,
                 boardColumnsCount,
                 boardRowsCount,
-                ScaleFactor);
+                ScaleFactor)
+            {
+                AllowedMatches = allowedMatches,
+                SkippedMarkup = PolishGameBaseBlock.SkippedMarkup,
+                WithExtraRestrictedMarkups = mesh
+            };
 
             return boardDefinition;
         }
