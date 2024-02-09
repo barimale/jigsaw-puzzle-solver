@@ -18,8 +18,8 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
 
         private List<Tuple<string, int>> allowedMatches = new List<Tuple<string, int>>()
         {
-            Tuple.Create("O", 1),
-            Tuple.Create("X", 0)
+            Tuple.Create("X", 1),
+            Tuple.Create("O", 0)
         };
 
         private IList<BlockBase> Blocks = new List<BlockBase>()
@@ -81,11 +81,11 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
             var boardColumnsCount = 11;
             var boardRowsCount = 5;
             var mesh = new object[,] {
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
-                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1 },
-                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 }
+                        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 },
+                        { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 }
                     };
 
             var fields = GameSetFactory

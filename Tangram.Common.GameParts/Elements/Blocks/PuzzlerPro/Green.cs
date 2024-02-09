@@ -9,6 +9,18 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
     {
         public Green()
         {
+            fieldRestriction1side = new object[,] {
+                { "X", NA },
+                { "X", "X" },
+                { "X", NA}
+            };
+
+            fieldRestriction2side = new object[,] {
+                {NA,  "X" },
+                { "X", "X" },
+                {NA, "X"}
+            };
+
             color = Color.Green;
 
             polygon = new GeometryFactory()

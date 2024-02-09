@@ -8,17 +8,17 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
     public sealed class Blue: PuzzleProBaseBlock
     {
         public Blue()
-        {//WIP
+        {
             fieldRestriction1side = new object[,] {
-                { "O", "X" },
-                { "X", "O" },
-                { "O", NA }
+                { "X", NA,NA },
+                { "X", NA,NA },
+                { "X", "X","X" }
             };
 
             fieldRestriction2side = new object[,] {
-                { "O", "X" },
-                { "X", "O" },
-                { NA, "X" }
+                { NA, NA,"X" },
+                { NA, NA,"X" },
+                { "X", "X","X" }
             };
 
             color = Color.Blue;
