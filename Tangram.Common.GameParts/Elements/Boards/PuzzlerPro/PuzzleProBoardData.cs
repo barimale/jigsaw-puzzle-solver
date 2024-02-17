@@ -18,8 +18,7 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
 
         private List<Tuple<string, int>> allowedMatches = new List<Tuple<string, int>>()
         {
-            Tuple.Create("X", 1),
-            Tuple.Create("O", 0)
+            Tuple.Create("X", 1)
         };
 
         private IList<BlockBase> Blocks = new List<BlockBase>()

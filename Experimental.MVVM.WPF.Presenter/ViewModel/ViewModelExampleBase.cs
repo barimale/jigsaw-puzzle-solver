@@ -69,7 +69,7 @@ namespace Demo.ViewModel
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishMediumBoard(withAllowedLocations: true);
+                .CreatePuzzleProBoardData(withAllowedLocations: true);
 
             // algorithms
             var binDepthTS = GameBuilder
