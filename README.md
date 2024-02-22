@@ -13,7 +13,7 @@ The GENIUS Star
 The GENIUS Square
 The GENIUS Junior
 ```
-# Example solutions - binary depth-first solver
+# Sample solutions - binary depth-first solver
 ![PolishBigBoardWithBinaryTreeSolver.png](./results/PolishBigBoardWithBinaryTreeSolver.png)
 ![Solution2.png](./results/Solution2.png)
 
