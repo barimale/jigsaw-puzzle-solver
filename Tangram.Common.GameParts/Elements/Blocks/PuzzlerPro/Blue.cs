@@ -10,15 +10,15 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
         public Blue()
         {
             fieldRestriction1side = new object[,] {
+                { "X", "X","X" },
                 { "X", NA,NA },
-                { "X", NA,NA },
-                { "X", "X","X" }
+                { "X", NA, NA }
             };
 
             fieldRestriction2side = new object[,] {
+                { "X", "X","X" },
                 { NA, NA,"X" },
-                { NA, NA,"X" },
-                { "X", "X","X" }
+                { NA, NA,"X" }
             };
 
             color = Color.Blue;

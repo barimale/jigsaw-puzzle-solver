@@ -11,15 +11,15 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
         {
             fieldRestriction1side = new object[,] {
                 { NA,  "X"},
-                { NA, "X"},
-                { "X", "X" },
+                { "X", "X"},
+                { NA, "X" },
                 {NA, "X"}
             };
 
             fieldRestriction2side = new object[,] {
                 {  "X", NA},
-                {  "X", NA},
-                { "X", "X" },
+                {  "X", "X"},
+                { "X", NA },
                 { "X", NA}
             };
 

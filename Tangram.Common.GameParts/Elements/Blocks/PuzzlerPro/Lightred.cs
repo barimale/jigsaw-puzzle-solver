@@ -10,17 +10,17 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
         public Lightred()
         {
             fieldRestriction1side = new object[,] {
+                { "X", NA },
+                { "X", NA },
+                { "X", NA },
                 { "X", "X" },
-                { "X", NA },
-                { "X", NA },
-                { "X", NA },
             };
 
             fieldRestriction2side = new object[,] {
-                { "X", "X" },
+                { NA, "X" },
                 {  NA, "X" },
                 {  NA, "X" },
-                {  NA, "X" },
+                {  "X", "X" },
             };
 
             color = Color.OrangeRed;

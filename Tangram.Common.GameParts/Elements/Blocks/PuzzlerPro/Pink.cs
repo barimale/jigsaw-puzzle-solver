@@ -10,17 +10,17 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
         public Pink()
         {
             fieldRestriction1side = new object[,] {
-                { NA, "X" },
-                { NA, "X" },
+                { "X", NA },
                 { "X","X" },
-                { "X", NA }
+                { NA, "X" },
+                { NA, "X" }
             };
 
             fieldRestriction2side = new object[,] {
-                { "X", NA},
-                { "X", NA },
+                { NA, "X" },
                 { "X","X" },
-                { NA, "X" }
+                { "X", NA},
+                { "X", NA }
             };
 
             color = Color.Pink;
