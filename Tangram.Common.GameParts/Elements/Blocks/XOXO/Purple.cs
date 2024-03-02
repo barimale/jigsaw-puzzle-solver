@@ -3,7 +3,7 @@ using System.Drawing;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 using Tangram.GameParts.Logic.GameParts.Block;
 
-namespace Tangram.GameParts.Elements.Elements.Blocks.PolishGame
+namespace Tangram.GameParts.Elements.Elements.Blocks.XOXO
 {
     public sealed class Purple : PolishGameBaseBlock
     {

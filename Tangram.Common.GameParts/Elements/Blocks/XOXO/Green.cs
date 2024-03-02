@@ -3,38 +3,46 @@ using System.Drawing;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 using Tangram.GameParts.Logic.GameParts.Block;
 
-namespace Tangram.GameParts.Elements.Elements.Blocks.PolishGame
+namespace Tangram.GameParts.Elements.Elements.Blocks.XOXO
 {
-    public sealed class DarkBlue : PolishGameBaseBlock
+    public sealed class Green : PolishGameBaseBlock
     {
-        public DarkBlue()
+        public Green()
         {
             fieldRestriction1side = new object[,] {
-                { "O", "X", "O", "X", "O" }
+                { "O", "X", NA},
+                { NA, "O", NA},
+                { NA, "X", "O"}
             };
 
             fieldRestriction2side = new object[,] {
-                { "X", "O", "X", "O", "X" }
+                { NA, "O", "X" },
+                { NA, "X", NA },
+                { "X", "O", NA }
             };
 
-            color = Color.DarkBlue;
+            color = Color.Green;
 
             polygon = new GeometryFactory()
                     .CreatePolygon(new Coordinate[] {
                         new Coordinate(0,0),// first the same as last
                         new Coordinate(0,1),
-                        new Coordinate(5,1),
-                        new Coordinate(5,0),
+                        new Coordinate(1,1),
+                        new Coordinate(1,3),
+                        new Coordinate(3,3),
+                        new Coordinate(3,2),
+                        new Coordinate(2,2),
+                        new Coordinate(2,0),
                         new Coordinate(0,0)// last the same as first
                     });
         }
 
         public static BlockBase Create(bool withFieldRestrictions = false)
         {
-            var bloczekDoNarysowania = new DarkBlue()
+            var bloczekDoNarysowania = new Green()
                 .CreateNew(withFieldRestrictions).ToString();
 
-            return new DarkBlue()
+            return new Green()
                 .CreateNew(withFieldRestrictions);
         }
     }

@@ -3,42 +3,44 @@ using System.Drawing;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 using Tangram.GameParts.Logic.GameParts.Block;
 
-namespace Tangram.GameParts.Elements.Elements.Blocks.PolishGame
+namespace Tangram.GameParts.Elements.Elements.Blocks.XOXO
 {
-    public sealed class LightGreen : PolishGameBaseBlock
+    public sealed class Pink : PolishGameBaseBlock
     {
-        public LightGreen()
+        public Pink()
         {
             fieldRestriction1side = new object[,] {
-                { "X", "O", "X", "O" },
-                { "O", NA, NA, NA}
+                { "X", "O", NA, NA },
+                { NA, "X", "O", "X" }
             };
 
             fieldRestriction2side = new object[,] {
-                { "X", "O", "X", "O" },
-                { NA, NA, NA, "X" }
+                {  NA, NA, "X", "O" },
+                { "O", "X", "O", NA }
             };
 
-            color = Color.LightGreen;
+            color = Color.Pink;
 
             polygon = new GeometryFactory()
                     .CreatePolygon(new Coordinate[] {
                         new Coordinate(0,0),// first the same as last
-                        new Coordinate(0,2),
-                        new Coordinate(1,2),
+                        new Coordinate(0,1),
                         new Coordinate(1,1),
+                        new Coordinate(1,2),
+                        new Coordinate(4,2),
                         new Coordinate(4,1),
-                        new Coordinate(4,0),
+                        new Coordinate(2,1),
+                        new Coordinate(2,0),
                         new Coordinate(0,0)// last the same as first
                     });
         }
 
         public static BlockBase Create(bool withFieldRestrictions = false)
         {
-            var bloczekDoNarysowania = new LightGreen()
+            var bloczekDoNarysowania = new Pink()
                 .CreateNew(withFieldRestrictions).ToString();
 
-            return new LightGreen()
+            return new Pink()
                 .CreateNew(withFieldRestrictions);
         }
     }

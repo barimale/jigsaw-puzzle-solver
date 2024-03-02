@@ -2,7 +2,7 @@
 using Tangram.GameParts.Logic.GameParts;
 using Tangram.GameParts.Logic.GameParts.Board;
 using Tangram.GameParts.Logic.GameParts.Block;
-using Tangram.GameParts.Elements.Elements.Blocks.PolishGame;
+using Tangram.GameParts.Elements.Elements.Blocks.XOXO;
 
 namespace Tangram.GameParts.Elements.Elements.Boards.PureGame
 {
