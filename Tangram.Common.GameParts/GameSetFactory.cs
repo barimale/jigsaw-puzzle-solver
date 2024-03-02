@@ -1,6 +1,6 @@
-﻿using Tangram.GameParts.Elements.Elements.Boards.PolishGame;
+﻿using Tangram.GameParts.Elements.Elements.Boards.XOXOGame;
 using Tangram.GameParts.Elements.Elements.Boards.PureGame;
-using Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro;
+using Tangram.GameParts.Elements.Elements.Boards.PuzzlerProGame;
 using Tangram.GameParts.Logic;
 using Tangram.GameParts.Logic.GameParts;
 

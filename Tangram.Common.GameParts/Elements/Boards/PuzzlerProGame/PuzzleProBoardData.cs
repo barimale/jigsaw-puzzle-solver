@@ -5,7 +5,7 @@ using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 
-namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerPro
+namespace Tangram.GameParts.Elements.Elements.Boards.PuzzlerProGame
 {
     /// <summary>
     /// Modify settings directly in the class.

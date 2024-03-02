@@ -5,12 +5,12 @@ using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Elements.Elements.Blocks.CommonSettings;
 using Tangram.GameParts.Elements.Elements.Blocks.XOXO;
 
-namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
+namespace Tangram.GameParts.Elements.Elements.Boards.XOXOGame
 {
     /// <summary>
     /// Modify settings directly in the class.
     /// </summary>
-    internal class PolishMediumBoardData : IGameSet
+    internal class PolishBigBoardData : IGameSet
     {
         private int ScaleFactor = 1;
         private double fieldHeight = 1d;
@@ -24,10 +24,16 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
 
         private IList<BlockBase> Blocks = new List<BlockBase>()
         {
-            Purple.Create(withFieldRestrictions: true),
             DarkBlue.Create(withFieldRestrictions: true),
+            Red.Create(withFieldRestrictions: true),
             LightBlue.Create(withFieldRestrictions: true),
+            Purple.Create(withFieldRestrictions: true),
             Blue.Create(withFieldRestrictions: true),
+            Pink.Create(withFieldRestrictions: true),
+            Green.Create(withFieldRestrictions: true),
+            LightGreen.Create(withFieldRestrictions: true),
+            Orange.Create(withFieldRestrictions: true),
+            Yellow.Create(withFieldRestrictions: true)
         };
 
         private int[] Angles = new int[]
@@ -68,15 +74,16 @@ namespace Tangram.GameParts.Elements.Elements.Boards.PolishGame
                 Angles);
         }
 
-        public BoardShapeBase Board()
+        private BoardShapeBase Board()
         {
-            var boardColumnsCount = 5;
-            var boardRowsCount = 4;
+            var boardColumnsCount = 10;
+            var boardRowsCount = 5;
             var mesh = new object[,] {
-                        { 1, 0, 1, 0, 1},
-                        { 0, 1, 0, 1, 0},
-                        { 1, 0, 1, 0, 1},
-                        { 0, 1, 0, 1, 0},
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 },
+                        { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 },
+                        { 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 }
                     };
 
             var fields = GameSetFactory
