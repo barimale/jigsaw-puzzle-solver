@@ -65,7 +65,7 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             // to use the default value pass -1
-            int maxDegreeOfParallelism =  2048 * 6; // -1
+            int maxDegreeOfParallelism = -1; //2048 * 6; // -1
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
@@ -79,18 +79,18 @@ namespace Demo.ViewModel
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            //var ga = GameBuilder
-            //    .AvalaibleGATunedAlgorithms
-            //    .CreateBigBoardSettings(
-            //        gameParts.Board,
-            //        gameParts.Blocks,
-            //        gameParts.AllowedAngles,
-            //        maxDegreeOfParallelism: maxDegreeOfParallelism);
+            var ga = GameBuilder
+                .AvalaibleGATunedAlgorithms
+                .CreateBinaryBigBoardSettings(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    gameParts.AllowedAngles,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
-                .WithAlgorithms(binDepthTS)
+                .WithAlgorithms( ga)
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 

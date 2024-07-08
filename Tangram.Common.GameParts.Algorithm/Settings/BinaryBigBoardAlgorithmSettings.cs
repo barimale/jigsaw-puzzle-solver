@@ -12,10 +12,8 @@ using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Genetic.Algorithm.Tangram.GA.Solver.Templates.Settings
 {
-    // TODO: 
     internal class BinaryBigBoardAlgorithmSettings : IAlgorithmSettings
     {
-        // TODO: expose the parameter to enable/disable list of initial chromosomes
         public GeneticAlgorithm CreateNew(
             BoardShapeBase board,
             IList<BlockBase> blocks,

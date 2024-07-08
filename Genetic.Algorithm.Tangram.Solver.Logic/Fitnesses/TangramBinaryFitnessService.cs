@@ -53,7 +53,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses
             var diff = await fitnessService.EvaluateBinaryAsync(
                 evaluatedGeometry.AsEnumerable());
 
-            return diff;
+            return -1f * diff;
         }
     }
 }
