@@ -90,7 +90,7 @@ namespace Demo.ViewModel
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
-                .WithAlgorithms( ga)
+                .WithAlgorithms(binDepthTS, ga)
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 
