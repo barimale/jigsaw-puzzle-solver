@@ -9,7 +9,6 @@ namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
     {
         public Orange()
         {
-            // WIP
             fieldRestriction1side = new object[,] {
                 { NA, "X", "X" },
                 {"X", "X", NA },

@@ -6,7 +6,7 @@ using Tangram.GameParts.Logic.GameParts.Block;
 namespace Tangram.GameParts.Elements.Elements.Blocks.PuzzlerPro
 {
     public sealed class Lightred : PuzzleProBaseBlock
-    {//WIP
+    {
         public Lightred()
         {
             fieldRestriction1side = new object[,] {
