@@ -1,4 +1,5 @@
 bin
 obj
-.vs
 /packages
+/.vs/Tangram.Solver/FileContentIndex
+/.vs/Tangram.Solver/DesignTimeBuild
