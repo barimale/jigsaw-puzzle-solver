@@ -65,7 +65,7 @@ namespace Demo.ViewModel
         protected virtual Game CreateGame()
         {
             // to use the default value pass -1
-            int maxDegreeOfParallelism = -1; //2048 * 6; // -1
+            int maxDegreeOfParallelism = 2048 * 6; // -1
 
             var gameParts = GameBuilder
                 .AvalaibleGameSets
@@ -74,7 +74,7 @@ namespace Demo.ViewModel
             // algorithms
             var binDepthTS = GameBuilder
                 .AvalaibleTSTemplatesAlgorithms
-                .CreateBinaryDepthFirstTreeSearchAlgorithm(
+                .CreateBinaryOneRootParallelDepthFirstTreeSearchAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
@@ -90,7 +90,7 @@ namespace Demo.ViewModel
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
-                .WithAlgorithms(binDepthTS, ga)
+                .WithAlgorithms(binDepthTS) //, ga)
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 
