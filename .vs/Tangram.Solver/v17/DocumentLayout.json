@@ -1,38 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "R:\\tangram-solver\\",
+  "WorkspaceRootPath": "S:\\tangram-solver\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\algorithms\\treesearches\\findquickestsearchalgorithm\\wip_permutatedpilot_for_medium_board_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\algorithms\\treesearches\\findquickestsearchalgorithm\\wip_permutatedpilot_for_medium_board_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|.solution-items{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|S:\\tangram-solver\\README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|.solution-items{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|solutionrelative:README.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\algorithms\\geneticalgorithm\\medium_board_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\algorithms\\geneticalgorithm\\medium_board_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\algorithms\\completeoverviewofsolutions\\time_execution_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\algorithms\\completeoverviewofsolutions\\time_execution_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\as_a_developer(wip)\\i_would_like_to_solve_genius_junior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\as_a_developer(wip)\\i_would_like_to_solve_genius_junior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\as_a_developer(wip)\\i_would_like_to_use_advices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\as_a_developer(wip)\\i_would_like_to_use_advices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\subcomponentsoftheengine\\allowedlocationsgeneratorclass\\generator_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\subcomponentsoftheengine\\allowedlocationsgeneratorclass\\generator_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\subcomponentsoftheengine\\preloadedpopulationlogic\\permutation_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\subcomponentsoftheengine\\preloadedpopulationlogic\\permutation_needs_to_be_tested.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|r:\\tangram-solver\\genetic.algorithm.tangram.solver.logic.ut\\uts\\subcomponentsoftheengine\\whenyanywithwhereclause\\customization_of_task_whenany_method_needs_to_be_done.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DBA18022-6412-47A1-BFA5-5515EB81FCA8}|Genetic.Algorithm.Tangram.Solver.Logic.UT\\Genetic.Algorithm.Tangram.Solver.Logic.UT.csproj|solutionrelative:genetic.algorithm.tangram.solver.logic.ut\\uts\\subcomponentsoftheengine\\whenyanywithwhereclause\\customization_of_task_whenany_method_needs_to_be_done.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|.solution-items{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|S:\\tangram-solver\\.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|.solution-items{52BC3AEC-5C10-4976-A7FF-5902D13CC443}|solutionrelative:.gitignore||{3B902123-F8A7-4915-9F01-361F908088D0}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,106 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "WIP_PermutatedPilot_for_medium_board_needs_to_be_tested.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\TreeSearches\\FindQuickestSearchAlgorithm\\WIP_PermutatedPilot_for_medium_board_needs_to_be_tested.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\TreeSearches\\FindQuickestSearchAlgorithm\\WIP_PermutatedPilot_for_medium_board_needs_to_be_tested.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\TreeSearches\\FindQuickestSearchAlgorithm\\WIP_PermutatedPilot_for_medium_board_needs_to_be_tested.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\TreeSearches\\FindQuickestSearchAlgorithm\\WIP_PermutatedPilot_for_medium_board_needs_to_be_tested.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwDIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:31:45.923Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Medium_board_needs_to_be_tested.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\GeneticAlgorithm\\Medium_board_needs_to_be_tested.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\GeneticAlgorithm\\Medium_board_needs_to_be_tested.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\GeneticAlgorithm\\Medium_board_needs_to_be_tested.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\GeneticAlgorithm\\Medium_board_needs_to_be_tested.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:31:19.824Z",
+              "Title": ".gitignore",
+              "DocumentMoniker": "S:\\tangram-solver\\.gitignore",
+              "RelativeDocumentMoniker": ".gitignore",
+              "ToolTip": "S:\\tangram-solver\\.gitignore",
+              "RelativeToolTip": ".gitignore",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-02-20T19:13:32.305Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Time_execution_needs_to_be_tested.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\CompleteOverviewOfSolutions\\Time_execution_needs_to_be_tested.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\CompleteOverviewOfSolutions\\Time_execution_needs_to_be_tested.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\CompleteOverviewOfSolutions\\Time_execution_needs_to_be_tested.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\Algorithms\\CompleteOverviewOfSolutions\\Time_execution_needs_to_be_tested.cs",
+              "DocumentIndex": 0,
+              "Title": "README.md",
+              "DocumentMoniker": "S:\\tangram-solver\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "S:\\tangram-solver\\README.md",
+              "RelativeToolTip": "README.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:30:48.533Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "I_would_like_to_solve_Genius_Junior.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_solve_Genius_Junior.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_solve_Genius_Junior.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_solve_Genius_Junior.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_solve_Genius_Junior.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:30:39.602Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "I_would_like_to_use_advices.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_use_advices.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_use_advices.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_use_advices.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\As_A_Developer(WIP)\\I_would_like_to_use_advices.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:30:36.999Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Generator_needs_to_be_tested.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\AllowedLocationsGeneratorClass\\Generator_needs_to_be_tested.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\AllowedLocationsGeneratorClass\\Generator_needs_to_be_tested.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\AllowedLocationsGeneratorClass\\Generator_needs_to_be_tested.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\AllowedLocationsGeneratorClass\\Generator_needs_to_be_tested.cs",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAYwCkAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:30:18.321Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Permutation_needs_to_be_tested.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\PreloadedPopulationLogic\\Permutation_needs_to_be_tested.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\PreloadedPopulationLogic\\Permutation_needs_to_be_tested.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\PreloadedPopulationLogic\\Permutation_needs_to_be_tested.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\PreloadedPopulationLogic\\Permutation_needs_to_be_tested.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:30:02.569Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Customization_of_task_whenAny_method_needs_to_be_done.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\WhenyAnyWithWhereClause\\Customization_of_task_whenAny_method_needs_to_be_done.cs",
-              "RelativeDocumentMoniker": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\WhenyAnyWithWhereClause\\Customization_of_task_whenAny_method_needs_to_be_done.cs",
-              "ToolTip": "R:\\tangram-solver\\Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\WhenyAnyWithWhereClause\\Customization_of_task_whenAny_method_needs_to_be_done.cs",
-              "RelativeToolTip": "Genetic.Algorithm.Tangram.Solver.Logic.UT\\UTs\\SubcomponentsOfTheEngine\\WhenyAnyWithWhereClause\\Customization_of_task_whenAny_method_needs_to_be_done.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwC8AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-30T11:28:29.018Z",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-02-20T19:13:31.45Z",
               "EditorCaption": ""
             }
           ]
