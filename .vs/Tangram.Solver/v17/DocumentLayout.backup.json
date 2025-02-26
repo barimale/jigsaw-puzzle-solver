@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{B27B7E47-98BF-43EE-8636-1F9A4FF30F27}|Tangram.Common.GameParts.Configurator\\Solver.Tangram.AlgorithmDefinitions.csproj|solutionrelative:tangram.common.gameparts.configurator\\generics\\multialgorithms\\iexecutablemultialgorithm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{51FEDAB6-53F0-4537-9E33-0CC94302C148}|Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.Game.Logic.csproj|r:\\tangram-solver\\solver.tangram.algorithmdefinitions.configuration\\solver.tangram.algorithmdefinitions.configuration\\multialgorithmgameconfiguratorbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{51FEDAB6-53F0-4537-9E33-0CC94302C148}|Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.Game.Logic.csproj|solutionrelative:solver.tangram.algorithmdefinitions.configuration\\solver.tangram.algorithmdefinitions.configuration\\multialgorithmgameconfiguratorbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A1A59F4F-5CDD-47AC-8B22-A4FFB779B145}|Experimental.MVVM.WPF.Presenter\\Experimental.MVVM.WPF.Presenter.csproj|r:\\tangram-solver\\experimental.mvvm.wpf.presenter\\viewmodel\\viewmodelexamplebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A1A59F4F-5CDD-47AC-8B22-A4FFB779B145}|Experimental.MVVM.WPF.Presenter\\Experimental.MVVM.WPF.Presenter.csproj|solutionrelative:experimental.mvvm.wpf.presenter\\viewmodel\\viewmodelexamplebase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{51FEDAB6-53F0-4537-9E33-0CC94302C148}|Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.Game.Logic.csproj|r:\\tangram-solver\\solver.tangram.algorithmdefinitions.configuration\\solver.tangram.algorithmdefinitions.configuration\\multialgorithmgameconfiguratorbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{51FEDAB6-53F0-4537-9E33-0CC94302C148}|Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.Game.Logic.csproj|solutionrelative:solver.tangram.algorithmdefinitions.configuration\\solver.tangram.algorithmdefinitions.configuration\\multialgorithmgameconfiguratorbuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{ABCAA61C-B0E6-4684-9423-23552B8B1739}|Tangram.Common.GameParts\\Tangram.GameParts.Elements.csproj|r:\\tangram-solver\\tangram.common.gameparts\\elements\\boards\\xoxogame\\polishbigboarddata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -45,6 +45,10 @@
           "SelectedChildIndex": 2,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "IExecutableMultiAlgorithm.cs",
@@ -52,14 +56,10 @@
               "RelativeDocumentMoniker": "Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\IExecutableMultiAlgorithm.cs",
               "ToolTip": "R:\\tangram-solver\\Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\IExecutableMultiAlgorithm.cs",
               "RelativeToolTip": "Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\IExecutableMultiAlgorithm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T16:38:36.527Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
@@ -67,9 +67,9 @@
               "Title": "MultiAlgorithm.cs",
               "DocumentMoniker": "R:\\tangram-solver\\Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\MultiAlgorithm.cs",
               "RelativeDocumentMoniker": "Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\MultiAlgorithm.cs",
-              "ToolTip": "R:\\tangram-solver\\Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\MultiAlgorithm.cs",
-              "RelativeToolTip": "Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\MultiAlgorithm.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADIAAAAiAAAAAAAAAA==",
+              "ToolTip": "R:\\tangram-solver\\Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\MultiAlgorithm.cs*",
+              "RelativeToolTip": "Tangram.Common.GameParts.Configurator\\Generics\\MultiAlgorithms\\MultiAlgorithm.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T16:36:22.935Z",
               "EditorCaption": ""
@@ -77,6 +77,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 2,
+              "Title": "ViewModelExampleBase.cs",
+              "DocumentMoniker": "R:\\tangram-solver\\Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
+              "RelativeDocumentMoniker": "Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
+              "ToolTip": "R:\\tangram-solver\\Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
+              "RelativeToolTip": "Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAwwFsAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-22T13:18:53.755Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MultiAlgorithmGameConfiguratorBuilder.cs",
               "DocumentMoniker": "R:\\tangram-solver\\Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.AlgorithmDefinitions.Configuration\\MultiAlgorithmGameConfiguratorBuilder.cs",
               "RelativeDocumentMoniker": "Solver.Tangram.AlgorithmDefinitions.Configuration\\Solver.Tangram.AlgorithmDefinitions.Configuration\\MultiAlgorithmGameConfiguratorBuilder.cs",
@@ -97,7 +110,8 @@
               "RelativeToolTip": "Tangram.Common.GameParts\\Elements\\Boards\\XOXOGame\\PolishBigBoardData.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAuwBgAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T13:56:00.377Z"
+              "WhenOpened": "2025-02-22T13:56:00.377Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -109,19 +123,7 @@
               "RelativeToolTip": "Tangram.Common.GameParts\\Elements\\Blocks\\XOXO\\Purple.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T13:42:45.507Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "ViewModelExampleBase.cs",
-              "DocumentMoniker": "R:\\tangram-solver\\Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
-              "RelativeDocumentMoniker": "Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
-              "ToolTip": "R:\\tangram-solver\\Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
-              "RelativeToolTip": "Experimental.MVVM.WPF.Presenter\\ViewModel\\ViewModelExampleBase.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAADwv10AAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-22T13:18:53.755Z",
+              "WhenOpened": "2025-02-22T13:42:45.507Z",
               "EditorCaption": ""
             },
             {
@@ -134,7 +136,8 @@
               "RelativeToolTip": ".gitignore",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-02-20T19:13:32.305Z"
+              "WhenOpened": "2025-02-20T19:13:32.305Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -146,7 +149,8 @@
               "RelativeToolTip": "README.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-02-20T19:13:31.45Z"
+              "WhenOpened": "2025-02-20T19:13:31.45Z",
+              "EditorCaption": ""
             }
           ]
         }
