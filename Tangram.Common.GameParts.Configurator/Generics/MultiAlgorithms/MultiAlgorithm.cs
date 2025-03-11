@@ -1,7 +1,6 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics.MultiAlgorithms
 {
