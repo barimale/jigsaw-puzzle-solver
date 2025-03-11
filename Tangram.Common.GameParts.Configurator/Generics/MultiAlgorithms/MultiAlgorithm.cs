@@ -1,6 +1,7 @@
 ﻿using Solver.Tangram.AlgorithmDefinitions.Generics.EventArgs;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using System.Collections.Immutable;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Solver.Tangram.AlgorithmDefinitions.Generics.MultiAlgorithms
 {
@@ -57,11 +58,13 @@ namespace Solver.Tangram.AlgorithmDefinitions.Generics.MultiAlgorithms
             switch (executionMode)
             {
                 case ExecutionMode.WhenAll:
-                    var results = await Task
-                        .WhenAll(allOfThem);
+                    AlgorithmResult[] results = new AlgorithmResult[allOfThem.Length];
+                    await Task
+                        .WhenAll(allOfThem)
+                        .ContinueWith(algs => results = algs.Result);
 
-                    return results
-                        .ToArray();
+                    return results;
+
                 case ExecutionMode.WhenAny:
                     var result = await Task
                         .WhenAny(allOfThem);
