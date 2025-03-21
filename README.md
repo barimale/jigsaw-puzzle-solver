@@ -17,6 +17,7 @@ The GENIUS Junior
 ![PolishBigBoardWithBinaryTreeSolver.png](./results/PolishBigBoardWithBinaryTreeSolver.png)
 ![Solution2.png](./results/Solution2.png)
 ![rozwiazanie3.png](./results/rozwiazanie3.png)
+![Solution4.png](./results/Solution4.png)
 
 # Some useful information
 ## Online polygons creator
