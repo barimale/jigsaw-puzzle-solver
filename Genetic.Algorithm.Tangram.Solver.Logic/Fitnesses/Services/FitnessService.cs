@@ -141,9 +141,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 group valueIndex by valueIndex.Index into indexGroups
                 select indexGroups.Select(indexGroup => indexGroup.Value).Sum();
 
-// double check why values below 0 are filtered here: TOD
                 var diffSum = sums
-                    //.Select(p => Math.Abs(p - 1))
                     .Select(p => p - 1)
                     .Where(pp => pp > 0)
                     .ToArray();
@@ -157,7 +155,6 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
                 Console.WriteLine(ex.ToString());
             }
 
-            // TODO: correct it
             return -1;
         }
 
