@@ -45,13 +45,13 @@ namespace TreeSearch.Algorithm.Tangram.Solver.Templates
                 );
         }
 
-        public BinaryMTCSFirstTreeSearchAlgorithm CreateBinaryMTCSFirstTreeSearchAlgorithm(
+        public BinaryMTCSTreeSearchAlgorithm CreateBinaryMTCSFirstTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks,
             int? maxDegreeOfParallelism = null)
         {
             return
-                new BinaryMTCSFirstTreeSearchAlgorithm(
+                new BinaryMTCSTreeSearchAlgorithm(
                     board,
                     blocks,
                     maxDegreeOfParallelism

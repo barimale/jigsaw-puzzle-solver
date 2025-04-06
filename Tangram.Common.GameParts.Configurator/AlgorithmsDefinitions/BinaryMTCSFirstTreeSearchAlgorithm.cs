@@ -7,13 +7,13 @@ using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
-    public class BinaryMTCSFirstTreeSearchAlgorithm : Algorithm<FindBinaryFittestSolution>, IExecutableAlgorithm
+    public class BinaryMTCSTreeSearchAlgorithm : Algorithm<FindBinaryFittestSolution>, IExecutableAlgorithm
     {
-        private const string NAME = "BinaryMTCSFirstTreeSearchAlgorithm";
+        private const string NAME = "BinaryMTCSTreeSearchAlgorithm";
 
         private int maximalAmountOfIterations;
 
-        public BinaryMTCSFirstTreeSearchAlgorithm(
+        public BinaryMTCSTreeSearchAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks,
             int? maxDegreeOfParallelism = null)
