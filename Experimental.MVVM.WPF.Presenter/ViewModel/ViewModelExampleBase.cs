@@ -79,6 +79,14 @@ namespace Demo.ViewModel
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
 
+            var binBreadthTS = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateBreadthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks,
+                    maxDegreeOfParallelism: maxDegreeOfParallelism);
+
+
             var binMCTS = GameBuilder
                .AvalaibleTSTemplatesAlgorithms
                .CreateBinaryMTCSFirstTreeSearchAlgorithm(
@@ -97,7 +105,7 @@ namespace Demo.ViewModel
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
                 .WithManyAlgorithms()
-                .WithAlgorithms(binDepthTS, binMCTS, ga)
+                .WithAlgorithms(binDepthTS, binMCTS, binBreadthTS, ga)
                 .WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 
