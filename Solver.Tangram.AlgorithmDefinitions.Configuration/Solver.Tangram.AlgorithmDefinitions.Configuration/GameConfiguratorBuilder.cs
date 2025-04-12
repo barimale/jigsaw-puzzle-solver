@@ -1,6 +1,4 @@
 ﻿using Genetic.Algorithm.Tangram.GA.Solver.Templates;
-using GeneticSharp;
-using Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Elements;
 using Tangram.GameParts.Logic.GameParts;

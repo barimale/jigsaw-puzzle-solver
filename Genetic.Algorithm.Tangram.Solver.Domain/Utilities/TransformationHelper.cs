@@ -5,7 +5,6 @@ using Algorithm.Tangram.Common.Extensions;
 
 namespace Tangram.GameParts.Logic.Utilities
 {
-    // TODO: reuse later on when IOC in place
     public class TransformationHelper
     {
         public Geometry Rotate(double angleDegrees, Geometry polygon)

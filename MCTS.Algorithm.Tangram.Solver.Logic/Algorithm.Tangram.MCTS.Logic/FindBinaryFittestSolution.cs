@@ -54,30 +54,6 @@ namespace Algorithm.Tangram.TreeSearch.Logic
             return diff;
         }
 
-        private int CheckFitness(
-            bool withPolygonsIntersectionsDiff,
-            bool withOutOfBoundsDiff,
-            bool withVolumeDiff)
-        {
-            var evaluatedGeometry = choicesMade
-                .Select(p => p.TransformedBlock)
-                .ToList()
-                .Select(pp => pp.Polygon)
-                .ToImmutableList();
-
-            var diff = fitnessService.Evaluate(
-                evaluatedGeometry.ToArray(),
-                board,
-                withPolygonsIntersectionsDiff,
-                withOutOfBoundsDiff,
-                withVolumeDiff,
-                false);
-
-            var diffAsInt = diff.ConvertToInt32();
-
-            return diffAsInt;
-        }
-
         public bool IsTerminal => choicesMade.Count == size;
 
         public Minimize Bound => new Minimize(CheckBinarySum());
