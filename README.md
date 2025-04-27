@@ -1,7 +1,3 @@
-# Startup project name 
-```
-Experimental.MVVM.WPF.Presenter.csproj 
-```
 # Overall description
 Tree-search-based and genetic-based algorithms having some science-article-based and custom improvements, with
 agnostic execution wrapper, provided together with geometric and binary verifiers. Suitable for solving tangrams
