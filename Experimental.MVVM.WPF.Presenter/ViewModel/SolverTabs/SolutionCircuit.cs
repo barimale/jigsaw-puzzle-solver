@@ -156,7 +156,7 @@ namespace Demo.ViewModel.SolverTabs
             {
                 Background = new SolidColorBrush()
                 {
-                    Color = Colors.WhiteSmoke
+                    Color = Colors.White
                 },
                 Margin = new Thickness(6, 6, 6, 6),
                 Height = 300,
