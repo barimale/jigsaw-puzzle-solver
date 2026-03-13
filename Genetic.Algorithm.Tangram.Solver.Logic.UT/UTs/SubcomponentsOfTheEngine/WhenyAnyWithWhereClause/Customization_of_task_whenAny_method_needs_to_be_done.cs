@@ -30,7 +30,7 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.SubcomponentsOfTheEngine
             //execute them
 
             // then
-            Assert.Equal(results.CountAsync().Result, 1);
+            Assert.Equal(1, results.CountAsync().Result);
         }
 
         private async Task<int> WaitFor(int inMilliseconds, int resultValue)
