@@ -52,4 +52,6 @@ As it is a POC it would be great to create new version of the app, where the sol
 Communication to the worker is planned via rabbitMQ connection, while the presentation layer display data directly from the 
 database.
 
+By using worker services it is ensured, that the computer resources (CPU, RAM) are fully consumed.
+
 
