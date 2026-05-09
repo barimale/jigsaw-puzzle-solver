@@ -47,3 +47,9 @@ There is a generic game set implemented and the one reflected real game bought i
 
 To have the Genius games implemented please use the isEnabled flag already added to the Board class.
 
+## Version 2 - TODOs
+As it is a POC it would be great to create new version of the app, where the solver is executed by n of worker services.
+Communication to the worker is planned via rabbitMQ connection, while the presentation layer display data directly from the 
+database.
+
+
