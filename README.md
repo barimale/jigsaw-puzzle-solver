@@ -59,5 +59,3 @@ Communication to the worker is planned via rabbitMQ connection, while the presen
 database.
 
 By using worker services it is ensured, that the computer resources (CPU, RAM) are fully consumed.
-
-
