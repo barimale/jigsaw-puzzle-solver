@@ -1,0 +1,229 @@
+﻿using Algorithm.Tangram.Common.Extensions;
+using NetTopologySuite.Geometries;
+using NetTopologySuite.Operation.Union;
+using Tangram.GameParts.Logic.GameParts.Board;
+
+namespace Genetic.Algorithm.Tangram.Solver.Logic.Fitnesses.Services
+{
+    public class FitnessService
+    {
+        private BoardShapeBase? board;
+        private double? cachedBoardConvexHullVolume;
+
+        public FitnessService()
+        {
+            // intentionally left blank
+        }
+
+        public FitnessService(BoardShapeBase board)
+            : this()
+        {
+            this.board = board;
+        }
+
+        public async Task<double> EvaluateAsync(
+            IEnumerable<Geometry> evaluatedGeometry,
+            BoardShapeBase board,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
+        {
+            var geometryArray = evaluatedGeometry.ToArray();
+            var tasks = new List<Task<double>>();
+
+            if (withPolygonsIntersectionsDiff)
+            {
+                tasks.Add(Task.Run(() => CalculatePolygonsIntersectDiff(geometryArray)));
+            }
+
+            if (withOutOfBoundsDiff)
+            {
+                tasks.Add(Task.Run(() => CalculateOutOfBoundsDiff(geometryArray, board)));
+            }
+
+            if (withVolumeDiff)
+            {
+                tasks.Add(Task.Run(() => CalculateVolumeDiff(geometryArray, board)));
+            }
+
+            var diffArray = await Task.WhenAll(tasks);
+            var summarizedDiff = diffArray.Sum();
+
+            return resultInverted ? -summarizedDiff : summarizedDiff;
+        }
+
+        public Task<double> EvaluateAsync(
+            IEnumerable<Geometry> evaluatedGeometry,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
+        {
+            if (this.board == null)
+                throw new ArgumentNullException(nameof(board), "board cannot be null");
+
+            return EvaluateAsync(
+                evaluatedGeometry,
+                this.board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff,
+                resultInverted);
+        }
+
+        public double Evaluate(
+            IEnumerable<Geometry> evaluatedGeometry,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
+        {
+            if (this.board == null)
+                throw new ArgumentNullException(nameof(board), "board cannot be null");
+
+            return EvaluateAsync(
+                evaluatedGeometry,
+                this.board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff,
+                resultInverted).Result;
+        }
+
+        public int EvaluateBinary(
+            IEnumerable<int[]> binaries)
+        {
+            return EvaluateBinaryAsync(binaries).Result;
+        }
+
+        public Task<int> EvaluateBinaryAsync(
+            IEnumerable<int[]> binaries)
+        {
+            return Task.Run(() => DoEvaluateBinary(binaries));
+        }
+
+        public int DoEvaluateBinary(IEnumerable<int[]> binaries)
+        {
+            try
+            {
+                var diffSum = binaries
+                    .SelectMany((array, _) => array.Select((value, index) => (value, index)))
+                    .GroupBy(x => x.index)
+                    .Sum(g => Math.Max(0, g.Sum(x => x.value) - 1));
+
+                return diffSum;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return -1;
+            }
+        }
+
+        public double Evaluate(
+            IEnumerable<Geometry> evaluatedGeometry,
+            BoardShapeBase board,
+            bool withPolygonsIntersectionsDiff = true,
+            bool withOutOfBoundsDiff = true,
+            bool withVolumeDiff = true,
+            bool resultInverted = true)
+        {
+            return EvaluateAsync(
+                evaluatedGeometry,
+                board,
+                withPolygonsIntersectionsDiff,
+                withOutOfBoundsDiff,
+                withVolumeDiff,
+                resultInverted).Result;
+        }
+
+        private double CalculatePolygonsIntersectDiff(Geometry[] polygons)
+        {
+            double intersections_area_factor = 0;
+
+            for (int i = 0; i < polygons.Length; i++)
+            {
+                for (int j = 0; j < polygons.Length; j++)
+                {
+                    if (i != j)
+                    {
+                        intersections_area_factor += PolygonsIntersect(polygons[i], polygons[j]);
+                    }
+                }
+            }
+
+            return intersections_area_factor;
+        }
+
+        private double CalculateVolumeDiff(Geometry[] evaluatedGeometry, BoardShapeBase boardShapeDefinition)
+        {
+            var volume_diff = 0d;
+
+            var boardConvexedHullVolume = boardShapeDefinition
+                .Polygon
+                .ConvexHull()
+                .Area;
+
+            var mergedPolygon = new CascadedPolygonUnion(evaluatedGeometry)
+                .Union();
+
+            var mergedPolygonConvexedHullVolume = mergedPolygon
+                .ConvexHull()
+                .Area;
+
+            volume_diff += Math.Abs(
+                mergedPolygonConvexedHullVolume -
+                boardConvexedHullVolume);
+
+            return volume_diff;
+        }
+
+        private double CalculateOutOfBoundsDiff(
+            Geometry[] evaluatedGeometry,
+            BoardShapeBase boardShapeDefinition)
+        {
+            double out_of_bounds_distances = evaluatedGeometry
+                .AsParallel()
+                .Sum(geometry =>
+                {
+                    return FilterOutOfBounds(
+                        geometry,
+                        boardShapeDefinition);
+                });
+
+            return out_of_bounds_distances;
+        }
+
+        private double PolygonsIntersect(Geometry polygon1, Geometry polygon2)
+        {
+            var isIntersected = polygon1.Intersects(polygon2);
+
+            if (isIntersected)
+            {
+                var result = polygon1.Intersection(polygon2);
+                return result.Area;
+            }
+            else
+            {
+                return 0d;
+            }
+        }
+
+        private double FilterOutOfBounds(
+            Geometry polygon,
+            BoardShapeBase boardShapeDefinition)
+        {
+            var diff = polygon.Difference(boardShapeDefinition.Polygon);
+
+            if (diff.IsEmpty)
+            {
+                return 0d;
+            }
+            else
+            {
+                return diff.Area;
+            }
+        }
+    }
+}

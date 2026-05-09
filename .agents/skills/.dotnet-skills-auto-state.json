@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "ProjectRoot": "R:\\jigsaw-puzzle-solver",
+  "Skills": [
+    "coverage-analysis",
+    "coverlet",
+    "migrate-xunit-to-xunit-v3",
+    "wpf",
+    "xunit"
+  ],
+  "UpdatedAt": "2026-05-09T17:44:29.7052599+00:00"
+}
