@@ -26,6 +26,12 @@ https://www.mathsisfun.com/geometry/polygons-interactive.html
 https://diegogiacomelli.com.br/function-optimization-with-geneticsharp/
 ```
 
+## Dotnet skills
+```
+dotnet tool install --global dotnet-skills
+dotnet skills install --auto
+```
+
 ## Github
 ```
 https://github.com/leprekon91/tangram-ga/blob/master/tangram-ga/tangram.py
