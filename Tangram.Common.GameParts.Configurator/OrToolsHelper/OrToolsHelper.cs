@@ -1,7 +1,10 @@
-﻿using Google.OrTools.Sat;
+﻿using Algorithm.Tangram.TreeSearch.Logic;
+using Algorithm.Tangram.TreeSearch.Logic.Domain;
+using Google.OrTools.Sat;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.Operation.Union;
 using Tangram.GameParts.Logic.GameParts.Block;
+using Tangram.GameParts.Logic.GameParts.Board;
 
 namespace Solver.Tangram.AlgorithmDefinitions.OrToolsHelper
 {
@@ -75,7 +78,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.OrToolsHelper
             return UnaryUnionOp.Union(polygons);
         }
 
-        public static Dictionary<string, Placement>? Solve(int boardRows, int boardCols, IList<BlockBase> positions)
+        public static FindSATFittestSolution Solve(BoardShapeBase board, IList<BlockBase> positions)
         {
             var pieces = positions.Select(x => new Piece
             {
@@ -174,7 +177,23 @@ namespace Solver.Tangram.AlgorithmDefinitions.OrToolsHelper
                 }
             }
 
-            return result;
+            var mapped = new FindSATFittestSolution(board, positions)
+            {
+                Fitness = 0.ToString(),
+            };
+
+            foreach(var item in result)
+            {
+                var block = positions.FirstOrDefault(x => x.ID.ToString() == item.Key);
+                if (block != null)
+                {
+                    var geometry = CreateGeometry(item.Value.Cells);
+                    block.Apply(geometry);
+                    mapped.ApplyChoice(new IndexedBinaryBlockBase(board.BoardFieldsDefinition, block, item.Value.Id));
+                }
+            }
+
+            return mapped;
         }
     }
 }

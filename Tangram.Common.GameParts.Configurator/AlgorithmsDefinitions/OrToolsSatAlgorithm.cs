@@ -3,11 +3,10 @@ using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Logic.GameParts.Block;
 using Tangram.GameParts.Logic.GameParts.Board;
-using TreesearchLib;
 
 namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
 {
-    public class OrToolsSatAlgorithm : Algorithm<FindFittestSolution>, IExecutableAlgorithm
+    public class OrToolsSatAlgorithm : Algorithm<FindSATFittestSolution>, IExecutableAlgorithm
     {
         private const string NAME = "OrToolsSatAlgorithm";
 
@@ -17,7 +16,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             BoardShapeBase board,
             IList<BlockBase> blocks,
             int? maxDegreeOfParallelism = null)
-            : base(new FindFittestSolution(board, blocks))
+            : base(new FindSATFittestSolution(board, blocks))
         {
             this.maximalAmountOfIterations = blocks
                 .Select(p => p.AllowedLocations.Length)
@@ -31,15 +30,15 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
         {
             ct.ThrowIfCancellationRequested();
 
-            FindFittestSolution? result = new FindFittestSolution(base.algorithm.Board, base.algorithm.Blocks.ToList());
+            FindSATFittestSolution? result;
 
-            var solvedResult = OrToolsHelper.OrToolsHelper.Solve(base.algorithm.Board.Height, base.algorithm.Board.Width, base.algorithm.Blocks);
+            result = OrToolsHelper.OrToolsHelper.Solve(base.algorithm.Board, base.algorithm.Blocks);
 
             return new AlgorithmResult()
             {
-                Fitness = result != null && result.Quality.HasValue ? result.Quality.Value.ToString() : string.Empty,
+                Fitness = result != null ? result.Fitness : 100000.ToString(),
                 Solution = result,
-                IsError = !result.Quality.HasValue
+                IsError = !result.HasError
             };
         }
     }

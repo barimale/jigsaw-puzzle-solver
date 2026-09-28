@@ -1,10 +1,12 @@
 using Algorithm.Tangram.TreeSearch.Logic;
+using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.OrToolsHelper;
 using Solver.Tangram.Game.Logic;
 using Xunit.Abstractions;
+using System.Linq;
 using Assert = Xunit.Assert;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
@@ -51,27 +53,27 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             // when
             // zbudowac wrappery , wydzileic algorytm 
             //var results = await game.RunGameAsync<AlgorithmResult[]>();
-            var results2 = OrToolsHelper.Solve(gameParts.Board.Height, gameParts.Board.Width, gameParts.Blocks);
-            //List<IndexedBlockBase> mappedResults = results2.Select(x => new IndexedBlockBase
-            //{
-            //     BlockDefinition = gameParts.Blocks.FirstOrDefault(xx=> xx.ID == results2[xx.ID.ToString()]),
-                  
+            var results2 = OrToolsHelper.Solve(gameParts.Board, gameParts.Blocks);
+            var results = new AlgorithmResult[]
+            {
+                new AlgorithmResult
+                {
+                Fitness = results2.Fitness,
+                Solution = results2.Solution
+                }
+            };
 
-            //})
-            //var resultsTransformed = results
-            //    .Select(p => p.GetSolution<FindFittestSolution>())
-            //    .ToArray();
+            var resultsTransformed = results
+                .Select(p => p.GetSolution<FindSATFittestSolution>())
+                .ToArray();
 
-            //// then
-            //Assert.NotNull(results);
-            //Assert.Equal(2, results.Length);
+            // then
+            Assert.NotNull(results);
+            Assert.Equal(1, results.Length);
 
-            //// finally
-            //Display("DepthFirst");
-            //AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[0]);
-
-            //Display("Pilot");
-            //AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[1]);
+            // finally
+            Display("SAT");
+            AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[0]);
         }
 
 
