@@ -1,5 +1,5 @@
 # Overall description
-Tree-search-based and genetic-based algorithms having some science-article-based and custom improvements, with
+Tree-search-based, SAT-based and genetic-based algorithms having some science-article-based and custom improvements, with
 agnostic execution wrapper, provided together with geometric and binary verifiers. Suitable for solving tangrams
 as well as other games like listed below:
 ```
@@ -9,6 +9,9 @@ The GENIUS Star
 The GENIUS Square
 The GENIUS Junior
 ```
+# The fastest algorithm
+SAT - ORTools ~1 sec.
+
 # Sample solutions - Depth-First binary solver
 ![PolishBigBoardWithBinaryTreeSolver.png](./results/PolishBigBoardWithBinaryTreeSolver.png)
 ![Solution2.png](./results/Solution2.png)
@@ -53,9 +56,3 @@ There is a generic game set implemented and the one reflected real game bought i
 
 To have the Genius games implemented please use the isEnabled flag already added to the Board class.
 
-## Version 2 - TODOs
-As it is a POC it would be great to create new version of the app, where the solver is executed by n of worker services.
-Communication to the worker is planned via rabbitMQ connection, while the presentation layer display data directly from the 
-database.
-
-By using worker services it is ensured, that the computer resources (CPU, RAM) are fully consumed.
