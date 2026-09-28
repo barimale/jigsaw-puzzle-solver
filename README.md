@@ -56,3 +56,5 @@ There is a generic game set implemented and the one reflected real game bought i
 
 To have the Genius games implemented please use the isEnabled flag already added to the Board class.
 
+## Todos
+Algorithm X + Dancing Links (Knuth)
