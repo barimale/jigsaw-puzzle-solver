@@ -79,9 +79,9 @@ namespace Demo.ViewModel
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
 
-            var oneRoot = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateBinaryOneRootParallelDepthFirstTreeSearchAlgorithm(
+            var satAlg = GameBuilder
+                .AvalaibleSATTemplatesAlgorithms
+                .CreateOrToolsSatAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks,
                     maxDegreeOfParallelism: maxDegreeOfParallelism);
@@ -104,9 +104,10 @@ namespace Demo.ViewModel
 
             var konfiguracjaGry = new GameBuilder()
                 .WithGamePartsConfigurator(gameParts)
-                .WithManyAlgorithms()
-                .WithAlgorithms(binDepthTS, binMCTS, oneRoot, ga)
-                .WithExecutionMode(ExecutionMode.WhenAny)
+                //.WithManyAlgorithms()
+                .WithAlgorithm(satAlg)
+                //.WithAlgorithms(binDepthTS, binMCTS, satAlg, ga)
+                //.WithExecutionMode(ExecutionMode.WhenAny)
                 .Build();
 
             return konfiguracjaGry;
