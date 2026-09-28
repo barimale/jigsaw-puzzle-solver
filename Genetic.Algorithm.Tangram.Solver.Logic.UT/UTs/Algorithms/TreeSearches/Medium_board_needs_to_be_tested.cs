@@ -49,8 +49,15 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .Build();
 
             // when
+            // zbudowac wrappery , wydzileic algorytm 
             //var results = await game.RunGameAsync<AlgorithmResult[]>();
             var results2 = OrToolsHelper.Solve(gameParts.Board.Height, gameParts.Board.Width, gameParts.Blocks);
+            //List<IndexedBlockBase> mappedResults = results2.Select(x => new IndexedBlockBase
+            //{
+            //     BlockDefinition = gameParts.Blocks.FirstOrDefault(xx=> xx.ID == results2[xx.ID.ToString()]),
+                  
+
+            //})
             //var resultsTransformed = results
             //    .Select(p => p.GetSolution<FindFittestSolution>())
             //    .ToArray();

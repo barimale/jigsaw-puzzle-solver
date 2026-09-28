@@ -1,5 +1,6 @@
 ﻿using Google.OrTools.Sat;
 using NetTopologySuite.Geometries;
+using NetTopologySuite.Operation.Union;
 using Tangram.GameParts.Logic.GameParts.Block;
 
 namespace Solver.Tangram.AlgorithmDefinitions.OrToolsHelper
@@ -48,6 +49,30 @@ namespace Solver.Tangram.AlgorithmDefinitions.OrToolsHelper
             }
 
             return result;
+        }
+
+        public static Geometry CreateGeometry(IEnumerable<Cell> cells)
+        {
+            var geometryFactory = new GeometryFactory();
+
+            var polygons = cells
+            .Select(c =>
+            geometryFactory.CreatePolygon(new[]
+            {
+                new Coordinate(c.X, c.Y),
+                new Coordinate(c.X + 1, c.Y),
+                new Coordinate(c.X + 1, c.Y + 1),
+                new Coordinate(c.X, c.Y + 1),
+                new Coordinate(c.X, c.Y)
+            }))
+            .ToArray();
+
+            if (polygons.Length == 0)
+            {
+                return geometryFactory.CreatePolygon();
+            }
+
+            return UnaryUnionOp.Union(polygons);
         }
 
         public static Dictionary<string, Placement>? Solve(int boardRows, int boardCols, IList<BlockBase> positions)
@@ -143,7 +168,7 @@ namespace Solver.Tangram.AlgorithmDefinitions.OrToolsHelper
                     if (solver.Value(
                     vars[(piece.Name, placement.Id)]) == 1)
                     {
-                        result[piece.Name] = placement;
+                        result[piece.Name] = placement; // CreateGeometry
                         break;
                     }
                 }
