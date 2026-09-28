@@ -1,10 +1,11 @@
-using Xunit.Abstractions;
-using Assert = Xunit.Assert;
+using Algorithm.Tangram.TreeSearch.Logic;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.BaseUT;
 using Genetic.Algorithm.Tangram.Solver.Logic.UT.Helpers;
-using Algorithm.Tangram.TreeSearch.Logic;
-using Solver.Tangram.Game.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
+using Solver.Tangram.AlgorithmDefinitions.OrToolsHelper;
+using Solver.Tangram.Game.Logic;
+using Xunit.Abstractions;
+using Assert = Xunit.Assert;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 {
@@ -17,6 +18,55 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
         {
             AlgorithmUTConsoleHelper = new AlgorithmUTConsoleHelper(output);
         }
+
+        [Fact]
+        public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields_with_ortools_sat()
+        {
+            // given
+            var gameParts = GameBuilder
+                .AvalaibleGameSets
+                .CreatePolishBigBoard(withAllowedLocations: true);
+
+            var depthFirstAlg = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreateDepthFirstTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
+
+            var pilotAlg = GameBuilder
+                .AvalaibleTSTemplatesAlgorithms
+                .CreatePilotTreeSearchAlgorithm(
+                    gameParts.Board,
+                    gameParts.Blocks);
+
+            var game = new GameBuilder()
+                .WithGamePartsConfigurator(gameParts)
+                .WithManyAlgorithms()
+                .WithExecutionMode(ExecutionMode.WhenAll)
+                .WithAlgorithms(
+                    depthFirstAlg,
+                    pilotAlg)
+                .Build();
+
+            // when
+            //var results = await game.RunGameAsync<AlgorithmResult[]>();
+            var results2 = OrToolsHelper.Solve(gameParts.Board.Height, gameParts.Board.Width, gameParts.Blocks);
+            //var resultsTransformed = results
+            //    .Select(p => p.GetSolution<FindFittestSolution>())
+            //    .ToArray();
+
+            //// then
+            //Assert.NotNull(results);
+            //Assert.Equal(2, results.Length);
+
+            //// finally
+            //Display("DepthFirst");
+            //AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[0]);
+
+            //Display("Pilot");
+            //AlgorithmUTConsoleHelper.ShowMadeChoices(resultsTransformed[1]);
+        }
+
 
         [Fact]
         public async Task Containing_4_blocks_with_X_and_O_markups_and_5x4_board_with_0_and_1_fields()
