@@ -8,6 +8,7 @@ using Solver.Tangram.Game.Logic;
 using Xunit.Abstractions;
 using System.Linq;
 using Assert = Xunit.Assert;
+using Algorithm.SAT.Logic;
 
 namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
 {
@@ -27,17 +28,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
             // given
             var gameParts = GameBuilder
                 .AvalaibleGameSets
-                .CreatePolishBigBoard(withAllowedLocations: true);
+                .CreateMediumBoard(withAllowedLocations: true);
 
-            var depthFirstAlg = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreateDepthFirstTreeSearchAlgorithm(
-                    gameParts.Board,
-                    gameParts.Blocks);
-
-            var pilotAlg = GameBuilder
-                .AvalaibleTSTemplatesAlgorithms
-                .CreatePilotTreeSearchAlgorithm(
+            var satAlg = GameBuilder
+                .AvalaibleSATTemplatesAlgorithms
+                .CreateOrToolsSatAlgorithm(
                     gameParts.Board,
                     gameParts.Blocks);
 
@@ -46,22 +41,11 @@ namespace Genetic.Algorithm.Tangram.Solver.Logic.UT.UTs.Algorithms.TreeSearches
                 .WithManyAlgorithms()
                 .WithExecutionMode(ExecutionMode.WhenAll)
                 .WithAlgorithms(
-                    depthFirstAlg,
-                    pilotAlg)
+                    satAlg)
                 .Build();
 
             // when
-            // zbudowac wrappery , wydzileic algorytm 
-            //var results = await game.RunGameAsync<AlgorithmResult[]>();
-            var results2 = OrToolsHelper.Solve(gameParts.Board, gameParts.Blocks);
-            var results = new AlgorithmResult[]
-            {
-                new AlgorithmResult
-                {
-                Fitness = results2.Fitness,
-                Solution = results2.Solution
-                }
-            };
+            var results = await game.RunGameAsync<AlgorithmResult[]>();
 
             var resultsTransformed = results
                 .Select(p => p.GetSolution<FindSATFittestSolution>())

@@ -1,4 +1,4 @@
-﻿using Algorithm.Tangram.TreeSearch.Logic;
+﻿using Algorithm.SAT.Logic;
 using Solver.Tangram.AlgorithmDefinitions.Generics;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Logic.GameParts.Block;
@@ -31,7 +31,6 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
             ct.ThrowIfCancellationRequested();
 
             FindSATFittestSolution? result;
-
             result = OrToolsHelper.OrToolsHelper.Solve(base.algorithm.Board, base.algorithm.Blocks);
 
             return new AlgorithmResult()

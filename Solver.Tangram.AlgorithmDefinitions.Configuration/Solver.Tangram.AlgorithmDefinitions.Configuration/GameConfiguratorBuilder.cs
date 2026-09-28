@@ -1,4 +1,6 @@
 ﻿using Genetic.Algorithm.Tangram.GA.Solver.Templates;
+using NetTopologySuite.IO;
+using OrToolsSAT.Algorithm.Tangra.Solver.Templates;
 using Solver.Tangram.AlgorithmDefinitions.Generics.SingleAlgorithm;
 using Tangram.GameParts.Elements;
 using Tangram.GameParts.Logic.GameParts;
@@ -22,6 +24,9 @@ namespace Solver.Tangram.Game.Logic
 
         public static TSTemplatesFactory AvalaibleTSTemplatesAlgorithms
             => new TSTemplatesFactory();
+
+        public static OrToolsTemplatesFactory AvalaibleSATTemplatesAlgorithms
+            => new OrToolsTemplatesFactory();
 
         public GameBuilder WithAlgorithm(IExecutableAlgorithm algorithm)
         {

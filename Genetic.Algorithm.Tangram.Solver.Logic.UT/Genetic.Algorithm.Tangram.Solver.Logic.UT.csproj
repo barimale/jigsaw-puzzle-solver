@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Algorithm.SAT.Logic\Algorithm.SAT.Logic.csproj" />
     <ProjectReference Include="..\MCTS.Algorithm.Tangram.Solver.Logic\Algorithm.Tangram.MCTS.Logic\Algorithm.Tangram.TreeSearch.Logic.csproj" />
     <ProjectReference Include="..\OrToolsSAT.Algorithm.Tangra.Solver.Templates\OrToolsSAT.Algorithm.Tangra.Solver.Templates.csproj" />
     <ProjectReference Include="..\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.AlgorithmDefinitions.Configuration\Solver.Tangram.Game.Logic.csproj" />
