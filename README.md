@@ -49,8 +49,8 @@ The WPF presenter is a demo only, which is helpfull for check correctness of the
 There are some minor bugs in code which have to be solved like null reference exceptions 
 caused by incorrect input data etc, but it is all about quick fixes.
 
-Besides that the solver is fully functional, having two groups of algorithms: tree search based
-with customizations and genetic based with customizations.
+Besides that the solver is fully functional, having three groups of algorithms: tree search based
+with customizations, sat based and genetic based with customizations.
 
 There is a generic game set implemented and the one reflected real game bought in Poland(please see IQ xoxo).
 
