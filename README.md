@@ -1,5 +1,5 @@
 # Overall description
-Tree-search-based, SAT-based and genetic-based algorithms having some science-article-based and custom improvements, with
+Tree-search, SAT and genetic algorithms having some science-article-based and custom improvements, with
 agnostic execution wrapper, provided together with geometric and binary verifiers. Suitable for solving tangrams
 as well as other games like listed below:
 ```
