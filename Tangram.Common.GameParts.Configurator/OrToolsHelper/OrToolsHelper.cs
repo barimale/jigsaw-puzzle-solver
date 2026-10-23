@@ -1,5 +1,4 @@
 ﻿using Algorithm.SAT.Logic;
-using Algorithm.Tangram.TreeSearch.Logic;
 using Algorithm.Tangram.TreeSearch.Logic.Domain;
 using Google.OrTools.Sat;
 using NetTopologySuite.Geometries;
