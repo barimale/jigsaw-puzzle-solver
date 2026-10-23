@@ -10,6 +10,8 @@ namespace Solver.Tangram.AlgorithmDefinitions.AlgorithmsDefinitions
     {
         private const string NAME = "OrToolsSatAlgorithm";
 
+        private int maximalAmountOfIterations;
+
         public OrToolsSatAlgorithm(
             BoardShapeBase board,
             IList<BlockBase> blocks,
